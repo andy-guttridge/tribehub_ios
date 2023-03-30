@@ -134,7 +134,7 @@
 		A17EAC0D29CDC96600D7CE00 = {
 			isa = PBXGroup;
 			children = (
-				A17EAC1829CDC96600D7CE00 /* tribehub-ios */,
+				A17EAC1829CDC96600D7CE00 /* source */,
 				A1551B8C29D5818F00D30446 /* tribehub-ios */,
 				A17EAC2F29CDC96A00D7CE00 /* tribehub-iosTests */,
 				A17EAC3929CDC96A00D7CE00 /* tribehub-iosUITests */,
@@ -154,7 +154,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A17EAC1829CDC96600D7CE00 /* tribehub-ios */ = {
+		A17EAC1829CDC96600D7CE00 /* source */ = {
 			isa = PBXGroup;
 			children = (
 				A1551B9029D582BC00D30446 /* DataStructs */,
@@ -167,7 +167,7 @@
 				A17EAC2729CDC96900D7CE00 /* Info.plist */,
 				A17EAC4B29CDFD1B00D7CE00 /* test_credentials.plist */,
 			);
-			path = "tribehub-ios";
+			path = source;
 			sourceTree = "<group>";
 		};
 		A17EAC2F29CDC96A00D7CE00 /* tribehub-iosTests */ = {
