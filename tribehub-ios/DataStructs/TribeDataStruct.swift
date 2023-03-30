@@ -30,3 +30,11 @@ struct Tribe: Codable {
         case tribeMembers = "users"
     }
 }
+
+struct TribeResults: Codable {
+    var results: [Tribe]
+    
+    enum CodingKeys: String, CodingKey {
+        case results
+    }
+}
