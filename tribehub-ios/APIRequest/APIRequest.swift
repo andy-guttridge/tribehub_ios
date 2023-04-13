@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-struct APIRequest<Resource: APIResource> {
+class APIRequest<Resource: APIResource> {
     let resource: Resource
     let session: Session
     

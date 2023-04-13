@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-struct TribeResource: APIResource {
+class TribeResource: APIResource {
     typealias APIResponseType = Empty
     typealias ModelType = TribeResults
     var methodPath: String {

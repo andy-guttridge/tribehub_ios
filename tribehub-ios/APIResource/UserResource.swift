@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserResource: APIResource {
+class UserResource: APIResource {
     typealias ModelType = User
     typealias APIResponseType = LoginResponse
     var requestType: UserAPIRequestTypes = .profile
