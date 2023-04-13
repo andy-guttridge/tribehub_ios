@@ -22,8 +22,8 @@ class APIRequest<Resource: APIResource> {
         return value
     }
     
-    func postData (payload: Dictionary<String, Any>?) async throws -> Resource.APIResponseType? {
-        let response = try await session.request(resource.url, method: .post, parameters: payload).serializingDecodable(Resource.APIResponseType.self, emptyResponseCodes: [200, 204, 205]).value
+    func postData (payload: Dictionary<String, Any>?) async throws -> Resource.ModelType? {
+        let response = try await session.request(resource.url, method: .post, parameters: payload).serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).value
         return response
     }
 }

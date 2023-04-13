@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         
         // Create loginRequest onject for logging in and use the postData method to login with user credentials.
         // We get a LoginResponse object with the access token, refresh token and user profile
-        let loginRequest = APIRequest(resource: UserResource(requestType: .login), session: session)
+        let loginRequest = APIRequest(resource: LoginResource(), session: session)
         do {
             if let response = try await loginRequest.postData(payload: credentials as? Dictionary<String, Any>) {
                 print(response)
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         }
         
         // Create userProfileRequest object for retrieving the user profile and use to retrieve a profile
-        let userProfileRequest = APIRequest(resource: UserResource(requestType: .profile), session: session)
+        let userProfileRequest = APIRequest(resource: UserResource(), session: session)
         do {
             if let response = try await userProfileRequest.fetchData() {
                 print(response)
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         }
         
         // Create a logoutRequest object for logging out and use to logout. We get an empty LogInResponse object back.
-        let logoutRequest = APIRequest(resource: UserResource(requestType: .logout), session: session)
+        let logoutRequest = APIRequest(resource: LogoutResource(), session: session)
         do {
             if let response = try await logoutRequest.postData(payload: nil) {
                 print(response)

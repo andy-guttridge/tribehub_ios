@@ -13,7 +13,7 @@
 		A1551B9529D5A13500D30446 /* UserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9429D5A13500D30446 /* UserResource.swift */; };
 		A1551B9729D5A1ED00D30446 /* UserAPIRequestTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9629D5A1ED00D30446 /* UserAPIRequestTypes.swift */; };
 		A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9929D5A81000D30446 /* APIRequest.swift */; };
-		A167CF7B29D5E80F00240827 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167CF7A29D5E80F00240827 /* LoginResponse.swift */; };
+		A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */; };
 		A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167CF7C29D5FC5D00240827 /* TribeResource.swift */; };
 		A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */; };
 		A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */; };
@@ -25,8 +25,10 @@
 		A17EAC3B29CDC96A00D7CE00 /* tribehub_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC3A29CDC96A00D7CE00 /* tribehub_iosUITests.swift */; };
 		A17EAC3D29CDC96A00D7CE00 /* tribehub_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC3C29CDC96A00D7CE00 /* tribehub_iosUITestsLaunchTests.swift */; };
 		A17EAC4C29CDFD1B00D7CE00 /* test_credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A17EAC4B29CDFD1B00D7CE00 /* test_credentials.plist */; };
-		A17EAC4E29CE0C6B00D7CE00 /* UserDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC4D29CE0C6B00D7CE00 /* UserDataStruct.swift */; };
-		A17EAC5029CE166A00D7CE00 /* TribeDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC4F29CE166A00D7CE00 /* TribeDataStruct.swift */; };
+		A17EAC4E29CE0C6B00D7CE00 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC4D29CE0C6B00D7CE00 /* UserModel.swift */; };
+		A17EAC5029CE166A00D7CE00 /* TribeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC4F29CE166A00D7CE00 /* TribeModel.swift */; };
+		A181476E29E806AC00AC3BE2 /* LoginResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181476D29E806AC00AC3BE2 /* LoginResource.swift */; };
+		A181477029E8074200AC3BE2 /* LogoutResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181476F29E8074200AC3BE2 /* LogoutResource.swift */; };
 		ABED7267871E483C36C0B557 /* Pods_tribehub_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C884B005C668714920E99F /* Pods_tribehub_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +61,7 @@
 		A1551B9429D5A13500D30446 /* UserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResource.swift; sourceTree = "<group>"; };
 		A1551B9629D5A1ED00D30446 /* UserAPIRequestTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIRequestTypes.swift; sourceTree = "<group>"; };
 		A1551B9929D5A81000D30446 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
-		A167CF7A29D5E80F00240827 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
 		A167CF7C29D5FC5D00240827 /* TribeResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeResource.swift; sourceTree = "<group>"; };
 		A17EAC1629CDC96600D7CE00 /* tribehub-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tribehub-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,8 +77,10 @@
 		A17EAC3A29CDC96A00D7CE00 /* tribehub_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tribehub_iosUITests.swift; sourceTree = "<group>"; };
 		A17EAC3C29CDC96A00D7CE00 /* tribehub_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tribehub_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A17EAC4B29CDFD1B00D7CE00 /* test_credentials.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = test_credentials.plist; sourceTree = "<group>"; };
-		A17EAC4D29CE0C6B00D7CE00 /* UserDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStruct.swift; sourceTree = "<group>"; };
-		A17EAC4F29CE166A00D7CE00 /* TribeDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeDataStruct.swift; sourceTree = "<group>"; };
+		A17EAC4D29CE0C6B00D7CE00 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		A17EAC4F29CE166A00D7CE00 /* TribeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeModel.swift; sourceTree = "<group>"; };
+		A181476D29E806AC00AC3BE2 /* LoginResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResource.swift; sourceTree = "<group>"; };
+		A181476F29E8074200AC3BE2 /* LogoutResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResource.swift; sourceTree = "<group>"; };
 		CA589D1A0259C47E4697951E /* Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-tribehub-ios-tribehub-iosUITests/Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F7FCA9520419D7D5194AD928 /* Pods_tribehub_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tribehub_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -135,9 +139,9 @@
 		A1551B9029D582BC00D30446 /* DataStructs */ = {
 			isa = PBXGroup;
 			children = (
-				A17EAC4F29CE166A00D7CE00 /* TribeDataStruct.swift */,
-				A17EAC4D29CE0C6B00D7CE00 /* UserDataStruct.swift */,
-				A167CF7A29D5E80F00240827 /* LoginResponse.swift */,
+				A17EAC4F29CE166A00D7CE00 /* TribeModel.swift */,
+				A17EAC4D29CE0C6B00D7CE00 /* UserModel.swift */,
+				A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */,
 			);
 			path = DataStructs;
 			sourceTree = "<group>";
@@ -147,6 +151,8 @@
 			children = (
 				A1551B9229D59F2B00D30446 /* APIResource.swift */,
 				A1551B9429D5A13500D30446 /* UserResource.swift */,
+				A181476D29E806AC00AC3BE2 /* LoginResource.swift */,
+				A181476F29E8074200AC3BE2 /* LogoutResource.swift */,
 				A167CF7C29D5FC5D00240827 /* TribeResource.swift */,
 				A1551B9629D5A1ED00D30446 /* UserAPIRequestTypes.swift */,
 			);
@@ -460,14 +466,16 @@
 			files = (
 				A17EAC1E29CDC96600D7CE00 /* ViewController.swift in Sources */,
 				A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */,
-				A17EAC5029CE166A00D7CE00 /* TribeDataStruct.swift in Sources */,
+				A17EAC5029CE166A00D7CE00 /* TribeModel.swift in Sources */,
+				A181477029E8074200AC3BE2 /* LogoutResource.swift in Sources */,
 				A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */,
-				A167CF7B29D5E80F00240827 /* LoginResponse.swift in Sources */,
+				A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */,
 				A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */,
 				A1551B9729D5A1ED00D30446 /* UserAPIRequestTypes.swift in Sources */,
+				A181476E29E806AC00AC3BE2 /* LoginResource.swift in Sources */,
 				A1551B9529D5A13500D30446 /* UserResource.swift in Sources */,
 				A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */,
-				A17EAC4E29CE0C6B00D7CE00 /* UserDataStruct.swift in Sources */,
+				A17EAC4E29CE0C6B00D7CE00 /* UserModel.swift in Sources */,
 				A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

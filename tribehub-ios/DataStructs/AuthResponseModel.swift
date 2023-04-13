@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-public struct LoginResponse: Codable, EmptyResponse {
+public struct AuthResponse: Codable, EmptyResponse {
     
     var accessToken: String?
     var refreshToken: String?
@@ -20,7 +20,7 @@ public struct LoginResponse: Codable, EmptyResponse {
         case user
     }
     
-    public static func emptyValue() -> LoginResponse {
-        return LoginResponse(accessToken: nil, refreshToken: nil, user: nil)
+    public static func emptyValue() -> AuthResponse {
+        return AuthResponse(accessToken: nil, refreshToken: nil, user: nil)
     }
 }

@@ -9,7 +9,6 @@ import Foundation
 
 protocol APIResource {
     associatedtype ModelType: Codable
-    associatedtype APIResponseType: Codable
     var methodPath: String {get}
 }
 

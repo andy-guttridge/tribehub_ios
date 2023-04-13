@@ -9,19 +9,8 @@ import Foundation
 
 class UserResource: APIResource {
     typealias ModelType = User
-    typealias APIResponseType = LoginResponse
-    var requestType: UserAPIRequestTypes = .profile
     var methodPath: String {
-        switch requestType {
-        case .login:
-            return "dj-rest-auth/login/"
-        case .logout:
-            return "dj-rest-auth/logout/"
-        case .profile:
-            return "dj-rest-auth/user/"
-        }
-    }
-    init(requestType: UserAPIRequestTypes) {
-        self.requestType = requestType
+        return "dj-rest-auth/user/"
     }
 }
+
