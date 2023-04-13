@@ -136,14 +136,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A1551B9029D582BC00D30446 /* DataStructs */ = {
+		A1551B9029D582BC00D30446 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				A17EAC4F29CE166A00D7CE00 /* TribeModel.swift */,
 				A17EAC4D29CE0C6B00D7CE00 /* UserModel.swift */,
 				A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */,
 			);
-			path = DataStructs;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A1551B9129D59F0A00D30446 /* APIResource */ = {
@@ -194,7 +194,7 @@
 			children = (
 				A1551B9829D5A79300D30446 /* APIRequest */,
 				A1551B9129D59F0A00D30446 /* APIResource */,
-				A1551B9029D582BC00D30446 /* DataStructs */,
+				A1551B9029D582BC00D30446 /* Models */,
 				A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */,
 				A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */,
 				A17EAC1D29CDC96600D7CE00 /* ViewController.swift */,
