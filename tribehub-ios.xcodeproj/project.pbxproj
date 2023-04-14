@@ -28,9 +28,9 @@
 		A17EAC5029CE166A00D7CE00 /* TribeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC4F29CE166A00D7CE00 /* TribeModel.swift */; };
 		A181476E29E806AC00AC3BE2 /* LoginResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181476D29E806AC00AC3BE2 /* LoginResource.swift */; };
 		A181477029E8074200AC3BE2 /* LogoutResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181476F29E8074200AC3BE2 /* LogoutResource.swift */; };
-		A181477329E83FEB00AC3BE2 /* DJAuthAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181477229E83FEB00AC3BE2 /* DJAuthAuthenticator.swift */; };
+		A181477329E83FEB00AC3BE2 /* RefreshRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */; };
 		A181477529E84A5400AC3BE2 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181477429E84A5400AC3BE2 /* AccessTokenModel.swift */; };
-		A181477729E862FC00AC3BE2 /* RefreshTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181477629E862FC00AC3BE2 /* RefreshTokenModel.swift */; };
+		A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */; };
 		ABED7267871E483C36C0B557 /* Pods_tribehub_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C884B005C668714920E99F /* Pods_tribehub_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,9 +82,9 @@
 		A17EAC4F29CE166A00D7CE00 /* TribeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeModel.swift; sourceTree = "<group>"; };
 		A181476D29E806AC00AC3BE2 /* LoginResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResource.swift; sourceTree = "<group>"; };
 		A181476F29E8074200AC3BE2 /* LogoutResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResource.swift; sourceTree = "<group>"; };
-		A181477229E83FEB00AC3BE2 /* DJAuthAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJAuthAuthenticator.swift; sourceTree = "<group>"; };
+		A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequestRetrier.swift; sourceTree = "<group>"; };
 		A181477429E84A5400AC3BE2 /* AccessTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenModel.swift; sourceTree = "<group>"; };
-		A181477629E862FC00AC3BE2 /* RefreshTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenModel.swift; sourceTree = "<group>"; };
+		A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequestAdapter.swift; sourceTree = "<group>"; };
 		CA589D1A0259C47E4697951E /* Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-tribehub-ios-tribehub-iosUITests/Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F7FCA9520419D7D5194AD928 /* Pods_tribehub_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tribehub_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,7 +147,6 @@
 				A17EAC4D29CE0C6B00D7CE00 /* UserModel.swift */,
 				A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */,
 				A181477429E84A5400AC3BE2 /* AccessTokenModel.swift */,
-				A181477629E862FC00AC3BE2 /* RefreshTokenModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,7 +232,8 @@
 		A181477129E83FBD00AC3BE2 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				A181477229E83FEB00AC3BE2 /* DJAuthAuthenticator.swift */,
+				A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */,
+				A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -483,16 +483,16 @@
 				A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */,
 				A17EAC5029CE166A00D7CE00 /* TribeModel.swift in Sources */,
 				A181477029E8074200AC3BE2 /* LogoutResource.swift in Sources */,
-				A181477329E83FEB00AC3BE2 /* DJAuthAuthenticator.swift in Sources */,
+				A181477329E83FEB00AC3BE2 /* RefreshRequestRetrier.swift in Sources */,
 				A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */,
 				A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */,
 				A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */,
 				A181476E29E806AC00AC3BE2 /* LoginResource.swift in Sources */,
-				A181477729E862FC00AC3BE2 /* RefreshTokenModel.swift in Sources */,
 				A1551B9529D5A13500D30446 /* UserResource.swift in Sources */,
 				A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */,
 				A17EAC4E29CE0C6B00D7CE00 /* UserModel.swift in Sources */,
 				A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */,
+				A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

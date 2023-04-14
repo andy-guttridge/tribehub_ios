@@ -12,9 +12,6 @@ class ViewController: UIViewController {
     
     var credentials: NSDictionary?
     var session: Session?
-    var credential: DJAuthCredential?
-    var authenticator: DJAuthAuthenticator?
-    var interceptor: AuthenticationInterceptor<DJAuthAuthenticator>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +21,13 @@ class ViewController: UIViewController {
             credentials = NSDictionary(contentsOfFile: path)
         }
         
-        // Create Alamofire session
-        self.session = Session.default
-        self.authenticator = DJAuthAuthenticator()
+        // Create RefreshRetrier, RequestAdapter and Interceptor.
+        // Use these to create and configure an Alamofire session.
+        let refreshRetrier = RefreshRequestRetrier()
+        let refreshRequestAdapter = RefreshRequestAdapter()
+        let interceptor = Interceptor(adapter: refreshRequestAdapter, retrier: refreshRetrier as RequestRetrier)
+        let configuration = URLSessionConfiguration.af.default
+        self.session = Session(configuration: configuration, interceptor: interceptor)
     }
         
     @IBAction func doLogin(_ sender: Any) {
@@ -35,20 +36,14 @@ class ViewController: UIViewController {
             return
         }
         
-        guard let authenticator = self.authenticator else {
-            print("No Alamofire authenticator in doLogin")
-            return
-        }
-        
-        // Create loginRequest onject for logging in and use the postData method to login with user credentials.
-        // We get a LoginResponse object with the access token, refresh token and user profile
+        // Create loginRequest object for logging in and use the postData method to login with user credentials.
+        // We get an AuthResponse object with the access token, refresh token and user profile
         let loginRequest = APIRequest(resource: LoginResource(), session: session)
         Task.init {
             do {
                 if let response = try await loginRequest.postData(payload: credentials as? Dictionary<String, Any>) {
                     print(response)
-                    self.credential = response
-                    self.interceptor = AuthenticationInterceptor(authenticator: authenticator, credential: response)
+
                 }
             } catch {
                 print(error)
@@ -62,14 +57,9 @@ class ViewController: UIViewController {
             return
         }
         
-        guard let interceptor = self.interceptor else {
-            print("No Alamofire interceptor in doLogin")
-            return
-        }
-        
         Task.init {
             // Create tribeRequest object for retrieving user's tribe details and use to retrieve tribe members
-            let tribeRequest = APIRequest(resource: TribeResource(), session: session, interceptor: interceptor)
+            let tribeRequest = APIRequest(resource: TribeResource(), session: session)
             do {
                 if let response = try await tribeRequest.fetchData() {
                     print(response)
@@ -86,13 +76,8 @@ class ViewController: UIViewController {
             return
         }
         
-        guard let interceptor = self.interceptor else {
-            print("No Alamofire interceptor in doLogin")
-            return
-        }
-        
-        // Create a logoutRequest object for logging out and use to logout. We get an empty LogInResponse object back.
-        let logoutRequest = APIRequest(resource: LogoutResource(), session: session, interceptor: interceptor)
+        // Create a logoutRequest object for logging out and use to logout. We get an empty AuthResponse object back.
+        let logoutRequest = APIRequest(resource: LogoutResource(), session: session)
         Task.init {
             do {
                 if let response = try await logoutRequest.postData(payload: nil) {
