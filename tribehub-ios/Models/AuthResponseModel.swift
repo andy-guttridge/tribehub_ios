@@ -8,11 +8,15 @@
 import Foundation
 import Alamofire
 
-public struct AuthResponse: Codable, EmptyResponse {
+public struct DJAuthCredential: Codable, EmptyResponse, AuthenticationCredential {
     
     var accessToken: String?
     var refreshToken: String?
     var user: User?
+    let expiration: Date = Date.init(timeIntervalSinceNow: 1 * 10)
+    public var requiresRefresh: Bool {
+        Date.init() > self.expiration
+    }
     
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"
@@ -20,7 +24,7 @@ public struct AuthResponse: Codable, EmptyResponse {
         case user
     }
     
-    public static func emptyValue() -> AuthResponse {
-        return AuthResponse(accessToken: nil, refreshToken: nil, user: nil)
+    public static func emptyValue() -> DJAuthCredential {
+        return DJAuthCredential(accessToken: nil, refreshToken: nil, user: nil)
     }
 }

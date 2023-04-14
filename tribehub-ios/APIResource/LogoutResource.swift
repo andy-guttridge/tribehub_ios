@@ -8,7 +8,7 @@
 import Foundation
 
 class LogoutResource: APIResource {
-    typealias ModelType = AuthResponse
+    typealias ModelType = DJAuthCredential
     var methodPath: String {
         return "dj-rest-auth/logout/"
     }

@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     
     var credentials: NSDictionary?
     var session: Session?
+    var credential: DJAuthCredential?
+    var authenticator: DJAuthAuthenticator?
+    var interceptor: AuthenticationInterceptor<DJAuthAuthenticator>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,31 +26,17 @@ class ViewController: UIViewController {
         
         // Create Alamofire session
         self.session = Session.default
+        self.authenticator = DJAuthAuthenticator()
     }
-    
-//    func testApi() async {
-//
-//
-//
-//
-//        // Create userProfileRequest object for retrieving the user profile and use to retrieve a profile
-////        let userProfileRequest = APIRequest(resource: UserResource(), session: session)
-////        do {
-////            if let response = try await userProfileRequest.fetchData() {
-////                print(response)
-////            }
-////        } catch {
-////            print(error)
-////        }
-//
-//
-//
-//
-//    }
-    
+        
     @IBAction func doLogin(_ sender: Any) {
         guard let session = self.session else {
             print("No Alamofire session in doLogin")
+            return
+        }
+        
+        guard let authenticator = self.authenticator else {
+            print("No Alamofire authenticator in doLogin")
             return
         }
         
@@ -58,6 +47,8 @@ class ViewController: UIViewController {
             do {
                 if let response = try await loginRequest.postData(payload: credentials as? Dictionary<String, Any>) {
                     print(response)
+                    self.credential = response
+                    self.interceptor = AuthenticationInterceptor(authenticator: authenticator, credential: response)
                 }
             } catch {
                 print(error)
@@ -71,9 +62,14 @@ class ViewController: UIViewController {
             return
         }
         
+        guard let interceptor = self.interceptor else {
+            print("No Alamofire interceptor in doLogin")
+            return
+        }
+        
         Task.init {
             // Create tribeRequest object for retrieving user's tribe details and use to retrieve tribe members
-            let tribeRequest = APIRequest(resource: TribeResource(), session: session)
+            let tribeRequest = APIRequest(resource: TribeResource(), session: session, interceptor: interceptor)
             do {
                 if let response = try await tribeRequest.fetchData() {
                     print(response)
@@ -90,8 +86,13 @@ class ViewController: UIViewController {
             return
         }
         
+        guard let interceptor = self.interceptor else {
+            print("No Alamofire interceptor in doLogin")
+            return
+        }
+        
         // Create a logoutRequest object for logging out and use to logout. We get an empty LogInResponse object back.
-        let logoutRequest = APIRequest(resource: LogoutResource(), session: session)
+        let logoutRequest = APIRequest(resource: LogoutResource(), session: session, interceptor: interceptor)
         Task.init {
             do {
                 if let response = try await logoutRequest.postData(payload: nil) {
@@ -103,5 +104,3 @@ class ViewController: UIViewController {
         }
     }
 }
-
-

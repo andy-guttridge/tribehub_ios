@@ -8,7 +8,7 @@
 import Foundation
 
 class LoginResource: APIResource {
-    typealias ModelType = AuthResponse
+    typealias ModelType = DJAuthCredential
     var methodPath: String {
         return "dj-rest-auth/login/"
     }
