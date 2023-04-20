@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Alamofire
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var session: Session?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -17,6 +19,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        // Create RefreshRetrier, RequestAdapter and Interceptor.
+        // Use these to create and configure an Alamofire session.
+        let refreshRetrier = RefreshRequestRetrier()
+        let refreshRequestAdapter = RefreshRequestAdapter()
+        let interceptor = Interceptor(adapter: refreshRequestAdapter, retrier: refreshRetrier as RequestRetrier)
+        let configuration = URLSessionConfiguration.af.default
+        self.session = Session(configuration: configuration, interceptor: interceptor)
+        print(self.session!)
+        
+        // Create model controllers and pass to login view
+        if let loginViewController = self.window?.rootViewController as? LoginViewController, let session = self.session {
+            loginViewController.userModelController = UserModelController(withSession: session)
+        } else {
+            print("No loginViewController!")
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
