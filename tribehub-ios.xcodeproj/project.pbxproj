@@ -14,6 +14,7 @@
 		A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9929D5A81000D30446 /* APIRequest.swift */; };
 		A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */; };
 		A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167CF7C29D5FC5D00240827 /* TribeResource.swift */; };
+		A17267B729F1572B00F612E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A17267B629F1572B00F612E7 /* README.md */; };
 		A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */; };
 		A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */; };
 		A17EAC1E29CDC96600D7CE00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1D29CDC96600D7CE00 /* ViewController.swift */; };
@@ -64,6 +65,7 @@
 		A1551B9929D5A81000D30446 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
 		A167CF7C29D5FC5D00240827 /* TribeResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeResource.swift; sourceTree = "<group>"; };
+		A17267B629F1572B00F612E7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A17EAC1629CDC96600D7CE00 /* tribehub-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tribehub-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		A17EAC0D29CDC96600D7CE00 = {
 			isa = PBXGroup;
 			children = (
+				A17267B629F1572B00F612E7 /* README.md */,
 				A17EAC1829CDC96600D7CE00 /* tribehub-ios */,
 				A17EAC2F29CDC96A00D7CE00 /* tribehub-iosTests */,
 				A17EAC3929CDC96A00D7CE00 /* tribehub-iosUITests */,
@@ -349,6 +352,7 @@
 			files = (
 				A17EAC2629CDC96900D7CE00 /* LaunchScreen.storyboard in Resources */,
 				A17EAC4C29CDFD1B00D7CE00 /* test_credentials.plist in Resources */,
+				A17267B729F1572B00F612E7 /* README.md in Resources */,
 				A17EAC2329CDC96900D7CE00 /* Assets.xcassets in Resources */,
 				A17EAC2129CDC96600D7CE00 /* Main.storyboard in Resources */,
 			);
