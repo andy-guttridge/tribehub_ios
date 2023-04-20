@@ -153,26 +153,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A1551B9129D59F0A00D30446 /* APIResource */ = {
-			isa = PBXGroup;
-			children = (
-				A1551B9229D59F2B00D30446 /* APIResource.swift */,
-				A1551B9429D5A13500D30446 /* UserResource.swift */,
-				A181476D29E806AC00AC3BE2 /* LoginResource.swift */,
-				A181476F29E8074200AC3BE2 /* LogoutResource.swift */,
-				A167CF7C29D5FC5D00240827 /* TribeResource.swift */,
-			);
-			path = APIResource;
-			sourceTree = "<group>";
-		};
-		A1551B9829D5A79300D30446 /* APIRequest */ = {
-			isa = PBXGroup;
-			children = (
-				A1551B9929D5A81000D30446 /* APIRequest.swift */,
-			);
-			path = APIRequest;
-			sourceTree = "<group>";
-		};
 		A17EAC0D29CDC96600D7CE00 = {
 			isa = PBXGroup;
 			children = (
@@ -199,9 +179,7 @@
 		A17EAC1829CDC96600D7CE00 /* tribehub-ios */ = {
 			isa = PBXGroup;
 			children = (
-				A181477129E83FBD00AC3BE2 /* Auth */,
-				A1551B9829D5A79300D30446 /* APIRequest */,
-				A1551B9129D59F0A00D30446 /* APIResource */,
+				A181477129E83FBD00AC3BE2 /* Networking */,
 				A1551B9029D582BC00D30446 /* Models */,
 				A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */,
 				A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */,
@@ -232,13 +210,19 @@
 			path = "tribehub-iosUITests";
 			sourceTree = "<group>";
 		};
-		A181477129E83FBD00AC3BE2 /* Auth */ = {
+		A181477129E83FBD00AC3BE2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				A1551B9929D5A81000D30446 /* APIRequest.swift */,
+				A1551B9229D59F2B00D30446 /* APIResource.swift */,
+				A1551B9429D5A13500D30446 /* UserResource.swift */,
+				A181476D29E806AC00AC3BE2 /* LoginResource.swift */,
+				A181476F29E8074200AC3BE2 /* LogoutResource.swift */,
+				A167CF7C29D5FC5D00240827 /* TribeResource.swift */,
 				A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */,
 				A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */,
 			);
-			path = Auth;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
