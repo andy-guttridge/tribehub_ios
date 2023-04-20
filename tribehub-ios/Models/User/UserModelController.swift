@@ -10,16 +10,30 @@ import Alamofire
 
 class UserModelController {
     private(set) var user: User?
-    private var session: Session
+    private weak var session: Session?
     
     init(withSession session: Session) {
         self.session = session
     }
     
     func doLogin(userName: String, passWord: String) async throws -> User? {
-        let loginRequest = APIRequest(resource: LoginResource(), session: self.session)
+        guard let session = self.session else {
+            throw SessionError.noSession
+        }
+        let loginRequest = APIRequest(resource: LoginResource(), session: session)
         let response = try await loginRequest.postData(payload: ["username": userName, "password": passWord])
         self.user = response?.user
         return response?.user
+    }
+    
+    func doLogout() async throws -> AuthResponse? {
+        guard let session = self.session else {
+            throw SessionError.noSession
+        }
+        let logoutRequest = APIRequest(resource: LogoutResource(), session: session)
+        let response = try await logoutRequest.postData(payload: nil)
+        self.user = nil
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        return response
     }
 }

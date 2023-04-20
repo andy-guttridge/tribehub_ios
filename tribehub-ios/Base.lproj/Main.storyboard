@@ -105,21 +105,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idb-Ac-Zl9">
-                                <rect key="frame" x="20" y="451" width="390" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="y4l-uw-dFG"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="65" width="390" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxq-Ac-bCI">
+                                <rect key="frame" x="176" y="124" width="78" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Logout"/>
+                                <connections>
+                                    <action selector="didPressLogoutButton:" destination="hIK-5w-c1I" eventType="touchUpInside" id="hcx-78-4CP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5rQ-zs-kST"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Idb-Ac-Zl9" secondAttribute="trailing" constant="20" id="7dX-FM-gmc"/>
-                            <constraint firstItem="Idb-Ac-Zl9" firstAttribute="top" secondItem="DiM-H4-Xxs" secondAttribute="top" constant="451" id="af9-Fy-DGw"/>
-                            <constraint firstItem="Idb-Ac-Zl9" firstAttribute="leading" secondItem="DiM-H4-Xxs" secondAttribute="leading" constant="20" id="jLH-aG-cta"/>
+                            <constraint firstItem="Qxq-Ac-bCI" firstAttribute="top" secondItem="Idb-Ac-Zl9" secondAttribute="bottom" constant="38" id="EQO-lW-9fc"/>
+                            <constraint firstItem="Idb-Ac-Zl9" firstAttribute="leading" secondItem="5rQ-zs-kST" secondAttribute="leading" constant="20" id="HjW-4y-Uo5"/>
+                            <constraint firstItem="5rQ-zs-kST" firstAttribute="trailing" secondItem="Idb-Ac-Zl9" secondAttribute="trailing" constant="20" id="L98-Ms-C2E"/>
+                            <constraint firstItem="Qxq-Ac-bCI" firstAttribute="centerX" secondItem="DiM-H4-Xxs" secondAttribute="centerX" id="QO3-S9-9wd"/>
+                            <constraint firstItem="Idb-Ac-Zl9" firstAttribute="top" secondItem="5rQ-zs-kST" secondAttribute="top" constant="65" id="U8c-03-d15"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fcQ-SP-vsx"/>

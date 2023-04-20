@@ -20,6 +20,15 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Clear input fields
+        self.userNameTextField.text = ""
+        self.password1TextField.text = ""
+        self.password2TextField.text = ""
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let mainAppViewController = segue.destination as? MainAppViewController {
             mainAppViewController.userModelController = self.userModelController
@@ -29,7 +38,6 @@ class LoginViewController: UIViewController {
     @IBAction func didPressLoginButton(_ sender: Any) {
         
         guard let userModelController: UserModelController = self.userModelController else {
-            print("User model controller: ", self.userModelController)
             return
         }
         
@@ -63,7 +71,6 @@ class LoginViewController: UIViewController {
                 do {
                     if let userName = userName, let password = password1 {
                         let user = try await userModelController.doLogin(userName: userName, passWord: password)
-                        print(user?.displayName)
                         performSegue(withIdentifier: "loginSegue", sender: self)
                     }
                 } catch {
