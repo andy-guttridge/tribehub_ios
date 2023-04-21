@@ -34,11 +34,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.TribeModelController = tribehub_ios.TribeModelController(withSession: self.session!)
         
         // Pass model controllers to rootViewController
-        if let loginViewController = self.window?.rootViewController as? LoginViewController {
-            loginViewController.userModelController = self.UserModelController
-            loginViewController.tribeModelController = self.TribeModelController
+        if let tabBarViewController = self.window?.rootViewController as? TabBarViewController {
+            tabBarViewController.userModelController = self.UserModelController
+            tabBarViewController.tribeModelController = self.TribeModelController
         } else {
-            print("No loginViewController!")
+            print("No tabBarViewController!")
         }
     }
 

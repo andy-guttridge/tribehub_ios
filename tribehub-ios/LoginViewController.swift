@@ -8,6 +8,10 @@
 import UIKit
 import Alamofire
 
+protocol LoginViewControllerDelegate {
+    func dismissLoginModal()
+}
+
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var userNameTextField: UITextField!
@@ -16,6 +20,8 @@ class LoginViewController: UIViewController {
     
     weak var userModelController: UserModelController?
     weak var tribeModelController: TribeModelController?
+    
+    var delegate: LoginViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +36,7 @@ class LoginViewController: UIViewController {
         self.password2TextField.text = ""
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let mainAppViewController = segue.destination as? MainAppViewController {
-            mainAppViewController.userModelController = self.userModelController
-        }
-    }
+
     
     @IBAction func didPressLoginButton(_ sender: Any) {
         
@@ -71,7 +73,7 @@ class LoginViewController: UIViewController {
                     if let userName = userName, let password = password1 {
                         let user = try await userModelController.doLogin(userName: userName, passWord: password)
                         try await tribeModelController?.getTribe()
-                        performSegue(withIdentifier: "loginSegue", sender: self)
+                        self.delegate?.dismissLoginModal()
                     }
                 } catch {
                     print(error)

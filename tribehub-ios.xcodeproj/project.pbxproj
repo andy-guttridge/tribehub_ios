@@ -11,13 +11,13 @@
 		9C45C9F1193826A9068E494D /* Pods_tribehub_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7FCA9520419D7D5194AD928 /* Pods_tribehub_iosTests.framework */; };
 		A1357CB429F29D0E00C90347 /* makeErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */; };
 		A1357CB629F2A4D700C90347 /* TribeModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB529F2A4D700C90347 /* TribeModelController.swift */; };
+		A1357CB829F2CA4700C90347 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB729F2CA4700C90347 /* TabBarViewController.swift */; };
 		A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9229D59F2B00D30446 /* APIResource.swift */; };
 		A1551B9529D5A13500D30446 /* UserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9429D5A13500D30446 /* UserResource.swift */; };
 		A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9929D5A81000D30446 /* APIRequest.swift */; };
 		A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */; };
 		A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167CF7C29D5FC5D00240827 /* TribeResource.swift */; };
 		A17267B729F1572B00F612E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A17267B629F1572B00F612E7 /* README.md */; };
-		A17267BD29F17A8D00F612E7 /* MainAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17267BC29F17A8D00F612E7 /* MainAppViewController.swift */; };
 		A17267C029F1895F00F612E7 /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17267BF29F1895F00F612E7 /* UserModelController.swift */; };
 		A17267C929F1ACC900F612E7 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17267C829F1ACC900F612E7 /* SessionError.swift */; };
 		A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */; };
@@ -67,13 +67,13 @@
 		89C884B005C668714920E99F /* Pods_tribehub_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tribehub_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeErrorAlert.swift; sourceTree = "<group>"; };
 		A1357CB529F2A4D700C90347 /* TribeModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeModelController.swift; sourceTree = "<group>"; };
+		A1357CB729F2CA4700C90347 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		A1551B9229D59F2B00D30446 /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
 		A1551B9429D5A13500D30446 /* UserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResource.swift; sourceTree = "<group>"; };
 		A1551B9929D5A81000D30446 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
 		A167CF7C29D5FC5D00240827 /* TribeResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeResource.swift; sourceTree = "<group>"; };
 		A17267B629F1572B00F612E7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A17267BC29F17A8D00F612E7 /* MainAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppViewController.swift; sourceTree = "<group>"; };
 		A17267BF29F1895F00F612E7 /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
 		A17267C829F1ACC900F612E7 /* SessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionError.swift; sourceTree = "<group>"; };
 		A17EAC1629CDC96600D7CE00 /* tribehub-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tribehub-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,9 +237,9 @@
 				A1551B9029D582BC00D30446 /* Models */,
 				A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */,
 				A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */,
+				A1357CB729F2CA4700C90347 /* TabBarViewController.swift */,
 				A17EAC1D29CDC96600D7CE00 /* LoginViewController.swift */,
 				A17EAC1F29CDC96600D7CE00 /* Main.storyboard */,
-				A17267BC29F17A8D00F612E7 /* MainAppViewController.swift */,
 				A17EAC2229CDC96900D7CE00 /* Assets.xcassets */,
 				A17EAC2429CDC96900D7CE00 /* LaunchScreen.storyboard */,
 				A17EAC2729CDC96900D7CE00 /* Info.plist */,
@@ -525,6 +525,7 @@
 				A17EAC1E29CDC96600D7CE00 /* LoginViewController.swift in Sources */,
 				A181477529E84A5400AC3BE2 /* AccessTokenModel.swift in Sources */,
 				A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */,
+				A1357CB829F2CA4700C90347 /* TabBarViewController.swift in Sources */,
 				A17EAC5029CE166A00D7CE00 /* TribeModel.swift in Sources */,
 				A181477029E8074200AC3BE2 /* LogoutResource.swift in Sources */,
 				A17267C929F1ACC900F612E7 /* SessionError.swift in Sources */,
@@ -539,7 +540,6 @@
 				A17EAC4E29CE0C6B00D7CE00 /* UserModel.swift in Sources */,
 				A1357CB429F29D0E00C90347 /* makeErrorAlert.swift in Sources */,
 				A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */,
-				A17267BD29F17A8D00F612E7 /* MainAppViewController.swift in Sources */,
 				A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
