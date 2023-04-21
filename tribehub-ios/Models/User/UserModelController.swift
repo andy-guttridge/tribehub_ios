@@ -37,4 +37,8 @@ class UserModelController: ObservableObject {
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
         return response
     }
+    
+    func userAuthDidExpire() {
+        self.user = nil
+    }
 }

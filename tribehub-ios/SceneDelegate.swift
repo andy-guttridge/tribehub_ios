@@ -12,8 +12,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var session: Session?
-    var UserModelController: UserModelController?
-    var TribeModelController: TribeModelController?
+    var userModelController: UserModelController?
+    var tribeModelController: TribeModelController?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -30,13 +30,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.session = Session(configuration: configuration, interceptor: interceptor)
         
         // Create model controllers
-        self.UserModelController = tribehub_ios.UserModelController(withSession: self.session!)
-        self.TribeModelController = tribehub_ios.TribeModelController(withSession: self.session!)
+        self.userModelController = tribehub_ios.UserModelController(withSession: self.session!)
+        self.tribeModelController = tribehub_ios.TribeModelController(withSession: self.session!)
         
         // Pass model controllers to rootViewController
         if let tabBarViewController = self.window?.rootViewController as? TabBarViewController {
-            tabBarViewController.userModelController = self.UserModelController
-            tabBarViewController.tribeModelController = self.TribeModelController
+            tabBarViewController.userModelController = self.userModelController
+            tabBarViewController.tribeModelController = self.tribeModelController
         } else {
             print("No tabBarViewController!")
         }

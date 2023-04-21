@@ -18,14 +18,34 @@ class APIRequest<Resource: APIResource> {
     }
     
     func fetchData () async throws ->  Resource.ModelType? {
-        let value = try await session.request(resource.url, method: .get).validate().serializingDecodable(Resource.ModelType.self).value
+        let response = await session.request(resource.url, method: .get).validate().serializingDecodable(Resource.ModelType.self).response
+        if response.response?.statusCode == 400 {
+            throw HTTPError.badRequest
+        }
+        if response.response?.statusCode == 401 {
+            throw HTTPError.noPermission
+        }
+        if response.response?.statusCode == 500 {
+            throw HTTPError.serverError
+        }
+        let value = response.value
         print (value)
         return value
     }
     
     func postData (payload: Dictionary<String, Any>?) async throws -> Resource.ModelType? {
-        let response = try await session.request(resource.url, method: .post, parameters: payload).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).value
-        print (response)
-        return response
+        let response = await session.request(resource.url, method: .post, parameters: payload).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
+        if response.response?.statusCode == 400 {
+            throw HTTPError.badRequest
+        }
+        if response.response?.statusCode == 401 {
+            throw HTTPError.noPermission
+        }
+        if response.response?.statusCode == 500 {
+            throw HTTPError.serverError
+        }
+        let value = response.value
+        print (value)
+        return value
     }
 }

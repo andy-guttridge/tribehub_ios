@@ -36,8 +36,6 @@ class LoginViewController: UIViewController {
         self.password2TextField.text = ""
     }
     
-
-    
     @IBAction func didPressLoginButton(_ sender: Any) {
         
         guard let userModelController: UserModelController = self.userModelController else {
@@ -69,15 +67,15 @@ class LoginViewController: UIViewController {
         // Do login and fetch tribe data if login details correct
         if userDidEnterValidDetails {
             Task.init {
-                do {
-                    if let userName = userName, let password = password1 {
+                if let userName = userName, let password = password1 {
+                    do {
                         let user = try await userModelController.doLogin(userName: userName, passWord: password)
                         self.delegate?.dismissLoginModal()
+                    } catch {
+                        print("Login error: ", error)
+                        let errorAlert = makeErrorAlert(title: "Login Error", message: "There was an error logging in. Please check your username and password, check you are online and try again.")
+                        self.present(errorAlert, animated: true, completion: nil)
                     }
-                } catch {
-                    print(error)
-                    let errorAlert = makeErrorAlert(title: "Login Error", message: "There was an error logging in. Please check your username and password, check you are online and try again.")
-                    self.present(errorAlert, animated: true, completion: nil)
                 }
             }
         }
