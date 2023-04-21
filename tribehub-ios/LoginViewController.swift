@@ -14,7 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var password1TextField: UITextField!
     @IBOutlet weak var password2TextField: UITextField!
     
-    var userModelController: UserModelController?
+    weak var userModelController: UserModelController?
+    weak var tribeModelController: TribeModelController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,12 +64,13 @@ class LoginViewController: UIViewController {
             userDidEnterValidDetails = true
         }
         
-        // Do login if login details correct
+        // Do login and fetch tribe data if login details correct
         if userDidEnterValidDetails {
             Task.init {
                 do {
                     if let userName = userName, let password = password1 {
                         let user = try await userModelController.doLogin(userName: userName, passWord: password)
+                        try await tribeModelController?.getTribe()
                         performSegue(withIdentifier: "loginSegue", sender: self)
                     }
                 } catch {

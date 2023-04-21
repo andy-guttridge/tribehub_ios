@@ -12,13 +12,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var session: Session?
+    var UserModelController: UserModelController?
+    var TribeModelController: TribeModelController?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-        
+     
         // Create RefreshRetrier, RequestAdapter and Interceptor.
         // Use these to create and configure an Alamofire session.
         let refreshRetrier = RefreshRequestRetrier()
@@ -27,9 +29,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let configuration = URLSessionConfiguration.af.default
         self.session = Session(configuration: configuration, interceptor: interceptor)
         
-        // Create model controllers and pass to login view
-        if let loginViewController = self.window?.rootViewController as? LoginViewController, let session = self.session {
-            loginViewController.userModelController = UserModelController(withSession: session)
+        // Create model controllers
+        self.UserModelController = tribehub_ios.UserModelController(withSession: self.session!)
+        self.TribeModelController = tribehub_ios.TribeModelController(withSession: self.session!)
+        
+        // Pass model controllers to rootViewController
+        if let loginViewController = self.window?.rootViewController as? LoginViewController {
+            loginViewController.userModelController = self.UserModelController
+            loginViewController.tribeModelController = self.TribeModelController
         } else {
             print("No loginViewController!")
         }

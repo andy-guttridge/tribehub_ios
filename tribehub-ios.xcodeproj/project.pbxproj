@@ -10,6 +10,7 @@
 		46928A46951586E5142ACD2E /* Pods_tribehub_ios_tribehub_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A37207A8AF7681B7F4B5F5D /* Pods_tribehub_ios_tribehub_iosUITests.framework */; };
 		9C45C9F1193826A9068E494D /* Pods_tribehub_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7FCA9520419D7D5194AD928 /* Pods_tribehub_iosTests.framework */; };
 		A1357CB429F29D0E00C90347 /* makeErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */; };
+		A1357CB629F2A4D700C90347 /* TribeModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB529F2A4D700C90347 /* TribeModelController.swift */; };
 		A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9229D59F2B00D30446 /* APIResource.swift */; };
 		A1551B9529D5A13500D30446 /* UserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9429D5A13500D30446 /* UserResource.swift */; };
 		A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9929D5A81000D30446 /* APIRequest.swift */; };
@@ -65,6 +66,7 @@
 		882317436843A57DC94DECEE /* Pods-tribehub-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tribehub-ios.release.xcconfig"; path = "Target Support Files/Pods-tribehub-ios/Pods-tribehub-ios.release.xcconfig"; sourceTree = "<group>"; };
 		89C884B005C668714920E99F /* Pods_tribehub_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tribehub_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeErrorAlert.swift; sourceTree = "<group>"; };
+		A1357CB529F2A4D700C90347 /* TribeModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeModelController.swift; sourceTree = "<group>"; };
 		A1551B9229D59F2B00D30446 /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
 		A1551B9429D5A13500D30446 /* UserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResource.swift; sourceTree = "<group>"; };
 		A1551B9929D5A81000D30446 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				A17EAC4F29CE166A00D7CE00 /* TribeModel.swift */,
+				A1357CB529F2A4D700C90347 /* TribeModelController.swift */,
 			);
 			path = Tribe;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1357CB629F2A4D700C90347 /* TribeModelController.swift in Sources */,
 				A17EAC1E29CDC96600D7CE00 /* LoginViewController.swift in Sources */,
 				A181477529E84A5400AC3BE2 /* AccessTokenModel.swift in Sources */,
 				A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */,

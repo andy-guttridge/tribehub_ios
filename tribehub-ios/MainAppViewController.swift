@@ -9,7 +9,8 @@ import UIKit
 
 class MainAppViewController: UIViewController {
     
-    var userModelController: UserModelController?
+    weak var userModelController: UserModelController?
+    weak var tribeModelController: TribeModelController?
     
     @IBOutlet weak var welcomeMessageLabel: UILabel!
     
@@ -17,6 +18,9 @@ class MainAppViewController: UIViewController {
         super.viewDidLoad()
         if let displayName = self.userModelController?.user?.displayName {
             self.welcomeMessageLabel.text = "Logged in to TribeHub as \(displayName)!"
+        }
+        if let tribe = self.tribeModelController?.tribe {
+            print("Tribe details: ", tribe)
         }
     }
     
