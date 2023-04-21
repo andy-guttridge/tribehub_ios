@@ -48,16 +48,14 @@ class LoginViewController: UIViewController {
         
         // Check if text entered into all necessary fields, show alert if not
         if userName == "" || password1 == "" || password2 == "" {
-            let alert = UIAlertController(title: "You must complete all fields", message:"You must enter a username and your password into both password fields. Please try again.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: {alertAction in alert.dismiss(animated: true)}))
-            self.present(alert, animated: true) {
+            let errorAlert = makeErrorAlert(title: "You must complete all fields", message: "You must enter a username and your password into both password fields. Please try again.")
+            self.present(errorAlert, animated: true) {
                 userDidEnterValidDetails = false
             }
         } else if password1 != password2 {
             // Check if password fields match, show alert if not
-            let alert = UIAlertController(title: "Incorrect Password", message:"The two passwords do not match. Please try again.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: {alertAction in alert.dismiss(animated: true)}))
-            self.present(alert, animated: true) {
+            let errorAlert = makeErrorAlert(title: "Incorrect Password", message: "The two passwords do not match. Please try again.")
+            self.present(errorAlert, animated: true) {
                 userDidEnterValidDetails = false
             }
             
@@ -75,9 +73,8 @@ class LoginViewController: UIViewController {
                     }
                 } catch {
                     print(error)
-                    let alert = UIAlertController(title: "Login Error", message:"There was an error logging in. Please check your username and password, check you are online and try again.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: {alertAction in alert.dismiss(animated: true)}))
-                    self.present(alert, animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Login Error", message: "There was an error logging in. Please check your username and password, check you are online and try again.")
+                    self.present(errorAlert, animated: true, completion: nil)
                 }
             }
         }

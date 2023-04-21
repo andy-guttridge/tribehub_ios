@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		46928A46951586E5142ACD2E /* Pods_tribehub_ios_tribehub_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A37207A8AF7681B7F4B5F5D /* Pods_tribehub_ios_tribehub_iosUITests.framework */; };
 		9C45C9F1193826A9068E494D /* Pods_tribehub_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7FCA9520419D7D5194AD928 /* Pods_tribehub_iosTests.framework */; };
+		A1357CB429F29D0E00C90347 /* makeErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */; };
 		A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9229D59F2B00D30446 /* APIResource.swift */; };
 		A1551B9529D5A13500D30446 /* UserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9429D5A13500D30446 /* UserResource.swift */; };
 		A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9929D5A81000D30446 /* APIRequest.swift */; };
@@ -63,6 +64,7 @@
 		4A3E890785F6B997CE0D04E4 /* Pods-tribehub-ios-tribehub-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tribehub-ios-tribehub-iosUITests.release.xcconfig"; path = "Target Support Files/Pods-tribehub-ios-tribehub-iosUITests/Pods-tribehub-ios-tribehub-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		882317436843A57DC94DECEE /* Pods-tribehub-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tribehub-ios.release.xcconfig"; path = "Target Support Files/Pods-tribehub-ios/Pods-tribehub-ios.release.xcconfig"; sourceTree = "<group>"; };
 		89C884B005C668714920E99F /* Pods_tribehub_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tribehub_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeErrorAlert.swift; sourceTree = "<group>"; };
 		A1551B9229D59F2B00D30446 /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
 		A1551B9429D5A13500D30446 /* UserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResource.swift; sourceTree = "<group>"; };
 		A1551B9929D5A81000D30446 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -148,6 +150,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A1357CB229F29C9E00C90347 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		A1551B9029D582BC00D30446 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +228,7 @@
 		A17EAC1829CDC96600D7CE00 /* tribehub-ios */ = {
 			isa = PBXGroup;
 			children = (
+				A1357CB229F29C9E00C90347 /* Utils */,
 				A17267C329F18BFB00F612E7 /* Errors */,
 				A181477129E83FBD00AC3BE2 /* Networking */,
 				A1551B9029D582BC00D30446 /* Models */,
@@ -522,6 +533,7 @@
 				A17267C029F1895F00F612E7 /* UserModelController.swift in Sources */,
 				A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */,
 				A17EAC4E29CE0C6B00D7CE00 /* UserModel.swift in Sources */,
+				A1357CB429F29D0E00C90347 /* makeErrorAlert.swift in Sources */,
 				A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */,
 				A17267BD29F17A8D00F612E7 /* MainAppViewController.swift in Sources */,
 				A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */,
