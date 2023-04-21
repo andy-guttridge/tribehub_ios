@@ -72,7 +72,6 @@ class LoginViewController: UIViewController {
                 do {
                     if let userName = userName, let password = password1 {
                         let user = try await userModelController.doLogin(userName: userName, passWord: password)
-                        try await tribeModelController?.getTribe()
                         self.delegate?.dismissLoginModal()
                     }
                 } catch {

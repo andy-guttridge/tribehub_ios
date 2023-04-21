@@ -13,21 +13,34 @@
         <!--Account-->
         <scene sceneID="ClS-QT-6rs">
             <objects>
-                <viewController title="Account" id="BmR-ST-g7d" sceneMemberID="viewController">
+                <viewController title="Account" id="BmR-ST-g7d" customClass="AccountViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qPk-BM-nKo">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEA-G5-a3v">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOn-zS-iIU">
                                 <rect key="frame" x="20" y="59" width="64" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nw-pL-Qep">
+                                <rect key="frame" x="176" y="789" width="78" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Logout"/>
+                                <connections>
+                                    <action selector="didPressLogoutButton:" destination="BmR-ST-g7d" eventType="touchUpInside" id="hFh-h9-JOR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y9b-Ik-03B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UOn-zS-iIU" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" id="Eqo-S5-rni"/>
+                            <constraint firstItem="UOn-zS-iIU" firstAttribute="leading" secondItem="y9b-Ik-03B" secondAttribute="leading" constant="20" id="NyC-Da-MFJ"/>
+                            <constraint firstItem="y9b-Ik-03B" firstAttribute="bottom" secondItem="9Nw-pL-Qep" secondAttribute="bottom" constant="25" id="YSd-YC-ZjK"/>
+                            <constraint firstItem="9Nw-pL-Qep" firstAttribute="centerX" secondItem="qPk-BM-nKo" secondAttribute="centerX" id="cj6-qR-TBm"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="V6E-O3-OeP">
                         <imageReference key="image" image="person" catalog="system" renderingMode="hierarchical-single">
@@ -42,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmc-Hn-A4o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-253" y="739"/>
+            <point key="canvasLocation" x="-253.95348837209303" y="738.41201716738203"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="bv4-nU-8Rn">
@@ -52,9 +65,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oN7-Th-MUh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oN7-Th-MUh">
                                 <rect key="frame" x="20" y="59" width="69" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -62,6 +74,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EZJ-XC-Ad5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oN7-Th-MUh" firstAttribute="leading" secondItem="EZJ-XC-Ad5" secondAttribute="leading" constant="20" id="1pX-Rr-U9Y"/>
+                            <constraint firstItem="oN7-Th-MUh" firstAttribute="top" secondItem="EZJ-XC-Ad5" secondAttribute="top" id="ned-1p-MO1"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Contacts" id="0jO-Mv-JFb">
                         <imageReference key="image" image="person.3" catalog="system" renderingMode="hierarchical-single">
@@ -85,9 +101,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tribe Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qU4-hM-vox">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tribe Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qU4-hM-vox">
                                 <rect key="frame" x="20" y="59" width="88" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -95,6 +110,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YXP-IK-IaN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qU4-hM-vox" firstAttribute="leading" secondItem="YXP-IK-IaN" secondAttribute="leading" constant="20" id="JXJ-SB-B0o"/>
+                            <constraint firstItem="qU4-hM-vox" firstAttribute="top" secondItem="YXP-IK-IaN" secondAttribute="top" id="mqX-pB-Bhq"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="a7v-bV-fIa">
                         <imageReference key="image" image="house" catalog="system" renderingMode="hierarchical-single">

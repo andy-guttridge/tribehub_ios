@@ -8,8 +8,8 @@
 import Foundation
 import Alamofire
 
-class UserModelController {
-    private(set) var user: User?
+class UserModelController: ObservableObject {
+    @Published private(set) var user: User?
     private weak var session: Session?
     
     init(withSession session: Session) {
@@ -32,6 +32,7 @@ class UserModelController {
         }
         let logoutRequest = APIRequest(resource: LogoutResource(), session: session)
         let response = try await logoutRequest.postData(payload: nil)
+        print("Logged out successfully")
         self.user = nil
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
         return response
