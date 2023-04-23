@@ -11,13 +11,13 @@ class AccountViewController: UIViewController {
     weak var userModelController: UserModelController?
     weak var tribeModelController: TribeModelController?
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.profileImageView.image = userModelController?.user?.profileImage
+        self.profileImageView.makeRounded()
     }
-    */
 
   
     @IBAction func didPressLogoutButton(_ sender: Any) {

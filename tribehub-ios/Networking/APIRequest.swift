@@ -48,4 +48,13 @@ class APIRequest<Resource: APIResource> {
         print (value)
         return value
     }
+    
+    func fetchFile<FileType> (fromURL urlString: String) async throws -> FileType {
+        let url = URL(string:  urlString)
+        guard let urlConvertible = try url?.asURL() else {
+            throw AFError.invalidURL(url: urlString)
+        }
+        let file: FileType = try await AF.download(urlConvertible).serializingData().value as! FileType
+        return file
+    }
 }

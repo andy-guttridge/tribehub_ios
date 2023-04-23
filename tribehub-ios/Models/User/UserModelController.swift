@@ -20,9 +20,17 @@ class UserModelController: ObservableObject {
         guard let session = self.session else {
             throw SessionError.noSession
         }
+        // Try to login and if successful fetch user details from API
         let loginRequest = APIRequest(resource: LoginResource(), session: session)
         let response = try await loginRequest.postData(payload: ["username": userName, "password": passWord])
         self.user = response?.user
+        
+        // Try to fetch profile image
+        if let imageUrl = user?.profileImageURL {
+            let profileImageFile: Data = try await loginRequest.fetchFile(fromURL: imageUrl)
+            self.user?.profileImage = UIImage(data: profileImageFile)
+        }
+
         return response?.user
     }
     
@@ -34,6 +42,7 @@ class UserModelController: ObservableObject {
         let response = try await logoutRequest.postData(payload: nil)
         print("Logged out successfully")
         self.user = nil
+        print(self.user?.profileImage)
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
         return response
     }

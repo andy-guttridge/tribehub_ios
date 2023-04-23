@@ -32,14 +32,23 @@
                                     <action selector="didPressLogoutButton:" destination="BmR-ST-g7d" eventType="touchUpInside" id="hFh-h9-JOR"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wer-nb-BRV">
+                                <rect key="frame" x="342" y="67" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="frl-R7-2XW"/>
+                                    <constraint firstAttribute="width" constant="80" id="rN2-G7-nqx"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y9b-Ik-03B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="UOn-zS-iIU" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" id="Eqo-S5-rni"/>
-                            <constraint firstItem="UOn-zS-iIU" firstAttribute="leading" secondItem="y9b-Ik-03B" secondAttribute="leading" constant="20" id="NyC-Da-MFJ"/>
-                            <constraint firstItem="y9b-Ik-03B" firstAttribute="bottom" secondItem="9Nw-pL-Qep" secondAttribute="bottom" constant="25" id="YSd-YC-ZjK"/>
-                            <constraint firstItem="9Nw-pL-Qep" firstAttribute="centerX" secondItem="qPk-BM-nKo" secondAttribute="centerX" id="cj6-qR-TBm"/>
+                            <constraint firstItem="9Nw-pL-Qep" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" constant="730" id="4IE-WW-KHi"/>
+                            <constraint firstItem="UOn-zS-iIU" firstAttribute="leading" secondItem="qPk-BM-nKo" secondAttribute="leadingMargin" id="Ckt-D6-Zgi"/>
+                            <constraint firstItem="9Nw-pL-Qep" firstAttribute="centerX" secondItem="qPk-BM-nKo" secondAttribute="centerX" id="LUU-ci-yHX"/>
+                            <constraint firstItem="y9b-Ik-03B" firstAttribute="trailing" secondItem="wer-nb-BRV" secondAttribute="trailing" constant="8" id="WVB-3S-Vgb"/>
+                            <constraint firstItem="UOn-zS-iIU" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" id="fii-fj-htn"/>
+                            <constraint firstItem="wer-nb-BRV" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" constant="8" id="mWG-vp-xcb"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="V6E-O3-OeP">
@@ -52,6 +61,9 @@
                         </imageReference>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="profileImageView" destination="wer-nb-BRV" id="5se-ya-IjD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmc-Hn-A4o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
