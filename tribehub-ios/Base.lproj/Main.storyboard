@@ -39,6 +39,36 @@
                                     <constraint firstAttribute="width" constant="80" id="rN2-G7-nqx"/>
                                 </constraints>
                             </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UIf-O1-gie">
+                                <rect key="frame" x="8" y="155" width="414" height="489"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="489" id="gx1-Yf-cEm"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tribeMemberCell" textLabel="Ju4-Ly-eKR" style="IBUITableViewCellStyleDefault" id="yY0-1B-cbB">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yY0-1B-cbB" id="eFM-gv-fO8">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ju4-Ly-eKR">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BmR-ST-g7d" id="7ME-uU-XNt"/>
+                                    <outlet property="delegate" destination="BmR-ST-g7d" id="eYs-wY-yCl"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y9b-Ik-03B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -46,9 +76,12 @@
                             <constraint firstItem="9Nw-pL-Qep" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" constant="730" id="4IE-WW-KHi"/>
                             <constraint firstItem="UOn-zS-iIU" firstAttribute="leading" secondItem="qPk-BM-nKo" secondAttribute="leadingMargin" id="Ckt-D6-Zgi"/>
                             <constraint firstItem="9Nw-pL-Qep" firstAttribute="centerX" secondItem="qPk-BM-nKo" secondAttribute="centerX" id="LUU-ci-yHX"/>
+                            <constraint firstItem="UIf-O1-gie" firstAttribute="leading" secondItem="y9b-Ik-03B" secondAttribute="leading" constant="8" id="LbC-z2-hy4"/>
                             <constraint firstItem="y9b-Ik-03B" firstAttribute="trailing" secondItem="wer-nb-BRV" secondAttribute="trailing" constant="8" id="WVB-3S-Vgb"/>
+                            <constraint firstItem="UIf-O1-gie" firstAttribute="top" secondItem="wer-nb-BRV" secondAttribute="bottom" constant="8" symbolic="YES" id="fHn-4U-To3"/>
                             <constraint firstItem="UOn-zS-iIU" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" id="fii-fj-htn"/>
                             <constraint firstItem="wer-nb-BRV" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" constant="8" id="mWG-vp-xcb"/>
+                            <constraint firstItem="y9b-Ik-03B" firstAttribute="trailing" secondItem="UIf-O1-gie" secondAttribute="trailing" constant="8" id="r3R-5f-a5q"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="V6E-O3-OeP">
@@ -63,6 +96,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profileImageView" destination="wer-nb-BRV" id="5se-ya-IjD"/>
+                        <outlet property="tribeTableView" destination="UIf-O1-gie" id="SdJ-jj-3zT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmc-Hn-A4o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
