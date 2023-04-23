@@ -42,6 +42,10 @@ class LoginViewController: UIViewController {
             return
         }
         
+        guard let tribeModelController: TribeModelController = self.tribeModelController else {
+            return
+        }
+        
         var userDidEnterValidDetails = false
         let userName = self.userNameTextField.text
         let password1 = self.password1TextField.text
@@ -69,7 +73,8 @@ class LoginViewController: UIViewController {
             Task.init {
                 if let userName = userName, let password = password1 {
                     do {
-                        let user = try await userModelController.doLogin(userName: userName, passWord: password)
+                        _ = try await userModelController.doLogin(userName: userName, passWord: password)
+                        try await tribeModelController.getTribe()
                         self.delegate?.dismissLoginModal()
                     } catch {
                         print("Login error: ", error)

@@ -27,7 +27,7 @@ class AccountViewController: UIViewController {
                 
                 Task.init {
                     do {
-                        let result = try await userModelController.doLogout()
+                        _ = try await userModelController.doLogout()
                         self.dismiss(animated: true)
                     } catch {
                         let alert = UIAlertController(title: "Logout Error", message:"There was an issue logging out.", preferredStyle: .alert)
