@@ -19,6 +19,7 @@ class AccountViewController: UIViewController, UITableViewDataSource {
         super.viewWillAppear(animated)
         self.profileImageView.image = userModelController?.user?.profileImage
         self.profileImageView.makeRounded()
+        self.tribeTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
