@@ -7,19 +7,18 @@
 
 import UIKit
 
-class AccountViewController: UIViewController {
+class AccountViewController: UIViewController, UITableViewDelegate {
     weak var userModelController: UserModelController?
     weak var tribeModelController: TribeModelController?
 
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var accountStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Remove manage tribe static table if user is not tribe admin
-        if self.userModelController?.user?.isAdmin == false {
-            accountStackView.arrangedSubviews.first?.removeFromSuperview()
+        print("First child: ", type(of: self.children[0]))
+        if let accountTableViewController = self.children[0] as? AccountTableViewController {
+            accountTableViewController.userModelController = self.userModelController
+            accountTableViewController.tribeModelController = self.tribeModelController
         }
     }
     

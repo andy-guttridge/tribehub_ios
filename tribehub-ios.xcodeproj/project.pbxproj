@@ -15,6 +15,7 @@
 		A1357CB829F2CA4700C90347 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB729F2CA4700C90347 /* TabBarViewController.swift */; };
 		A13EB3F329FAB9D300750023 /* AccountNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */; };
 		A13EB3F529FABAE500750023 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EB3F429FABAE500750023 /* AccountViewController.swift */; };
+		A13EB3FA29FAD04F00750023 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EB3F929FAD04F00750023 /* AccountTableViewController.swift */; };
 		A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9229D59F2B00D30446 /* APIResource.swift */; };
 		A1551B9529D5A13500D30446 /* UserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9429D5A13500D30446 /* UserResource.swift */; };
 		A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9929D5A81000D30446 /* APIRequest.swift */; };
@@ -75,6 +76,7 @@
 		A1357CB729F2CA4700C90347 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNavigationController.swift; sourceTree = "<group>"; };
 		A13EB3F429FABAE500750023 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		A13EB3F929FAD04F00750023 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		A1551B9229D59F2B00D30446 /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
 		A1551B9429D5A13500D30446 /* UserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResource.swift; sourceTree = "<group>"; };
 		A1551B9929D5A81000D30446 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				A13EB3F429FABAE500750023 /* AccountViewController.swift */,
+				A13EB3F929FAD04F00750023 /* AccountTableViewController.swift */,
 				A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */,
 			);
 			path = AccountView;
@@ -551,6 +554,7 @@
 				A181477029E8074200AC3BE2 /* LogoutResource.swift in Sources */,
 				A117B97B29F2FF1700F7E40A /* HTTPError.swift in Sources */,
 				A17267C929F1ACC900F612E7 /* SessionError.swift in Sources */,
+				A13EB3FA29FAD04F00750023 /* AccountTableViewController.swift in Sources */,
 				A181477329E83FEB00AC3BE2 /* RefreshRequestRetrier.swift in Sources */,
 				A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */,
 				A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */,
