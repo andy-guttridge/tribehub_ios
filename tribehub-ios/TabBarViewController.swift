@@ -19,12 +19,12 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cancellable = userModelController?.$user.sink { [weak self] user in self?.userStatusDidChange(user)}
-        if let accountViewController = self.viewControllers?.last as? AccountViewController {
-            accountViewController.userModelController = userModelController
-            accountViewController.tribeModelController = tribeModelController
-        } else {
-            print("No accountViewController!")
-        }
+        if let accountNavigationController = self.viewControllers?.last as? AccountNavigationController {
+                    accountNavigationController.userModelController = userModelController
+                    accountNavigationController.tribeModelController = tribeModelController
+                } else {
+                    print("No accountNaviigationViewController!")
+                }
     }
     
     override func viewDidAppear(_ animated: Bool) {

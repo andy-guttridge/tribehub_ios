@@ -1,5 +1,5 @@
 //
-//  AccountViewController.swift
+//  AccountNavigationController.swift
 //  tribehub-ios
 //
 //  Created by Andy Guttridge on 27/04/2023.
@@ -7,22 +7,16 @@
 
 import UIKit
 
-class AccountViewController: UIViewController {
+class AccountNavigationController: UINavigationController {
     weak var userModelController: UserModelController?
     weak var tribeModelController: TribeModelController?
 
-    @IBOutlet weak var profileImageView: UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.profileImageView.image = self.userModelController?.user?.profileImage
-        self.profileImageView.makeRounded()
+        if let accountViewController = self.viewControllers[0] as? AccountViewController {
+            accountViewController.userModelController = self.userModelController
+            accountViewController.tribeModelController = self.tribeModelController
+        }
     }
     
 

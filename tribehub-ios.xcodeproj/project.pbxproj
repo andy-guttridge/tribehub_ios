@@ -13,7 +13,8 @@
 		A1357CB429F29D0E00C90347 /* makeErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */; };
 		A1357CB629F2A4D700C90347 /* TribeModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB529F2A4D700C90347 /* TribeModelController.swift */; };
 		A1357CB829F2CA4700C90347 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB729F2CA4700C90347 /* TabBarViewController.swift */; };
-		A1357CBC29F2E1AF00C90347 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CBB29F2E1AF00C90347 /* AccountViewController.swift */; };
+		A13EB3F329FAB9D300750023 /* AccountNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */; };
+		A13EB3F529FABAE500750023 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EB3F429FABAE500750023 /* AccountViewController.swift */; };
 		A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9229D59F2B00D30446 /* APIResource.swift */; };
 		A1551B9529D5A13500D30446 /* UserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9429D5A13500D30446 /* UserResource.swift */; };
 		A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9929D5A81000D30446 /* APIRequest.swift */; };
@@ -72,7 +73,8 @@
 		A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeErrorAlert.swift; sourceTree = "<group>"; };
 		A1357CB529F2A4D700C90347 /* TribeModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeModelController.swift; sourceTree = "<group>"; };
 		A1357CB729F2CA4700C90347 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		A1357CBB29F2E1AF00C90347 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNavigationController.swift; sourceTree = "<group>"; };
+		A13EB3F429FABAE500750023 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A1551B9229D59F2B00D30446 /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
 		A1551B9429D5A13500D30446 /* UserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResource.swift; sourceTree = "<group>"; };
 		A1551B9929D5A81000D30446 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -248,7 +250,8 @@
 				A1357CB729F2CA4700C90347 /* TabBarViewController.swift */,
 				A17EAC1D29CDC96600D7CE00 /* LoginViewController.swift */,
 				A17EAC1F29CDC96600D7CE00 /* Main.storyboard */,
-				A1357CBB29F2E1AF00C90347 /* AccountViewController.swift */,
+				A13EB3F429FABAE500750023 /* AccountViewController.swift */,
+				A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */,
 				A17EAC2229CDC96900D7CE00 /* Assets.xcassets */,
 				A17EAC2429CDC96900D7CE00 /* LaunchScreen.storyboard */,
 				A17EAC2729CDC96900D7CE00 /* Info.plist */,
@@ -532,6 +535,7 @@
 			files = (
 				A1357CB629F2A4D700C90347 /* TribeModelController.swift in Sources */,
 				A17EAC1E29CDC96600D7CE00 /* LoginViewController.swift in Sources */,
+				A13EB3F529FABAE500750023 /* AccountViewController.swift in Sources */,
 				A181477529E84A5400AC3BE2 /* AccessTokenModel.swift in Sources */,
 				A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */,
 				A1357CB829F2CA4700C90347 /* TabBarViewController.swift in Sources */,
@@ -540,13 +544,13 @@
 				A117B97B29F2FF1700F7E40A /* HTTPError.swift in Sources */,
 				A17267C929F1ACC900F612E7 /* SessionError.swift in Sources */,
 				A181477329E83FEB00AC3BE2 /* RefreshRequestRetrier.swift in Sources */,
-				A1357CBC29F2E1AF00C90347 /* AccountViewController.swift in Sources */,
 				A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */,
 				A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */,
 				A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */,
 				A1A249C629F582770083295E /* makeRounded.swift in Sources */,
 				A181476E29E806AC00AC3BE2 /* LoginResource.swift in Sources */,
 				A1551B9529D5A13500D30446 /* UserResource.swift in Sources */,
+				A13EB3F329FAB9D300750023 /* AccountNavigationController.swift in Sources */,
 				A17267C029F1895F00F612E7 /* UserModelController.swift in Sources */,
 				A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */,
 				A17EAC4E29CE0C6B00D7CE00 /* UserModel.swift in Sources */,
