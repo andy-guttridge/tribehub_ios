@@ -169,6 +169,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		A13EB3F629FAC43800750023 /* AccountView */ = {
+			isa = PBXGroup;
+			children = (
+				A13EB3F429FABAE500750023 /* AccountViewController.swift */,
+				A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */,
+			);
+			path = AccountView;
+			sourceTree = "<group>";
+		};
 		A1551B9029D582BC00D30446 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +250,7 @@
 		A17EAC1829CDC96600D7CE00 /* tribehub-ios */ = {
 			isa = PBXGroup;
 			children = (
+				A13EB3F629FAC43800750023 /* AccountView */,
 				A1357CB229F29C9E00C90347 /* Utils */,
 				A17267C329F18BFB00F612E7 /* Errors */,
 				A181477129E83FBD00AC3BE2 /* Networking */,
@@ -250,8 +260,6 @@
 				A1357CB729F2CA4700C90347 /* TabBarViewController.swift */,
 				A17EAC1D29CDC96600D7CE00 /* LoginViewController.swift */,
 				A17EAC1F29CDC96600D7CE00 /* Main.storyboard */,
-				A13EB3F429FABAE500750023 /* AccountViewController.swift */,
-				A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */,
 				A17EAC2229CDC96900D7CE00 /* Assets.xcassets */,
 				A17EAC2429CDC96900D7CE00 /* LaunchScreen.storyboard */,
 				A17EAC2729CDC96900D7CE00 /* Info.plist */,

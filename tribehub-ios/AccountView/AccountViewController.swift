@@ -12,11 +12,15 @@ class AccountViewController: UIViewController {
     weak var tribeModelController: TribeModelController?
 
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var accountStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // Remove manage tribe static table if user is not tribe admin
+        if self.userModelController?.user?.isAdmin == false {
+            accountStackView.arrangedSubviews.first?.removeFromSuperview()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -15,7 +15,7 @@
             <objects>
                 <tableViewController id="WhR-6K-WWS" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="SS1-tL-raO">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="696"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="666"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -59,7 +59,7 @@
             <objects>
                 <viewController id="QYP-12-Hbe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T2l-Xe-j8W">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="686"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="656"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Tribe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQO-zs-QMc">
@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Wg-6m-uFQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2829" y="703"/>
+            <point key="canvasLocation" x="2827" y="738"/>
         </scene>
         <!--Account-->
         <scene sceneID="ClS-QT-6rs">
@@ -91,17 +91,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1K-Za-Euc">
-                                <rect key="frame" x="360" y="103" width="50" height="50"/>
+                                <rect key="frame" x="330" y="103" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="cB9-xS-al4"/>
-                                    <constraint firstAttribute="width" constant="50" id="ieE-x1-Ybi"/>
+                                    <constraint firstAttribute="width" constant="80" id="4DM-4f-E8G"/>
+                                    <constraint firstAttribute="height" constant="80" id="9YW-5B-yak"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VYO-0e-vZJ">
-                                <rect key="frame" x="0.0" y="153" width="430" height="696"/>
+                                <rect key="frame" x="0.0" y="183" width="430" height="666"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NT1-Cs-deB">
-                                        <rect key="frame" x="0.0" y="0.0" width="430" height="696"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="430" height="666"/>
                                         <connections>
                                             <segue destination="WhR-6K-WWS" kind="embed" id="XF8-Oy-Mmh"/>
                                         </connections>
@@ -112,17 +112,18 @@
                         <viewLayoutGuide key="safeArea" id="y9b-Ik-03B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="VYO-0e-vZJ" firstAttribute="top" secondItem="c1K-Za-Euc" secondAttribute="bottom" id="Fow-CW-mvu"/>
-                            <constraint firstItem="c1K-Za-Euc" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" id="QHs-to-gcm"/>
-                            <constraint firstItem="VYO-0e-vZJ" firstAttribute="trailing" secondItem="y9b-Ik-03B" secondAttribute="trailing" id="Sxr-Y5-iCe"/>
-                            <constraint firstItem="VYO-0e-vZJ" firstAttribute="bottom" secondItem="y9b-Ik-03B" secondAttribute="bottom" id="ctd-Hd-u5U"/>
-                            <constraint firstItem="VYO-0e-vZJ" firstAttribute="leading" secondItem="y9b-Ik-03B" secondAttribute="leading" id="kQd-xw-Pjv"/>
-                            <constraint firstItem="y9b-Ik-03B" firstAttribute="trailing" secondItem="c1K-Za-Euc" secondAttribute="trailing" constant="20" id="tpj-ah-k0Z"/>
+                            <constraint firstItem="VYO-0e-vZJ" firstAttribute="bottom" secondItem="y9b-Ik-03B" secondAttribute="bottom" id="0Lq-Zc-Ubf"/>
+                            <constraint firstItem="VYO-0e-vZJ" firstAttribute="leading" secondItem="y9b-Ik-03B" secondAttribute="leading" id="PbE-Mf-ZEp"/>
+                            <constraint firstItem="c1K-Za-Euc" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" id="RLF-6g-Wt0"/>
+                            <constraint firstItem="y9b-Ik-03B" firstAttribute="trailing" secondItem="c1K-Za-Euc" secondAttribute="trailing" constant="20" id="ofQ-tJ-bqb"/>
+                            <constraint firstItem="VYO-0e-vZJ" firstAttribute="top" secondItem="c1K-Za-Euc" secondAttribute="bottom" id="ub9-6d-3Wd"/>
+                            <constraint firstItem="VYO-0e-vZJ" firstAttribute="trailing" secondItem="y9b-Ik-03B" secondAttribute="trailing" id="zXN-jh-1tl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Account" id="ouF-Fm-DAf"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="accountStackView" destination="VYO-0e-vZJ" id="NBr-9G-UVo"/>
                         <outlet property="profileImageView" destination="c1K-Za-Euc" id="vCj-ws-lSJ"/>
                     </connections>
                 </viewController>
