@@ -23,7 +23,11 @@ class AccountViewController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.profileImageView.image = self.userModelController?.user?.profileImage
+        var profileImage: UIImage?
+        Task.init {
+            profileImage = await self.userModelController?.user?.profileImage
+        }
+        self.profileImageView.image = profileImage
         self.profileImageView.makeRounded()
     }
     
