@@ -15,7 +15,6 @@ class AccountViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("First child: ", type(of: self.children[0]))
         if let accountTableViewController = self.children[0] as? AccountTableViewController {
             accountTableViewController.userModelController = self.userModelController
             accountTableViewController.tribeModelController = self.tribeModelController
