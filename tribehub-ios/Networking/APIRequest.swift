@@ -23,7 +23,12 @@ class APIRequest<Resource: APIResource> {
         case .success:
             print("Fetched resource")
         case .failure (let error):
-            throw error
+            switch response.response?.statusCode {
+                case 401 :
+                    throw HTTPError.noPermission
+                default:
+                    throw error
+            }
         }
         let value = response.value
         print (value)
@@ -36,7 +41,12 @@ class APIRequest<Resource: APIResource> {
         case .success:
             print("Posted resource")
         case .failure (let error):
-            throw error
+            switch response.response?.statusCode {
+                case 401 :
+                    throw HTTPError.noPermission
+                default:
+                    throw error
+            }
         }
         let value = response.value
         print (value)
@@ -59,7 +69,12 @@ class APIRequest<Resource: APIResource> {
         case .success:
             print("Deleted resource")
         case .failure (let error):
-            throw error
+            switch response.response?.statusCode {
+                case 401 :
+                    throw HTTPError.noPermission
+                default:
+                    throw error
+            }
         }
         let value = response.value
         return value ?? GenericAPIResponse(detail: "none")
