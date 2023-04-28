@@ -44,4 +44,22 @@ class TribeModelController {
         }
         print("Tribe details: ", self.tribe)
     }
+    
+    func doDeletTribeMember(forPrimaryKey pk: Int) async throws -> GenericAPIResponse? {
+        guard let session = self.session else {
+            throw SessionError.noSession
+        }
+        
+        // Attempt to delete tribe member from backend
+        let deleteTribeMemberAPIRequest = APIRequest(resource: DeleteUserResource(), session: session)
+        let response = try await deleteTribeMemberAPIRequest.delete(itemForPrimaryKey: pk)
+        
+        // If no error thrown, filter out the deleted tribe member from the array of tribe members we hold in this instance
+        let newTribe = self.tribe?.tribeMembers.filter {$0.pk != pk}
+        if let editedTribe = newTribe {
+            self.tribe?.tribeMembers = editedTribe
+        }
+        print("New tribe members: ", self.tribe?.tribeMembers)
+        return response
+    }
 }

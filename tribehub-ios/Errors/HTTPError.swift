@@ -10,5 +10,8 @@ import Foundation
 enum HTTPError: Error {
     case badRequest
     case noPermission
+    case resourceNotFound
+    case methodNotAllowed
     case serverError
+    case otherHTTPError
 }

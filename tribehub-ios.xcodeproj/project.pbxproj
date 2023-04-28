@@ -16,6 +16,9 @@
 		A13EB3F329FAB9D300750023 /* AccountNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */; };
 		A13EB3F529FABAE500750023 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EB3F429FABAE500750023 /* AccountViewController.swift */; };
 		A13EB3FA29FAD04F00750023 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EB3F929FAD04F00750023 /* AccountTableViewController.swift */; };
+		A13EB3FC29FAEB3800750023 /* ManageTribeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EB3FB29FAEB3800750023 /* ManageTribeTableViewController.swift */; };
+		A13EB3FF29FAFA3E00750023 /* GenericAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EB3FE29FAFA3E00750023 /* GenericAPIResponse.swift */; };
+		A13EB40129FAFB1400750023 /* DeleteUserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EB40029FAFB1400750023 /* DeleteUserResource.swift */; };
 		A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9229D59F2B00D30446 /* APIResource.swift */; };
 		A1551B9529D5A13500D30446 /* UserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9429D5A13500D30446 /* UserResource.swift */; };
 		A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9929D5A81000D30446 /* APIRequest.swift */; };
@@ -77,6 +80,9 @@
 		A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNavigationController.swift; sourceTree = "<group>"; };
 		A13EB3F429FABAE500750023 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A13EB3F929FAD04F00750023 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
+		A13EB3FB29FAEB3800750023 /* ManageTribeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageTribeTableViewController.swift; sourceTree = "<group>"; };
+		A13EB3FE29FAFA3E00750023 /* GenericAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPIResponse.swift; sourceTree = "<group>"; };
+		A13EB40029FAFB1400750023 /* DeleteUserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserResource.swift; sourceTree = "<group>"; };
 		A1551B9229D59F2B00D30446 /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
 		A1551B9429D5A13500D30446 /* UserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResource.swift; sourceTree = "<group>"; };
 		A1551B9929D5A81000D30446 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -177,13 +183,23 @@
 				A13EB3F429FABAE500750023 /* AccountViewController.swift */,
 				A13EB3F929FAD04F00750023 /* AccountTableViewController.swift */,
 				A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */,
+				A13EB3FB29FAEB3800750023 /* ManageTribeTableViewController.swift */,
 			);
 			path = AccountView;
+			sourceTree = "<group>";
+		};
+		A13EB3FD29FAFA1700750023 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A13EB3FE29FAFA3E00750023 /* GenericAPIResponse.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		A1551B9029D582BC00D30446 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A13EB3FD29FAFA1700750023 /* API */,
 				A17267C729F1A0B700F612E7 /* AuthResponse */,
 				A17267C629F1A0AD00F612E7 /* Tribe */,
 				A17267BE29F1894200F612E7 /* User */,
@@ -294,6 +310,7 @@
 				A1551B9929D5A81000D30446 /* APIRequest.swift */,
 				A1551B9229D59F2B00D30446 /* APIResource.swift */,
 				A1551B9429D5A13500D30446 /* UserResource.swift */,
+				A13EB40029FAFB1400750023 /* DeleteUserResource.swift */,
 				A181476D29E806AC00AC3BE2 /* LoginResource.swift */,
 				A181476F29E8074200AC3BE2 /* LogoutResource.swift */,
 				A167CF7C29D5FC5D00240827 /* TribeResource.swift */,
@@ -556,7 +573,10 @@
 				A17267C929F1ACC900F612E7 /* SessionError.swift in Sources */,
 				A13EB3FA29FAD04F00750023 /* AccountTableViewController.swift in Sources */,
 				A181477329E83FEB00AC3BE2 /* RefreshRequestRetrier.swift in Sources */,
+				A13EB3FF29FAFA3E00750023 /* GenericAPIResponse.swift in Sources */,
+				A13EB40129FAFB1400750023 /* DeleteUserResource.swift in Sources */,
 				A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */,
+				A13EB3FC29FAEB3800750023 /* ManageTribeTableViewController.swift in Sources */,
 				A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */,
 				A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */,
 				A1A249C629F582770083295E /* makeRounded.swift in Sources */,

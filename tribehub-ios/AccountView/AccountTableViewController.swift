@@ -44,6 +44,13 @@ class AccountTableViewController: UITableViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let manageTribeTableViewController = segue.destination as? ManageTribeTableViewController {
+            manageTribeTableViewController.userModelController = self.userModelController
+            manageTribeTableViewController.tribeModelController = self.tribeModelController
+        }
+    }
+    
     /// Ensure manage tribe cell is only selectable if user is tribe admin,
     /// otherwise grey out and make unselectable
     func checkTribeAdminStatus() -> Void {

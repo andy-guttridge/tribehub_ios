@@ -25,8 +25,14 @@ class APIRequest<Resource: APIResource> {
         if response.response?.statusCode == 401 {
             throw HTTPError.noPermission
         }
+        if response.response?.statusCode == 405 {
+            throw HTTPError.methodNotAllowed
+        }
         if response.response?.statusCode == 500 {
             throw HTTPError.serverError
+        }
+        if response.response?.statusCode ?? 0 > 399 {
+            throw HTTPError.otherHTTPError
         }
         let value = response.value
         print (value)
@@ -41,8 +47,14 @@ class APIRequest<Resource: APIResource> {
         if response.response?.statusCode == 401 {
             throw HTTPError.noPermission
         }
+        if response.response?.statusCode == 405 {
+            throw HTTPError.methodNotAllowed
+        }
         if response.response?.statusCode == 500 {
             throw HTTPError.serverError
+        }
+        if response.response?.statusCode ?? 0 > 399 {
+            throw HTTPError.otherHTTPError
         }
         let value = response.value
         print (value)
@@ -56,5 +68,31 @@ class APIRequest<Resource: APIResource> {
         }
         let file: FileType = try await AF.download(urlConvertible).serializingData().value as! FileType
         return file
+    }
+    
+    func delete(itemForPrimaryKey pk: Int) async throws  -> GenericAPIResponse {
+        let url = resource.url + "\(String(pk))/"
+        let response = await session.request(url, method: .delete).validate().serializingDecodable(GenericAPIResponse.self).response
+        print("Response: ", response)
+        if response.response?.statusCode == 400 {
+            throw HTTPError.badRequest
+        }
+        if response.response?.statusCode == 401 {
+            throw HTTPError.noPermission
+        }
+        if response.response?.statusCode == 404 {
+            throw HTTPError.resourceNotFound
+        }
+        if response.response?.statusCode == 405 {
+            throw HTTPError.methodNotAllowed
+        }
+        if response.response?.statusCode == 500 {
+            throw HTTPError.serverError
+        }
+        if response.response?.statusCode ?? 0 > 399 {
+            throw HTTPError.otherHTTPError
+        }
+        let value = response.value
+        return value ?? GenericAPIResponse(detail: "none")
     }
 }
