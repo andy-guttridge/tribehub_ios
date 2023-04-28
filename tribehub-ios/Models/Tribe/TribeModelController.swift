@@ -45,7 +45,7 @@ class TribeModelController {
         print("Tribe details: ", self.tribe)
     }
     
-    func doDeletTribeMember(forPrimaryKey pk: Int) async throws -> GenericAPIResponse? {
+    func doDeleteTribeMember(forPrimaryKey pk: Int) async throws -> GenericAPIResponse? {
         guard let session = self.session else {
             throw SessionError.noSession
         }
@@ -59,7 +59,19 @@ class TribeModelController {
         if let editedTribe = newTribe {
             self.tribe?.tribeMembers = editedTribe
         }
-        print("New tribe members: ", self.tribe?.tribeMembers)
+        return response
+    }
+    
+    func doAddTribeMember(withUserName userName: String, passWord: String) async throws -> NewTribeMemberResponse? {
+        guard let session = self.session else {
+            throw SessionError.noSession
+        }
+        // Attempt to create new tribe member in backend
+        let newTribeMemberAPIRequest = APIRequest(resource: AddNewTribeMemberResource(), session: session)
+        let response = try await newTribeMemberAPIRequest.postData(payload: ["username": userName, "password": passWord, "password2": passWord])
+        
+        // If no error thrown, fetch tribe members again so new one is included with the correct pk
+        try await self.getTribe()
         return response
     }
 }

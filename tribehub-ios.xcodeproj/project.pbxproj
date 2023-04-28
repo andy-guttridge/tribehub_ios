@@ -27,6 +27,10 @@
 		A17267B729F1572B00F612E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A17267B629F1572B00F612E7 /* README.md */; };
 		A17267C029F1895F00F612E7 /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17267BF29F1895F00F612E7 /* UserModelController.swift */; };
 		A17267C929F1ACC900F612E7 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17267C829F1ACC900F612E7 /* SessionError.swift */; };
+		A17BA3D629FC260000390E79 /* AddTribeMemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BA3D529FC260000390E79 /* AddTribeMemberTableViewController.swift */; };
+		A17BA3D829FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BA3D729FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift */; };
+		A17BA3DA29FC347C00390E79 /* AddNewTribeMemberResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BA3D929FC347C00390E79 /* AddNewTribeMemberResource.swift */; };
+		A17BA3DC29FC357900390E79 /* NewTribeMemberResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BA3DB29FC357900390E79 /* NewTribeMemberResponse.swift */; };
 		A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */; };
 		A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */; };
 		A17EAC1E29CDC96600D7CE00 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1D29CDC96600D7CE00 /* LoginViewController.swift */; };
@@ -91,6 +95,10 @@
 		A17267B629F1572B00F612E7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A17267BF29F1895F00F612E7 /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
 		A17267C829F1ACC900F612E7 /* SessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionError.swift; sourceTree = "<group>"; };
+		A17BA3D529FC260000390E79 /* AddTribeMemberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTribeMemberTableViewController.swift; sourceTree = "<group>"; };
+		A17BA3D729FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTribeMemberContainerViewController.swift; sourceTree = "<group>"; };
+		A17BA3D929FC347C00390E79 /* AddNewTribeMemberResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTribeMemberResource.swift; sourceTree = "<group>"; };
+		A17BA3DB29FC357900390E79 /* NewTribeMemberResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTribeMemberResponse.swift; sourceTree = "<group>"; };
 		A17EAC1629CDC96600D7CE00 /* tribehub-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tribehub-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -181,9 +189,11 @@
 			isa = PBXGroup;
 			children = (
 				A13EB3F429FABAE500750023 /* AccountViewController.swift */,
+				A17BA3D729FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift */,
 				A13EB3F929FAD04F00750023 /* AccountTableViewController.swift */,
 				A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */,
 				A13EB3FB29FAEB3800750023 /* ManageTribeTableViewController.swift */,
+				A17BA3D529FC260000390E79 /* AddTribeMemberTableViewController.swift */,
 			);
 			path = AccountView;
 			sourceTree = "<group>";
@@ -230,6 +240,7 @@
 			children = (
 				A17EAC4F29CE166A00D7CE00 /* TribeModel.swift */,
 				A1357CB529F2A4D700C90347 /* TribeModelController.swift */,
+				A17BA3DB29FC357900390E79 /* NewTribeMemberResponse.swift */,
 			);
 			path = Tribe;
 			sourceTree = "<group>";
@@ -314,6 +325,7 @@
 				A181476D29E806AC00AC3BE2 /* LoginResource.swift */,
 				A181476F29E8074200AC3BE2 /* LogoutResource.swift */,
 				A167CF7C29D5FC5D00240827 /* TribeResource.swift */,
+				A17BA3D929FC347C00390E79 /* AddNewTribeMemberResource.swift */,
 				A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */,
 				A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */,
 			);
@@ -574,11 +586,14 @@
 				A13EB3FA29FAD04F00750023 /* AccountTableViewController.swift in Sources */,
 				A181477329E83FEB00AC3BE2 /* RefreshRequestRetrier.swift in Sources */,
 				A13EB3FF29FAFA3E00750023 /* GenericAPIResponse.swift in Sources */,
+				A17BA3D629FC260000390E79 /* AddTribeMemberTableViewController.swift in Sources */,
 				A13EB40129FAFB1400750023 /* DeleteUserResource.swift in Sources */,
+				A17BA3DA29FC347C00390E79 /* AddNewTribeMemberResource.swift in Sources */,
 				A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */,
 				A13EB3FC29FAEB3800750023 /* ManageTribeTableViewController.swift in Sources */,
 				A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */,
 				A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */,
+				A17BA3D829FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift in Sources */,
 				A1A249C629F582770083295E /* makeRounded.swift in Sources */,
 				A181476E29E806AC00AC3BE2 /* LoginResource.swift in Sources */,
 				A1551B9529D5A13500D30446 /* UserResource.swift in Sources */,
@@ -588,6 +603,7 @@
 				A17EAC4E29CE0C6B00D7CE00 /* UserModel.swift in Sources */,
 				A1357CB429F29D0E00C90347 /* makeErrorAlert.swift in Sources */,
 				A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */,
+				A17BA3DC29FC357900390E79 /* NewTribeMemberResponse.swift in Sources */,
 				A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
