@@ -54,20 +54,17 @@ class AccountTableViewController: UITableViewController {
     /// Ensure manage tribe cell is only selectable if user is tribe admin,
     /// otherwise grey out and make unselectable
     func checkTribeAdminStatus() -> Void {
-        Task.init {
-            if await self.userModelController?.user?.isAdmin == true {
-                let manageTribeCell = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
-                manageTribeCell.isUserInteractionEnabled = true
-                manageTribeCell.textLabel?.isEnabled = true
-                manageTribeCell.imageView?.tintColor = .systemBlue
-            } else {
-                let manageTribeCell = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
-                manageTribeCell.isUserInteractionEnabled = false
-                manageTribeCell.textLabel?.isEnabled = false
-                manageTribeCell.imageView?.tintColor = .gray
-            }
+        if self.userModelController?.user?.isAdmin == true {
+            let manageTribeCell = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+            manageTribeCell.isUserInteractionEnabled = true
+            manageTribeCell.textLabel?.isEnabled = true
+            manageTribeCell.imageView?.tintColor = .systemBlue
+        } else {
+            let manageTribeCell = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+            manageTribeCell.isUserInteractionEnabled = false
+            manageTribeCell.textLabel?.isEnabled = false
+            manageTribeCell.imageView?.tintColor = .gray
         }
-        
     }
     
 }

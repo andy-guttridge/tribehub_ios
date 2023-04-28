@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-actor TribeModelController {
+class TribeModelController {
     private(set) var tribe: Tribe?
     private weak var session: Session?
     private weak var userModelController: UserModelController?
@@ -28,7 +28,7 @@ actor TribeModelController {
             let response = try await tribeRequest.fetchData()
             self.tribe = response?.results[0]
         } catch HTTPError.noPermission {
-            await self.userModelController?.userAuthDidExpire()
+            self.userModelController?.userAuthDidExpire()
             return
         }
         

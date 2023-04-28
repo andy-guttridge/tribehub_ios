@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-actor UserModelController: ObservableObject {
+class UserModelController: ObservableObject {
     @Published private(set) var user: User?
     private weak var session: Session?
     

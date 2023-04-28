@@ -18,9 +18,7 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Task.init {
-            cancellable = await userModelController?.$user.sink { [weak self] user in self?.userStatusDidChange(user)}
-        }
+        cancellable = userModelController?.$user.sink { [weak self] user in self?.userStatusDidChange(user)}
         if let accountNavigationController = self.viewControllers?.last as? AccountNavigationController {
                     accountNavigationController.userModelController = userModelController
                     accountNavigationController.tribeModelController = tribeModelController
@@ -31,13 +29,8 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        var user: User?
-        Task.init {
-            user = await self.userModelController?.user
-            await print("User status in tabBarController: ", user)
-            if user == nil {
-                performSegue(withIdentifier: "loginSegue", sender: self)
-            }
+        if self.userModelController?.user == nil {
+            performSegue(withIdentifier: "loginSegue", sender: self)
         }
     }
 

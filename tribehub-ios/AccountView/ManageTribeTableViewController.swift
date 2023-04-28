@@ -31,26 +31,14 @@ class ManageTribeTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var numberOfTribeMembers = 0
-        Task.init {
-            numberOfTribeMembers = await self.tribeModelController?.tribe?.tribeMembers.count ?? 0
-        }
-        return numberOfTribeMembers
+        return self.tribeModelController?.tribe?.tribeMembers.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> TribeMemberTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TribeMemberCell", for: indexPath) as! TribeMemberTableViewCell
-        var displayName: String? = ""
-        Task.init {
-            displayName = await self.tribeModelController?.tribe?.tribeMembers[indexPath.row].displayName
-        }
-        cell.tribeMemberDisplayNameLabel.text = displayName
+        cell.tribeMemberDisplayNameLabel.text = self.tribeModelController?.tribe?.tribeMembers[indexPath.row].displayName
         cell.tribeMemberImageView.makeRounded()
-        var profileImage: UIImage?
-        Task.init {
-            profileImage = await self.tribeModelController?.tribe?.tribeMembers[indexPath.row].profileImage
-        }
-        cell.tribeMemberImageView.image = profileImage
+        cell.tribeMemberImageView.image = self.tribeModelController?.tribe?.tribeMembers[indexPath.row].profileImage
         cell.frame.size.height = 120
         return cell
     }
@@ -59,15 +47,7 @@ class ManageTribeTableViewController: UITableViewController {
 
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        var tribeMemberPk: Int?
-        Task.init {
-            tribeMemberPk = await self.tribeModelController?.tribe?.tribeMembers[indexPath.row].pk
-        }
-        var userPk: Int?
-        Task.init {
-            userPk = await self.userModelController?.user?.pk
-        }
-        if userPk == tribeMemberPk {
+        if self.userModelController?.user?.pk == self.tribeModelController?.tribe?.tribeMembers[indexPath.row].pk {
             return false
         }
         return true
@@ -78,7 +58,7 @@ class ManageTribeTableViewController: UITableViewController {
         if editingStyle == .delete {
             Task.init {
                 do {
-                    if let userPk = await tribeModelController?.tribe?.tribeMembers[indexPath.row].pk {
+                    if let userPk = tribeModelController?.tribe?.tribeMembers[indexPath.row].pk {
                         let result = try await self.tribeModelController?.doDeletTribeMember(forPrimaryKey: userPk)
                         print(result)
                     }
