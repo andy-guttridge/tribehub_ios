@@ -18,65 +18,105 @@ class APIRequest<Resource: APIResource> {
     }
     
     func fetchData () async throws ->  Resource.ModelType? {
-        let response = await session.request(resource.url, method: .get).validate().serializingDecodable(Resource.ModelType.self).response
-        switch response.result {
-        case .success:
-            print("Fetched resource")
-        case .failure (let error):
-            switch response.response?.statusCode {
-                case 401 :
-                    throw HTTPError.noPermission
-                default:
-                    throw error
-            }
+        let response = await session.request(resource.url, method: .get).serializingDecodable(Resource.ModelType.self).response
+        guard let statusCode = response.response?.statusCode else {
+            throw HTTPError.noResponse
+        }
+        switch statusCode {
+            case 200..<300:
+                // Success - value returned below
+                break
+            case 400:
+                throw HTTPError.badRequest(apiResponse: response.value)
+            case 401:
+                throw HTTPError.noPermission
+            case 404:
+                throw HTTPError.notFound
+            case 500:
+                throw HTTPError.serverError
+            default:
+                throw HTTPError.otherError(statusCode: statusCode)
         }
         let value = response.value
-        print (value)
+        print ("Returning value from fetchData: ", value)
         return value
     }
-    
+
     func postData (payload: Dictionary<String, Any>?) async throws -> Resource.ModelType? {
-        let response = await session.request(resource.url, method: .post, parameters: payload).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
-        switch response.result {
-        case .success:
-            print("Posted resource")
-        case .failure (let error):
-            switch response.response?.statusCode {
-                case 401 :
-                    throw HTTPError.noPermission
-                default:
-                    throw error
-            }
+        let response = await session.request(resource.url, method: .post, parameters: payload).serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
+        guard let statusCode = response.response?.statusCode else {
+            throw HTTPError.noResponse
         }
+        switch statusCode {
+            case 200..<300:
+                // Success - value returned below
+                break
+            case 400:
+                throw HTTPError.badRequest(apiResponse: response.value)
+            case 401:
+                throw HTTPError.noPermission
+            case 404:
+                throw HTTPError.notFound
+            case 500:
+                throw HTTPError.serverError
+            default:
+                throw HTTPError.otherError(statusCode: statusCode)
+            }
         let value = response.value
-        print (value)
+        print ("Returning value from postData: ", value)
         return value
     }
-    
+
     func fetchFile<FileType> (fromURL urlString: String) async throws -> FileType {
         let url = URL(string:  urlString)
         guard let urlConvertible = try url?.asURL() else {
             throw AFError.invalidURL(url: urlString)
         }
-        let file: FileType = try await AF.download(urlConvertible).serializingData().value as! FileType
+        let response = await AF.download(urlConvertible).serializingData().response
+        guard let statusCode = response.response?.statusCode else {
+            throw HTTPError.noResponse
+        }
+        switch statusCode {
+            case 200..<300:
+                // Success - value returned below
+                break
+            case 400:
+                throw HTTPError.badRequest(apiResponse: response.value)
+            case 401:
+                throw HTTPError.noPermission
+            case 404:
+                throw HTTPError.notFound
+            case 500:
+                throw HTTPError.serverError
+            default:
+                throw HTTPError.otherError(statusCode: statusCode)
+        }
+        let file: FileType = response.value as! FileType
         return file
     }
-    
+
     func delete(itemForPrimaryKey pk: Int) async throws -> GenericAPIResponse {
         let url = resource.url + "\(String(pk))/"
         let response = await session.request(url, method: .delete).validate().serializingDecodable(GenericAPIResponse.self).response
-        switch response.result {
-        case .success:
-            print("Deleted resource")
-        case .failure (let error):
-            switch response.response?.statusCode {
-                case 401 :
-                    throw HTTPError.noPermission
-                default:
-                    throw error
-            }
+        guard let statusCode = response.response?.statusCode else {
+            throw HTTPError.noResponse
+        }
+        switch statusCode {
+            case 200..<300:
+                // Success - value returned below
+                break
+            case 400:
+                throw HTTPError.badRequest(apiResponse: response.value)
+            case 401:
+                throw HTTPError.noPermission
+            case 404:
+                throw HTTPError.notFound
+            case 500:
+                throw HTTPError.serverError
+            default:
+                throw HTTPError.otherError(statusCode: statusCode)
         }
         let value = response.value
-        return value ?? GenericAPIResponse(detail: "none")
+        return value ?? GenericAPIResponse(detail: "No detail response from API")
     }
 }

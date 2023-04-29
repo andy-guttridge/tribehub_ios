@@ -8,6 +8,8 @@
 import Foundation
 
 import Foundation
-struct NewTribeMemberResponse: Codable {
-    var username: String
+struct NewTribeMemberResponseModel: Codable {
+    var username: String?
+    var password: String?
+    var password2: String?
 }

@@ -62,7 +62,7 @@ class TribeModelController {
         return response
     }
     
-    func doAddTribeMember(withUserName userName: String, passWord: String) async throws -> NewTribeMemberResponse? {
+    func doAddTribeMember(withUserName userName: String, passWord: String) async throws -> NewTribeMemberResponseModel? {
         guard let session = self.session else {
             throw SessionError.noSession
         }

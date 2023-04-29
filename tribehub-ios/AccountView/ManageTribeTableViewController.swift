@@ -115,6 +115,10 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
         do {
             _ = try await self.tribeModelController?.doAddTribeMember(withUserName: userName, passWord: password)
             self.tableView?.reloadData()
+        } catch HTTPError.badRequest(let apiResponse) {
+            let errorMessage = apiResponse
+            let errorAlert = makeErrorAlert(title: "Error adding tribe member", message: "The server reported an error. \(errorMessage)")
+            self.present(errorAlert, animated: true) {return}
         } catch {
             let errorAlert = makeErrorAlert(title: "Error adding tribe member", message: "Something went wrong adding this tribe member. Please check you are online and logged in.")
             print ("Error! ", error)

@@ -8,6 +8,10 @@
 import Foundation
 
 enum HTTPError: Error {
-    case badRequest
+    case badRequest (apiResponse: Codable)
     case noPermission
+    case notFound
+    case serverError
+    case otherError (statusCode: Int)
+    case noResponse
 }

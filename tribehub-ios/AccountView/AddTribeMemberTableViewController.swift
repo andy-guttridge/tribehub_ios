@@ -49,8 +49,8 @@ class AddTribeMemberTableViewController: UITableViewController {
             Task.init {
                 do {
                     if let userName = userName, let password = password1 {
-                        await self.delegate?.addNewTribeMember(userName: userName, password: password)
                         self.delegate?.dismissAddTribeMemberTableViewController()
+                        await self.delegate?.addNewTribeMember(userName: userName, password: password)
                     }
                 } 
             }
