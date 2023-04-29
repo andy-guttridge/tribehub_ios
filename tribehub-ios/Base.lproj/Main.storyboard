@@ -241,7 +241,7 @@
                                 <connections>
                                     <outlet property="addImage" destination="dvd-tA-1QO" id="d2U-xt-LuV"/>
                                     <outlet property="addLabel" destination="nth-LU-7Tg" id="1eh-yR-CIO"/>
-                                    <segue destination="nL3-pQ-0wM" kind="presentation" identifier="EditTribeMemberContainer" id="GRu-tS-bbc"/>
+                                    <segue destination="nL3-pQ-0wM" kind="show" id="nIs-YS-44b"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -288,6 +288,7 @@
                             <constraint firstItem="z5Q-si-mPt" firstAttribute="top" secondItem="pVi-oc-dX2" secondAttribute="bottom" constant="4" id="zr8-HT-4FN"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="q4J-84-FhC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgP-SU-9CD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -389,28 +390,6 @@
                                                 <constraint firstItem="Gv8-xp-cVg" firstAttribute="centerY" secondItem="dlc-QG-28J" secondAttribute="centerY" id="gyJ-N1-rNo"/>
                                                 <constraint firstItem="Yda-vd-Zwa" firstAttribute="centerY" secondItem="dlc-QG-28J" secondAttribute="centerY" id="n2z-FG-nJn"/>
                                                 <constraint firstAttribute="trailing" secondItem="Yda-vd-Zwa" secondAttribute="trailing" constant="4" id="wS8-ep-BL0"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="XAg-pE-f5K">
-                                        <rect key="frame" x="0.0" y="254" width="430" height="68"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XAg-pE-f5K" id="wLV-On-0Wb">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="68"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaA-Mn-2fW">
-                                                    <rect key="frame" x="172.66666666666666" y="16.666666666666671" width="84.999999999999972" height="35"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" title="Confirm"/>
-                                                    <connections>
-                                                        <action selector="userDidConfirm:" destination="Zg4-Ii-zRN" eventType="touchUpInside" id="Swr-3t-TYq"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="MaA-Mn-2fW" firstAttribute="centerY" secondItem="wLV-On-0Wb" secondAttribute="centerY" id="2oH-65-KLY"/>
-                                                <constraint firstItem="MaA-Mn-2fW" firstAttribute="centerX" secondItem="wLV-On-0Wb" secondAttribute="centerX" id="dDz-o7-Tb6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

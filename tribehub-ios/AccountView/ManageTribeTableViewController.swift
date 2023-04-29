@@ -72,13 +72,6 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
         return true
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            // User selected to add a new tribe member
-            print("Wants to add new tribe member")
-        }
-    }
-    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         let addTribeMemberCell = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as! AddTribeMemberTableViewCell
@@ -127,7 +120,7 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
     }
     
     func dismissAddTribeMemberTableViewController() {
-        dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     /*

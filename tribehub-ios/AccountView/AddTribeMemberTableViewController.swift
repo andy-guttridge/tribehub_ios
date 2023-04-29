@@ -24,7 +24,7 @@ class AddTribeMemberTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func userDidConfirm(_ sender: Any) {
+    func userDidConfirm() {
         var userDidEnterValidDetails = false
         let userName = self.userNameTextField.text
         let password1 = self.password1TextField.text

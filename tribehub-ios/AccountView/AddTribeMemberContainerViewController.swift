@@ -10,30 +10,22 @@ import UIKit
 class AddTribeMemberContainerViewController: UIViewController {
     
     var delegateOfChild: AddTribeMemberTableViewControllerDelegate?
+    var childTableView: AddTribeMemberTableViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(addNewTribeMember))
+    }
+    
+    @objc func addNewTribeMember() {
+        // Call method on child table view if user pressed confirm button
+        self.childTableView?.userDidConfirm()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let containerViewController = segue.destination as? AddTribeMemberTableViewController {
-            containerViewController.delegate = self.delegateOfChild
+        if let tableViewController = segue.destination as? AddTribeMemberTableViewController {
+            self.childTableView = tableViewController
+            tableViewController.delegate = self.delegateOfChild
         }
     }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
