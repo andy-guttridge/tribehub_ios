@@ -8,7 +8,7 @@
 import Foundation
 
 enum HTTPError: Error {
-    case badRequest (apiResponse: Codable)
+    case badRequest (apiResponse: Dictionary<String, String>)
     case noPermission
     case notFound
     case serverError

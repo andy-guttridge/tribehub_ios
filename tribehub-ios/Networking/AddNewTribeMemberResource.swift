@@ -8,7 +8,7 @@
 import Foundation
 
 class AddNewTribeMemberResource: APIResource {
-    typealias ModelType = NewTribeMemberResponseModel
+    typealias ModelType = GenericAPIResponse
     var methodPath: String {
         return "accounts/user/"
     }
