@@ -15,8 +15,7 @@ protocol LoginViewControllerDelegate {
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var password1TextField: UITextField!
-    @IBOutlet weak var password2TextField: UITextField!
+    @IBOutlet weak var passWordTextField: UITextField!
     
     weak var userModelController: UserModelController?
     weak var tribeModelController: TribeModelController?
@@ -32,8 +31,7 @@ class LoginViewController: UIViewController {
         
         // Clear input fields
         self.userNameTextField.text = ""
-        self.password1TextField.text = ""
-        self.password2TextField.text = ""
+        self.passWordTextField.text = ""
     }
     
     @IBAction func didPressLoginButton(_ sender: Any) {
@@ -48,22 +46,14 @@ class LoginViewController: UIViewController {
         
         var userDidEnterValidDetails = false
         let userName = self.userNameTextField.text
-        let password1 = self.password1TextField.text
-        let password2 = self.password2TextField.text
+        let password = self.passWordTextField.text
         
         // Check if text entered into all necessary fields, show alert if not
-        if userName == "" || password1 == "" || password2 == "" {
-            let errorAlert = makeErrorAlert(title: "You must complete all fields", message: "You must enter a username and your password into both password fields. Please try again.")
+        if userName == "" || password == "" {
+            let errorAlert = makeErrorAlert(title: "You must complete all fields", message: "You must enter a username and your password. Please try again.")
             self.present(errorAlert, animated: true) {
                 userDidEnterValidDetails = false
             }
-        } else if password1 != password2 {
-            // Check if password fields match, show alert if not
-            let errorAlert = makeErrorAlert(title: "Incorrect Password", message: "The two passwords do not match. Please try again.")
-            self.present(errorAlert, animated: true) {
-                userDidEnterValidDetails = false
-            }
-            
         } else {
             userDidEnterValidDetails = true
         }
@@ -71,7 +61,7 @@ class LoginViewController: UIViewController {
         // Do login and fetch tribe data if login details correct
         if userDidEnterValidDetails {
             Task.init {
-                if let userName = userName, let password = password1 {
+                if let userName = userName, let password = password {
                     do {
                         _ = try await userModelController.doLogin(userName: userName, passWord: password)
                         try await tribeModelController.getTribe()
