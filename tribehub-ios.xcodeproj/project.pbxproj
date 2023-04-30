@@ -47,6 +47,9 @@
 		A181477329E83FEB00AC3BE2 /* RefreshRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */; };
 		A181477529E84A5400AC3BE2 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181477429E84A5400AC3BE2 /* AccessTokenModel.swift */; };
 		A1A249C629F582770083295E /* makeRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A249C529F582770083295E /* makeRounded.swift */; };
+		A1C3EA2229FEA5110010625B /* DisplayNameContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2129FEA5110010625B /* DisplayNameContainerViewController.swift */; };
+		A1C3EA2429FEA5440010625B /* DisplayNameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2329FEA5440010625B /* DisplayNameTableViewController.swift */; };
+		A1C3EA2629FEB13A0010625B /* UpdateProfileResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2529FEB13A0010625B /* UpdateProfileResource.swift */; };
 		A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */; };
 		ABED7267871E483C36C0B557 /* Pods_tribehub_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C884B005C668714920E99F /* Pods_tribehub_ios.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +121,9 @@
 		A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequestRetrier.swift; sourceTree = "<group>"; };
 		A181477429E84A5400AC3BE2 /* AccessTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenModel.swift; sourceTree = "<group>"; };
 		A1A249C529F582770083295E /* makeRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeRounded.swift; sourceTree = "<group>"; };
+		A1C3EA2129FEA5110010625B /* DisplayNameContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayNameContainerViewController.swift; path = "tribehub-ios/AccountView/Display Name/DisplayNameContainerViewController.swift"; sourceTree = SOURCE_ROOT; };
+		A1C3EA2329FEA5440010625B /* DisplayNameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNameTableViewController.swift; sourceTree = "<group>"; };
+		A1C3EA2529FEB13A0010625B /* UpdateProfileResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileResource.swift; sourceTree = "<group>"; };
 		A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequestAdapter.swift; sourceTree = "<group>"; };
 		CA589D1A0259C47E4697951E /* Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-tribehub-ios-tribehub-iosUITests/Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F7FCA9520419D7D5194AD928 /* Pods_tribehub_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tribehub_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,12 +192,11 @@
 		A13EB3F629FAC43800750023 /* AccountView */ = {
 			isa = PBXGroup;
 			children = (
+				A1C3EA2029FEA4DE0010625B /* Display Name */,
+				A1C3EA1F29FEA4B50010625B /* Manage Tribe */,
 				A13EB3F429FABAE500750023 /* AccountViewController.swift */,
-				A17BA3D729FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift */,
 				A13EB3F929FAD04F00750023 /* AccountTableViewController.swift */,
 				A13EB3F229FAB9D300750023 /* AccountNavigationController.swift */,
-				A13EB3FB29FAEB3800750023 /* ManageTribeTableViewController.swift */,
-				A17BA3D529FC260000390E79 /* AddTribeMemberTableViewController.swift */,
 			);
 			path = AccountView;
 			sourceTree = "<group>";
@@ -315,18 +320,38 @@
 		A181477129E83FBD00AC3BE2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				A17BA3D929FC347C00390E79 /* AddNewTribeMemberResource.swift */,
 				A1551B9929D5A81000D30446 /* APIRequest.swift */,
 				A1551B9229D59F2B00D30446 /* APIResource.swift */,
-				A1551B9429D5A13500D30446 /* UserResource.swift */,
 				A13EB40029FAFB1400750023 /* DeleteUserResource.swift */,
 				A181476D29E806AC00AC3BE2 /* LoginResource.swift */,
 				A181476F29E8074200AC3BE2 /* LogoutResource.swift */,
-				A167CF7C29D5FC5D00240827 /* TribeResource.swift */,
-				A17BA3D929FC347C00390E79 /* AddNewTribeMemberResource.swift */,
-				A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */,
 				A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */,
+				A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */,
+				A167CF7C29D5FC5D00240827 /* TribeResource.swift */,
+				A1551B9429D5A13500D30446 /* UserResource.swift */,
+				A1C3EA2529FEB13A0010625B /* UpdateProfileResource.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		A1C3EA1F29FEA4B50010625B /* Manage Tribe */ = {
+			isa = PBXGroup;
+			children = (
+				A17BA3D729FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift */,
+				A17BA3D529FC260000390E79 /* AddTribeMemberTableViewController.swift */,
+				A13EB3FB29FAEB3800750023 /* ManageTribeTableViewController.swift */,
+			);
+			path = "Manage Tribe";
+			sourceTree = "<group>";
+		};
+		A1C3EA2029FEA4DE0010625B /* Display Name */ = {
+			isa = PBXGroup;
+			children = (
+				A1C3EA2129FEA5110010625B /* DisplayNameContainerViewController.swift */,
+				A1C3EA2329FEA5440010625B /* DisplayNameTableViewController.swift */,
+			);
+			path = "Display Name";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -570,6 +595,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C3EA2629FEB13A0010625B /* UpdateProfileResource.swift in Sources */,
 				A1357CB629F2A4D700C90347 /* TribeModelController.swift in Sources */,
 				A17EAC1E29CDC96600D7CE00 /* LoginViewController.swift in Sources */,
 				A13EB3F529FABAE500750023 /* AccountViewController.swift in Sources */,
@@ -577,6 +603,7 @@
 				A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */,
 				A1357CB829F2CA4700C90347 /* TabBarViewController.swift in Sources */,
 				A17EAC5029CE166A00D7CE00 /* TribeModel.swift in Sources */,
+				A1C3EA2429FEA5440010625B /* DisplayNameTableViewController.swift in Sources */,
 				A181477029E8074200AC3BE2 /* LogoutResource.swift in Sources */,
 				A117B97B29F2FF1700F7E40A /* HTTPError.swift in Sources */,
 				A17267C929F1ACC900F612E7 /* SessionError.swift in Sources */,
@@ -598,6 +625,7 @@
 				A17267C029F1895F00F612E7 /* UserModelController.swift in Sources */,
 				A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */,
 				A17EAC4E29CE0C6B00D7CE00 /* UserModel.swift in Sources */,
+				A1C3EA2229FEA5110010625B /* DisplayNameContainerViewController.swift in Sources */,
 				A1357CB429F29D0E00C90347 /* makeErrorAlert.swift in Sources */,
 				A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */,
 				A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */,

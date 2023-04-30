@@ -104,7 +104,6 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
     }
     
     func addNewTribeMember(userName: String, password: String) async {
-        print("Adding new tribemember  with username: \(userName) and password: \(password)")
         do {
             _ = try await self.tribeModelController?.doAddTribeMember(withUserName: userName, passWord: password)
             self.tableView?.reloadData()

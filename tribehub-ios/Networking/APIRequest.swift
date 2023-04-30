@@ -21,9 +21,15 @@ class APIRequest<Resource: APIResource> {
         let response = await session.request(resource.url, method: .get).validate().serializingDecodable(Resource.ModelType.self).response
         if response.response?.statusCode == 400 {
             if let data = response.data {
-                print(String(data: data, encoding: String.Encoding(rawValue: NSUTF8StringEncoding)))
-                let errorDict = try! JSONDecoder().decode(Dictionary<String, String>.self, from:data)
-                throw HTTPError.badRequest(apiResponse: errorDict)
+                do {
+                    let errorDict = try JSONDecoder().decode(Dictionary<String, String>.self, from:data)
+                    throw HTTPError.badRequest(apiResponse: errorDict)
+                } catch DecodingError.typeMismatch {
+                    let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
+                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n"}) {
+                        throw HTTPError.badRequest(apiResponse: ["API Error": strings])
+                    }
+                }
             }
             throw HTTPError.badRequest(apiResponse: ["detail": "No API response"])
         }
@@ -36,14 +42,48 @@ class APIRequest<Resource: APIResource> {
         let response = await session.request(resource.url, method: .post, parameters: payload).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
         if response.response?.statusCode == 400 {
             if let data = response.data {
-                print(String(data: data, encoding: String.Encoding(rawValue: NSUTF8StringEncoding)))
-                let errorDict = try! JSONDecoder().decode(Dictionary<String, String>.self, from:data)
-                throw HTTPError.badRequest(apiResponse: errorDict)
+                do {
+                    let errorDict = try JSONDecoder().decode(Dictionary<String, String>.self, from:data)
+                    throw HTTPError.badRequest(apiResponse: errorDict)
+                } catch DecodingError.typeMismatch {
+                    let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
+                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n"}) {
+                        throw HTTPError.badRequest(apiResponse: ["API Error": strings])
+                    }
+                }
             }
             throw HTTPError.badRequest(apiResponse: ["detail": "No API response"])
         }
         let value = response.value
         print ("Returning value from postData: ", value)
+        return value
+    }
+    
+    func putData (itemForPrimaryKey pk: Int, payload: Dictionary<String, Any>?) async throws -> Resource.ModelType? {
+        let response = await session.request(resource.url + "\(String(pk))/", method: .put, parameters: payload).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
+        if response.response?.statusCode == 400 {
+            if let data = response.data {
+                do {
+                    // Try to extract straightfoward dictionary with error strings
+                    let errorDict = try JSONDecoder().decode(Dictionary<String, String>.self, from:data)
+                    throw HTTPError.badRequest(apiResponse: errorDict)
+                } catch DecodingError.typeMismatch {
+                    // If that fails, try to extract a dictionary with arrays of error strings, as the API
+                    // sometimes returns these. Extract all strings from each array, and return as one long string with line breaks.
+                    let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
+                    var strings = ""
+                    for (key, _) in errorDict {
+                        if let string = errorDict[key]?.reduce("", {acc, str in acc + str + "\n"}) {
+                            strings.append(string)
+                        }
+                    throw HTTPError.badRequest(apiResponse: ["API Error": strings])
+                    }
+                }
+            }
+            throw HTTPError.badRequest(apiResponse: ["detail": "No API response"])
+        }
+        let value = response.value
+        print ("Returning value from putData: ", value)
         return value
     }
     
@@ -61,9 +101,15 @@ class APIRequest<Resource: APIResource> {
         let response = await session.request(url, method: .delete).validate().serializingDecodable(GenericAPIResponse.self).response
         if response.response?.statusCode == 400 {
             if let data = response.data {
-                print(String(data: data, encoding: String.Encoding(rawValue: NSUTF8StringEncoding)))
-                let errorDict = try! JSONDecoder().decode(Dictionary<String, String>.self, from:data)
-                throw HTTPError.badRequest(apiResponse: errorDict)
+                do {
+                    let errorDict = try JSONDecoder().decode(Dictionary<String, String>.self, from:data)
+                    throw HTTPError.badRequest(apiResponse: errorDict)
+                } catch DecodingError.typeMismatch {
+                    let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
+                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n"}) {
+                        throw HTTPError.badRequest(apiResponse: ["detail": strings])
+                    }
+                }
             }
             throw HTTPError.badRequest(apiResponse: ["detail": "No API response"])
         }

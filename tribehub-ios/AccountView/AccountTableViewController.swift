@@ -49,6 +49,9 @@ class AccountTableViewController: UITableViewController {
             manageTribeTableViewController.userModelController = self.userModelController
             manageTribeTableViewController.tribeModelController = self.tribeModelController
         }
+        if let displayNameContainerViewController = segue.destination as? DisplayNameContainerViewController {
+            displayNameContainerViewController.userModelController = self.userModelController
+        }
     }
     
     /// Ensure manage tribe cell is only selectable if user is tribe admin,
