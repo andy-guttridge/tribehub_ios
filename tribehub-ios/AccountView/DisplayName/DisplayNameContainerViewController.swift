@@ -39,11 +39,11 @@ class DisplayNameContainerViewController: UIViewController, DisplayNameTableView
         } catch HTTPError.badRequest(let apiResponse) {
             let errorMessage = apiResponse.values.reduce("", {acc, str  in str + "\n"})
             let errorAlert = makeErrorAlert(title: "Error changing display name", message: "The server reported an error: \n\n\(errorMessage)")
-            self.present(errorAlert, animated: true) {return}
+            self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
         } catch {
             let errorAlert = makeErrorAlert(title: "Error changing display name", message: "Something went wrong changing your display name. Please check you are online and logged in.")
             print ("Error! ", error)
-            self.present(errorAlert, animated: true) {return}
+            self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
         }
     }
     

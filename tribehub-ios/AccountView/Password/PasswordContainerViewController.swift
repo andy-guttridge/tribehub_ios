@@ -37,11 +37,11 @@ class PasswordContainerViewController: UIViewController, PasswordTableViewContro
         } catch HTTPError.badRequest(let apiResponse) {
             let errorMessage = apiResponse.values.reduce("", {acc, str  in str + "\n"})
             let errorAlert = makeErrorAlert(title: "Error changing password", message: "The server reported an error: \n\n\(errorMessage)")
-            self.present(errorAlert, animated: true) {return}
+            self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
         } catch {
             let errorAlert = makeErrorAlert(title: "Error changing password", message: "Something went wrong changing your password. Please check you are online and logged in.")
             print ("Error! ", error)
-            self.present(errorAlert, animated: true) {return}
+            self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
         }
     }
     
