@@ -37,12 +37,15 @@ class TribeModelController {
             for (index, tribeMember) in tribe.tribeMembers.enumerated() {
                 // Try to fetch profile image
                 if let imageUrl = tribeMember.profileImageURL {
-                    let profileImageFile: Data = try await tribeRequest.fetchFile(fromURL: imageUrl)
-                    self.tribe?.tribeMembers[index].profileImage = UIImage(data: profileImageFile)
+                    do {
+                        let profileImageFile: Data = try await tribeRequest.fetchFile(fromURL: imageUrl)
+                        self.tribe?.tribeMembers[index].profileImage = UIImage(data: profileImageFile)
+                    } catch {
+                        print("Error fetching profile image")
+                    }
                 }
             }
         }
-        print("Tribe details: ", self.tribe)
     }
     
     func doDeleteTribeMember(forPrimaryKey pk: Int) async throws -> GenericAPIResponse? {

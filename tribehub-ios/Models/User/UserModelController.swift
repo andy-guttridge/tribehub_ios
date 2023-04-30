@@ -27,10 +27,13 @@ class UserModelController: ObservableObject {
         
         // Try to fetch profile image
         if let imageUrl = user?.profileImageURL {
-            let profileImageFile: Data = try await loginRequest.fetchFile(fromURL: imageUrl)
-            self.user?.profileImage = UIImage(data: profileImageFile)
+            do {
+                let profileImageFile: Data = try await loginRequest.fetchFile(fromURL: imageUrl)
+                self.user?.profileImage = UIImage(data: profileImageFile)
+            } catch {
+                print("Error fetching profile image")
+            }
         }
-        
         return response?.user
     }
     
@@ -40,18 +43,20 @@ class UserModelController: ObservableObject {
         }
         let logoutRequest = APIRequest(resource: LogoutResource(), session: session)
         let response = try await logoutRequest.postData(payload: nil)
-        print("Logged out successfully")
         self.user = nil
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
         return response
     }
     
-    func doDeleteUser(forPrimaryKey pk: Int) async throws -> GenericAPIResponse? {
+    func doDeleteUser(forPrimaryKey pk: Int, isDeletingOwnAccount: Bool = false) async throws -> GenericAPIResponse? {
         guard let session = self.session else {
             throw SessionError.noSession
         }
         let deleteUserAPIRequest = APIRequest(resource: DeleteUserResource(), session: session)
         let response = try await deleteUserAPIRequest.delete(itemForPrimaryKey: pk)
+        if isDeletingOwnAccount {
+            self.user = nil
+        }
         return response
     }
     

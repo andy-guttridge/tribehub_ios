@@ -23,7 +23,26 @@ class AccountTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 3 {
-            print("Did select delete account")
+            var message = ""
+            if self.userModelController?.user?.isAdmin == true {
+                message = "Are you sure you want to delete your user account and close down your tribe by deleting all your tribe members' accounts? This action cannot be undone."
+            } else {
+                message = "Are you sure you want to delete your user account? This action cannot be undone."
+            }
+            let actionSheet = UIAlertController(title: "Delete account", message: message, preferredStyle: .actionSheet)
+            actionSheet.addAction(UIAlertAction(title: "Confirm", style: .destructive) {_ in
+                if let pk = self.userModelController?.user?.pk {
+                    Task.init {
+                        do {
+                            _ = try await self.userModelController?.doDeleteUser(forPrimaryKey: pk, isDeletingOwnAccount: true)
+                        } catch {
+                            print("Error deleting account")
+                        }
+                    }
+                }
+            })
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel) {_ in return})
+            self.present(actionSheet, animated: true)
         }
         if indexPath.row == 4 {
             // User selected logout
@@ -53,7 +72,7 @@ class AccountTableViewController: UITableViewController {
             displayNameContainerViewController.userModelController = self.userModelController
         }
         if let passwordContainerViewController = segue.destination as? PasswordContainerViewController {
-           passwordContainerViewController.userModelController = self.userModelController
+            passwordContainerViewController.userModelController = self.userModelController
         }
     }
     
