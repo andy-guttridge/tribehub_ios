@@ -69,6 +69,16 @@ class UserModelController: ObservableObject {
         return response
     }
     
+    func doUpdatePassword(forPrimaryKey pk: Int, newPassword: String, oldPassword: String) async throws -> GenericAPIResponse? {
+        guard let session = self.session else {
+            throw SessionError.noSession
+        }
+        let payload = ["new_password1": newPassword, "new_password2": newPassword, "old_password": oldPassword]
+        let updatePasswordAPIRequest = APIRequest(resource: UpdatePasswordResource(), session: session)
+        let response = try await updatePasswordAPIRequest.postData(payload: payload)
+        return response
+    }
+    
     func userAuthDidExpire() {
         self.user = nil
     }

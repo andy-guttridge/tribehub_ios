@@ -26,7 +26,7 @@ class APIRequest<Resource: APIResource> {
                     throw HTTPError.badRequest(apiResponse: errorDict)
                 } catch DecodingError.typeMismatch {
                     let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
-                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n"}) {
+                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n\n"}) {
                         throw HTTPError.badRequest(apiResponse: ["API Error": strings])
                     }
                 }
@@ -47,7 +47,7 @@ class APIRequest<Resource: APIResource> {
                     throw HTTPError.badRequest(apiResponse: errorDict)
                 } catch DecodingError.typeMismatch {
                     let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
-                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n"}) {
+                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n\n"}) {
                         throw HTTPError.badRequest(apiResponse: ["API Error": strings])
                     }
                 }
@@ -73,7 +73,7 @@ class APIRequest<Resource: APIResource> {
                     let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
                     var strings = ""
                     for (key, _) in errorDict {
-                        if let string = errorDict[key]?.reduce("", {acc, str in acc + str + "\n"}) {
+                        if let string = errorDict[key]?.reduce("", {acc, str in acc + str + "\n\n"}) {
                             strings.append(string)
                         }
                     throw HTTPError.badRequest(apiResponse: ["API Error": strings])
@@ -106,7 +106,7 @@ class APIRequest<Resource: APIResource> {
                     throw HTTPError.badRequest(apiResponse: errorDict)
                 } catch DecodingError.typeMismatch {
                     let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
-                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n"}) {
+                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n\n"}) {
                         throw HTTPError.badRequest(apiResponse: ["detail": strings])
                     }
                 }

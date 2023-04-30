@@ -47,7 +47,7 @@ class DisplayNameContainerViewController: UIViewController, DisplayNameTableView
         }
     }
     
-    func dismissDisplayTribeMemberTableViewController() {
+    func dismissDisplayNameTableViewController() {
         self.navigationController?.popViewController(animated: true)
     }
 }

@@ -154,18 +154,153 @@
         <!--Password-->
         <scene sceneID="TRj-dn-3Ls">
             <objects>
-                <viewController id="PBg-eQ-Mbf" sceneMemberID="viewController">
+                <viewController id="PBg-eQ-Mbf" customClass="PasswordContainerViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iZ3-AH-MOi">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="648"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEF-oD-LaW">
+                                <rect key="frame" x="0.0" y="29" width="430" height="619"/>
+                                <connections>
+                                    <segue destination="wfY-dh-G5z" kind="embed" id="1Xr-R9-5x7"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mjg-YM-jWK">
+                                <rect key="frame" x="146.66666666666669" y="4" width="136.66666666666669" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6IB-wQ-dc0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sEF-oD-LaW" firstAttribute="leading" secondItem="6IB-wQ-dc0" secondAttribute="leading" id="P7i-X3-yYE"/>
+                            <constraint firstItem="sEF-oD-LaW" firstAttribute="top" secondItem="Mjg-YM-jWK" secondAttribute="bottom" constant="4" id="VBq-Sc-uSm"/>
+                            <constraint firstItem="6IB-wQ-dc0" firstAttribute="trailing" secondItem="sEF-oD-LaW" secondAttribute="trailing" id="WxO-xN-geK"/>
+                            <constraint firstItem="Mjg-YM-jWK" firstAttribute="top" secondItem="6IB-wQ-dc0" secondAttribute="top" constant="4" id="beQ-Sv-F8Y"/>
+                            <constraint firstItem="Mjg-YM-jWK" firstAttribute="centerX" secondItem="iZ3-AH-MOi" secondAttribute="centerX" id="czY-v4-TVq"/>
+                            <constraint firstItem="6IB-wQ-dc0" firstAttribute="bottom" secondItem="sEF-oD-LaW" secondAttribute="bottom" id="x1u-fN-6SZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Password" id="nU6-gC-gwT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ug1-Db-2R1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2685" y="2537"/>
+            <point key="canvasLocation" x="1521" y="2829"/>
+        </scene>
+        <!--Password Table View Controller-->
+        <scene sceneID="fbu-dd-CRr">
+            <objects>
+                <tableViewController id="wfY-dh-G5z" customClass="PasswordTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="mfq-Df-tdE">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="619"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="k78-OG-HYB">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZMr-Rs-N0s">
+                                        <rect key="frame" x="0.0" y="50" width="430" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZMr-Rs-N0s" id="OOG-RT-3aJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4w-RX-SYr">
+                                                    <rect key="frame" x="24" y="23.666666666666671" width="112" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oSP-I6-Tx6">
+                                                    <rect key="frame" x="140" y="25.666666666666671" width="266" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="oSP-I6-Tx6" firstAttribute="centerY" secondItem="OOG-RT-3aJ" secondAttribute="centerY" id="2ik-Fb-A3F"/>
+                                                <constraint firstItem="q4w-RX-SYr" firstAttribute="centerY" secondItem="OOG-RT-3aJ" secondAttribute="centerY" id="7AA-lh-wRJ"/>
+                                                <constraint firstItem="oSP-I6-Tx6" firstAttribute="leading" secondItem="q4w-RX-SYr" secondAttribute="trailing" constant="4" id="SRI-WV-4ay"/>
+                                                <constraint firstItem="q4w-RX-SYr" firstAttribute="leading" secondItem="OOG-RT-3aJ" secondAttribute="leadingMargin" constant="4" id="kUW-W6-5Rz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oSP-I6-Tx6" secondAttribute="trailing" constant="4" id="yEP-c0-wMA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="c0e-yB-fKB">
+                                        <rect key="frame" x="0.0" y="118" width="430" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c0e-yB-fKB" id="dEF-Kt-elD">
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Re-enter password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e84-4z-sqo">
+                                                    <rect key="frame" x="24" y="23.666666666666671" width="145" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-enter new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8gb-MJ-Jdd">
+                                                    <rect key="frame" x="173" y="25.666666666666671" width="233" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="e84-4z-sqo" firstAttribute="centerY" secondItem="dEF-Kt-elD" secondAttribute="centerY" id="P75-n8-Hzd"/>
+                                                <constraint firstItem="8gb-MJ-Jdd" firstAttribute="leading" secondItem="e84-4z-sqo" secondAttribute="trailing" constant="4" id="UNw-9M-4xJ"/>
+                                                <constraint firstItem="8gb-MJ-Jdd" firstAttribute="centerY" secondItem="dEF-Kt-elD" secondAttribute="centerY" id="uMx-uM-qki"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="8gb-MJ-Jdd" secondAttribute="trailing" constant="4" id="w7R-LO-xkv"/>
+                                                <constraint firstItem="e84-4z-sqo" firstAttribute="leading" secondItem="dEF-Kt-elD" secondAttribute="leadingMargin" constant="4" id="xLq-d6-xXw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ojz-wS-kk7">
+                                        <rect key="frame" x="0.0" y="186" width="430" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ojz-wS-kk7" id="jLw-Gi-Lxu">
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFM-Uy-hdo">
+                                                    <rect key="frame" x="24" y="23.666666666666671" width="105" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y4S-C9-MaQ">
+                                                    <rect key="frame" x="133" y="25.666666666666671" width="273" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Y4S-C9-MaQ" firstAttribute="centerY" secondItem="jLw-Gi-Lxu" secondAttribute="centerY" id="7Uy-Nd-wcx"/>
+                                                <constraint firstItem="Y4S-C9-MaQ" firstAttribute="leading" secondItem="nFM-Uy-hdo" secondAttribute="trailing" constant="4" id="YIU-8y-lWe"/>
+                                                <constraint firstItem="nFM-Uy-hdo" firstAttribute="centerY" secondItem="jLw-Gi-Lxu" secondAttribute="centerY" id="cRL-Bv-FiS"/>
+                                                <constraint firstItem="nFM-Uy-hdo" firstAttribute="leading" secondItem="jLw-Gi-Lxu" secondAttribute="leadingMargin" constant="4" id="qa7-hn-iGa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Y4S-C9-MaQ" secondAttribute="trailing" constant="4" id="rnm-YV-hEJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="wfY-dh-G5z" id="JzE-I6-gsI"/>
+                            <outlet property="delegate" destination="wfY-dh-G5z" id="uzi-0f-QGg"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="oldPassWordTextField" destination="Y4S-C9-MaQ" id="KCs-Ul-uxW"/>
+                        <outlet property="passwordTextField" destination="oSP-I6-Tx6" id="2t3-hg-HfF"/>
+                        <outlet property="reenterPasswordTextField" destination="8gb-MJ-Jdd" id="9go-h4-uXe"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hsO-Qi-NO9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2344" y="2828"/>
         </scene>
         <!--Manage Tribe-->
         <scene sceneID="zcw-ps-P0q">
@@ -330,7 +465,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YqA-1q-Ph6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3029" y="1633"/>
+            <point key="canvasLocation" x="3068" y="1992"/>
         </scene>
         <!--Display Name Table View Controller-->
         <scene sceneID="SH7-0N-gfa">
@@ -356,8 +491,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter display name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="muF-eu-Rg3">
-                                                    <rect key="frame" x="130" y="17" width="296" height="34"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter display name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="muF-eu-Rg3">
+                                                    <rect key="frame" x="130" y="24.666666666666664" width="296" height="18.666666666666664"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -385,7 +520,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9RS-S3-D2p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3918" y="1634"/>
+            <point key="canvasLocation" x="3956" y="1993"/>
         </scene>
         <!--Add Tribe Member Table View Controller-->
         <scene sceneID="LR0-5M-Hbt">

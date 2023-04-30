@@ -9,7 +9,7 @@ import UIKit
 
 protocol DisplayNameTableViewControllerDelegate {
     func changeDisplayName(displayName: String) async -> Void
-    func dismissDisplayTribeMemberTableViewController() -> Void
+    func dismissDisplayNameTableViewController() -> Void
 }
 
 class DisplayNameTableViewController: UITableViewController {
@@ -27,7 +27,7 @@ class DisplayNameTableViewController: UITableViewController {
     func didChangeDisplayName() {
         Task.init {
             do {
-                self.delegate?.dismissDisplayTribeMemberTableViewController()
+                self.delegate?.dismissDisplayNameTableViewController()
                 await delegate?.changeDisplayName(displayName: self.displayNameTextField.text ?? "")
             }
         }
