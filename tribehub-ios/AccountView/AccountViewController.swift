@@ -11,6 +11,7 @@ class AccountViewController: UIViewController, UITableViewDelegate {
     weak var userModelController: UserModelController?
     weak var tribeModelController: TribeModelController?
 
+    @IBOutlet weak var profileImageStackView: UIStackView!
     @IBOutlet weak var profileImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -24,7 +25,12 @@ class AccountViewController: UIViewController, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.profileImageView.image = self.userModelController?.user?.profileImage
-        self.profileImageView.makeRounded()
+        
+        // Technique to use a round vertical UI stack view to create a round UIImage with edit button
+        // is from https://stackoverflow.com/questions/58734620/add-a-button-on-top-of-imageview-similar-to-iphone-profile-setting-page
+        self.profileImageStackView.clipsToBounds = true
+        self.profileImageStackView.layer.cornerRadius = 40
+        // self.profileImageView.makeRounded()
     }
     
 

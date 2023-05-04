@@ -15,7 +15,7 @@
             <objects>
                 <tableViewController id="WhR-6K-WWS" customClass="AccountTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="SS1-tL-raO">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="658"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -156,11 +156,11 @@
             <objects>
                 <viewController id="PBg-eQ-Mbf" customClass="PasswordContainerViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iZ3-AH-MOi">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="648"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="715"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEF-oD-LaW">
-                                <rect key="frame" x="0.0" y="29" width="430" height="619"/>
+                                <rect key="frame" x="0.0" y="29" width="430" height="686"/>
                                 <connections>
                                     <segue destination="wfY-dh-G5z" kind="embed" id="1Xr-R9-5x7"/>
                                 </connections>
@@ -194,7 +194,7 @@
             <objects>
                 <tableViewController id="wfY-dh-G5z" customClass="PasswordTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="mfq-Df-tdE">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="619"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="686"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -307,7 +307,7 @@
             <objects>
                 <tableViewController id="7HZ-OX-tWi" customClass="ManageTribeTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="u5x-hG-Plk">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="648"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="715"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -396,11 +396,11 @@
             <objects>
                 <viewController id="nL3-pQ-0wM" customClass="AddTribeMemberContainerViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QfD-Ms-nUC">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="648"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="715"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5Q-si-mPt">
-                                <rect key="frame" x="0.0" y="33" width="430" height="615"/>
+                                <rect key="frame" x="0.0" y="33" width="430" height="682"/>
                                 <connections>
                                     <segue destination="Zg4-Ii-zRN" kind="embed" identifier="EditTribeMemberTable" id="tzJ-EH-lfw"/>
                                 </connections>
@@ -434,11 +434,11 @@
             <objects>
                 <viewController id="Kmf-90-fcy" customClass="DisplayNameContainerViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gN4-Yw-rXS">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="648"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="715"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QO-gr-Hwl">
-                                <rect key="frame" x="0.0" y="33" width="430" height="615"/>
+                                <rect key="frame" x="0.0" y="33" width="430" height="682"/>
                                 <connections>
                                     <segue destination="lam-j7-N6u" kind="embed" id="BLd-vb-rZh"/>
                                 </connections>
@@ -472,7 +472,7 @@
             <objects>
                 <tableViewController id="lam-j7-N6u" customClass="DisplayNameTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ch4-bh-Aaf">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="615"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="682"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -527,7 +527,7 @@
             <objects>
                 <tableViewController id="Zg4-Ii-zRN" customClass="AddTribeMemberTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="w39-WN-W52">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="615"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="682"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -647,34 +647,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="bLs-gB-2hY">
+                                <rect key="frame" x="175" y="123" width="80" height="80"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1K-Za-Euc">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="KVQ-WQ-Pnq"/>
+                                            <constraint firstAttribute="width" constant="80" id="wLO-2U-yKX"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="379-3w-Gqe">
+                                        <rect key="frame" x="0.0" y="60" width="80" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Vwx-GK-aS7"/>
+                                            <constraint firstAttribute="height" constant="20" id="rgu-7r-4x7"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Edit">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
+                                            <color key="baseBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="379-3w-Gqe" firstAttribute="top" secondItem="c1K-Za-Euc" secondAttribute="bottom" id="7qr-rg-05q"/>
+                                    <constraint firstAttribute="bottom" secondItem="379-3w-Gqe" secondAttribute="bottom" id="DXO-qV-szi"/>
+                                    <constraint firstItem="c1K-Za-Euc" firstAttribute="top" secondItem="bLs-gB-2hY" secondAttribute="top" id="MM7-fG-B57"/>
+                                    <constraint firstItem="379-3w-Gqe" firstAttribute="centerX" secondItem="bLs-gB-2hY" secondAttribute="centerX" id="O9I-ev-Kaq"/>
+                                    <constraint firstItem="c1K-Za-Euc" firstAttribute="leading" secondItem="bLs-gB-2hY" secondAttribute="leading" id="ZJ9-Lm-zoF"/>
+                                    <constraint firstAttribute="trailing" secondItem="c1K-Za-Euc" secondAttribute="trailing" id="uUb-co-ZIn"/>
+                                </constraints>
+                            </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NT1-Cs-deB">
-                                <rect key="frame" x="0.0" y="191" width="430" height="658"/>
+                                <rect key="frame" x="0.0" y="207" width="430" height="725"/>
                                 <connections>
                                     <segue destination="WhR-6K-WWS" kind="embed" id="XF8-Oy-Mmh"/>
                                 </connections>
                             </containerView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1K-Za-Euc">
-                                <rect key="frame" x="175" y="107" width="80" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="HHl-CH-DeS"/>
-                                    <constraint firstAttribute="height" constant="80" id="YZX-DC-e5T"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y9b-Ik-03B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="NT1-Cs-deB" firstAttribute="trailing" secondItem="y9b-Ik-03B" secondAttribute="trailing" id="BnT-0N-lGm"/>
-                            <constraint firstItem="NT1-Cs-deB" firstAttribute="leading" secondItem="y9b-Ik-03B" secondAttribute="leading" id="Ntc-iP-Y6d"/>
-                            <constraint firstItem="c1K-Za-Euc" firstAttribute="centerX" secondItem="qPk-BM-nKo" secondAttribute="centerX" id="QG5-au-nps"/>
-                            <constraint firstItem="c1K-Za-Euc" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" constant="4" id="Yue-ab-v9j"/>
-                            <constraint firstItem="NT1-Cs-deB" firstAttribute="top" secondItem="c1K-Za-Euc" secondAttribute="bottom" constant="4" id="uwz-pJ-KRX"/>
-                            <constraint firstItem="NT1-Cs-deB" firstAttribute="bottom" secondItem="y9b-Ik-03B" secondAttribute="bottom" id="wQ6-jG-wdM"/>
+                            <constraint firstItem="NT1-Cs-deB" firstAttribute="trailing" secondItem="y9b-Ik-03B" secondAttribute="trailing" id="EJn-7s-PrA"/>
+                            <constraint firstAttribute="bottom" secondItem="NT1-Cs-deB" secondAttribute="bottom" id="Fk1-ci-Ap0"/>
+                            <constraint firstItem="bLs-gB-2hY" firstAttribute="centerX" secondItem="qPk-BM-nKo" secondAttribute="centerX" id="GTW-PM-urx"/>
+                            <constraint firstItem="NT1-Cs-deB" firstAttribute="leading" secondItem="y9b-Ik-03B" secondAttribute="leading" id="Ruu-JO-uOG"/>
+                            <constraint firstItem="NT1-Cs-deB" firstAttribute="top" secondItem="bLs-gB-2hY" secondAttribute="bottom" constant="4" id="gDP-Kn-Ny8"/>
+                            <constraint firstItem="bLs-gB-2hY" firstAttribute="top" secondItem="y9b-Ik-03B" secondAttribute="top" constant="20" id="qis-WL-7Iz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Account" id="ouF-Fm-DAf"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="profileImageStackView" destination="bLs-gB-2hY" id="QaB-ML-UZy"/>
                         <outlet property="profileImageView" destination="c1K-Za-Euc" id="vCj-ws-lSJ"/>
                     </connections>
                 </viewController>
