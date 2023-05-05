@@ -71,6 +71,9 @@ class UserModelController: ObservableObject {
         
         // Update display name in current user instance if payload contains a displayName
         self.user?.displayName = name
+        
+        // Tell the tribeModelController that this user's display name has changed
+        self.tribeModelController?.updateDisplayName(name, forTribeMemberWithPk: pk)
         return response
     }
     

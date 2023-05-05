@@ -90,4 +90,18 @@ class TribeModelController {
         }
         self.tribe?.tribeMembers = newTribeMembers
     }
+    
+    func updateDisplayName(_ name: String, forTribeMemberWithPk pk: Int) -> Void {
+        guard let tribeMembers = self.tribe?.tribeMembers else {return}
+        let newTribeMembers: [TribeMember] = tribeMembers.map {tribeMember in
+            if tribeMember.pk == pk {
+                let newTribeMember = TribeMember(pk: tribeMember.pk, displayName: name, profileImage: tribeMember.profileImage)
+                return newTribeMember
+            } else {
+                return tribeMember
+            }
+        }
+        self.tribe?.tribeMembers = newTribeMembers
+    }
+    
 }
