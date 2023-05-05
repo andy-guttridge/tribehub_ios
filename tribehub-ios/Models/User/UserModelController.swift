@@ -73,7 +73,7 @@ class UserModelController: ObservableObject {
         self.user?.displayName = name
         
         // Tell the tribeModelController that this user's display name has changed
-        self.tribeModelController?.updateDisplayName(name, forTribeMemberWithPk: pk)
+        self.tribeModelController?.updateTribeMemberDetails(displayName: name, profileImage: nil, forTribeMemberWithPk: pk)
         return response
     }
     
@@ -99,7 +99,7 @@ class UserModelController: ObservableObject {
         self.user?.profileImage = image
         
         // Ask the tribeModelController to update the profile image for this member of the tribe
-        tribeModelController.updateProfileImage(image, forTribeMemberWithPk: pk)
+        tribeModelController.updateTribeMemberDetails(displayName: nil, profileImage: image, forTribeMemberWithPk: pk)
         return response
     }
     

@@ -78,11 +78,11 @@ class TribeModelController {
         return response
     }
     
-    func updateProfileImage(_ image: UIImage, forTribeMemberWithPk pk: Int) -> Void {
+    func updateTribeMemberDetails(displayName: String?, profileImage: UIImage?, forTribeMemberWithPk pk: Int) {
         guard let tribeMembers = self.tribe?.tribeMembers else {return}
         let newTribeMembers: [TribeMember] = tribeMembers.map {tribeMember in
             if tribeMember.pk == pk {
-                let newTribeMember = TribeMember(pk: tribeMember.pk, displayName: tribeMember.displayName, profileImage: image)
+                let newTribeMember = TribeMember(pk: tribeMember.pk, displayName: displayName ?? tribeMember.displayName, profileImage: profileImage ?? tribeMember.profileImage)
                 return newTribeMember
             } else {
                 return tribeMember
@@ -90,18 +90,4 @@ class TribeModelController {
         }
         self.tribe?.tribeMembers = newTribeMembers
     }
-    
-    func updateDisplayName(_ name: String, forTribeMemberWithPk pk: Int) -> Void {
-        guard let tribeMembers = self.tribe?.tribeMembers else {return}
-        let newTribeMembers: [TribeMember] = tribeMembers.map {tribeMember in
-            if tribeMember.pk == pk {
-                let newTribeMember = TribeMember(pk: tribeMember.pk, displayName: name, profileImage: tribeMember.profileImage)
-                return newTribeMember
-            } else {
-                return tribeMember
-            }
-        }
-        self.tribe?.tribeMembers = newTribeMembers
-    }
-    
 }
