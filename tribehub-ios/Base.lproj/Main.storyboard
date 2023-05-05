@@ -669,6 +669,9 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
                                             <color key="baseBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="didSelectImageEdit:" destination="BmR-ST-g7d" eventType="touchUpInside" id="5vZ-KC-UAg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

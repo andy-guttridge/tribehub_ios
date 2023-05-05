@@ -47,6 +47,7 @@
 		A181477329E83FEB00AC3BE2 /* RefreshRequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */; };
 		A181477529E84A5400AC3BE2 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181477429E84A5400AC3BE2 /* AccessTokenModel.swift */; };
 		A1A249C629F582770083295E /* makeRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A249C529F582770083295E /* makeRounded.swift */; };
+		A1BD28162A041F3300321219 /* resizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD28152A041F3300321219 /* resizeImage.swift */; };
 		A1C3EA2229FEA5110010625B /* DisplayNameContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2129FEA5110010625B /* DisplayNameContainerViewController.swift */; };
 		A1C3EA2429FEA5440010625B /* DisplayNameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2329FEA5440010625B /* DisplayNameTableViewController.swift */; };
 		A1C3EA2629FEB13A0010625B /* UpdateProfileResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2529FEB13A0010625B /* UpdateProfileResource.swift */; };
@@ -124,6 +125,7 @@
 		A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequestRetrier.swift; sourceTree = "<group>"; };
 		A181477429E84A5400AC3BE2 /* AccessTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenModel.swift; sourceTree = "<group>"; };
 		A1A249C529F582770083295E /* makeRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeRounded.swift; sourceTree = "<group>"; };
+		A1BD28152A041F3300321219 /* resizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resizeImage.swift; sourceTree = "<group>"; };
 		A1C3EA2129FEA5110010625B /* DisplayNameContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayNameContainerViewController.swift; path = "tribehub-ios/AccountView/DisplayName/DisplayNameContainerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		A1C3EA2329FEA5440010625B /* DisplayNameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNameTableViewController.swift; sourceTree = "<group>"; };
 		A1C3EA2529FEB13A0010625B /* UpdateProfileResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileResource.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			children = (
 				A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */,
 				A1A249C529F582770083295E /* makeRounded.swift */,
+				A1BD28152A041F3300321219 /* resizeImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				A17EAC1E29CDC96600D7CE00 /* LoginViewController.swift in Sources */,
 				A13EB3F529FABAE500750023 /* AccountViewController.swift in Sources */,
 				A181477529E84A5400AC3BE2 /* AccessTokenModel.swift in Sources */,
+				A1BD28162A041F3300321219 /* resizeImage.swift in Sources */,
 				A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */,
 				A1357CB829F2CA4700C90347 /* TabBarViewController.swift in Sources */,
 				A17EAC5029CE166A00D7CE00 /* TribeModel.swift in Sources */,
@@ -843,9 +847,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ACG.tribehub-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -872,9 +879,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ACG.tribehub-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

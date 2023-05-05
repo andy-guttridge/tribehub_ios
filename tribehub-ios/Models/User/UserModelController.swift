@@ -84,6 +84,16 @@ class UserModelController: ObservableObject {
         return response
     }
     
+    func doUpdateProfileImage(forPrimaryKey pk: Int, image: UIImage) async throws -> GenericAPIResponse? {
+        guard let session = self.session else {
+            throw SessionError.noSession
+        }
+        let uploadProfileImageAPIRequest = APIRequest(resource: UpdateProfileResource(), session: session)
+        let response = try await uploadProfileImageAPIRequest.putProfileImageData(forPrimaryKey: pk, image: image, displayName: self.user?.displayName ?? "")
+        self.user?.profileImage = image
+        return response
+    }
+    
     func userAuthDidExpire() {
         self.user = nil
     }

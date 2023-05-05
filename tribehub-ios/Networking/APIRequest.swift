@@ -76,7 +76,7 @@ class APIRequest<Resource: APIResource> {
                         if let string = errorDict[key]?.reduce("", {acc, str in acc + str + "\n\n"}) {
                             strings.append(string)
                         }
-                    throw HTTPError.badRequest(apiResponse: ["API Error": strings])
+                        throw HTTPError.badRequest(apiResponse: ["API Error": strings])
                     }
                 }
             }
@@ -87,12 +87,34 @@ class APIRequest<Resource: APIResource> {
         return value
     }
     
+    // This function is not currently generic/re-usable enough. Aim to refactor into a more general purpose form data upload function.
+    func putProfileImageData (forPrimaryKey pk: Int, image: UIImage, displayName: String) async throws -> Resource.ModelType? {
+        let url: String? = resource.url + "\(String(pk))/"
+        guard let urlConvertible = try url?.asURL() else {
+            throw AFError.invalidURL(url: url ?? "")
+        }
+        // Resize if image too big
+        var theImage = image
+        if image.size.width > 500 || image.size.height > 500 {
+            theImage = resizeImage(image: image, newWidth: 500)
+        }
+        
+        // Upload as multipart form data. Set filename to 'image' for the benefit of the API, cloudinary renames it anyway.
+        let response = await session.upload(multipartFormData: {multiPartFormData in
+            multiPartFormData.append(Data(theImage.jpegData(compressionQuality: 1)!), withName: "image", fileName: "profile_image.jpeg", mimeType: "image/jpeg")
+            multiPartFormData.append(Data(displayName.utf8), withName: "display_name")
+            },
+            to: urlConvertible, method: .put).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
+        return response.value
+    }
+        
+    
     func fetchFile<FileType> (fromURL urlString: String) async throws -> FileType {
         let url = URL(string:  urlString)
         guard let urlConvertible = try url?.asURL() else {
             throw AFError.invalidURL(url: urlString)
         }
-        let file: FileType = try await AF.download(urlConvertible).serializingData().value as! FileType
+        let file: FileType = try await session.download(urlConvertible).serializingData().value as! FileType
         return file
     }
     
