@@ -34,7 +34,6 @@ class APIRequest<Resource: APIResource> {
             throw HTTPError.badRequest(apiResponse: ["detail": "No API response"])
         }
         let value = response.value
-        print ("Returning value from fetchData: ", value)
         return value
     }
     
@@ -55,7 +54,6 @@ class APIRequest<Resource: APIResource> {
             throw HTTPError.badRequest(apiResponse: ["detail": "No API response"])
         }
         let value = response.value
-        print ("Returning value from postData: ", value)
         return value
     }
     
@@ -83,7 +81,6 @@ class APIRequest<Resource: APIResource> {
             throw HTTPError.badRequest(apiResponse: ["detail": "No API response"])
         }
         let value = response.value
-        print ("Returning value from putData: ", value)
         return value
     }
     

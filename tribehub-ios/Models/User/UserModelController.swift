@@ -61,17 +61,16 @@ class UserModelController: ObservableObject {
         return response
     }
     
-    func doUpdateProfile(forPrimaryKey pk: Int, payload: Dictionary<String, Any>?) async throws -> GenericAPIResponse? {
+    func doUpdateDisplayName(_ name: String, forPrimaryKey pk: Int) async throws -> GenericAPIResponse? {
         guard let session = self.session else {
             throw SessionError.noSession
         }
         let updateProfileAPIRequest = APIRequest(resource: UpdateProfileResource(), session: session)
+        let payload = ["display_name": name]
         let response = try await updateProfileAPIRequest.putData(itemForPrimaryKey: pk, payload: payload)
         
         // Update display name in current user instance if payload contains a displayName
-        if let displayName = payload?["display_name"] {
-            self.user?.displayName = displayName as? String
-        }
+        self.user?.displayName = name
         return response
     }
     

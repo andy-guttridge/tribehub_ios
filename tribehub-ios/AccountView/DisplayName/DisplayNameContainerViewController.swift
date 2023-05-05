@@ -34,7 +34,7 @@ class DisplayNameContainerViewController: UIViewController, DisplayNameTableView
             return
         }
         do {
-            _ = try await self.userModelController?.doUpdateProfile(forPrimaryKey: pk, payload: ["display_name": displayName])
+            _ = try await self.userModelController?.doUpdateDisplayName(displayName, forPrimaryKey: pk)
             
         } catch HTTPError.badRequest(let apiResponse) {
             let errorMessage = apiResponse.values.reduce("", {acc, str  in str + "\n"})

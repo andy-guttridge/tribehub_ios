@@ -74,7 +74,7 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        let addTribeMemberCell = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as! AddTribeMemberTableViewCell
+        _ = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as! AddTribeMemberTableViewCell
         self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: UITableView.RowAnimation.none)
     }
     
@@ -84,8 +84,7 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
             Task.init {
                 do {
                     if let userPk = tribeModelController?.tribe?.tribeMembers[indexPath.row].pk {
-                        let result = try await self.tribeModelController?.doDeleteTribeMember(forPrimaryKey: userPk)
-                        print(result)
+                        _ = try await self.tribeModelController?.doDeleteTribeMember(forPrimaryKey: userPk)
                     }
                     tableView.deleteRows(at: [indexPath], with: .fade)
                 } catch {
