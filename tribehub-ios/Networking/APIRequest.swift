@@ -105,6 +105,29 @@ class APIRequest<Resource: APIResource> {
             multiPartFormData.append(Data(displayName.utf8), withName: "display_name")
             },
             to: urlConvertible, method: .put).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
+        
+        // Manually throw errors as AF doesn't validate the multi-part form upload request
+        if let statusCode = response.response?.statusCode {
+            if statusCode > 299 {
+                if statusCode == 400 {
+                    if let data = response.data {
+                        do {
+                            let errorDict = try JSONDecoder().decode(Dictionary<String, String>.self, from:data)
+                            throw HTTPError.badRequest(apiResponse: errorDict)
+                        } catch DecodingError.typeMismatch {
+                            let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
+                            if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n\n"}) {
+                                throw HTTPError.badRequest(apiResponse: ["API Error": strings])
+                            }
+                        }
+                    }
+                } else {
+                    throw HTTPError.otherError(statusCode: response.response!.statusCode)
+                }
+            }
+        } else {
+            throw HTTPError.noResponse
+        }
         return response.value
     }
         

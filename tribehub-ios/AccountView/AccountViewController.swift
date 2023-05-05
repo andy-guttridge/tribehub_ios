@@ -46,8 +46,19 @@ class AccountViewController: UIViewController, UITableViewDelegate, UIImagePicke
                     _ = try await self.userModelController?.doUpdateProfileImage(forPrimaryKey: pk, image: newImage)
                     self.profileImageView.image = newImage
                     self.dismiss(animated: true, completion: nil)
+                } catch HTTPError.badRequest(let apiResponse) {
+                    self.dismiss(animated: true, completion: nil)
+                    let errorMessage = apiResponse.values.reduce("", {acc, str  in str + "\n"})
+                    let errorAlert = makeErrorAlert(title: "Error uploading profile image", message: "The server reported an error: \n\n\(errorMessage)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch HTTPError.otherError(let statusCode) {
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error uploading profile image", message: "Something went uploading your profile image. \n\nThe status code reported by the server was \(statusCode)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch {
-                    print("Error setting new profile image")
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error uploading profile image", message: "Something went uploading your profile image. Please check you are online.")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 }
             }
         }
@@ -61,7 +72,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UIImagePicke
         let canUseCamera = UIImagePickerController.isSourceTypeAvailable(.camera)
         
         // If so create and present an action sheet to allow user to select camera or photo library,
-        // and configue and present the image picker accordingly
+        // and configure and present the image picker accordingly
         if canUseCamera {
             let imagePickerAlert = UIAlertController(title: nil, message: "Choose camera or photo library", preferredStyle: UIAlertController.Style.actionSheet)
             imagePickerController.sourceType = UIImagePickerController.SourceType.camera
