@@ -33,6 +33,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.userModelController = tribehub_ios.UserModelController(withSession: self.session!)
         self.tribeModelController = tribehub_ios.TribeModelController(withSession: self.session!)
         
+        // userModelController needs a reference to tribeModelController, as it performs actions that can affect the tribe
+        self.userModelController?.tribeModelController = self.tribeModelController
+        
         // Pass model controllers to rootViewController
         if let tabBarViewController = self.window?.rootViewController as? TabBarViewController {
             tabBarViewController.userModelController = self.userModelController

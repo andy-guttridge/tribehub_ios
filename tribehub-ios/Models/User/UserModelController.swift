@@ -11,6 +11,7 @@ import Alamofire
 class UserModelController: ObservableObject {
     @Published private(set) var user: User?
     private weak var session: Session?
+    weak var tribeModelController: TribeModelController?
     
     init(withSession session: Session) {
         self.session = session
@@ -88,9 +89,15 @@ class UserModelController: ObservableObject {
         guard let session = self.session else {
             throw SessionError.noSession
         }
+        guard let tribeModelController = self.tribeModelController else {
+            return nil
+        }
         let uploadProfileImageAPIRequest = APIRequest(resource: UpdateProfileResource(), session: session)
         let response = try await uploadProfileImageAPIRequest.putProfileImageData(forPrimaryKey: pk, image: image, displayName: self.user?.displayName ?? "")
         self.user?.profileImage = image
+        
+        // Ask the tribeModelController to update the profile image for this member of the tribe
+        tribeModelController.updateProfileImage(image, forTribeMemberWithPk: pk)
         return response
     }
     
