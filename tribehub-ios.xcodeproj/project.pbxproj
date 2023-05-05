@@ -10,6 +10,7 @@
 		46928A46951586E5142ACD2E /* Pods_tribehub_ios_tribehub_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A37207A8AF7681B7F4B5F5D /* Pods_tribehub_ios_tribehub_iosUITests.framework */; };
 		9C45C9F1193826A9068E494D /* Pods_tribehub_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7FCA9520419D7D5194AD928 /* Pods_tribehub_iosTests.framework */; };
 		A117B97B29F2FF1700F7E40A /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A117B97A29F2FF1700F7E40A /* HTTPError.swift */; };
+		A11973A02A05410D00816B0D /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A119739E2A05410D00816B0D /* Account.storyboard */; };
 		A1357CB429F29D0E00C90347 /* makeErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */; };
 		A1357CB629F2A4D700C90347 /* TribeModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB529F2A4D700C90347 /* TribeModelController.swift */; };
 		A1357CB829F2CA4700C90347 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB729F2CA4700C90347 /* TabBarViewController.swift */; };
@@ -84,6 +85,7 @@
 		882317436843A57DC94DECEE /* Pods-tribehub-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tribehub-ios.release.xcconfig"; path = "Target Support Files/Pods-tribehub-ios/Pods-tribehub-ios.release.xcconfig"; sourceTree = "<group>"; };
 		89C884B005C668714920E99F /* Pods_tribehub_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tribehub_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A117B97A29F2FF1700F7E40A /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
+		A119739F2A05410D00816B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
 		A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeErrorAlert.swift; sourceTree = "<group>"; };
 		A1357CB529F2A4D700C90347 /* TribeModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeModelController.swift; sourceTree = "<group>"; };
 		A1357CB729F2CA4700C90347 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */,
 				A1357CB729F2CA4700C90347 /* TabBarViewController.swift */,
 				A17EAC1D29CDC96600D7CE00 /* LoginViewController.swift */,
+				A119739E2A05410D00816B0D /* Account.storyboard */,
 				A17EAC1F29CDC96600D7CE00 /* Main.storyboard */,
 				A17EAC2229CDC96900D7CE00 /* Assets.xcassets */,
 				A17EAC2429CDC96900D7CE00 /* LaunchScreen.storyboard */,
@@ -489,6 +492,7 @@
 				A17EAC4C29CDFD1B00D7CE00 /* test_credentials.plist in Resources */,
 				A17267B729F1572B00F612E7 /* README.md in Resources */,
 				A17EAC2329CDC96900D7CE00 /* Assets.xcassets in Resources */,
+				A11973A02A05410D00816B0D /* Account.storyboard in Resources */,
 				A17EAC2129CDC96600D7CE00 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -691,6 +695,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A119739E2A05410D00816B0D /* Account.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A119739F2A05410D00816B0D /* Base */,
+			);
+			name = Account.storyboard;
+			sourceTree = "<group>";
+		};
 		A17EAC1F29CDC96600D7CE00 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
