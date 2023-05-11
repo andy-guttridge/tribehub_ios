@@ -35,7 +35,7 @@ class PasswordContainerViewController: UIViewController, PasswordTableViewContro
         do {
             _ = try await self.userModelController?.doUpdatePassword(forPrimaryKey: pk, newPassword: newPassword, oldPassword: oldPassword)
         } catch HTTPError.badRequest(let apiResponse) {
-            let errorMessage = apiResponse.values.reduce("", {acc, str  in str + "\n"})
+            let errorMessage = apiResponse
             let errorAlert = makeErrorAlert(title: "Error changing password", message: "The server reported an error: \n\n\(errorMessage)")
             self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
         } catch {

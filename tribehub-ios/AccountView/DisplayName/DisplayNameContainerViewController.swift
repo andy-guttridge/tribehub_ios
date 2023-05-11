@@ -37,7 +37,7 @@ class DisplayNameContainerViewController: UIViewController, DisplayNameTableView
             _ = try await self.userModelController?.doUpdateDisplayName(displayName, forPrimaryKey: pk)
             
         } catch HTTPError.badRequest(let apiResponse) {
-            let errorMessage = apiResponse.values.reduce("", {acc, str  in str + "\n"})
+            let errorMessage = apiResponse
             let errorAlert = makeErrorAlert(title: "Error changing display name", message: "The server reported an error: \n\n\(errorMessage)")
             self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
         } catch {

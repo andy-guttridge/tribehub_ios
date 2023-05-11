@@ -17,69 +17,23 @@ class APIRequest<Resource: APIResource> {
         self.session = session
     }
     
-    func fetchData () async throws ->  Resource.ModelType? {
+    func fetchData () async throws -> Resource.ModelType? {
         let response = await session.request(resource.url, method: .get).validate().serializingDecodable(Resource.ModelType.self).response
-        if response.response?.statusCode == 400 {
-            if let data = response.data {
-                do {
-                    let errorDict = try JSONDecoder().decode(Dictionary<String, String>.self, from:data)
-                    throw HTTPError.badRequest(apiResponse: errorDict)
-                } catch DecodingError.typeMismatch {
-                    let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
-                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n\n"}) {
-                        throw HTTPError.badRequest(apiResponse: ["API Error": strings])
-                    }
-                }
-            }
-            throw HTTPError.badRequest(apiResponse: ["detail": "No API response"])
-        }
+        try checkBadRequestForResponse(response)
         let value = response.value
         return value
     }
     
     func postData (payload: Dictionary<String, Any>?) async throws -> Resource.ModelType? {
         let response = await session.request(resource.url, method: .post, parameters: payload).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
-        if response.response?.statusCode == 400 {
-            if let data = response.data {
-                do {
-                    let errorDict = try JSONDecoder().decode(Dictionary<String, String>.self, from:data)
-                    throw HTTPError.badRequest(apiResponse: errorDict)
-                } catch DecodingError.typeMismatch {
-                    let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
-                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n\n"}) {
-                        throw HTTPError.badRequest(apiResponse: ["API Error": strings])
-                    }
-                }
-            }
-            throw HTTPError.badRequest(apiResponse: ["detail": "No API response"])
-        }
+        try checkHttpResponseCodeForResponse(response)
         let value = response.value
         return value
     }
     
     func putData (itemForPrimaryKey pk: Int, payload: Dictionary<String, Any>?) async throws -> Resource.ModelType? {
         let response = await session.request(resource.url + "\(String(pk))/", method: .put, parameters: payload).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
-        if response.response?.statusCode == 400 {
-            if let data = response.data {
-                do {
-                    // Try to extract straightfoward dictionary with error strings
-                    let errorDict = try JSONDecoder().decode(Dictionary<String, String>.self, from:data)
-                    throw HTTPError.badRequest(apiResponse: errorDict)
-                } catch DecodingError.typeMismatch {
-                    // If that fails, try to extract a dictionary with arrays of error strings, as the API
-                    // sometimes returns these. Extract all strings from each array, and return as one long string with line breaks.
-                    let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
-                    var strings = ""
-                    for (key, _) in errorDict {
-                        if let string = errorDict[key]?.reduce("", {acc, str in acc + str + "\n\n"}) {
-                            strings.append(string)
-                        }
-                        throw HTTPError.badRequest(apiResponse: ["API Error": strings])
-                    }
-                }
-            }
-            throw HTTPError.badRequest(apiResponse: ["detail": "No API response"])
-        }
+        try checkHttpResponseCodeForResponse(response)
         let value = response.value
         return value
     }
@@ -103,28 +57,7 @@ class APIRequest<Resource: APIResource> {
             },
             to: urlConvertible, method: .put).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
         
-        // Manually throw errors as AF doesn't validate the multi-part form upload request
-        if let statusCode = response.response?.statusCode {
-            if statusCode > 299 {
-                if statusCode == 400 {
-                    if let data = response.data {
-                        do {
-                            let errorDict = try JSONDecoder().decode(Dictionary<String, String>.self, from:data)
-                            throw HTTPError.badRequest(apiResponse: errorDict)
-                        } catch DecodingError.typeMismatch {
-                            let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
-                            if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n\n"}) {
-                                throw HTTPError.badRequest(apiResponse: ["API Error": strings])
-                            }
-                        }
-                    }
-                } else {
-                    throw HTTPError.otherError(statusCode: response.response!.statusCode)
-                }
-            }
-        } else {
-            throw HTTPError.noResponse
-        }
+        try checkHttpResponseCodeForResponse(response)
         return response.value
     }
         
@@ -141,21 +74,54 @@ class APIRequest<Resource: APIResource> {
     func delete(itemForPrimaryKey pk: Int) async throws -> GenericAPIResponse {
         let url = resource.url + "\(String(pk))/"
         let response = await session.request(url, method: .delete).validate().serializingDecodable(GenericAPIResponse.self).response
+        try checkHttpResponseCodeForResponse(response as! DataResponse<Resource.ModelType, AFError>)
+        return response.value ?? GenericAPIResponse(detail: "No detail response from API")
+    }
+    
+    /// Throws errors for unacceptable HTTP response codes
+    func checkHttpResponseCodeForResponse (_ response: DataResponse<Resource.ModelType, AFError>) throws {
+        if let statusCode = response.response?.statusCode {
+            if statusCode > 299 {
+                try checkBadRequestForResponse(response)
+                throw HTTPError.otherError(statusCode: response.response!.statusCode)
+            }
+        } else {
+            throw HTTPError.noResponse
+        }
+    }
+    
+    /// In the case of an HTTP 400 error from the API, extracts error messages from the API response and throws a .badRequest error with a single string value
+    /// which the UI can use to inform the user of the error.
+    func checkBadRequestForResponse (_ response: DataResponse<Resource.ModelType, AFError>) throws {
+        var errorString = ""
+        print("Checking bad request: ", response)
+        
+        // Extract error messages from the API if HTTP code 400 (i.e. we've made a bad request)
         if response.response?.statusCode == 400 {
+            
+            // Try to extract the error message as a dictionary of keys each with a single string value, and
+            // append keys and their values to a single error message string.
             if let data = response.data {
                 do {
                     let errorDict = try JSONDecoder().decode(Dictionary<String, String>.self, from:data)
-                    throw HTTPError.badRequest(apiResponse: errorDict)
+                    for (key, value) in errorDict {
+                        errorString.append("\(key): \(value)\n\n")
+                    }
+                    throw HTTPError.badRequest(apiResponse: errorString)
+                    
+                // If that didn't work, then we've probably received a dictionary with an array of strings for each key.
+                // In that case, try to decode as such, and reduce each array to a single string value and
+                // append with the relevant key to our error string.
                 } catch DecodingError.typeMismatch {
                     let errorDict = try JSONDecoder().decode(Dictionary<String, Array<String>>.self, from: data)
-                    if let strings = errorDict.values.first?.reduce("", {acc, str in acc + str + "\n\n"}) {
-                        throw HTTPError.badRequest(apiResponse: ["detail": strings])
+                    for (key, value) in errorDict {
+                        let str = value.reduce("") {(acc, val) in acc + "\(key): \(val)\n\n"}
+                        errorString.append(str)
                     }
+                    throw HTTPError.badRequest(apiResponse: errorString)
                 }
             }
-            throw HTTPError.badRequest(apiResponse: ["detail": "No API response"])
+            throw HTTPError.badRequest(apiResponse: "No API response")
         }
-        let value = response.value
-        return value ?? GenericAPIResponse(detail: "No detail response from API")
     }
 }

@@ -48,7 +48,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UIImagePicke
                     self.dismiss(animated: true, completion: nil)
                 } catch HTTPError.badRequest(let apiResponse) {
                     self.dismiss(animated: true, completion: nil)
-                    let errorMessage = apiResponse.values.reduce("", {acc, str  in str + "\n"})
+                    let errorMessage = apiResponse
                     let errorAlert = makeErrorAlert(title: "Error uploading profile image", message: "The server reported an error: \n\n\(errorMessage)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch HTTPError.otherError(let statusCode) {
