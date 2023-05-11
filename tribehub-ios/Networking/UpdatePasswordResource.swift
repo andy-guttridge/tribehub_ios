@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Resource supplies decodable model and API endpoint for updating the user's password
 class UpdatePasswordResource: APIResource {
     typealias ModelType = GenericAPIResponse
     var methodPath: String {

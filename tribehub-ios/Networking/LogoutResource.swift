@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Resource supplies decodable model and API endpoint for logging out
 class LogoutResource: APIResource {
     typealias ModelType = AuthResponse
     var methodPath: String {

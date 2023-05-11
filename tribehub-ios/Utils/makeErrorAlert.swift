@@ -7,7 +7,7 @@
 
 import UIKit
 
-// Create an error alert with title, message and OK action which dismisses the alert
+/// Create an error alert with title, message and OK action which dismisses the alert
 func makeErrorAlert (title: String, message: String) -> UIAlertController {
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: {alertAction in alert.dismiss(animated: true)}))

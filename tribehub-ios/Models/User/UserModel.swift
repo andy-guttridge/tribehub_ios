@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// Model for user details as supplied by the API
 public struct User: Codable {
     var pk: Int?
     var userName: String?

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Resource supplies decodable model and API endpoint for updating a user's profile
 class UpdateProfileResource: APIResource {
     typealias ModelType = GenericAPIResponse
     var methodPath: String {

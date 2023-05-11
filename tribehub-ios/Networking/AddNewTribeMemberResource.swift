@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Resource supplies decodable model and API endpoint for adding a new tribe member
 class AddNewTribeMemberResource: APIResource {
     typealias ModelType = GenericAPIResponse
     var methodPath: String {

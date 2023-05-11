@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Resource supplies decodable model and API endpoint for logging in
 class LoginResource: APIResource {
     typealias ModelType = AuthResponse
     var methodPath: String {

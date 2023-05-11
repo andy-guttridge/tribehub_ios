@@ -33,12 +33,14 @@ extension PasswordTableViewController {
         }
         var userDidEnterValidData = true
         
+        // Show error alert if user didn't complete all required fields
         if passwordTextField.text == "" || reenterPasswordTextField.text ==  "" || oldPassWordTextField.text == "" {
             let errorAlert = makeErrorAlert(title: "Empty fields", message: "You need to enter matching new passwords and your old password before you can submit.")
             self.present(errorAlert, animated: true) {return}
             userDidEnterValidData = false
         }
         
+        // Show error alert if new password fields don't match
         if passwordTextField.text != reenterPasswordTextField.text {
             let errorAlert = makeErrorAlert(title: "Passwords don't match", message: "Please make sure you have entered the same new password in both new password fields.")
             self.present(errorAlert, animated: true) {return}

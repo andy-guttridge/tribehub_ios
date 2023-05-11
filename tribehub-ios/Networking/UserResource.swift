@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Resource supplies decodable model and API endpoint for user details
 class UserResource: APIResource {
     typealias ModelType = User
     var methodPath: String {

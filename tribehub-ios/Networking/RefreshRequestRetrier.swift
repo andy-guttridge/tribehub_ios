@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+// Requests a refresh token from the API and then retries requests in the event an HTTP status code of 401 is returned.
+// Does not retry more than two times
 class RefreshRequestRetrier: RequestRetrier {
     func retry(_ request: Alamofire.Request, for session: Alamofire.Session, dueTo error: Error, completion: @escaping (Alamofire.RetryResult) -> Void) {
         

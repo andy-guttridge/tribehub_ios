@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// Model for an individual tribe member
 struct TribeMember: Codable {
     var pk: Int?
     var displayName: String?
@@ -21,6 +22,7 @@ struct TribeMember: Codable {
     }
 }
 
+/// Model for the array of tribe members supplied by the API
 struct Tribe: Codable {
     var tribeName: String?
     var tribeMembers: [TribeMember]
@@ -31,6 +33,7 @@ struct Tribe: Codable {
     }
 }
 
+/// Model for the results array containing the tribe array supplied by the API
 struct TribeResults: Codable {
     var results: [Tribe]
     

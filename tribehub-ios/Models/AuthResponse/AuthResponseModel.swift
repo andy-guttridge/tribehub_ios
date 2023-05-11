@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+// Model for the authorisation details returned from the API when the user successfully authenticates
 public struct AuthResponse: Codable, EmptyResponse {
     
     var accessToken: String?

@@ -8,6 +8,9 @@
 import Foundation
 import Alamofire
 
+/// Controller for the tribe model. Retains a reference to the tribe which is utilised by other classes to obtain tribe details.
+/// Also has a reference to as UserModelController as interaction between instances of these two classes is required to
+/// ensure updates are reflected in both user and tribe data.
 class TribeModelController {
     private(set) var tribe: Tribe?
     private weak var session: Session?
@@ -17,6 +20,7 @@ class TribeModelController {
         self.session = session
     }
     
+    /// Attempts to fetch user's tribe data from the API
     func getTribe() async throws {
         guard let session = self.session else {
             throw SessionError.noSession
@@ -48,6 +52,7 @@ class TribeModelController {
         }
     }
     
+    /// Attempts to delete the tribe member with the specified primary key from the backend
     func doDeleteTribeMember(forPrimaryKey pk: Int) async throws -> GenericAPIResponse? {
         guard let session = self.session else {
             throw SessionError.noSession
@@ -65,6 +70,7 @@ class TribeModelController {
         return response
     }
     
+    /// Attempts to add a new tribemember with the specified username and password to the backend
     func doAddTribeMember(withUserName userName: String, passWord: String) async throws -> GenericAPIResponse? {
         guard let session = self.session else {
             throw SessionError.noSession
@@ -78,6 +84,7 @@ class TribeModelController {
         return response
     }
     
+    /// Attempts to update the displayname and/or password for the specified tribe member in the backend
     func updateTribeMemberDetails(displayName: String?, profileImage: UIImage?, forTribeMemberWithPk pk: Int) {
         guard let tribeMembers = self.tribe?.tribeMembers else {return}
         let newTribeMembers: [TribeMember] = tribeMembers.map {tribeMember in

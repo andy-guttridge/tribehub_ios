@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+// Resource supplies decodable model and API endpoint for user's tribe details
 class TribeResource: APIResource {
     typealias ModelType = TribeResults
     var methodPath: String {

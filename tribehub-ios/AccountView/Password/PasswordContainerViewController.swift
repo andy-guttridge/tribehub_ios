@@ -23,7 +23,6 @@ class PasswordContainerViewController: UIViewController {
             tableViewController.delegate = self
         }
     }
-    
 }
 
 // MARK: Private extension

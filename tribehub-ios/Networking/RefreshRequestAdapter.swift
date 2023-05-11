@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+// Request adapater required for request retry functionality
 class RefreshRequestAdapter: RequestAdapter {
     // RequestAdapter doesn't actually do anything except call the completion handler with the urlRequest,
     // but the interceptor with the RequestRetrier also needs a RequestAdapter.

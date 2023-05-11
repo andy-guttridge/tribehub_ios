@@ -22,7 +22,11 @@ class AccountTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 3 {
+            // User selected table row 3, meaning they wish to delete their account
             var message = ""
+            
+            // Show an appropriate alert message to cancel or confirm depending on whether they are the
+            // tribe administrator or a regular user
             if self.userModelController?.user?.isAdmin == true {
                 message = "Are you sure you want to delete your user account and close down your tribe by deleting all your tribe members' accounts? This action cannot be undone."
             } else {
@@ -44,7 +48,7 @@ class AccountTableViewController: UITableViewController {
             self.present(actionSheet, animated: true)
         }
         if indexPath.row == 4 {
-            // User selected logout
+            // Table row 4 means user selected logout
             guard let userModelController = self.userModelController else {
                 return
             }

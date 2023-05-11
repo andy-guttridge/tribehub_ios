@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Model for the access token supplied by the API
 struct AccessToken: Codable {
     var access: String
 }

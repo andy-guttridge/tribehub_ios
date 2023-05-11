@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+// Makes a request to the API using supplied resource and session
 class APIRequest<Resource: APIResource> {
     let resource: Resource
     let session: Session

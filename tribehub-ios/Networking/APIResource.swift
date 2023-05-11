@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Protocol provides a template for an APIResource, ensuring
+/// conforming types can supply a decodable model type and an API endpoint
 protocol APIResource {
     associatedtype ModelType: Codable
     var methodPath: String {get}

@@ -14,7 +14,7 @@ protocol APIResponse: Codable {
     func getString() -> String
 }
 
-
+/// Model for a generic response from the API
 struct GenericAPIResponse: APIResponse {
     var detail: String?
     var nonFieldError: String?
