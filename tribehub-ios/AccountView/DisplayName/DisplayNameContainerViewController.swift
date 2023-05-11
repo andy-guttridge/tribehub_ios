@@ -7,14 +7,14 @@
 
 import UIKit
 
-class DisplayNameContainerViewController: UIViewController, DisplayNameTableViewControllerDelegate {
+class DisplayNameContainerViewController: UIViewController {
     
     weak var childTableView: DisplayNameTableViewController?
     weak var userModelController: UserModelController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(didChangeDisplayName))
+        initialize()
     }
     
     @objc func didChangeDisplayName() {
@@ -28,7 +28,17 @@ class DisplayNameContainerViewController: UIViewController, DisplayNameTableView
             tableViewController.displayName = self.userModelController?.user?.displayName
         }
     }
-    
+}
+
+// MARK: private extension
+private extension DisplayNameContainerViewController {
+    func initialize() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(didChangeDisplayName))
+    }
+}
+
+// MARK: DisplayNameTableViewControllerDelegate extension
+extension DisplayNameContainerViewController: DisplayNameTableViewControllerDelegate {
     func changeDisplayName(displayName: String) async {
         guard let pk = self.userModelController?.user?.pk else {
             return

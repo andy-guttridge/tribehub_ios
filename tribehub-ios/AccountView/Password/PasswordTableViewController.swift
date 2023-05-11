@@ -23,7 +23,10 @@ class PasswordTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+}
+
+// MARK: Public extension
+extension PasswordTableViewController {
     func didChangePassword() {
         guard let password = passwordTextField.text, let oldPassword = oldPassWordTextField.text else {
             return

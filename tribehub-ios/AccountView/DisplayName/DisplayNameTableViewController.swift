@@ -21,9 +21,19 @@ class DisplayNameTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialize()
+    }
+}
+
+// MARK: private extension
+private extension DisplayNameTableViewController {
+    func initialize() {
         self.displayNameTextField.text = displayName
     }
-    
+}
+
+// MARK: public extension
+extension DisplayNameTableViewController {
     func didChangeDisplayName() {
         Task.init {
             do {

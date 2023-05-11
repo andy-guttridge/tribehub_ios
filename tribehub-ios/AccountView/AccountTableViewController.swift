@@ -18,7 +18,6 @@ class AccountTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.checkTribeAdminStatus()
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -75,7 +74,10 @@ class AccountTableViewController: UITableViewController {
             passwordContainerViewController.userModelController = self.userModelController
         }
     }
-    
+}
+
+// MARK: private extension
+private extension AccountTableViewController {
     /// Ensure manage tribe cell is only selectable if user is tribe admin,
     /// otherwise grey out and make unselectable
     func checkTribeAdminStatus() -> Void {
@@ -91,5 +93,4 @@ class AccountTableViewController: UITableViewController {
             manageTribeCell.imageView?.tintColor = .gray
         }
     }
-    
 }

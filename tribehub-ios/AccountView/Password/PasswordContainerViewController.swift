@@ -7,18 +7,14 @@
 
 import UIKit
 
-class PasswordContainerViewController: UIViewController, PasswordTableViewControllerDelegate {
+class PasswordContainerViewController: UIViewController {
     
     weak var childTableView: PasswordTableViewController?
     weak var userModelController: UserModelController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(didChangePassword))
-    }
-    
-    @objc func didChangePassword() {
-        self.childTableView?.didChangePassword()
+        initialize()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -28,6 +24,21 @@ class PasswordContainerViewController: UIViewController, PasswordTableViewContro
         }
     }
     
+}
+
+// MARK: Private extension
+private extension PasswordContainerViewController {
+    func initialize() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(didChangePassword))
+    }
+    
+    @objc func didChangePassword() {
+        self.childTableView?.didChangePassword()
+    }
+}
+
+// MARK: PasswordTableViewControllerDelegate extension
+extension PasswordContainerViewController: PasswordTableViewControllerDelegate {
     func changePassword(newPassword: String, oldPassword: String) async {
         guard let pk = self.userModelController?.user?.pk else {
             return
