@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     
     weak var userModelController: UserModelController?
     weak var tribeModelController: TribeModelController?
+    weak var eventsModelController: EventsModelController?
     
     var delegate: LoginViewControllerDelegate?
     
@@ -36,11 +37,15 @@ class LoginViewController: UIViewController {
     
     @IBAction func didPressLoginButton(_ sender: Any) {
         
-        guard let userModelController: UserModelController = self.userModelController else {
+        guard let userModelController: UserModelController = userModelController else {
             return
         }
         
-        guard let tribeModelController: TribeModelController = self.tribeModelController else {
+        guard let tribeModelController: TribeModelController = tribeModelController else {
+            return
+        }
+        
+        guard let eventsModelController: EventsModelController = eventsModelController else {
             return
         }
         
@@ -58,13 +63,14 @@ class LoginViewController: UIViewController {
             userDidEnterValidDetails = true
         }
         
-        // Do login and fetch tribe data if login details correct
+        // Do login, then fetch tribe and events data if login details correct
         if userDidEnterValidDetails {
             Task.init {
                 if let userName = userName, let password = password {
                     do {
                         _ = try await userModelController.doLogin(userName: userName, passWord: password)
                         try await tribeModelController.getTribe()
+                        try await eventsModelController.getEvents()
                         self.delegate?.dismissLoginModal()
                     } catch {
                         print("Login error: ", error)

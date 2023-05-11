@@ -12,15 +12,26 @@ import Alamofire
 class APIRequest<Resource: APIResource> {
     let resource: Resource
     let session: Session
+    let decoder: JSONDecoder
     
     init(resource: Resource, session: Session) {
         self.resource = resource
         self.session = session
+        
+        // Custom JSONDecoder needed for date format supplied by the API.
+        // Technique for using a dateDecodingStrategy/encodingStrategy
+        // with a DateFormatter matching the API's date format is from
+        // https://stackoverflow.com/questions/50847139/error-decoding-date-with-swift
+        self.decoder = JSONDecoder()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
     }
     
     func fetchData () async throws -> Resource.ModelType? {
-        let response = await session.request(resource.url, method: .get).validate().serializingDecodable(Resource.ModelType.self).response
+        let response = await session.request(resource.url, method: .get).validate().serializingDecodable(Resource.ModelType.self, decoder: decoder).response
         try checkBadRequestForResponse(response)
+        print(response)
         let value = response.value
         return value
     }
@@ -95,7 +106,6 @@ class APIRequest<Resource: APIResource> {
     /// which the UI can use to inform the user of the error.
     func checkBadRequestForResponse (_ response: DataResponse<Resource.ModelType, AFError>) throws {
         var errorString = ""
-        print("Checking bad request: ", response)
         
         // Extract error messages from the API if HTTP code 400 (i.e. we've made a bad request)
         if response.response?.statusCode == 400 {

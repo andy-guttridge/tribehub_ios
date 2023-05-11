@@ -13,6 +13,7 @@ class TabBarViewController: UITabBarController {
     
     weak var userModelController: UserModelController?
     weak var tribeModelController: TribeModelController?
+    weak var eventsModelController: EventsModelController?
     
     private var cancellable: AnyCancellable?
 
@@ -37,8 +38,9 @@ class TabBarViewController: UITabBarController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let loginViewController = segue.destination as? LoginViewController {
             loginViewController.delegate = self
-            loginViewController.userModelController = self.userModelController
-            loginViewController.tribeModelController = self.tribeModelController
+            loginViewController.userModelController = userModelController
+            loginViewController.tribeModelController = tribeModelController
+            loginViewController.eventsModelController = eventsModelController
         }
     }
     

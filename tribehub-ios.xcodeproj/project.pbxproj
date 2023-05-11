@@ -23,6 +23,9 @@
 		A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9229D59F2B00D30446 /* APIResource.swift */; };
 		A1551B9529D5A13500D30446 /* UserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9429D5A13500D30446 /* UserResource.swift */; };
 		A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1551B9929D5A81000D30446 /* APIRequest.swift */; };
+		A162B8372A0D331700CC18CC /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A162B8362A0D331700CC18CC /* EventsModel.swift */; };
+		A162B8392A0D34B400CC18CC /* EventsModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A162B8382A0D34B400CC18CC /* EventsModelController.swift */; };
+		A162B83B2A0D34CF00CC18CC /* EventsResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A162B83A2A0D34CF00CC18CC /* EventsResource.swift */; };
 		A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */; };
 		A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167CF7C29D5FC5D00240827 /* TribeResource.swift */; };
 		A17267B729F1572B00F612E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A17267B629F1572B00F612E7 /* README.md */; };
@@ -98,6 +101,9 @@
 		A1551B9229D59F2B00D30446 /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
 		A1551B9429D5A13500D30446 /* UserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResource.swift; sourceTree = "<group>"; };
 		A1551B9929D5A81000D30446 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		A162B8362A0D331700CC18CC /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
+		A162B8382A0D34B400CC18CC /* EventsModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModelController.swift; sourceTree = "<group>"; };
+		A162B83A2A0D34CF00CC18CC /* EventsResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsResource.swift; sourceTree = "<group>"; };
 		A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
 		A167CF7C29D5FC5D00240827 /* TribeResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeResource.swift; sourceTree = "<group>"; };
 		A17267B629F1572B00F612E7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -131,7 +137,6 @@
 		A1C3EA2129FEA5110010625B /* DisplayNameContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayNameContainerViewController.swift; path = "tribehub-ios/AccountView/DisplayName/DisplayNameContainerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		A1C3EA2329FEA5440010625B /* DisplayNameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNameTableViewController.swift; sourceTree = "<group>"; };
 		A1C3EA2529FEB13A0010625B /* UpdateProfileResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileResource.swift; sourceTree = "<group>"; };
-		A1C3EA2829FECB850010625B /* DisplayNameContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayNameContainerViewController.swift; path = "tribehub-ios/AccountView/DisplayName/DisplayNameContainerViewController.swift"; sourceTree = "<group>"; };
 		A1C3EA2A29FECDE80010625B /* PasswordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewController.swift; sourceTree = "<group>"; };
 		A1C3EA2C29FECE050010625B /* PasswordContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordContainerViewController.swift; sourceTree = "<group>"; };
 		A1C3EA2E29FED7550010625B /* UpdatePasswordResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordResource.swift; sourceTree = "<group>"; };
@@ -204,8 +209,8 @@
 		A13EB3F629FAC43800750023 /* AccountView */ = {
 			isa = PBXGroup;
 			children = (
-				A1C3EA2729FEC8440010625B /* Password */,
 				A1C3EA2029FEA4DE0010625B /* DisplayName */,
+				A1C3EA2729FEC8440010625B /* Password */,
 				A1C3EA1F29FEA4B50010625B /* ManageTribe */,
 				A13EB3F429FABAE500750023 /* AccountViewController.swift */,
 				A13EB3F929FAD04F00750023 /* AccountTableViewController.swift */,
@@ -227,10 +232,20 @@
 			children = (
 				A13EB3FD29FAFA1700750023 /* API */,
 				A17267C729F1A0B700F612E7 /* AuthResponse */,
+				A162B8352A0D32D600CC18CC /* Events */,
 				A17267C629F1A0AD00F612E7 /* Tribe */,
 				A17267BE29F1894200F612E7 /* User */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A162B8352A0D32D600CC18CC /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				A162B8362A0D331700CC18CC /* EventsModel.swift */,
+				A162B8382A0D34B400CC18CC /* EventsModelController.swift */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 		A17267BE29F1894200F612E7 /* User */ = {
@@ -272,7 +287,6 @@
 		A17EAC0D29CDC96600D7CE00 = {
 			isa = PBXGroup;
 			children = (
-				A1C3EA2829FECB850010625B /* DisplayNameContainerViewController.swift */,
 				A17267B629F1572B00F612E7 /* README.md */,
 				A17EAC1829CDC96600D7CE00 /* tribehub-ios */,
 				A17EAC2F29CDC96A00D7CE00 /* tribehub-iosTests */,
@@ -339,14 +353,15 @@
 				A1551B9929D5A81000D30446 /* APIRequest.swift */,
 				A1551B9229D59F2B00D30446 /* APIResource.swift */,
 				A13EB40029FAFB1400750023 /* DeleteUserResource.swift */,
+				A162B83A2A0D34CF00CC18CC /* EventsResource.swift */,
 				A181476D29E806AC00AC3BE2 /* LoginResource.swift */,
 				A181476F29E8074200AC3BE2 /* LogoutResource.swift */,
 				A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */,
 				A181477229E83FEB00AC3BE2 /* RefreshRequestRetrier.swift */,
 				A167CF7C29D5FC5D00240827 /* TribeResource.swift */,
-				A1551B9429D5A13500D30446 /* UserResource.swift */,
 				A1C3EA2E29FED7550010625B /* UpdatePasswordResource.swift */,
 				A1C3EA2529FEB13A0010625B /* UpdateProfileResource.swift */,
+				A1551B9429D5A13500D30446 /* UserResource.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -631,9 +646,11 @@
 				A1357CB829F2CA4700C90347 /* TabBarViewController.swift in Sources */,
 				A17EAC5029CE166A00D7CE00 /* TribeModel.swift in Sources */,
 				A1C3EA2429FEA5440010625B /* DisplayNameTableViewController.swift in Sources */,
+				A162B83B2A0D34CF00CC18CC /* EventsResource.swift in Sources */,
 				A181477029E8074200AC3BE2 /* LogoutResource.swift in Sources */,
 				A117B97B29F2FF1700F7E40A /* HTTPError.swift in Sources */,
 				A17267C929F1ACC900F612E7 /* SessionError.swift in Sources */,
+				A162B8372A0D331700CC18CC /* EventsModel.swift in Sources */,
 				A13EB3FA29FAD04F00750023 /* AccountTableViewController.swift in Sources */,
 				A181477329E83FEB00AC3BE2 /* RefreshRequestRetrier.swift in Sources */,
 				A13EB3FF29FAFA3E00750023 /* GenericAPIResponse.swift in Sources */,
@@ -658,6 +675,7 @@
 				A1C3EA2229FEA5110010625B /* DisplayNameContainerViewController.swift in Sources */,
 				A1357CB429F29D0E00C90347 /* makeErrorAlert.swift in Sources */,
 				A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */,
+				A162B8392A0D34B400CC18CC /* EventsModelController.swift in Sources */,
 				A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
