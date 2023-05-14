@@ -13,7 +13,7 @@
         <!--Home-->
         <scene sceneID="qEi-MV-ECo">
             <objects>
-                <navigationController id="RYv-GQ-ONA" sceneMemberID="viewController">
+                <navigationController id="RYv-GQ-ONA" customClass="HomeNavigationController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="aei-Vf-C1c">
                         <imageReference key="image" image="house.fill" catalog="system" renderingMode="hierarchical-single">
                             <hierarchicalColors>
@@ -38,18 +38,48 @@
         <!--Tribe Home-->
         <scene sceneID="Qlv-sA-PoM">
             <objects>
-                <viewController id="Iun-uK-hLM" sceneMemberID="viewController">
+                <viewController id="Iun-uK-hLM" customClass="HomeViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z49-Ck-Pyq">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jK5-s5-f3F">
+                                <rect key="frame" x="0.0" y="103" width="430" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="bBq-h4-3Io"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="pxU-t3-sS7" kind="embed" id="STQ-V4-QCD"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="FL3-M8-yVD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jK5-s5-f3F" firstAttribute="leading" secondItem="FL3-M8-yVD" secondAttribute="leading" id="Go0-CB-cHM"/>
+                            <constraint firstItem="jK5-s5-f3F" firstAttribute="top" secondItem="FL3-M8-yVD" secondAttribute="top" id="dys-a1-Wqe"/>
+                            <constraint firstItem="jK5-s5-f3F" firstAttribute="trailing" secondItem="FL3-M8-yVD" secondAttribute="trailing" id="qa2-gy-PcE"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tribe Home" id="cyH-T7-n76"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IY-gK-aHT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1362" y="-825"/>
+            <point key="canvasLocation" x="1384" y="-825"/>
+        </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="fCA-bI-jFt">
+            <objects>
+                <viewController id="pxU-t3-sS7" customClass="CalendarViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yIo-tT-ZzJ">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="450"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5bK-hI-3Te" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2449" y="-1328"/>
         </scene>
     </scenes>
     <resources>

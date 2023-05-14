@@ -31,7 +31,6 @@ class APIRequest<Resource: APIResource> {
     func fetchData () async throws -> Resource.ModelType? {
         let response = await session.request(resource.url, method: .get).validate().serializingDecodable(Resource.ModelType.self, decoder: decoder).response
         try checkBadRequestForResponse(response)
-        print(response)
         let value = response.value
         return value
     }

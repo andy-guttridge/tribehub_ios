@@ -24,8 +24,13 @@ class TabBarViewController: UITabBarController {
                     accountNavigationController.userModelController = userModelController
                     accountNavigationController.tribeModelController = tribeModelController
                 } else {
-                    print("No accountNaviigationViewController!")
+                    print("No accountNavigationViewController!")
                 }
+        if let homeNavigationController = self.viewControllers?.first as? HomeNavigationController {
+            homeNavigationController.eventsModelController = eventsModelController
+        } else {
+            print("No homeNavigationViewController!")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

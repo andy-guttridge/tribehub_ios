@@ -28,8 +28,6 @@ class EventsModelController {
         do {
             let response = try await eventsRequest.fetchData()
             events = response
-            print(events)
-            print(events?.results.first?.duration)
         }
     }
 }

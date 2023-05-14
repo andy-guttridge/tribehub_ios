@@ -70,7 +70,6 @@ class LoginViewController: UIViewController {
                     do {
                         _ = try await userModelController.doLogin(userName: userName, passWord: password)
                         try await tribeModelController.getTribe()
-                        try await eventsModelController.getEvents()
                         self.delegate?.dismissLoginModal()
                     } catch {
                         print("Login error: ", error)
