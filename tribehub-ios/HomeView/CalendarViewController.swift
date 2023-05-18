@@ -61,30 +61,6 @@ private extension CalendarViewController {
         calendarView?.delegate = self
     }
     
-    /// Checks whether there are any events for a given date
-    func checkEventsForDateComponents(_ dateComponents: DateComponents) -> Bool? {
-        guard let events = eventsModelController?.events?.results else { return nil }
-        
-        // Convert date components produced by the calendar to a date object
-        let calendarDate = calendarView?.calendar.date(from: dateComponents)
-        
-        // Reduce the array of events to a single bool to indicate whether there are any events on the given date
-        let dayHasEvents: Bool = events.reduce(false) { acc, event in
-            guard let eventDate = event.start else {return acc || false}
-            
-            // Convert the event to a date with no time data
-            let calendar = Calendar(identifier: .gregorian)
-            let eventComponents = calendar.dateComponents([.day, .month, .year], from: eventDate)
-            let eventDateWithNoTime = calendar.date(from: eventComponents)
-            
-            // Check whether the event date and the date from the calendar match, and OR with the accumulator
-            // to ensure we return true if we've previously found a match, even if we didn't this time
-            
-            return acc || eventDateWithNoTime == calendarDate
-        }
-        return dayHasEvents
-    }
-    
     /// Refreshes calendar decorations for all days in month currently visible on the calendar
     func refreshCalDecorationsForCurrentMonth() {
         guard let calendarView = calendarView else { return }
@@ -123,7 +99,10 @@ extension CalendarViewController: UICalendarSelectionSingleDateDelegate {
 // MARK: UICalendarViewDelegate extension
 extension CalendarViewController: UICalendarViewDelegate {
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
-        if let dateHasEvents = checkEventsForDateComponents(dateComponents) {
+        guard let eventsModelController = eventsModelController else {return nil}
+        
+        // Check if there are any events for the date the calendar is asking about, and return a decoration if there are
+        if let dateHasEvents = eventsModelController.checkEventsForDateComponents(dateComponents) {
             if dateHasEvents {
                 return UICalendarView.Decoration.default(color: .systemIndigo, size: .large)
             }
