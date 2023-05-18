@@ -88,11 +88,12 @@ private extension CalendarViewController {
 // MARK: UICalendarSelectionSingleDateDelegate extension
 extension CalendarViewController: UICalendarSelectionSingleDateDelegate {
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-        guard let dateComponents = dateComponents else { return }
+        guard let dateComponents = dateComponents, let eventsModelController = eventsModelController else { return }
         
         // Create a date object from the components of the selected date
         let selectedDate = calendarView?.calendar.date(from: dateComponents)
-        print(selectedDate)
+        let eventsForDay = eventsModelController.getEventsForDateComponents(dateComponents)
+        print(eventsForDay)
     }
 }
 

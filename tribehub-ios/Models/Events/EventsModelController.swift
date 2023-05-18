@@ -54,4 +54,25 @@ class EventsModelController {
         }
         return dayHasEvents
     }
+    
+    /// Returns any events for a given date
+    func getEventsForDateComponents(_ calDateComponents: DateComponents) -> [Event]? {
+        guard let events = events?.results else { return nil }
+        let calendar = Calendar(identifier: .gregorian)
+        
+        // Use filter to extract only the events that occur on the date for the calendar components passed in
+        let eventsForDay = events.filter() { event in
+            guard let eventDate = event.start,  let calDate = calendar.date(from: calDateComponents) else {return false}
+            
+            // Convert dates for the given event to a date with no time
+            let eventComponents = calendar.dateComponents([.day, .month, .year], from: eventDate)
+            let eventDateWithNoTime = calendar.date(from: eventComponents)
+            
+            //Convert date passed in from the calendar to a date with no time, then compare with the event date
+            let calDateComponentsWithNoTime = calendar.dateComponents([.day, .month, .year], from: calDate)
+            let calDateWithNoTime = calendar.date(from: calDateComponentsWithNoTime)
+            return eventDateWithNoTime == calDateWithNoTime
+        }
+        return eventsForDay
+    }
 }
