@@ -7,10 +7,16 @@
 
 import UIKit
 
+
+protocol CalendarViewControllerDelegate {
+    func didSelectCalendarDate(_ dateComponents: DateComponents)
+}
+
 class CalendarViewController: UIViewController {
     
     var calendarView: UICalendarView?
     var eventsModelController: EventsModelController?
+    var delegate: CalendarViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,12 +94,8 @@ private extension CalendarViewController {
 // MARK: UICalendarSelectionSingleDateDelegate extension
 extension CalendarViewController: UICalendarSelectionSingleDateDelegate {
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-        guard let dateComponents = dateComponents, let eventsModelController = eventsModelController else { return }
-        
-        // Create a date object from the components of the selected date
-        let selectedDate = calendarView?.calendar.date(from: dateComponents)
-        let eventsForDay = eventsModelController.getEventsForDateComponents(dateComponents)
-        print(eventsForDay)
+        guard let dateComponents = dateComponents else { return }
+        delegate?.didSelectCalendarDate(dateComponents)
     }
 }
 

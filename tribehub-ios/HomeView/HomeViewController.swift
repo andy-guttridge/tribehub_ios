@@ -9,13 +9,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
     weak var eventsModelController: EventsModelController?
-
+    var calendarTableViewController: CalEventTableViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let calendarViewController = self.children[0] as? CalendarViewController {
-            calendarViewController.eventsModelController = eventsModelController
-        }
-
+        initialize()
         // Do any additional setup after loading the view.
     }
     
@@ -30,4 +28,25 @@ class HomeViewController: UIViewController {
     }
     */
 
+}
+
+// MARK: private extensions
+extension HomeViewController {
+    func initialize() {
+        if let calendarViewController = self.children[0] as? CalendarViewController {
+            calendarViewController.eventsModelController = eventsModelController
+            calendarViewController.delegate = self
+        }
+        if let calEventTableViewController = self.children[1] as? CalEventTableViewController {
+            calendarTableViewController = calEventTableViewController
+        }
+    }
+}
+
+// MARK: CalendarViewControllerDelegate extension
+extension HomeViewController: CalendarViewControllerDelegate {
+    func didSelectCalendarDate(_ dateComponents: DateComponents) {
+        guard let eventsModelController = eventsModelController else { return }
+        calendarTableViewController?.eventsDidChange(events: eventsModelController.getEventsForDateComponents(dateComponents))
+    }
 }

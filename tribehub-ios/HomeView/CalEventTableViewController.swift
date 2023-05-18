@@ -7,8 +7,16 @@
 
 import UIKit
 
-class CalEventTableViewController: UITableViewController {
+class CalEventCell: UITableViewCell {
+    @IBOutlet weak var categoryImage: UIImageView!
+    @IBOutlet weak var subjectLabel: UILabel!
+    @IBOutlet weak var startLabel: UILabel!
+    @IBOutlet weak var endLabel: UILabel!
+}
 
+class CalEventTableViewController: UITableViewController {
+    private var events: [Event]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,24 +30,41 @@ class CalEventTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return events?.count ?? 0
+    }
+    
+    func eventsDidChange(events: [Event]?) {
+        self.events = events
+        self.tableView.reloadData()
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CalEventCell", for: indexPath) as! CalEventCell
+        guard let event = events?[indexPath.row] else { return cell }
+        if let category = EventCategories(rawValue: event.category ?? "NON") {
+            cell.categoryImage.image = category.image.withRenderingMode(.alwaysTemplate)
+            cell.categoryImage.tintColor = .systemIndigo
+        }
+        if let subject = event.subject {
+            cell.subjectLabel.text = subject
+        }
+        if let startDate = event.start, let duration = event.duration {
+            let endDate = Date(timeInterval: duration, since: startDate)
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_GB")
+            dateFormatter.dateStyle = .none
+            dateFormatter.timeStyle = .short
+            cell.startLabel.text = dateFormatter.string(from: startDate)
+            cell.endLabel.text = dateFormatter.string(from: endDate)
+        }
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
