@@ -22,7 +22,6 @@ struct Event: Codable {
         // Then convert from array of strings to array of ints, and calculate the duration in milliseconds
         let hoursMinsSecs = hoursMinsSecsStrs.map { Int($0) ?? 0 }
         let durationInSecs = (hoursMinsSecs[1] * 60) + (hoursMinsSecs[0] * 60 * 60)
-        print ("Duration of \(self.subject!): ", TimeInterval(durationInSecs))
         return TimeInterval(durationInSecs)
     }
     var recurrenceType: String?

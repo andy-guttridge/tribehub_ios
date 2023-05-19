@@ -57,6 +57,8 @@
 		A182EDA72A0E8F25005C4DEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182EDA62A0E8F25005C4DEC /* HomeViewController.swift */; };
 		A1A249C629F582770083295E /* makeRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A249C529F582770083295E /* makeRounded.swift */; };
 		A1BD28162A041F3300321219 /* resizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD28152A041F3300321219 /* resizeImage.swift */; };
+		A1C227E02A167E840022588B /* EventCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C227DE2A167E840022588B /* EventCategories.swift */; };
+		A1C227E12A167E840022588B /* CalEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C227DF2A167E840022588B /* CalEventTableViewController.swift */; };
 		A1C3EA2229FEA5110010625B /* DisplayNameContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2129FEA5110010625B /* DisplayNameContainerViewController.swift */; };
 		A1C3EA2429FEA5440010625B /* DisplayNameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2329FEA5440010625B /* DisplayNameTableViewController.swift */; };
 		A1C3EA2629FEB13A0010625B /* UpdateProfileResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2529FEB13A0010625B /* UpdateProfileResource.swift */; };
@@ -144,6 +146,8 @@
 		A182EDA62A0E8F25005C4DEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A1A249C529F582770083295E /* makeRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeRounded.swift; sourceTree = "<group>"; };
 		A1BD28152A041F3300321219 /* resizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resizeImage.swift; sourceTree = "<group>"; };
+		A1C227DE2A167E840022588B /* EventCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategories.swift; sourceTree = "<group>"; };
+		A1C227DF2A167E840022588B /* CalEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalEventTableViewController.swift; sourceTree = "<group>"; };
 		A1C3EA2129FEA5110010625B /* DisplayNameContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayNameContainerViewController.swift; path = "tribehub-ios/AccountView/DisplayName/DisplayNameContainerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		A1C3EA2329FEA5440010625B /* DisplayNameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNameTableViewController.swift; sourceTree = "<group>"; };
 		A1C3EA2529FEB13A0010625B /* UpdateProfileResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileResource.swift; sourceTree = "<group>"; };
@@ -382,8 +386,10 @@
 		A182EDA12A0E7106005C4DEC /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				A182EDA22A0E7129005C4DEC /* HomeNavigationController.swift */,
 				A182EDA42A0E727B005C4DEC /* CalendarViewController.swift */,
+				A1C227DF2A167E840022588B /* CalEventTableViewController.swift */,
+				A1C227DE2A167E840022588B /* EventCategories.swift */,
+				A182EDA22A0E7129005C4DEC /* HomeNavigationController.swift */,
 				A182EDA62A0E8F25005C4DEC /* HomeViewController.swift */,
 			);
 			path = HomeView;
@@ -671,6 +677,7 @@
 				A182EDA72A0E8F25005C4DEC /* HomeViewController.swift in Sources */,
 				A1357CB829F2CA4700C90347 /* TabBarViewController.swift in Sources */,
 				A17EAC5029CE166A00D7CE00 /* TribeModel.swift in Sources */,
+				A1C227E02A167E840022588B /* EventCategories.swift in Sources */,
 				A1C3EA2429FEA5440010625B /* DisplayNameTableViewController.swift in Sources */,
 				A182EDA32A0E7129005C4DEC /* HomeNavigationController.swift in Sources */,
 				A162B83B2A0D34CF00CC18CC /* EventsResource.swift in Sources */,
@@ -683,6 +690,7 @@
 				A13EB3FF29FAFA3E00750023 /* GenericAPIResponse.swift in Sources */,
 				A17BA3D629FC260000390E79 /* AddTribeMemberTableViewController.swift in Sources */,
 				A13EB40129FAFB1400750023 /* DeleteUserResource.swift in Sources */,
+				A1C227E12A167E840022588B /* CalEventTableViewController.swift in Sources */,
 				A17BA3DA29FC347C00390E79 /* AddNewTribeMemberResource.swift in Sources */,
 				A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */,
 				A13EB3FC29FAEB3800750023 /* ManageTribeTableViewController.swift in Sources */,

@@ -10,8 +10,7 @@ import UIKit
 class CalEventCell: UITableViewCell {
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var subjectLabel: UILabel!
-    @IBOutlet weak var startLabel: UILabel!
-    @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
 }
 
 class CalEventTableViewController: UITableViewController {
@@ -42,7 +41,6 @@ class CalEventTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalEventCell", for: indexPath) as! CalEventCell
         guard let event = events?[indexPath.row] else { return cell }
@@ -59,8 +57,9 @@ class CalEventTableViewController: UITableViewController {
             dateFormatter.locale = Locale(identifier: "en_GB")
             dateFormatter.dateStyle = .none
             dateFormatter.timeStyle = .short
-            cell.startLabel.text = dateFormatter.string(from: startDate)
-            cell.endLabel.text = dateFormatter.string(from: endDate)
+            let startTime = dateFormatter.string(from: startDate)
+            let endTime = dateFormatter.string(from: endDate)
+            cell.timeLabel.text = "\(startTime) - \(endTime)"
         }
         return cell
     }
