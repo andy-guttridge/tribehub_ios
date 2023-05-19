@@ -59,5 +59,6 @@ extension DisplayNameContainerViewController: DisplayNameTableViewControllerDele
     
     func dismissDisplayNameTableViewController() {
         self.navigationController?.popViewController(animated: true)
+        self.title = "Display Name"
     }
 }

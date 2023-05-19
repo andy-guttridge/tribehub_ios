@@ -15,6 +15,7 @@ class AddTribeMemberContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(addNewTribeMember))
+        self.title = "Add Tribe Member"
     }
     
     @objc func addNewTribeMember() {
