@@ -65,6 +65,8 @@
 		A1C3EA2B29FECDE80010625B /* PasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2A29FECDE80010625B /* PasswordTableViewController.swift */; };
 		A1C3EA2D29FECE050010625B /* PasswordContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2C29FECE050010625B /* PasswordContainerViewController.swift */; };
 		A1C3EA2F29FED7550010625B /* UpdatePasswordResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2E29FED7550010625B /* UpdatePasswordResource.swift */; };
+		A1E878E42A1777D80091E38F /* CalEventDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E878E32A1777D70091E38F /* CalEventDetailsTableViewController.swift */; };
+		A1E878E82A17813F0091E38F /* CalEventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E878E72A17813F0091E38F /* CalEventDetailsViewController.swift */; };
 		A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */; };
 		ABED7267871E483C36C0B557 /* Pods_tribehub_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C884B005C668714920E99F /* Pods_tribehub_ios.framework */; };
 /* End PBXBuildFile section */
@@ -154,6 +156,8 @@
 		A1C3EA2A29FECDE80010625B /* PasswordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewController.swift; sourceTree = "<group>"; };
 		A1C3EA2C29FECE050010625B /* PasswordContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordContainerViewController.swift; sourceTree = "<group>"; };
 		A1C3EA2E29FED7550010625B /* UpdatePasswordResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordResource.swift; sourceTree = "<group>"; };
+		A1E878E32A1777D70091E38F /* CalEventDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalEventDetailsTableViewController.swift; sourceTree = "<group>"; };
+		A1E878E72A17813F0091E38F /* CalEventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalEventDetailsViewController.swift; sourceTree = "<group>"; };
 		A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequestAdapter.swift; sourceTree = "<group>"; };
 		CA589D1A0259C47E4697951E /* Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-tribehub-ios-tribehub-iosUITests/Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F7FCA9520419D7D5194AD928 /* Pods_tribehub_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tribehub_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -387,6 +391,8 @@
 			isa = PBXGroup;
 			children = (
 				A182EDA42A0E727B005C4DEC /* CalendarViewController.swift */,
+				A1E878E32A1777D70091E38F /* CalEventDetailsTableViewController.swift */,
+				A1E878E72A17813F0091E38F /* CalEventDetailsViewController.swift */,
 				A1C227DF2A167E840022588B /* CalEventTableViewController.swift */,
 				A1C227DE2A167E840022588B /* EventCategories.swift */,
 				A182EDA22A0E7129005C4DEC /* HomeNavigationController.swift */,
@@ -669,6 +675,7 @@
 			files = (
 				A1C3EA2629FEB13A0010625B /* UpdateProfileResource.swift in Sources */,
 				A1357CB629F2A4D700C90347 /* TribeModelController.swift in Sources */,
+				A1E878E42A1777D80091E38F /* CalEventDetailsTableViewController.swift in Sources */,
 				A17EAC1E29CDC96600D7CE00 /* LoginViewController.swift in Sources */,
 				A13EB3F529FABAE500750023 /* AccountViewController.swift in Sources */,
 				A181477529E84A5400AC3BE2 /* AccessTokenModel.swift in Sources */,
@@ -695,6 +702,7 @@
 				A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */,
 				A13EB3FC29FAEB3800750023 /* ManageTribeTableViewController.swift in Sources */,
 				A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */,
+				A1E878E82A17813F0091E38F /* CalEventDetailsViewController.swift in Sources */,
 				A1C3EA2D29FECE050010625B /* PasswordContainerViewController.swift in Sources */,
 				A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */,
 				A17BA3D829FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift in Sources */,
