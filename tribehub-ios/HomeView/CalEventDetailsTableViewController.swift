@@ -15,9 +15,11 @@ class EventTitleCell: UITableViewCell {
 class EventDateCell: UITableViewCell {
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
+    @IBOutlet weak var avatarContainerView: UIView!
 }
 
 class CalEventDetailsTableViewController: UITableViewController {
+    var tribeModelController: TribeModelController?
     var event: Event?
     
     override func viewDidLoad() {
@@ -77,6 +79,13 @@ class CalEventDetailsTableViewController: UITableViewController {
                 cell.endDateLabel.text = endString
                 cell.separatorInset = UIEdgeInsets.zero
                 cell.layoutMargins = UIEdgeInsets.zero
+                let testImage = tribeModelController?.getProfileImageForTribePk(113)
+                addAvatarImageToContainerView(cell.avatarContainerView, withImage: testImage ?? UIImage())
+                addAvatarImageToContainerView(cell.avatarContainerView, withImage: UIImage(named: "dummy_profile")!)
+                addAvatarImageToContainerView(cell.avatarContainerView, withImage: testImage ?? UIImage())
+                addAvatarImageToContainerView(cell.avatarContainerView, withImage: UIImage(named: "dummy_profile")!)
+                addAvatarImageToContainerView(cell.avatarContainerView, withImage: testImage ?? UIImage())
+                addAvatarImageToContainerView(cell.avatarContainerView, withImage: UIImage(named: "dummy_profile")!)
             }
             return cell
         }
@@ -161,5 +170,25 @@ private extension CalEventDetailsTableViewController {
     func initialize() {
         tableView.estimatedRowHeight = 68
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+    }
+    
+    func addAvatarImageToContainerView(_ containerView: UIView?, withImage image: UIImage) {
+        guard let containerView = containerView else { return }
+        let numberOfAvatars = containerView.subviews.count
+        let newZPosition = (containerView.subviews.last?.layer.zPosition ?? 0) + 1
+        let newAvatarImageView = UIImageView()
+        newAvatarImageView.frame.size = CGSize(width: 50, height: 50)
+        newAvatarImageView.makeRounded()
+        newAvatarImageView.image = image
+        newAvatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        newAvatarImageView.contentMode = .scaleAspectFill
+        newAvatarImageView.layer.zPosition = newZPosition
+        containerView.addSubview(newAvatarImageView)
+        NSLayoutConstraint.activate([
+            newAvatarImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: CGFloat(18 * numberOfAvatars + 3)),
+            newAvatarImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 3),
+            newAvatarImageView.heightAnchor.constraint(equalToConstant: 50),
+            newAvatarImageView.widthAnchor.constraint(equalToConstant: 50)
+        ])
     }
 }

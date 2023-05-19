@@ -97,4 +97,17 @@ class TribeModelController {
         }
         self.tribe?.tribeMembers = newTribeMembers
     }
+    
+    /// Returns the profile image for the tribe member with the given primary key, or nil if not found
+    func getProfileImageForTribePk(_ pk: Int) -> UIImage? {
+        guard let tribe = tribe else { print("Did not find tribe!"); return nil }
+        let image: UIImage? = tribe.tribeMembers.reduce(nil) {acc, tribeMember in
+            if tribeMember.pk == pk {
+                return tribeMember.profileImage
+            } else {
+                return acc
+            }
+        }
+        return image
+    }
 }

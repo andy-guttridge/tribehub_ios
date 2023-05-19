@@ -15,6 +15,7 @@ class CalEventCell: UITableViewCell {
 
 class CalEventTableViewController: UITableViewController {
     private var events: [Event]?
+    var tribeModelController: TribeModelController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +109,7 @@ class CalEventTableViewController: UITableViewController {
         
         // Find the row of the selected cell, and pass the corresponding event to the child viewController
         if let calEventDetailsViewController = segue.destination as? CalEventDetailsViewController {
+            calEventDetailsViewController.tribeModelController = tribeModelController
             if let selectedCell = sender as? CalEventCell{
                 let cellRow = tableView.indexPath(for: selectedCell)?.row ?? 0
                 calEventDetailsViewController.event = events[cellRow]

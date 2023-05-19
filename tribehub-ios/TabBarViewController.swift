@@ -28,6 +28,7 @@ class TabBarViewController: UITabBarController {
                 }
         if let homeNavigationController = self.viewControllers?.first as? HomeNavigationController {
             homeNavigationController.eventsModelController = eventsModelController
+            homeNavigationController.tribeModelController = tribeModelController
         } else {
             print("No homeNavigationViewController!")
         }

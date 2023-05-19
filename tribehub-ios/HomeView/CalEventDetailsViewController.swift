@@ -9,6 +9,7 @@ import UIKit
 
 class CalEventDetailsViewController: UIViewController {
     
+    var tribeModelController: TribeModelController?
     var event: Event?
 
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class CalEventDetailsViewController: UIViewController {
         // Pass the event to the child tableViewController
         if let calEventTableViewController = segue.destination as? CalEventDetailsTableViewController {
             calEventTableViewController.event = event
+            calEventTableViewController.tribeModelController = tribeModelController
         }
     }
 }

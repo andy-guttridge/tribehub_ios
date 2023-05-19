@@ -44,16 +44,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jK5-s5-f3F">
-                                <rect key="frame" x="0.0" y="103" width="430" height="436"/>
+                                <rect key="frame" x="0.0" y="103" width="430" height="442"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="436" id="O1z-QY-IT7"/>
+                                    <constraint firstAttribute="height" constant="442" id="KbU-8y-lfl"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="pxU-t3-sS7" kind="embed" id="STQ-V4-QCD"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1eX-Vb-faU">
-                                <rect key="frame" x="0.0" y="539" width="430" height="359"/>
+                                <rect key="frame" x="0.0" y="545" width="430" height="353"/>
                                 <connections>
                                     <segue destination="thp-UA-X4c" kind="embed" id="m2g-9b-YkG"/>
                                 </connections>
@@ -62,13 +62,13 @@
                         <viewLayoutGuide key="safeArea" id="FL3-M8-yVD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1eX-Vb-faU" firstAttribute="top" secondItem="jK5-s5-f3F" secondAttribute="bottom" id="14F-Kk-w7P"/>
-                            <constraint firstItem="jK5-s5-f3F" firstAttribute="trailing" secondItem="FL3-M8-yVD" secondAttribute="trailing" id="21c-kA-x0y"/>
-                            <constraint firstItem="1eX-Vb-faU" firstAttribute="trailing" secondItem="FL3-M8-yVD" secondAttribute="trailing" id="3jz-sl-siu"/>
-                            <constraint firstItem="1eX-Vb-faU" firstAttribute="bottom" secondItem="FL3-M8-yVD" secondAttribute="bottom" id="Xzh-Ph-mBr"/>
-                            <constraint firstItem="1eX-Vb-faU" firstAttribute="leading" secondItem="FL3-M8-yVD" secondAttribute="leading" id="hkL-RG-8hb"/>
-                            <constraint firstItem="jK5-s5-f3F" firstAttribute="leading" secondItem="FL3-M8-yVD" secondAttribute="leading" id="m3g-G2-wVJ"/>
-                            <constraint firstItem="jK5-s5-f3F" firstAttribute="top" secondItem="FL3-M8-yVD" secondAttribute="top" id="m8n-T6-kjF"/>
+                            <constraint firstItem="1eX-Vb-faU" firstAttribute="top" secondItem="jK5-s5-f3F" secondAttribute="bottom" id="CMa-FA-jHc"/>
+                            <constraint firstItem="1eX-Vb-faU" firstAttribute="bottom" secondItem="FL3-M8-yVD" secondAttribute="bottom" id="IY5-M8-wfr"/>
+                            <constraint firstItem="jK5-s5-f3F" firstAttribute="top" secondItem="FL3-M8-yVD" secondAttribute="top" id="KIz-uv-yZF"/>
+                            <constraint firstItem="jK5-s5-f3F" firstAttribute="leading" secondItem="FL3-M8-yVD" secondAttribute="leading" id="OOh-uB-glX"/>
+                            <constraint firstItem="jK5-s5-f3F" firstAttribute="trailing" secondItem="FL3-M8-yVD" secondAttribute="trailing" id="Zuy-NE-e26"/>
+                            <constraint firstItem="1eX-Vb-faU" firstAttribute="trailing" secondItem="FL3-M8-yVD" secondAttribute="trailing" id="e0O-HY-83t"/>
+                            <constraint firstItem="1eX-Vb-faU" firstAttribute="leading" secondItem="FL3-M8-yVD" secondAttribute="leading" id="ghH-79-NWY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tribe Home" id="cyH-T7-n76"/>
@@ -82,7 +82,7 @@
             <objects>
                 <tableViewController id="thp-UA-X4c" customClass="CalEventTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="kNO-Xq-hbh">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="359"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="353"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -153,11 +153,11 @@
             <objects>
                 <viewController id="DbB-NY-p2R" customClass="CalEventDetailsViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cpr-LV-GHN">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="359"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="353"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebu-TM-Om6">
-                                <rect key="frame" x="0.0" y="0.0" width="430" height="359"/>
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="353"/>
                                 <connections>
                                     <segue destination="Iuh-s1-cgn" kind="embed" id="PMV-rf-DLk"/>
                                 </connections>
@@ -182,7 +182,7 @@
             <objects>
                 <tableViewController title="Event Details" id="Iuh-s1-cgn" customClass="CalEventDetailsTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" estimatedRowHeight="68" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="RZC-ZE-gXq">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="359"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="333"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -275,19 +275,28 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iML-HS-1aQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="298.33333333333331" height="68"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="MEh-cf-mh5" firstAttribute="top" secondItem="0aX-H9-okm" secondAttribute="bottom" constant="3" id="1Jw-2F-OtX"/>
                                         <constraint firstItem="0aX-H9-okm" firstAttribute="top" secondItem="HBR-6c-pSI" secondAttribute="top" constant="3" id="4HG-NY-PCI"/>
                                         <constraint firstItem="HwV-Fn-Wka" firstAttribute="top" secondItem="HBR-6c-pSI" secondAttribute="top" constant="3" id="Dpk-0g-iMA"/>
+                                        <constraint firstItem="iML-HS-1aQ" firstAttribute="leading" secondItem="HBR-6c-pSI" secondAttribute="leading" id="EuC-Ig-E1w"/>
                                         <constraint firstItem="orq-nq-j9U" firstAttribute="leading" secondItem="MEh-cf-mh5" secondAttribute="trailing" constant="3" id="S97-0h-aYc"/>
                                         <constraint firstItem="orq-nq-j9U" firstAttribute="top" secondItem="HwV-Fn-Wka" secondAttribute="bottom" constant="3" id="Tem-b4-e6M"/>
+                                        <constraint firstItem="0aX-H9-okm" firstAttribute="leading" secondItem="iML-HS-1aQ" secondAttribute="trailing" constant="3" id="X4E-0Y-R7E"/>
                                         <constraint firstAttribute="trailing" secondItem="orq-nq-j9U" secondAttribute="trailing" constant="3" id="bKr-p9-Zy5"/>
                                         <constraint firstItem="HwV-Fn-Wka" firstAttribute="leading" secondItem="0aX-H9-okm" secondAttribute="trailing" constant="3" id="l3L-VR-adA"/>
                                         <constraint firstAttribute="trailing" secondItem="HwV-Fn-Wka" secondAttribute="trailing" constant="3" id="n1z-P6-gIf"/>
+                                        <constraint firstItem="iML-HS-1aQ" firstAttribute="top" secondItem="HBR-6c-pSI" secondAttribute="top" id="o1W-x4-n6v"/>
+                                        <constraint firstAttribute="bottom" secondItem="iML-HS-1aQ" secondAttribute="bottom" id="tkV-1U-qVn"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="avatarContainerView" destination="iML-HS-1aQ" id="dWU-cb-OnV"/>
                                     <outlet property="endDateLabel" destination="orq-nq-j9U" id="ow1-hK-BRM"/>
                                     <outlet property="startDateLabel" destination="HwV-Fn-Wka" id="LlF-wU-wy8"/>
                                 </connections>
@@ -309,7 +318,7 @@
             <objects>
                 <viewController id="pxU-t3-sS7" customClass="CalendarViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yIo-tT-ZzJ">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="436"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="442"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="rad-gp-N9d"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

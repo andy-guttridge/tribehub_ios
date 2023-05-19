@@ -8,6 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    weak var tribeModelController: TribeModelController?
     weak var eventsModelController: EventsModelController?
     var calendarTableViewController: CalEventTableViewController?
     
@@ -39,6 +40,7 @@ extension HomeViewController {
         }
         if let calEventTableViewController = self.children[1] as? CalEventTableViewController {
             calendarTableViewController = calEventTableViewController
+            calendarTableViewController?.tribeModelController = tribeModelController
         }
     }
 }
