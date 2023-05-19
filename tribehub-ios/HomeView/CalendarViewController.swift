@@ -8,6 +8,7 @@
 import UIKit
 
 
+/// Defines delegate method to handle the user selecting a different date on the calendar
 protocol CalendarViewControllerDelegate {
     func didSelectCalendarDate(_ dateComponents: DateComponents)
 }
@@ -45,6 +46,8 @@ private extension CalendarViewController {
         
         // Create and configure a UICalendarView
         calendarView = UICalendarView()
+        calendarView!.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        calendarView!.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         let gregorianCalendar = Calendar(identifier: .gregorian)
         calendarView!.calendar = gregorianCalendar
         calendarView!.locale = Locale(identifier: "en")
@@ -96,6 +99,7 @@ extension CalendarViewController: UICalendarSelectionSingleDateDelegate {
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         guard let dateComponents = dateComponents else { return }
         delegate?.didSelectCalendarDate(dateComponents)
+        print(calendarView!.frame.size)
     }
 }
 

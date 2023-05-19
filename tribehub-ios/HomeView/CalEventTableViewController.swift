@@ -18,12 +18,6 @@ class CalEventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -36,6 +30,7 @@ class CalEventTableViewController: UITableViewController {
         return events?.count ?? 0
     }
     
+    /// Responds to a change in currently selected events by reloading the tableView data
     func eventsDidChange(events: [Event]?) {
         self.events = events
         self.tableView.reloadData()
@@ -44,13 +39,21 @@ class CalEventTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalEventCell", for: indexPath) as! CalEventCell
         guard let event = events?[indexPath.row] else { return cell }
+        
+        // Get the appropriate icon for the event category
         if let category = EventCategories(rawValue: event.category ?? "NON") {
             cell.categoryImage.image = category.image.withRenderingMode(.alwaysTemplate)
             cell.categoryImage.tintColor = .systemIndigo
         }
+        
+        // Set the event subject text
         if let subject = event.subject {
             cell.subjectLabel.text = subject
         }
+        
+        // Calculate end date from start date and duration, use date formatter to
+        // extract only a time string for the start and end dates, and set the text
+        // on the timeLabel.
         if let startDate = event.start, let duration = event.duration {
             let endDate = Date(timeInterval: duration, since: startDate)
             let dateFormatter = DateFormatter()
