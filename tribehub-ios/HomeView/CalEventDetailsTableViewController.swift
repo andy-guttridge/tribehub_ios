@@ -93,17 +93,29 @@ class CalEventDetailsTableViewController: UITableViewController {
                 }
                 
                 // Iterate through the users invited to the event. If they've accepted the invitation,
-                // add their standard avatar to the cell, if not then add a grey scale version
-                for user in event.to ?? [] {
-                    if let eventInvitedImage = tribeModelController?.getProfileImageForTribePk(user.pk) {
-                        if event.accepted?.contains(where: { acceptedUser in
-                            return acceptedUser.pk == user.pk
-                        }) == true {
-                            addAvatarImageToContainerView(cell.avatarContainerView, withImage: eventInvitedImage)
-                        } else {
-                            let greyEventInvitedImage = eventInvitedImage.greyImage
-                            addAvatarImageToContainerView(cell.avatarContainerView, withImage: greyEventInvitedImage)
+                // add their standard avatar to the cell, if not then add a grey scale version. Exit the loop
+                // early if there are more than 4 users invited.
+                if let toArray = event.to {
+                    for (index, user) in toArray.enumerated() {
+                        if index > 3 { break }
+                        if let eventInvitedImage = tribeModelController?.getProfileImageForTribePk(user.pk) {
+                            if event.accepted?.contains(where: { acceptedUser in
+                                return acceptedUser.pk == user.pk
+                            }) == true {
+                                addAvatarImageToContainerView(cell.avatarContainerView, withImage: eventInvitedImage)
+                            } else {
+                                let greyEventInvitedImage = eventInvitedImage.greyImage
+                                addAvatarImageToContainerView(cell.avatarContainerView, withImage: greyEventInvitedImage)
+                            }
                         }
+                    }
+                    
+                    // If more than 4 users are invited, create an avatar image with a '+n' string to
+                    // show how many additional users are invited that can't fit onto the cell
+                    if toArray.count > 4 {
+                        let tribeExcess = toArray.count - 4
+                        let textImage = imageFromString("+\(String(tribeExcess))", width: 500, height: 500)!
+                        addAvatarImageToContainerView(cell.avatarContainerView, withImage: textImage)
                     }
                 }
             }

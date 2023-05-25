@@ -37,6 +37,7 @@
 		A17BA3D829FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BA3D729FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift */; };
 		A17BA3DA29FC347C00390E79 /* AddNewTribeMemberResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BA3D929FC347C00390E79 /* AddNewTribeMemberResource.swift */; };
 		A17E99E92A1F6EDE00734C2B /* greyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E99E82A1F6EDD00734C2B /* greyImage.swift */; };
+		A17E99EB2A1F9F9600734C2B /* imageFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E99EA2A1F9F9600734C2B /* imageFromString.swift */; };
 		A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */; };
 		A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */; };
 		A17EAC1E29CDC96600D7CE00 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1D29CDC96600D7CE00 /* LoginViewController.swift */; };
@@ -125,6 +126,7 @@
 		A17BA3D729FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTribeMemberContainerViewController.swift; sourceTree = "<group>"; };
 		A17BA3D929FC347C00390E79 /* AddNewTribeMemberResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTribeMemberResource.swift; sourceTree = "<group>"; };
 		A17E99E82A1F6EDD00734C2B /* greyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = greyImage.swift; sourceTree = "<group>"; };
+		A17E99EA2A1F9F9600734C2B /* imageFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageFromString.swift; sourceTree = "<group>"; };
 		A17EAC1629CDC96600D7CE00 /* tribehub-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tribehub-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */,
+				A17E99EA2A1F9F9600734C2B /* imageFromString.swift */,
 				A1A249C529F582770083295E /* makeRounded.swift */,
 				A17E99E82A1F6EDD00734C2B /* greyImage.swift */,
 				A1BD28152A041F3300321219 /* resizeImage.swift */,
@@ -711,6 +714,7 @@
 				A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */,
 				A17BA3D829FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift in Sources */,
 				A1A249C629F582770083295E /* makeRounded.swift in Sources */,
+				A17E99EB2A1F9F9600734C2B /* imageFromString.swift in Sources */,
 				A1C3EA2B29FECDE80010625B /* PasswordTableViewController.swift in Sources */,
 				A181476E29E806AC00AC3BE2 /* LoginResource.swift in Sources */,
 				A1551B9529D5A13500D30446 /* UserResource.swift in Sources */,
