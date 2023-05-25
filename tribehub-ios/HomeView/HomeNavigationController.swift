@@ -8,13 +8,15 @@
 import UIKit
 
 class HomeNavigationController: UINavigationController {
-    var eventsModelController: EventsModelController?
-    var tribeModelController: TribeModelController?
+    weak var eventsModelController: EventsModelController?
+    weak var userModelController: UserModelController?
+    weak var tribeModelController: TribeModelController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         if let homeViewController = self.viewControllers[0] as? HomeViewController {
             homeViewController.eventsModelController = eventsModelController
+            homeViewController.userModelController = userModelController
             homeViewController.tribeModelController = tribeModelController
         }
         // Do any additional setup after loading the view.

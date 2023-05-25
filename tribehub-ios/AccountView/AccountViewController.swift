@@ -97,11 +97,11 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch HTTPError.otherError(let statusCode) {
                     self.dismiss(animated: true, completion: nil)
-                    let errorAlert = makeErrorAlert(title: "Error uploading profile image", message: "Something went uploading your profile image. \n\nThe status code reported by the server was \(statusCode)")
+                    let errorAlert = makeErrorAlert(title: "Error uploading profile image", message: "Something went wrong uploading your profile image. \n\nThe status code reported by the server was \(statusCode)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch {
                     self.dismiss(animated: true, completion: nil)
-                    let errorAlert = makeErrorAlert(title: "Error uploading profile image", message: "Something went uploading your profile image. Please check you are online.")
+                    let errorAlert = makeErrorAlert(title: "Error uploading profile image", message: "Something went wrong uploading your profile image. Please check you are online.")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 }
             }

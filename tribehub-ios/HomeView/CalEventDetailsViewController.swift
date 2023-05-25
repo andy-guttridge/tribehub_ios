@@ -9,7 +9,12 @@ import UIKit
 
 class CalEventDetailsViewController: UIViewController {
     
-    var tribeModelController: TribeModelController?
+    weak var userModelController: UserModelController?
+    weak var tribeModelController: TribeModelController?
+    weak var eventsModelController: EventsModelController?
+    
+    weak var calEventDetailsTableViewControllerDelegate: HomeViewController?
+    
     var event: Event?
 
     override func viewDidLoad() {
@@ -23,7 +28,10 @@ class CalEventDetailsViewController: UIViewController {
         // Pass the event to the child tableViewController
         if let calEventTableViewController = segue.destination as? CalEventDetailsTableViewController {
             calEventTableViewController.event = event
+            calEventTableViewController.userModelController = userModelController
             calEventTableViewController.tribeModelController = tribeModelController
+            calEventTableViewController.eventsModelController = eventsModelController
+            calEventTableViewController.delegate = calEventDetailsTableViewControllerDelegate
         }
     }
 }

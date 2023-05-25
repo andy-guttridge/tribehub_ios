@@ -38,6 +38,7 @@
 		A17BA3DA29FC347C00390E79 /* AddNewTribeMemberResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BA3D929FC347C00390E79 /* AddNewTribeMemberResource.swift */; };
 		A17E99E92A1F6EDE00734C2B /* greyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E99E82A1F6EDD00734C2B /* greyImage.swift */; };
 		A17E99EB2A1F9F9600734C2B /* imageFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E99EA2A1F9F9600734C2B /* imageFromString.swift */; };
+		A17E99ED2A1FC16E00734C2B /* EventResponseResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E99EC2A1FC16E00734C2B /* EventResponseResource.swift */; };
 		A17EAC1A29CDC96600D7CE00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */; };
 		A17EAC1C29CDC96600D7CE00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */; };
 		A17EAC1E29CDC96600D7CE00 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC1D29CDC96600D7CE00 /* LoginViewController.swift */; };
@@ -127,6 +128,7 @@
 		A17BA3D929FC347C00390E79 /* AddNewTribeMemberResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTribeMemberResource.swift; sourceTree = "<group>"; };
 		A17E99E82A1F6EDD00734C2B /* greyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = greyImage.swift; sourceTree = "<group>"; };
 		A17E99EA2A1F9F9600734C2B /* imageFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageFromString.swift; sourceTree = "<group>"; };
+		A17E99EC2A1FC16E00734C2B /* EventResponseResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventResponseResource.swift; sourceTree = "<group>"; };
 		A17EAC1629CDC96600D7CE00 /* tribehub-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tribehub-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17EAC1929CDC96600D7CE00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A17EAC1B29CDC96600D7CE00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				A1551B9229D59F2B00D30446 /* APIResource.swift */,
 				A13EB40029FAFB1400750023 /* DeleteUserResource.swift */,
 				A162B83A2A0D34CF00CC18CC /* EventsResource.swift */,
+				A17E99EC2A1FC16E00734C2B /* EventResponseResource.swift */,
 				A181476D29E806AC00AC3BE2 /* LoginResource.swift */,
 				A181476F29E8074200AC3BE2 /* LogoutResource.swift */,
 				A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */,
@@ -680,6 +683,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1C3EA2629FEB13A0010625B /* UpdateProfileResource.swift in Sources */,
+				A17E99ED2A1FC16E00734C2B /* EventResponseResource.swift in Sources */,
 				A1357CB629F2A4D700C90347 /* TribeModelController.swift in Sources */,
 				A1E878E42A1777D80091E38F /* CalEventDetailsTableViewController.swift in Sources */,
 				A17EAC1E29CDC96600D7CE00 /* LoginViewController.swift in Sources */,

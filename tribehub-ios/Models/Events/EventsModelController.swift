@@ -31,6 +31,18 @@ class EventsModelController {
         }
     }
     
+    /// Handles user's response to an event invitation
+    func didRespondToEventForPk(_ pk: Int, isGoing: Bool) async throws {
+        guard let session = self.session else {
+            throw SessionError.noSession
+        }
+        let eventResponseRequest = APIRequest(resource: EventResponseResource(), session: session)
+        do {
+            let payload = ["event_response": isGoing ? "accept" : "decline"]
+            _ = try await eventResponseRequest.postData(itemForPrimaryKey: pk, payload: payload)
+        }
+    }
+ 
     /// Checks whether there are any events for a given date
     func checkEventsForDateComponents(_ dateComponents: DateComponents) -> Bool? {
         guard let events = events?.results else { return nil }

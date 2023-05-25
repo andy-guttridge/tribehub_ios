@@ -224,13 +224,33 @@
                                     <outlet property="titleLabel" destination="FnT-g3-t5G" id="7t5-wA-7gz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nw1-Jw-FUC">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventResponseCell" id="nw1-Jw-FUC" customClass="EventResponseCell" customModule="tribehub_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="118" width="430" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nw1-Jw-FUC" id="Yok-kd-Mtp">
                                     <rect key="frame" x="0.0" y="0.0" width="430" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="J1f-4l-mkc">
+                                            <rect key="frame" x="135.66666666666666" y="18.666666666666671" width="158.99999999999997" height="32"/>
+                                            <segments>
+                                                <segment title="Not going"/>
+                                                <segment title="Going"/>
+                                            </segments>
+                                            <color key="tintColor" systemColor="systemIndigoColor"/>
+                                            <connections>
+                                                <action selector="responseValueChanged:" destination="Iuh-s1-cgn" eventType="valueChanged" id="3hY-hm-f1E"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="J1f-4l-mkc" firstAttribute="centerX" secondItem="Yok-kd-Mtp" secondAttribute="centerX" id="TuM-5U-VcQ"/>
+                                        <constraint firstItem="J1f-4l-mkc" firstAttribute="centerY" secondItem="Yok-kd-Mtp" secondAttribute="centerY" id="vHP-HP-69E"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="responseSegmentedControl" destination="J1f-4l-mkc" id="Ik1-u4-psh"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventDateCell" id="CXS-E1-cx0" customClass="EventDateCell" customModule="tribehub_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="186" width="430" height="68"/>
@@ -339,6 +359,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>

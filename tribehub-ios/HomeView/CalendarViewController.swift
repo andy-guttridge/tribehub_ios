@@ -40,7 +40,7 @@ class CalendarViewController: UIViewController {
 
 // MARK: private extensions
 private extension CalendarViewController {
-
+    
     /// Creates and sets up a UICalendarView and adds it as a sub-view
     func initialize() {
         
@@ -69,7 +69,10 @@ private extension CalendarViewController {
         calendarView?.selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
         calendarView?.delegate = self
     }
-    
+}
+
+// MARK: Public extension
+extension CalendarViewController {
     /// Refreshes calendar decorations for all days in month currently visible on the calendar
     func refreshCalDecorationsForCurrentMonth() {
         guard let calendarView = calendarView else { return }

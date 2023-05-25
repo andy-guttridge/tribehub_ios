@@ -110,4 +110,17 @@ class TribeModelController {
         }
         return image
     }
+    
+    /// Returns the tribe member with the given primary key, or nil if not found
+    func getTribeMemberForPk(_ pk: Int?) -> TribeMember? {
+        guard let tribe = tribe else { print("Did not find tribe!"); return nil }
+        let tribeMember: TribeMember? = tribe.tribeMembers.reduce(nil) {acc, tribeMember in
+            if tribeMember.pk == pk {
+                return tribeMember
+            } else {
+                return acc
+            }
+        }
+        return tribeMember
+    }
 }

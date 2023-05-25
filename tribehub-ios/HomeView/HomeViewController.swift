@@ -9,7 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
     weak var tribeModelController: TribeModelController?
+    weak var userModelController: UserModelController?
     weak var eventsModelController: EventsModelController?
+    
+    var calendarViewController: CalendarViewController?
     var calendarTableViewController: CalEventTableViewController?
     
     override func viewDidLoad() {
@@ -37,10 +40,14 @@ extension HomeViewController {
         if let calendarViewController = self.children[0] as? CalendarViewController {
             calendarViewController.eventsModelController = eventsModelController
             calendarViewController.delegate = self
+            self.calendarViewController = calendarViewController
         }
         if let calEventTableViewController = self.children[1] as? CalEventTableViewController {
             calendarTableViewController = calEventTableViewController
+            calendarTableViewController?.userModelController = userModelController
             calendarTableViewController?.tribeModelController = tribeModelController
+            calendarTableViewController?.eventsModelController = eventsModelController
+            calEventTableViewController.calEventDetailsTableViewControllerDelegate = self
         }
     }
 }
@@ -51,4 +58,17 @@ extension HomeViewController: CalendarViewControllerDelegate {
         guard let eventsModelController = eventsModelController else { return }
         calendarTableViewController?.eventsDidChange(events: eventsModelController.getEventsForDateComponents(dateComponents))
     }
+}
+
+// MARK: CalEventDetailsTableViewControllerDelegate extension
+extension HomeViewController: CalEventDetailsTableViewControllerDelegate {
+    
+    /// Fetches fresh events data from the API, reloads data for the calendarTableView and refreshes calendar decorations
+    func calEventDetailsDidChange() async throws {
+        print("Refresh events!")
+        guard let eventsModelController = eventsModelController, let calendarViewController = calendarViewController else { return }
+        try await eventsModelController.getEvents()
+        calendarTableViewController?.tableView.reloadData()
+        calendarViewController.refreshCalDecorationsForCurrentMonth()
+    }    
 }

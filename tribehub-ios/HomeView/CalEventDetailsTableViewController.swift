@@ -18,8 +18,21 @@ class EventDateCell: UITableViewCell {
     @IBOutlet weak var avatarContainerView: UIView!
 }
 
+class EventResponseCell: UITableViewCell {
+    @IBOutlet weak var responseSegmentedControl: UISegmentedControl!
+}
+
+protocol CalEventDetailsTableViewControllerDelegate {
+    func calEventDetailsDidChange() async throws
+}
+
 class CalEventDetailsTableViewController: UITableViewController {
-    var tribeModelController: TribeModelController?
+    weak var userModelController: UserModelController?
+    weak var tribeModelController: TribeModelController?
+    weak var eventsModelController: EventsModelController?
+    
+    var delegate: CalEventDetailsTableViewControllerDelegate?
+    
     var event: Event?
     
     override func viewDidLoad() {
@@ -38,10 +51,79 @@ class CalEventDetailsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        // If user has been invited to event, we need an extra row to show the 'not going/going' segmented control
+        if let toUsers = event?.to {
+            if toUsers.contains(where: { user in
+                return userModelController?.user?.pk == user.pk
+            }) {
+                return 3
+            }
+        }
         return 2
     }
     
+    /// Handle's the user pressing the UISegmentedControl to indicate if they are attending/not attending
+    @IBAction func responseValueChanged(_ sender: Any) {
+        guard let eventPk = event?.id else { return }
+        if let responseSegmentedControl = sender as? UISegmentedControl {
+            
+            // Find out if user selected to go or not go
+            let isGoing = responseSegmentedControl.selectedSegmentIndex == 1
+            
+            // Try to register user's response with the API. Catch and display alerts for any errors
+            Task.init {
+                do {
+                    try await eventsModelController?.didRespondToEventForPk(eventPk, isGoing: isGoing)
+                } catch HTTPError.badRequest(let apiResponse) {
+                    // If there's an error the event response was not registered by the API,
+                    // so invert value of the selectedSegmentIndex so that the displayed going/not going value
+                    // is in sync with the actual value
+                    responseSegmentedControl.selectedSegmentIndex = responseSegmentedControl.selectedSegmentIndex ^ 1
+                    self.dismiss(animated: true, completion: nil)
+                    let errorMessage = apiResponse
+                    let errorAlert = makeErrorAlert(title: "Error handling event response", message: "The server reported an error: \n\n\(errorMessage)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch HTTPError.otherError(let statusCode) {
+                    responseSegmentedControl.selectedSegmentIndex = responseSegmentedControl.selectedSegmentIndex ^ 1
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error handling event response", message: "Something went wrong handling your response. \n\nThe status code reported by the server was \(statusCode)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch {
+                    responseSegmentedControl.selectedSegmentIndex = responseSegmentedControl.selectedSegmentIndex ^ 1
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error handling event response", message: "Something went wrong handling your response. Please check you are online.")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                }
+                
+                do {
+                    // Tell the delegate there was a change to a calendar event. Events will be reloaded
+                    // and the calendar view refreshed.
+                    try await delegate?.calEventDetailsDidChange()
+                    
+                    // If the user is going to the event, append them to the accepted array for the event
+                    // currently displayed in the tableView, otherwise remove them.
+                    if isGoing {
+                        if let userAsTribeMember = tribeModelController?.getTribeMemberForPk(userModelController?.user?.pk) {
+                            event?.accepted?.append(userAsTribeMember)
+                        }
+                    } else {
+                        if let accepted = event?.accepted {
+                            for (index, tribeMember) in accepted.enumerated() {
+                                if tribeMember.pk == userModelController?.user?.pk {
+                                    event?.accepted?.remove(at: index)
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Refresh the table view data
+                    tableView.reloadData()
+                } catch {
+                    print("Error reloading and refreshing events data in CalEventDetailsTableViewController: ", error)
+                }
+            }
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let event = event else { return tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)}
@@ -92,6 +174,11 @@ class CalEventDetailsTableViewController: UITableViewController {
                     addAvatarImageToContainerView(cell.avatarContainerView, withImage: eventOwnerImage)
                 }
                 
+                // Remove any avatars already in the cell
+                for view in cell.avatarContainerView.subviews {
+                    view.removeFromSuperview()
+                }
+                
                 // Iterate through the users invited to the event. If they've accepted the invitation,
                 // add their standard avatar to the cell, if not then add a grey scale version. Exit the loop
                 // early if there are more than 4 users invited.
@@ -118,6 +205,22 @@ class CalEventDetailsTableViewController: UITableViewController {
                         addAvatarImageToContainerView(cell.avatarContainerView, withImage: textImage)
                     }
                 }
+            }
+            return cell
+        }
+        
+        // Row 2 is the cell with the going/not going segmented control
+        if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EventResponseCell", for: indexPath) as! EventResponseCell
+            
+            // Find out if the user is in the list of users who have accepted the invitation
+            // and set  the segmentedControl appropriately
+            if event.accepted?.contains(where: { acceptedUser in
+                return acceptedUser.pk == userModelController?.user?.pk
+                }) == true {
+                    cell.responseSegmentedControl.selectedSegmentIndex = 1
+            } else {
+                cell.responseSegmentedControl.selectedSegmentIndex = 0
             }
             return cell
         }

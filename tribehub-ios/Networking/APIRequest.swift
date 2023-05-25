@@ -38,7 +38,7 @@ class APIRequest<Resource: APIResource> {
     func postData (itemForPrimaryKey pk: Int? = nil, payload: Dictionary<String, Any>?) async throws -> Resource.ModelType? {
         var url = resource.url
         if let pk = pk {
-            url.append(String(pk))
+            url.append("\(String(pk))/")
         }
         let response = await session.request(url, method: .post, parameters: payload).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
         try checkHttpResponseCodeForResponse(response)
