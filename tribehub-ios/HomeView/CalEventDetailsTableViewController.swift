@@ -68,6 +68,9 @@ class CalEventDetailsTableViewController: UITableViewController {
         if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventDateCell", for: indexPath) as! EventDateCell
             if let startDate = event.start, let duration = event.duration {
+                
+                // Use date formatter to extract time and date strings from event start and end date.
+                // We have to calculate the end date from the start date and duration
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeStyle = .short
                 dateFormatter.dateStyle = .medium
@@ -75,17 +78,34 @@ class CalEventDetailsTableViewController: UITableViewController {
                 let startString = dateFormatter.string(from: startDate)
                 let endDate = Date(timeInterval: duration, since: startDate)
                 let endString = dateFormatter.string(from: endDate)
+                
+                // Add start and end date strings to label text
                 cell.startDateLabel.text = startString
                 cell.endDateLabel.text = endString
+                
+                // Get rid of cell margins
                 cell.separatorInset = UIEdgeInsets.zero
                 cell.layoutMargins = UIEdgeInsets.zero
-                let testImage = tribeModelController?.getProfileImageForTribePk(113)
-                addAvatarImageToContainerView(cell.avatarContainerView, withImage: testImage ?? UIImage())
-                addAvatarImageToContainerView(cell.avatarContainerView, withImage: UIImage(named: "dummy_profile")!)
-                addAvatarImageToContainerView(cell.avatarContainerView, withImage: testImage ?? UIImage())
-                addAvatarImageToContainerView(cell.avatarContainerView, withImage: UIImage(named: "dummy_profile")!)
-                addAvatarImageToContainerView(cell.avatarContainerView, withImage: testImage ?? UIImage())
-                addAvatarImageToContainerView(cell.avatarContainerView, withImage: UIImage(named: "dummy_profile")!)
+                
+                // Add the event owner's avatar to the cell
+                if let eventOwnerImage = tribeModelController?.getProfileImageForTribePk(event.owner?.pk) {
+                    addAvatarImageToContainerView(cell.avatarContainerView, withImage: eventOwnerImage)
+                }
+                
+                // Iterate through the users invited to the event. If they've accepted the invitation,
+                // add their standard avatar to the cell, if not then add a grey scale version
+                for user in event.to ?? [] {
+                    if let eventInvitedImage = tribeModelController?.getProfileImageForTribePk(user.pk) {
+                        if event.accepted?.contains(where: { acceptedUser in
+                            return acceptedUser.pk == user.pk
+                        }) == true {
+                            addAvatarImageToContainerView(cell.avatarContainerView, withImage: eventInvitedImage)
+                        } else {
+                            let greyEventInvitedImage = eventInvitedImage.greyImage
+                            addAvatarImageToContainerView(cell.avatarContainerView, withImage: greyEventInvitedImage)
+                        }
+                    }
+                }
             }
             return cell
         }
@@ -96,6 +116,7 @@ class CalEventDetailsTableViewController: UITableViewController {
         }
     }
     
+    // Resize the cell if the content is too big (e.g. a long event subject).
     // Approach to overriding this method to cause a specific cell to autoresize is from
     // https://www.hackingwithswift.com/example-code/uikit/how-to-make-uitableviewcells-auto-resize-to-their-content
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -169,13 +190,21 @@ class CalEventDetailsTableViewController: UITableViewController {
 private extension CalEventDetailsTableViewController {
     func initialize() {
         tableView.estimatedRowHeight = 68
+        
+        // Make cell separators invisible
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
+    /// Adds a UIImage for the specified image to the cell's avatarContainerView
     func addAvatarImageToContainerView(_ containerView: UIView?, withImage image: UIImage) {
         guard let containerView = containerView else { return }
+        
+        // Find out how many avatars are already displayed and make sure the new avatar
+        // has the highest z-position
         let numberOfAvatars = containerView.subviews.count
         let newZPosition = (containerView.subviews.last?.layer.zPosition ?? 0) + 1
+        
+        // Create and configure new UIImageView
         let newAvatarImageView = UIImageView()
         newAvatarImageView.frame.size = CGSize(width: 50, height: 50)
         newAvatarImageView.makeRounded()
@@ -184,6 +213,9 @@ private extension CalEventDetailsTableViewController {
         newAvatarImageView.contentMode = .scaleAspectFill
         newAvatarImageView.layer.zPosition = newZPosition
         containerView.addSubview(newAvatarImageView)
+        
+        // Add layout constraints with the x position based on the number of existing avatars,
+        // to make sure they overlap and are equally spaced
         NSLayoutConstraint.activate([
             newAvatarImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: CGFloat(18 * numberOfAvatars + 3)),
             newAvatarImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 3),

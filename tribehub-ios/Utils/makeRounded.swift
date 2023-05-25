@@ -14,7 +14,6 @@ extension UIImageView {
     // https://stackoverflow.com/questions/28074679/how-to-set-image-in-circle-in-swift
     
     func makeRounded() {
-        print("Making rounded")
         layer.borderWidth = 1
         layer.masksToBounds = false
         layer.borderColor = UIColor.black.cgColor

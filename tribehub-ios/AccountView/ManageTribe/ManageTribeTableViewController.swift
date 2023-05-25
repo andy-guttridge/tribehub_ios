@@ -9,7 +9,6 @@ import UIKit
 import Alamofire
 
 class AddTribeMemberTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var addImage: UIImageView!
     @IBOutlet weak var addLabel: UILabel!
 }
