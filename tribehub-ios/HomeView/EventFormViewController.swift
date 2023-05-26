@@ -39,5 +39,10 @@ private extension EventFormViewController {
         } else {
             navigationItem.title = "Add event"
         }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .done, target: self, action:#selector(confirmEvent))
+    }
+    
+    @objc func confirmEvent() {
+        print("Confirming event")
     }
 }

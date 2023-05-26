@@ -59,6 +59,7 @@
 		A182EDA52A0E727B005C4DEC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182EDA42A0E727B005C4DEC /* CalendarViewController.swift */; };
 		A182EDA72A0E8F25005C4DEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182EDA62A0E8F25005C4DEC /* HomeViewController.swift */; };
 		A18EB9FD2A21299C00B075C6 /* EventFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18EB9FC2A21299C00B075C6 /* EventFormViewController.swift */; };
+		A18EB9FF2A21304B00B075C6 /* EventFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18EB9FE2A21304B00B075C6 /* EventFormTableViewController.swift */; };
 		A1A249C629F582770083295E /* makeRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A249C529F582770083295E /* makeRounded.swift */; };
 		A1BD28162A041F3300321219 /* resizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD28152A041F3300321219 /* resizeImage.swift */; };
 		A1C227E02A167E840022588B /* EventCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C227DE2A167E840022588B /* EventCategories.swift */; };
@@ -154,6 +155,7 @@
 		A182EDA42A0E727B005C4DEC /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A182EDA62A0E8F25005C4DEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A18EB9FC2A21299C00B075C6 /* EventFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormViewController.swift; sourceTree = "<group>"; };
+		A18EB9FE2A21304B00B075C6 /* EventFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormTableViewController.swift; sourceTree = "<group>"; };
 		A1A249C529F582770083295E /* makeRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeRounded.swift; sourceTree = "<group>"; };
 		A1BD28152A041F3300321219 /* resizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resizeImage.swift; sourceTree = "<group>"; };
 		A1C227DE2A167E840022588B /* EventCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategories.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				A1C227DE2A167E840022588B /* EventCategories.swift */,
 				A182EDA22A0E7129005C4DEC /* HomeNavigationController.swift */,
 				A182EDA62A0E8F25005C4DEC /* HomeViewController.swift */,
+				A18EB9FE2A21304B00B075C6 /* EventFormTableViewController.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				A13EB3FF29FAFA3E00750023 /* GenericAPIResponse.swift in Sources */,
 				A17BA3D629FC260000390E79 /* AddTribeMemberTableViewController.swift in Sources */,
 				A13EB40129FAFB1400750023 /* DeleteUserResource.swift in Sources */,
+				A18EB9FF2A21304B00B075C6 /* EventFormTableViewController.swift in Sources */,
 				A18EB9FD2A21299C00B075C6 /* EventFormViewController.swift in Sources */,
 				A1C227E12A167E840022588B /* CalEventTableViewController.swift in Sources */,
 				A17BA3DA29FC347C00390E79 /* AddNewTribeMemberResource.swift in Sources */,
