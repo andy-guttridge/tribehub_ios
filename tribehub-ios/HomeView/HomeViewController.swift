@@ -65,7 +65,6 @@ extension HomeViewController: CalEventDetailsTableViewControllerDelegate {
     
     /// Fetches fresh events data from the API, reloads data for the calendarTableView and refreshes calendar decorations
     func calEventDetailsDidChange() async throws {
-        print("Refresh events!")
         guard let eventsModelController = eventsModelController, let calendarViewController = calendarViewController else { return }
         try await eventsModelController.getEvents()
         calendarTableViewController?.tableView.reloadData()

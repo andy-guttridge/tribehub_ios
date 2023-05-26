@@ -224,7 +224,7 @@
                                     <outlet property="titleLabel" destination="FnT-g3-t5G" id="7t5-wA-7gz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventResponseCell" id="nw1-Jw-FUC" customClass="EventResponseCell" customModule="tribehub_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventResponseCell" id="nw1-Jw-FUC" customClass="EventResponseCell" customModule="tribehub_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="118" width="430" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nw1-Jw-FUC" id="Yok-kd-Mtp">
@@ -252,7 +252,7 @@
                                     <outlet property="responseSegmentedControl" destination="J1f-4l-mkc" id="Ik1-u4-psh"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventDateCell" id="CXS-E1-cx0" customClass="EventDateCell" customModule="tribehub_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventDateCell" id="CXS-E1-cx0" customClass="EventDateCell" customModule="tribehub_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="186" width="430" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CXS-E1-cx0" id="HBR-6c-pSI">

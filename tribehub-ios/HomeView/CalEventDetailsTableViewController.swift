@@ -146,7 +146,7 @@ class CalEventDetailsTableViewController: UITableViewController {
             return cell
         }
         
-        // Row 1 is start and end dates/times
+        // Row 1 is profile avatars, and start and end dates/times
         if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventDateCell", for: indexPath) as! EventDateCell
             if let startDate = event.start, let duration = event.duration {
@@ -169,14 +169,14 @@ class CalEventDetailsTableViewController: UITableViewController {
                 cell.separatorInset = UIEdgeInsets.zero
                 cell.layoutMargins = UIEdgeInsets.zero
                 
-                // Add the event owner's avatar to the cell
-                if let eventOwnerImage = tribeModelController?.getProfileImageForTribePk(event.owner?.pk) {
-                    addAvatarImageToContainerView(cell.avatarContainerView, withImage: eventOwnerImage)
-                }
-                
                 // Remove any avatars already in the cell
                 for view in cell.avatarContainerView.subviews {
                     view.removeFromSuperview()
+                }
+                
+                // Add the event owner's avatar to the cell
+                if let eventOwnerImage = tribeModelController?.getProfileImageForTribePk(event.owner?.pk) {
+                    addAvatarImageToContainerView(cell.avatarContainerView, withImage: eventOwnerImage)
                 }
                 
                 // Iterate through the users invited to the event. If they've accepted the invitation,
