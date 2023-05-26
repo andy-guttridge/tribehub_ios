@@ -186,7 +186,6 @@ class CalEventDetailsTableViewController: UITableViewController {
                 cell.layoutMargins = UIEdgeInsets.zero
                 
                 // Hide the repeat icon if the event is not recurring
-                print("Event title: ", event.subject, "Recurrence type: ", event.recurrenceType)
                 if event.recurrenceType == "NON" {
                     cell.repeatIcon.isHidden = true
                 } else {
@@ -223,6 +222,7 @@ class CalEventDetailsTableViewController: UITableViewController {
                 cell.displayNameLabel.text = displayName
             }
             cell.statusLabel.text = "Event owner"
+            cell.statusLabel.textColor = .systemIndigo
             cell.statusLabel.textColor = .systemIndigo
             return cell
         }
@@ -338,8 +338,8 @@ private extension CalEventDetailsTableViewController {
     func initialize() {
         tableView.estimatedRowHeight = 68
         
-        // Make cell separators invisible
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        // Remove cell separators
+        tableView.separatorStyle = .none
     }
     
     /// Adds a UIImage for the specified image to the cell's avatarContainerView
