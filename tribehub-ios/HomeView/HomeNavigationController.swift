@@ -14,12 +14,7 @@ class HomeNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let homeViewController = self.viewControllers[0] as? HomeViewController {
-            homeViewController.eventsModelController = eventsModelController
-            homeViewController.userModelController = userModelController
-            homeViewController.tribeModelController = tribeModelController
-        }
-        // Do any additional setup after loading the view.
+        initialize()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -28,3 +23,14 @@ class HomeNavigationController: UINavigationController {
         }
     }
 }
+
+// MARK: Private extensions
+extension HomeNavigationController {
+    func initialize() {
+        if let homeViewController = self.viewControllers[0] as? HomeViewController {
+            homeViewController.eventsModelController = eventsModelController
+            homeViewController.userModelController = userModelController
+            homeViewController.tribeModelController = tribeModelController
+        }
+    }
+ }

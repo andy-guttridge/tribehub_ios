@@ -72,10 +72,29 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tribe Home" id="cyH-T7-n76"/>
+                    <connections>
+                        <segue destination="TDE-qc-5Mr" kind="show" identifier="EventFormSegue" id="Eoc-BP-dky"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IY-gK-aHT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1382.7906976744187" y="-825.32188841201719"/>
+        </scene>
+        <!--Event Form View Controller-->
+        <scene sceneID="Ii2-lP-Fkh">
+            <objects>
+                <viewController id="TDE-qc-5Mr" customClass="EventFormViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BYX-z7-Olr">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="OwR-Xn-rKr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WCu-uz-6AB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m6Y-PB-nhQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3164.6511627906975" y="-1114.3776824034335"/>
         </scene>
         <!--Cal Event Table View Controller-->
         <scene sceneID="HaN-nL-0EQ">

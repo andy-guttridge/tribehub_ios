@@ -18,20 +18,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let eventFormViewController = segue.destination as? EventFormViewController {
+            eventFormViewController.isEditingEvent = false
+        }
     }
-    */
-
 }
 
 // MARK: private extensions
@@ -49,6 +43,12 @@ extension HomeViewController {
             calendarTableViewController?.eventsModelController = eventsModelController
             calEventTableViewController.calEventDetailsTableViewControllerDelegate = self
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addEvent))
+    }
+    
+    @objc func addEvent() {
+        performSegue(withIdentifier: "EventFormSegue", sender: self)
     }
 }
 
