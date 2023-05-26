@@ -22,6 +22,10 @@ class EventResponseCell: UITableViewCell {
     @IBOutlet weak var responseSegmentedControl: UISegmentedControl!
 }
 
+class ToTagsCell: UITableViewCell {
+    @IBOutlet weak var toTagsContainerView: UIView!
+}
+
 protocol CalEventDetailsTableViewControllerDelegate {
     func calEventDetailsDidChange() async throws
 }
@@ -56,10 +60,10 @@ class CalEventDetailsTableViewController: UITableViewController {
             if toUsers.contains(where: { user in
                 return userModelController?.user?.pk == user.pk
             }) {
-                return 3
+                return 4
             }
         }
-        return 2
+        return 3
     }
     
     /// Handle's the user pressing the UISegmentedControl to indicate if they are attending/not attending
@@ -209,16 +213,81 @@ class CalEventDetailsTableViewController: UITableViewController {
             return cell
         }
         
-        // Row 2 is the cell with the going/not going segmented control
+        // Row 2 is the cell with the to tags
         if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ToTagsCell", for: indexPath) as! ToTagsCell
+        
+            let tagHeight:CGFloat = 24
+            let tagPadding: CGFloat = 3
+            let tagSpacingX: CGFloat = 3
+            let tagSpacingY: CGFloat = 3
+        
+            var intrinsicHeight: CGFloat = 0
+        
+            while cell.toTagsContainerView.subviews.count > event.to?.count ?? 0 {
+                cell.toTagsContainerView.subviews[0].removeFromSuperview()
+            }
+        
+            while cell.toTagsContainerView.subviews.count < event.to?.count ?? 0 {
+                let newLabel = UILabel()
+        
+                newLabel.textAlignment = .center
+                newLabel.backgroundColor = .systemIndigo
+                newLabel.layer.masksToBounds = true
+                newLabel.layer.cornerRadius = 8
+                newLabel.layer.borderColor = UIColor.systemPink.cgColor
+                newLabel.layer.borderWidth = 1
+                newLabel.textColor = .white
+        
+                cell.toTagsContainerView.addSubview(newLabel)
+                for (tribeMember, v) in zip(event.to ?? [], cell.toTagsContainerView.subviews) {
+                    guard let label = v as? UILabel else {
+                        fatalError("non-UILabel subview found!")
+                    }
+                    label.text = tribeMember.displayName
+                    label.frame.size.width = label.intrinsicContentSize.width + tagPadding
+                    label.frame.size.height = tagHeight
+                }
+        
+                var currentOriginX: CGFloat = 0
+                var currentOriginY: CGFloat = 0
+        
+                // for each label in the array
+                cell.toTagsContainerView.subviews.forEach { v in
+        
+                    guard let label = v as? UILabel else {
+                        fatalError("non-UILabel subview found!")
+                    }
+        
+                    // if current X + label width will be greater than container view width
+                    //  "move to next row"
+                    if currentOriginX + label.frame.width > cell.toTagsContainerView.bounds.width {
+                        currentOriginX = 0
+                        currentOriginY += tagHeight + tagSpacingY
+                    }
+        
+                    // set the btn frame origin
+                    label.frame.origin.x = currentOriginX
+                    label.frame.origin.y = currentOriginY
+        
+                    // increment current X by btn width + spacing
+                    currentOriginX += label.frame.width + tagSpacingX
+        
+                }
+            }
+            return cell
+        }
+        
+        // Row 3 is the cell with the going/not going segmented control
+        if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventResponseCell", for: indexPath) as! EventResponseCell
             
             // Find out if the user is in the list of users who have accepted the invitation
             // and set  the segmentedControl appropriately
             if event.accepted?.contains(where: { acceptedUser in
                 return acceptedUser.pk == userModelController?.user?.pk
-                }) == true {
-                    cell.responseSegmentedControl.selectedSegmentIndex = 1
+            }) == true {
+                cell.responseSegmentedControl.selectedSegmentIndex = 1
             } else {
                 cell.responseSegmentedControl.selectedSegmentIndex = 0
             }
