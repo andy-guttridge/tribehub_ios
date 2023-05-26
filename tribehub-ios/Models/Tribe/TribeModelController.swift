@@ -108,7 +108,6 @@ class TribeModelController {
                 return acc
             }
         }
-        print("Returning profile image for ", getTribeMemberForPk(pk)?.displayName)
         return image
     }
     

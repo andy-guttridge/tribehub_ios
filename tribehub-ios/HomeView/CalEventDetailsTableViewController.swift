@@ -15,6 +15,7 @@ class EventTitleCell: UITableViewCell {
 class EventDateCell: UITableViewCell {
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
+    @IBOutlet weak var repeatIcon: UIImageView!
 }
 
 class EventAttendeeCell: UITableViewCell {
@@ -183,6 +184,14 @@ class CalEventDetailsTableViewController: UITableViewController {
                 // Get rid of cell margins
                 cell.separatorInset = UIEdgeInsets.zero
                 cell.layoutMargins = UIEdgeInsets.zero
+                
+                // Hide the repeat icon if the event is not recurring
+                print("Event title: ", event.subject, "Recurrence type: ", event.recurrenceType)
+                if event.recurrenceType == "NON" {
+                    cell.repeatIcon.isHidden = true
+                } else {
+                    cell.repeatIcon.isHidden = false
+                }
             }
             return cell
         }
@@ -214,6 +223,7 @@ class CalEventDetailsTableViewController: UITableViewController {
                 cell.displayNameLabel.text = displayName
             }
             cell.statusLabel.text = "Event owner"
+            cell.statusLabel.textColor = .systemIndigo
             return cell
         }
         
@@ -221,18 +231,25 @@ class CalEventDetailsTableViewController: UITableViewController {
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventAttendeeCell", for: indexPath) as! EventAttendeeCell
             if let tribeMember = event.to?[indexPath.row - (isInvited ? 4 : 3)] {
+                
+                // Find out if the user is attending
                 var isGoing = false
                 if let acceptedArray = event.accepted {
                     isGoing = acceptedArray.reduce(false) { acc, member in tribeMember.pk == member.pk || acc }
                 }
+                
+                // Give them a colour profile image if they are attending, otherwise a B&W image,
+                // and set statusLabel text appropriately
                 if let image = tribeModelController?.getProfileImageForTribePk(tribeMember.pk) {
                     if isGoing {
                         cell.profileImageView.image = image
                         cell.statusLabel.text = "Going"
+                        cell.statusLabel.textColor = .systemPink
                     } else {
                         let greyImage = image.greyImage
                         cell.profileImageView.image = greyImage
                         cell.statusLabel.text = "Not going"
+                        cell.statusLabel.textColor = .systemGray
                     }
                 }
                 cell.profileImageView.makeRounded()
