@@ -15,15 +15,16 @@ class EventTitleCell: UITableViewCell {
 class EventDateCell: UITableViewCell {
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
-    @IBOutlet weak var avatarContainerView: UIView!
+}
+
+class EventAttendeeCell: UITableViewCell {
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var displayNameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
 }
 
 class EventResponseCell: UITableViewCell {
     @IBOutlet weak var responseSegmentedControl: UISegmentedControl!
-}
-
-class ToTagsCell: UITableViewCell {
-    @IBOutlet weak var toTagsContainerView: UIView!
 }
 
 protocol CalEventDetailsTableViewControllerDelegate {
@@ -36,8 +37,9 @@ class CalEventDetailsTableViewController: UITableViewController {
     weak var eventsModelController: EventsModelController?
     
     var delegate: CalEventDetailsTableViewControllerDelegate?
-    
     var event: Event?
+    
+    private var isInvited: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,15 +57,24 @@ class CalEventDetailsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // If user has been invited to event, we need an extra row to show the 'not going/going' segmented control
+        // We definitely need at least 3 rows for event category and title, start and end times, and owner
+        var numRows = 3
+        
+        // Add another row if user has been invited to this event as will need to display the not going/going segmentedControl
         if let toUsers = event?.to {
             if toUsers.contains(where: { user in
                 return userModelController?.user?.pk == user.pk
             }) {
-                return 4
+                numRows += 1
+                isInvited = true
             }
         }
-        return 3
+        
+        // Add a row for each user invited
+        if let numInvited = event?.to?.count {
+            numRows += numInvited
+        }
+        return numRows
     }
     
     /// Handle's the user pressing the UISegmentedControl to indicate if they are attending/not attending
@@ -78,6 +89,25 @@ class CalEventDetailsTableViewController: UITableViewController {
             Task.init {
                 do {
                     try await eventsModelController?.didRespondToEventForPk(eventPk, isGoing: isGoing)
+                    
+                    // If the user is going to the event, append them to the accepted array for the event
+                    // currently displayed in the tableView, otherwise remove them.
+                    if isGoing {
+                        if let userAsTribeMember = tribeModelController?.getTribeMemberForPk(userModelController?.user?.pk) {
+                            event?.accepted?.append(userAsTribeMember)
+                        }
+                    } else {
+                        if let accepted = event?.accepted {
+                            for (index, tribeMember) in accepted.enumerated() {
+                                if tribeMember.pk == userModelController?.user?.pk {
+                                    event?.accepted?.remove(at: index)
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Refresh the table view data
+                    tableView.reloadData()
                 } catch HTTPError.badRequest(let apiResponse) {
                     // If there's an error the event response was not registered by the API,
                     // so invert value of the selectedSegmentIndex so that the displayed going/not going value
@@ -103,25 +133,6 @@ class CalEventDetailsTableViewController: UITableViewController {
                     // Tell the delegate there was a change to a calendar event. Events will be reloaded
                     // and the calendar view refreshed.
                     try await delegate?.calEventDetailsDidChange()
-                    
-                    // If the user is going to the event, append them to the accepted array for the event
-                    // currently displayed in the tableView, otherwise remove them.
-                    if isGoing {
-                        if let userAsTribeMember = tribeModelController?.getTribeMemberForPk(userModelController?.user?.pk) {
-                            event?.accepted?.append(userAsTribeMember)
-                        }
-                    } else {
-                        if let accepted = event?.accepted {
-                            for (index, tribeMember) in accepted.enumerated() {
-                                if tribeMember.pk == userModelController?.user?.pk {
-                                    event?.accepted?.remove(at: index)
-                                }
-                            }
-                        }
-                    }
-                    
-                    // Refresh the table view data
-                    tableView.reloadData()
                 } catch {
                     print("Error reloading and refreshing events data in CalEventDetailsTableViewController: ", error)
                 }
@@ -150,7 +161,7 @@ class CalEventDetailsTableViewController: UITableViewController {
             return cell
         }
         
-        // Row 1 is profile avatars, and start and end dates/times
+        // Row 1 is start and end dates/times
         if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventDateCell", for: indexPath) as! EventDateCell
             if let startDate = event.start, let duration = event.duration {
@@ -172,114 +183,12 @@ class CalEventDetailsTableViewController: UITableViewController {
                 // Get rid of cell margins
                 cell.separatorInset = UIEdgeInsets.zero
                 cell.layoutMargins = UIEdgeInsets.zero
-                
-                // Remove any avatars already in the cell
-                for view in cell.avatarContainerView.subviews {
-                    view.removeFromSuperview()
-                }
-                
-                // Add the event owner's avatar to the cell
-                if let eventOwnerImage = tribeModelController?.getProfileImageForTribePk(event.owner?.pk) {
-                    addAvatarImageToContainerView(cell.avatarContainerView, withImage: eventOwnerImage)
-                }
-                
-                // Iterate through the users invited to the event. If they've accepted the invitation,
-                // add their standard avatar to the cell, if not then add a grey scale version. Exit the loop
-                // early if there are more than 4 users invited.
-                if let toArray = event.to {
-                    for (index, user) in toArray.enumerated() {
-                        if index > 3 { break }
-                        if let eventInvitedImage = tribeModelController?.getProfileImageForTribePk(user.pk) {
-                            if event.accepted?.contains(where: { acceptedUser in
-                                return acceptedUser.pk == user.pk
-                            }) == true {
-                                addAvatarImageToContainerView(cell.avatarContainerView, withImage: eventInvitedImage)
-                            } else {
-                                let greyEventInvitedImage = eventInvitedImage.greyImage
-                                addAvatarImageToContainerView(cell.avatarContainerView, withImage: greyEventInvitedImage)
-                            }
-                        }
-                    }
-                    
-                    // If more than 4 users are invited, create an avatar image with a '+n' string to
-                    // show how many additional users are invited that can't fit onto the cell
-                    if toArray.count > 4 {
-                        let tribeExcess = toArray.count - 4
-                        let textImage = imageFromString("+\(String(tribeExcess))", width: 500, height: 500)!
-                        addAvatarImageToContainerView(cell.avatarContainerView, withImage: textImage)
-                    }
-                }
             }
             return cell
         }
         
-        // Row 2 is the cell with the to tags
-        if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ToTagsCell", for: indexPath) as! ToTagsCell
-        
-            let tagHeight:CGFloat = 24
-            let tagPadding: CGFloat = 3
-            let tagSpacingX: CGFloat = 3
-            let tagSpacingY: CGFloat = 3
-        
-            var intrinsicHeight: CGFloat = 0
-        
-            while cell.toTagsContainerView.subviews.count > event.to?.count ?? 0 {
-                cell.toTagsContainerView.subviews[0].removeFromSuperview()
-            }
-        
-            while cell.toTagsContainerView.subviews.count < event.to?.count ?? 0 {
-                let newLabel = UILabel()
-        
-                newLabel.textAlignment = .center
-                newLabel.backgroundColor = .systemIndigo
-                newLabel.layer.masksToBounds = true
-                newLabel.layer.cornerRadius = 8
-                newLabel.layer.borderColor = UIColor.systemPink.cgColor
-                newLabel.layer.borderWidth = 1
-                newLabel.textColor = .white
-        
-                cell.toTagsContainerView.addSubview(newLabel)
-                for (tribeMember, v) in zip(event.to ?? [], cell.toTagsContainerView.subviews) {
-                    guard let label = v as? UILabel else {
-                        fatalError("non-UILabel subview found!")
-                    }
-                    label.text = tribeMember.displayName
-                    label.frame.size.width = label.intrinsicContentSize.width + tagPadding
-                    label.frame.size.height = tagHeight
-                }
-        
-                var currentOriginX: CGFloat = 0
-                var currentOriginY: CGFloat = 0
-        
-                // for each label in the array
-                cell.toTagsContainerView.subviews.forEach { v in
-        
-                    guard let label = v as? UILabel else {
-                        fatalError("non-UILabel subview found!")
-                    }
-        
-                    // if current X + label width will be greater than container view width
-                    //  "move to next row"
-                    if currentOriginX + label.frame.width > cell.toTagsContainerView.bounds.width {
-                        currentOriginX = 0
-                        currentOriginY += tagHeight + tagSpacingY
-                    }
-        
-                    // set the btn frame origin
-                    label.frame.origin.x = currentOriginX
-                    label.frame.origin.y = currentOriginY
-        
-                    // increment current X by btn width + spacing
-                    currentOriginX += label.frame.width + tagSpacingX
-        
-                }
-            }
-            return cell
-        }
-        
-        // Row 3 is the cell with the going/not going segmented control
-        if indexPath.row == 3 {
+        // If the user is invited, row 2 is the cell with the going/not going segmented control
+        if indexPath.row == 2 && isInvited {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventResponseCell", for: indexPath) as! EventResponseCell
             
             // Find out if the user is in the list of users who have accepted the invitation
@@ -294,8 +203,45 @@ class CalEventDetailsTableViewController: UITableViewController {
             return cell
         }
         
+        // Row 2 is for the event owner if user is not invited, otherwise this is row 3
+        if (indexPath.row == 2 && !isInvited) || (indexPath.row == 3 && isInvited) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EventAttendeeCell", for: indexPath) as! EventAttendeeCell
+            if let image = tribeModelController?.getProfileImageForTribePk(event.owner?.pk) {
+                cell.profileImageView.image = image
+            }
+            cell.profileImageView.makeRounded()
+            if let displayName = event.owner?.displayName {
+                cell.displayNameLabel.text = displayName
+            }
+            cell.statusLabel.text = "Event owner"
+            return cell
+        }
+        
+        // Subsequent rows must be for members invited
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EventAttendeeCell", for: indexPath) as! EventAttendeeCell
+            if let tribeMember = event.to?[indexPath.row - (isInvited ? 4 : 3)] {
+                var isGoing = false
+                if let acceptedArray = event.accepted {
+                    isGoing = acceptedArray.reduce(false) { acc, member in tribeMember.pk == member.pk || acc }
+                }
+                if let image = tribeModelController?.getProfileImageForTribePk(tribeMember.pk) {
+                    if isGoing {
+                        cell.profileImageView.image = image
+                        cell.statusLabel.text = "Going"
+                    } else {
+                        let greyImage = image.greyImage
+                        cell.profileImageView.image = greyImage
+                        cell.statusLabel.text = "Not going"
+                    }
+                }
+                cell.profileImageView.makeRounded()
+                cell.profileImageView.contentMode = .scaleAspectFill
+                
+                if let displayName = tribeMember.displayName {
+                    cell.displayNameLabel.text = displayName
+                }
+            }
             return cell
         }
     }
