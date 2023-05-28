@@ -157,8 +157,11 @@ class CalEventDetailsTableViewController: UITableViewController {
             // https://stackoverflow.com/questions/5430890/uilabel-auto-resize-on-basis-of-text-to-be-shown
             cell.titleLabel.numberOfLines = 0
             cell.titleLabel.sizeToFit()
-            cell.separatorInset = UIEdgeInsets.zero
             cell.layoutMargins = UIEdgeInsets.zero
+            
+            // Hide cell separator. Technique for doing this is from
+            // https://stackoverflow.com/questions/66324664/remove-first-line-separator-of-uitableview-cells
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
             return cell
         }
         
@@ -182,9 +185,16 @@ class CalEventDetailsTableViewController: UITableViewController {
                 cell.endDateLabel.text = endString
                 
                 // Get rid of cell margins
-                cell.separatorInset = UIEdgeInsets.zero
                 cell.layoutMargins = UIEdgeInsets.zero
                 
+                // Hide cell separator if user is invited, otherwise set separator inset to
+                // align with right of profile image
+                if isInvited {
+                    cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+                } else {
+                    cell.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
+                }
+        
                 // Hide the repeat icon if the event is not recurring
                 if event.recurrenceType == "NON" {
                     cell.repeatIcon.isHidden = true
@@ -208,6 +218,7 @@ class CalEventDetailsTableViewController: UITableViewController {
             } else {
                 cell.responseSegmentedControl.selectedSegmentIndex = 0
             }
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
             return cell
         }
         
@@ -224,6 +235,9 @@ class CalEventDetailsTableViewController: UITableViewController {
             cell.statusLabel.text = "Event owner"
             cell.statusLabel.textColor = .systemIndigo
             cell.statusLabel.textColor = .systemIndigo
+            
+            // Align separator with right of profile image
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
             return cell
         }
         
@@ -254,6 +268,9 @@ class CalEventDetailsTableViewController: UITableViewController {
                 }
                 cell.profileImageView.makeRounded()
                 cell.profileImageView.contentMode = .scaleAspectFill
+                
+                // Align separator with right of profile image
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
                 
                 if let displayName = tribeMember.displayName {
                     cell.displayNameLabel.text = displayName
@@ -339,6 +356,6 @@ private extension CalEventDetailsTableViewController {
         tableView.estimatedRowHeight = 68
         
         // Remove cell separators
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
     }
 }

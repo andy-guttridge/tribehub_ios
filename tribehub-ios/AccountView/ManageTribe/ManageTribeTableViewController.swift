@@ -50,12 +50,18 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
                 cell.addImage.tintColor = .gray
                 cell.addLabel.isEnabled = false
             }
+            
+            // Align separator with right of profile images
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TribeMemberCell", for: indexPath) as! TribeMemberTableViewCell
             cell.tribeMemberDisplayNameLabel.text = self.tribeModelController?.tribe?.tribeMembers[indexPath.row].displayName
             cell.tribeMemberImageView.makeRounded()
             cell.tribeMemberImageView.image = self.tribeModelController?.tribe?.tribeMembers[indexPath.row].profileImage
+            
+            // Align separator with right of profile image
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
             return cell
         }
     }
