@@ -341,33 +341,4 @@ private extension CalEventDetailsTableViewController {
         // Remove cell separators
         tableView.separatorStyle = .none
     }
-    
-    /// Adds a UIImage for the specified image to the cell's avatarContainerView
-    func addAvatarImageToContainerView(_ containerView: UIView?, withImage image: UIImage) {
-        guard let containerView = containerView else { return }
-        
-        // Find out how many avatars are already displayed and make sure the new avatar
-        // has the highest z-position
-        let numberOfAvatars = containerView.subviews.count
-        let newZPosition = (containerView.subviews.last?.layer.zPosition ?? 0) + 1
-        
-        // Create and configure new UIImageView
-        let newAvatarImageView = UIImageView()
-        newAvatarImageView.frame.size = CGSize(width: 50, height: 50)
-        newAvatarImageView.makeRounded()
-        newAvatarImageView.image = image
-        newAvatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        newAvatarImageView.contentMode = .scaleAspectFill
-        newAvatarImageView.layer.zPosition = newZPosition
-        containerView.addSubview(newAvatarImageView)
-        
-        // Add layout constraints with the x position based on the number of existing avatars,
-        // to make sure they overlap and are equally spaced
-        NSLayoutConstraint.activate([
-            newAvatarImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: CGFloat(18 * numberOfAvatars + 3)),
-            newAvatarImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 3),
-            newAvatarImageView.heightAnchor.constraint(equalToConstant: 50),
-            newAvatarImageView.widthAnchor.constraint(equalToConstant: 50)
-        ])
-    }
 }
