@@ -258,7 +258,7 @@ class CalEventDetailsTableViewController: UITableViewController {
                     if isGoing {
                         cell.profileImageView.image = image
                         cell.statusLabel.text = "Going"
-                        cell.statusLabel.textColor = .systemPink
+                        cell.statusLabel.textColor = .systemMint
                     } else {
                         let greyImage = image.greyImage
                         cell.profileImageView.image = greyImage

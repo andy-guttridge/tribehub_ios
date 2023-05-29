@@ -16,6 +16,8 @@ class AccountNavigationController: UINavigationController {
         if let accountViewController = self.viewControllers[0] as? AccountViewController {
             accountViewController.userModelController = self.userModelController
             accountViewController.tribeModelController = self.tribeModelController
+            navigationBar.tintColor = .systemIndigo
         }
     }
 }
+

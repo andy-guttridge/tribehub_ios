@@ -31,6 +31,8 @@ extension HomeNavigationController {
             homeViewController.eventsModelController = eventsModelController
             homeViewController.userModelController = userModelController
             homeViewController.tribeModelController = tribeModelController
+            
+            navigationBar.tintColor = .systemIndigo
         }
     }
  }
