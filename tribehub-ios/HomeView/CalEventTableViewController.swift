@@ -69,6 +69,9 @@ class CalEventTableViewController: UITableViewController {
             let endTime = dateFormatter.string(from: endDate)
             cell.timeLabel.text = "\(startTime) - \(endTime)"
         }
+        
+        // Align separator with right of category icon
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 35, bottom: 0, right: 0)
         return cell
     }
 
