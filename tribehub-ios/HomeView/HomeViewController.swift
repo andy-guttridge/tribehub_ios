@@ -22,8 +22,8 @@ class HomeViewController: UIViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let eventFormViewController = segue.destination as? EventFormViewController {
-            eventFormViewController.isEditingEvent = false
+        if let eventFormTableViewController = segue.destination as? EventFormTableViewController {
+            eventFormTableViewController.tribeModelController = tribeModelController
         }
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 /// Provides an icon image and string title for each of the event category codes returned and accepted by the API
-enum EventCategories: String {
+enum EventCategories: String, CaseIterable {
     case CEL, CLU, EDU, MED, MUS, OUT, OTH, PET, SHO, SPO, VAC, WOR, NON
     
     /// Returns an svg icon for each event category
