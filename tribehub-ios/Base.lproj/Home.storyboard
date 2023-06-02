@@ -228,23 +228,26 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nRu-EC-7l1">
                                             <rect key="frame" x="3" y="4" width="60" height="60"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="72H-qm-UqK"/>
-                                                <constraint firstAttribute="width" constant="60" id="EUb-tJ-CZb"/>
+                                                <constraint firstAttribute="width" constant="60" id="ECC-Rz-d9K"/>
+                                                <constraint firstAttribute="height" constant="60" id="XoV-lM-yxr"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnT-g3-t5G">
                                             <rect key="frame" x="152" y="3" width="86" height="62"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="62" id="hSa-Uj-v2Z"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="FnT-g3-t5G" firstAttribute="top" secondItem="krj-5b-jH1" secondAttribute="top" constant="3" id="TNR-lr-utQ"/>
-                                        <constraint firstAttribute="bottom" secondItem="FnT-g3-t5G" secondAttribute="bottom" constant="3" id="kQa-Ob-9Wl"/>
-                                        <constraint firstItem="nRu-EC-7l1" firstAttribute="leading" secondItem="krj-5b-jH1" secondAttribute="leading" constant="3" id="rK6-5K-QhP"/>
-                                        <constraint firstItem="FnT-g3-t5G" firstAttribute="centerX" secondItem="krj-5b-jH1" secondAttribute="centerX" id="tZt-bp-Azv"/>
-                                        <constraint firstItem="nRu-EC-7l1" firstAttribute="centerY" secondItem="krj-5b-jH1" secondAttribute="centerY" id="wEL-X5-FDA"/>
+                                        <constraint firstItem="FnT-g3-t5G" firstAttribute="top" secondItem="krj-5b-jH1" secondAttribute="top" constant="3" id="0JU-x8-AfY"/>
+                                        <constraint firstAttribute="bottom" secondItem="FnT-g3-t5G" secondAttribute="bottom" constant="3" id="1Ir-cu-Lgl"/>
+                                        <constraint firstItem="nRu-EC-7l1" firstAttribute="centerY" secondItem="krj-5b-jH1" secondAttribute="centerY" id="nNm-Fw-PgY"/>
+                                        <constraint firstItem="nRu-EC-7l1" firstAttribute="leading" secondItem="krj-5b-jH1" secondAttribute="leading" constant="3" id="rd3-5o-hrU"/>
+                                        <constraint firstItem="FnT-g3-t5G" firstAttribute="centerX" secondItem="krj-5b-jH1" secondAttribute="centerX" id="uYy-Er-SGx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
