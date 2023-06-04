@@ -102,7 +102,6 @@ extension CalendarViewController: UICalendarSelectionSingleDateDelegate {
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         guard let dateComponents = dateComponents else { return }
         delegate?.didSelectCalendarDate(dateComponents)
-        print(calendarView!.frame.size)
     }
 }
 

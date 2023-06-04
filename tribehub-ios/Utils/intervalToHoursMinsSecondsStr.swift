@@ -15,6 +15,5 @@ func intervalToHoursMinsSecondsStr(_ interval: TimeInterval) -> String {
     let hoursStr = String(intervalAsSeconds / 3600)
     let minsStr = String((intervalAsSeconds % 3600) / 60)
     let secondsStr = String((intervalAsSeconds % 3600) % 60)
-    print("Returning: \(hoursStr):\(minsStr):\(secondsStr)")
     return "\(hoursStr):\(minsStr):\(secondsStr)"
 }

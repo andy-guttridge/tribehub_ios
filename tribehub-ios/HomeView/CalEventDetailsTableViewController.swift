@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: custom cell class definitions
 class EventTitleCell: UITableViewCell {
     @IBOutlet weak var titleCategoryImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -28,10 +29,12 @@ class EventResponseCell: UITableViewCell {
     @IBOutlet weak var responseSegmentedControl: UISegmentedControl!
 }
 
+// MARK: CalEventDetailsTableViewControllerDelegate protocol definition
 protocol CalEventDetailsTableViewControllerDelegate {
     func calEventDetailsDidChange() async throws
 }
 
+// MARK: CalEventDetailsTableViewController defintion
 class CalEventDetailsTableViewController: UITableViewController {
     weak var userModelController: UserModelController?
     weak var tribeModelController: TribeModelController?
@@ -45,13 +48,9 @@ class CalEventDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -76,69 +75,6 @@ class CalEventDetailsTableViewController: UITableViewController {
             numRows += numInvited
         }
         return numRows
-    }
-    
-    /// Handle's the user pressing the UISegmentedControl to indicate if they are attending/not attending
-    @IBAction func responseValueChanged(_ sender: Any) {
-        guard let eventPk = event?.id else { return }
-        if let responseSegmentedControl = sender as? UISegmentedControl {
-            
-            // Find out if user selected to go or not go
-            let isGoing = responseSegmentedControl.selectedSegmentIndex == 1
-            
-            // Try to register user's response with the API. Catch and display alerts for any errors
-            Task.init {
-                do {
-                    try await eventsModelController?.didRespondToEventForPk(eventPk, isGoing: isGoing)
-                    
-                    // If the user is going to the event, append them to the accepted array for the event
-                    // currently displayed in the tableView, otherwise remove them.
-                    if isGoing {
-                        if let userAsTribeMember = tribeModelController?.getTribeMemberForPk(userModelController?.user?.pk) {
-                            event?.accepted?.append(userAsTribeMember)
-                        }
-                    } else {
-                        if let accepted = event?.accepted {
-                            for (index, tribeMember) in accepted.enumerated() {
-                                if tribeMember.pk == userModelController?.user?.pk {
-                                    event?.accepted?.remove(at: index)
-                                }
-                            }
-                        }
-                    }
-                    
-                    // Refresh the table view data
-                    tableView.reloadData()
-                } catch HTTPError.badRequest(let apiResponse) {
-                    // If there's an error the event response was not registered by the API,
-                    // so invert value of the selectedSegmentIndex so that the displayed going/not going value
-                    // is in sync with the actual value
-                    responseSegmentedControl.selectedSegmentIndex = responseSegmentedControl.selectedSegmentIndex ^ 1
-                    self.dismiss(animated: true, completion: nil)
-                    let errorMessage = apiResponse
-                    let errorAlert = makeErrorAlert(title: "Error handling event response", message: "The server reported an error: \n\n\(errorMessage)")
-                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
-                } catch HTTPError.otherError(let statusCode) {
-                    responseSegmentedControl.selectedSegmentIndex = responseSegmentedControl.selectedSegmentIndex ^ 1
-                    self.dismiss(animated: true, completion: nil)
-                    let errorAlert = makeErrorAlert(title: "Error handling event response", message: "Something went wrong handling your response. \n\nThe status code reported by the server was \(statusCode)")
-                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
-                } catch {
-                    responseSegmentedControl.selectedSegmentIndex = responseSegmentedControl.selectedSegmentIndex ^ 1
-                    self.dismiss(animated: true, completion: nil)
-                    let errorAlert = makeErrorAlert(title: "Error handling event response", message: "Something went wrong handling your response. Please check you are online.")
-                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
-                }
-                
-                do {
-                    // Tell the delegate there was a change to a calendar event. Events will be reloaded
-                    // and the calendar view refreshed.
-                    try await delegate?.calEventDetailsDidChange()
-                } catch {
-                    print("Error reloading and refreshing events data in CalEventDetailsTableViewController: ", error)
-                }
-            }
-        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -280,6 +216,71 @@ class CalEventDetailsTableViewController: UITableViewController {
         }
     }
     
+    // MARK: IBAction methods
+    /// Handle's the user pressing the UISegmentedControl to indicate if they are attending/not attending
+    @IBAction func responseValueChanged(_ sender: Any) {
+        guard let eventPk = event?.id else { return }
+        if let responseSegmentedControl = sender as? UISegmentedControl {
+            
+            // Find out if user selected to go or not go
+            let isGoing = responseSegmentedControl.selectedSegmentIndex == 1
+            
+            // Try to register user's response with the API. Catch and display alerts for any errors
+            Task.init {
+                do {
+                    try await eventsModelController?.didRespondToEventForPk(eventPk, isGoing: isGoing)
+                    
+                    // If the user is going to the event, append them to the accepted array for the event
+                    // currently displayed in the tableView, otherwise remove them.
+                    if isGoing {
+                        if let userAsTribeMember = tribeModelController?.getTribeMemberForPk(userModelController?.user?.pk) {
+                            event?.accepted?.append(userAsTribeMember)
+                        }
+                    } else {
+                        if let accepted = event?.accepted {
+                            for (index, tribeMember) in accepted.enumerated() {
+                                if tribeMember.pk == userModelController?.user?.pk {
+                                    event?.accepted?.remove(at: index)
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Refresh the table view data
+                    tableView.reloadData()
+                } catch HTTPError.badRequest(let apiResponse) {
+                    // If there's an error the event response was not registered by the API,
+                    // so invert value of the selectedSegmentIndex so that the displayed going/not going value
+                    // is in sync with the actual value
+                    responseSegmentedControl.selectedSegmentIndex = responseSegmentedControl.selectedSegmentIndex ^ 1
+                    self.dismiss(animated: true, completion: nil)
+                    let errorMessage = apiResponse
+                    let errorAlert = makeErrorAlert(title: "Error handling event response", message: "The server reported an error: \n\n\(errorMessage)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch HTTPError.otherError(let statusCode) {
+                    responseSegmentedControl.selectedSegmentIndex = responseSegmentedControl.selectedSegmentIndex ^ 1
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error handling event response", message: "Something went wrong handling your response. \n\nThe status code reported by the server was \(statusCode)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch {
+                    responseSegmentedControl.selectedSegmentIndex = responseSegmentedControl.selectedSegmentIndex ^ 1
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error handling event response", message: "Something went wrong handling your response. Please check you are online.")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                }
+                
+                do {
+                    // Tell the delegate there was a change to a calendar event. Events will be reloaded
+                    // and the calendar view refreshed.
+                    try await delegate?.calEventDetailsDidChange()
+                } catch {
+                    print("Error reloading and refreshing events data in CalEventDetailsTableViewController: ", error)
+                }
+            }
+        }
+    }
+    
+    // MARK: tableView size methods
     // Resize the cell if the content is too big (e.g. a long event subject).
     // Approach to overriding this method to cause a specific cell to autoresize is from
     // https://www.hackingwithswift.com/example-code/uikit/how-to-make-uitableviewcells-auto-resize-to-their-content
@@ -351,6 +352,7 @@ class CalEventDetailsTableViewController: UITableViewController {
     
 }
 
+// MARK: private extension
 private extension CalEventDetailsTableViewController {
     func initialize() {
         tableView.estimatedRowHeight = 68
