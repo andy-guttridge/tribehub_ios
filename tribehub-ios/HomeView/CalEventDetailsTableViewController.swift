@@ -31,7 +31,7 @@ class EventResponseCell: UITableViewCell {
 
 // MARK: CalEventDetailsTableViewControllerDelegate protocol definition
 protocol CalEventDetailsTableViewControllerDelegate {
-    func calEventDetailsDidChange() async throws
+    func calEventDetailsDidChange(shouldDismissSubview: Bool) async throws
 }
 
 // MARK: CalEventDetailsTableViewController defintion
@@ -272,7 +272,7 @@ class CalEventDetailsTableViewController: UITableViewController {
                 do {
                     // Tell the delegate there was a change to a calendar event. Events will be reloaded
                     // and the calendar view refreshed.
-                    try await delegate?.calEventDetailsDidChange()
+                    try await delegate?.calEventDetailsDidChange(shouldDismissSubview: false)
                 } catch {
                     print("Error reloading and refreshing events data in CalEventDetailsTableViewController: ", error)
                 }

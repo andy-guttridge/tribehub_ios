@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
             eventFormTableViewController.userModelController = userModelController
             eventFormTableViewController.tribeModelController = tribeModelController
             eventFormTableViewController.eventsModelController = eventsModelController
+            eventFormTableViewController.delegate = self
         }
     }
 }
@@ -63,13 +64,22 @@ extension HomeViewController: CalendarViewControllerDelegate {
 }
 
 // MARK: CalEventDetailsTableViewControllerDelegate extension
-extension HomeViewController: CalEventDetailsTableViewControllerDelegate {
+extension HomeViewController: CalEventDetailsTableViewControllerDelegate, EventFormTableViewControllerDelegate {
     
     /// Fetches fresh events data from the API, reloads data for the calendarTableView and refreshes calendar decorations
-    func calEventDetailsDidChange() async throws {
+    /// - shouldDismissSubview: Bool - tells the function whether the view of the view controller that called this delegate method should be dismissed
+    func calEventDetailsDidChange(shouldDismissSubview: Bool) async throws {
         guard let eventsModelController = eventsModelController, let calendarViewController = calendarViewController else { return }
+        
         try await eventsModelController.getEvents()
         calendarTableViewController?.tableView.reloadData()
         calendarViewController.refreshCalDecorationsForCurrentMonth()
+        
+        // Dismiss the subview if requested
+        if shouldDismissSubview {
+            print("Attempting to dismiss subview")
+            navigationController?.popViewController(animated: true)
+        }
     }    
 }
+

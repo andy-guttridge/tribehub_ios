@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: Custom cell class definitions
 class EventFormSubjectCell: UITableViewCell {
     @IBOutlet weak var subjectTextField: UITextField!
 }
@@ -32,7 +33,15 @@ class EventFormTribeMemberCell: UITableViewCell {
     @IBOutlet weak var tribeMemberNameLabel: UILabel!
 }
 
+// MARK: EventFormTableViewControllerDelegate protocol definition
+protocol EventFormTableViewControllerDelegate {
+    func calEventDetailsDidChange(shouldDismissSubview: Bool) async throws
+}
+
+// MARK: EventFormTableViewController class definition
 class EventFormTableViewController: UITableViewController {
+    
+    var delegate: EventFormTableViewControllerDelegate?
     
     var userModelController: UserModelController?
     var tribeModelController: TribeModelController?
@@ -87,12 +96,14 @@ class EventFormTableViewController: UITableViewController {
         // Section 0, row 3 is the cell with the event recurrence type
         if indexPath.section == 00 && indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecurrenceCell", for: indexPath) as! EventFormRecurrenceCell
+            cell.recurrencePickerView.delegate = self
             return cell
         }
         
         // Section 0, row 4 is the cell with the event category
         if indexPath.section == 00 && indexPath.row == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! EventFormCategoryCell
+            cell.categoryPickerView.delegate = self
             return cell
         } else {
             
@@ -201,7 +212,7 @@ class EventFormTableViewController: UITableViewController {
     
 }
 
-// MARK: Private extensions
+// MARK: Private extension
 extension EventFormTableViewController {
     func initialize() {
         // Customise navigation item title depending on whether an existing event
@@ -248,8 +259,25 @@ extension EventFormTableViewController {
                         recurrenceType: recurrence,
                         subject: subjectText,
                         category: category)
+                } catch HTTPError.badRequest(let apiResponse) {
+                    self.dismiss(animated: true, completion: nil)
+                    let errorMessage = apiResponse
+                    let errorAlert = makeErrorAlert(title: "Error adding event", message: "The server reported an error: \n\n\(errorMessage)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch HTTPError.otherError(let statusCode) {
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error adding event", message: "Something went wrong adding your event. \n\nThe status code reported by the server was \(statusCode)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch {
-                    print(error)
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error adding event", message: "Something went wrong adding your event. Please check you are online.")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                }
+                
+                do {
+                    try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true)
+                } catch {
+                    print("EventFormTableViewController delegate threw an error fetching events and updating calendar")
                 }
             }
         }
@@ -257,7 +285,7 @@ extension EventFormTableViewController {
 }
 
 // MARK: UIPickerViewDataSource extension
-extension EventFormTableViewController: UIPickerViewDataSource {
+extension EventFormTableViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
