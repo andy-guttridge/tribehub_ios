@@ -23,7 +23,9 @@ class HomeViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let eventFormTableViewController = segue.destination as? EventFormTableViewController {
+            eventFormTableViewController.userModelController = userModelController
             eventFormTableViewController.tribeModelController = tribeModelController
+            eventFormTableViewController.eventsModelController = eventsModelController
         }
     }
 }

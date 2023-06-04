@@ -14,15 +14,17 @@ struct Event: Codable {
     var start: Date?
     var durationString: String?
     var duration: TimeInterval? {
-        // Compute the duration of the event from the durationString supplied by the API
-        
-        // Split the string into array of hours, mins, seconds strings
-        guard let hoursMinsSecsStrs = durationString?.split(separator: ":").map(String.init) else { return nil }
-        
-        // Then convert from array of strings to array of ints, and calculate the duration in milliseconds
-        let hoursMinsSecs = hoursMinsSecsStrs.map { Int($0) ?? 0 }
-        let durationInSecs = (hoursMinsSecs[1] * 60) + (hoursMinsSecs[0] * 60 * 60)
-        return TimeInterval(durationInSecs)
+        get {
+            // Compute the duration of the event from the durationString supplied by the API
+            
+            // Split the string into array of hours, mins, seconds strings
+            guard let hoursMinsSecsStrs = durationString?.split(separator: ":").map(String.init) else { return nil }
+            
+            // Then convert from array of strings to array of ints, and calculate the duration in milliseconds
+            let hoursMinsSecs = hoursMinsSecsStrs.map { Int($0) ?? 0 }
+            let durationInSecs = (hoursMinsSecs[1] * 60) + (hoursMinsSecs[0] * 60 * 60)
+            return TimeInterval(durationInSecs)
+        }
     }
     var recurrenceType: String?
     var subject: String?

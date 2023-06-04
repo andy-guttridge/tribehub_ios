@@ -213,6 +213,9 @@
                                         <constraint firstItem="IRp-yc-F0m" firstAttribute="centerY" secondItem="0SY-7l-YS8" secondAttribute="centerY" id="Xd5-eG-eVo"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="startDatePicker" destination="VU5-Ay-Nr7" id="jgf-sg-Sur"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DurationCell" rowHeight="150" id="kT3-n8-u9w" customClass="EventFormDurationCell" customModule="tribehub_ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="162" width="390" height="150"/>
@@ -234,6 +237,9 @@
                                         </datePicker>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="durationDatePicker" destination="vdK-WE-uVB" id="3MK-6S-WNT"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecurrenceCell" rowHeight="207" id="D2m-jF-HMR" customClass="EventFormRecurrenceCell" customModule="tribehub_ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="312" width="390" height="207"/>
@@ -256,7 +262,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="recurrencePickerView" destination="v2g-cC-CAI" id="A37-qV-p9Y"/>
+                                    <outlet property="recurrencePickerView" destination="v2g-cC-CAI" id="Thq-zb-fHz"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="207" id="HFG-sf-gyU" customClass="EventFormCategoryCell" customModule="tribehub_ios" customModuleProvider="target">
@@ -280,7 +286,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="categoryPickerView" destination="S1T-sQ-QMi" id="30m-W0-O8t"/>
+                                    <outlet property="categoryPickerView" destination="S1T-sQ-QMi" id="Blp-4N-vxj"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TribeMemberCell" rowHeight="68" id="VuK-pX-1pH" customClass="EventFormTribeMemberCell" customModule="tribehub_ios" customModuleProvider="target">

@@ -42,7 +42,43 @@ class EventsModelController {
             _ = try await eventResponseRequest.postData(itemForPrimaryKey: pk, payload: payload)
         }
     }
- 
+    
+    /// Creates a new event
+    func createEvent(
+        toPk: [Int?],
+        start: Date,
+        duration: TimeInterval,
+        recurrenceType: EventRecurrenceTypes,
+        subject: String,
+        category: EventCategories
+    ) async throws {
+        
+        guard let session = self.session else {
+            throw SessionError.noSession
+        }
+        
+        // Convert event start date, duration, recurrence and category to strings
+        let startString = start.ISO8601Format(.iso8601)
+        let durationString = intervalToHoursMinsSecondsStr(duration)
+        let recurrenceString = recurrenceType.rawValue
+        let categoryString = category.rawValue
+        
+        // Create payload for API request
+        let payload = [
+            "to": toPk,
+            "start": startString,
+            "duration": durationString,
+            "recurrence_type": recurrenceString,
+            "subject": subject,
+            "category": categoryString
+        ] as [String : Any]
+        
+        // print("Creating event with payload: ", payload)
+        
+        let eventRequest = APIRequest(resource: EventsResource(), session: session)
+        _ = try await eventRequest.postData(payload: payload)
+    }
+    
     /// Checks whether there are any events for a given date
     func checkEventsForDateComponents(_ dateComponents: DateComponents) -> Bool? {
         guard let events = events?.results else { return nil }
