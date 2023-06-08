@@ -35,7 +35,7 @@ class EventFormTribeMemberCell: UITableViewCell {
 
 // MARK: EventFormTableViewControllerDelegate protocol definition
 protocol EventFormTableViewControllerDelegate {
-    func calEventDetailsDidChange(shouldDismissSubview: Bool) async throws
+    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?) async throws
 }
 
 // MARK: EventFormTableViewController class definition
@@ -53,9 +53,20 @@ class EventFormTableViewController: UITableViewController {
     // Tribemembers currently selected in the tableView
     private var selectedTribeMemberPks: [Int?] = []
     
+    // Properties to hold values of user input captured in tableViewCells
+    private var subjectString: String?
+    private var startDatePickerSelectedDate: Date?
+    private var durationPickerSelectedDuration: TimeInterval?
+    private var recurrencePickerSelectedRow: Int?
+    private var categoryPickerSelectedRow: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     // MARK: - Table view data source
@@ -76,19 +87,38 @@ class EventFormTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Section 0, row 0 is the subject cell
         if indexPath.section == 00 && indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SubjectCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SubjectCell", for: indexPath) as! EventFormSubjectCell
+            cell.subjectTextField.addTarget(self, action: #selector(subjectTextFieldDidChange), for: .editingChanged)
+            
+            // Set label text if user is editing existing event
+            if let event = event {
+                cell.subjectTextField.text = event.subject
+            }
             return cell
         }
         
         // Section 0, row 1 is the cell with the event start date and time
         if indexPath.section == 00 && indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DateTimeCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DateTimeCell", for: indexPath) as! EventFormDateTimeCell
+            cell.startDatePicker.timeZone = TimeZone.gmt
+            cell.startDatePicker.addTarget(self, action: #selector(startDatePickerDidChange), for: .valueChanged)
+            
+            // Set datePicker value if user is editing existing event
+            if let start = event?.start {
+                cell.startDatePicker.date = start
+            }
             return cell
         }
         
         // Section 0, row 2 is the cell with the event duration
         if indexPath.section == 00 && indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DurationCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DurationCell", for: indexPath) as! EventFormDurationCell
+            cell.durationDatePicker.addTarget(self, action: #selector(durationPickerDidChange), for: .valueChanged)
+            
+            // Set picker value if user is editing existing event
+            if let duration = event?.duration {
+                cell.durationDatePicker.countDownDuration = duration
+            }
             return cell
             
         }
@@ -97,6 +127,13 @@ class EventFormTableViewController: UITableViewController {
         if indexPath.section == 00 && indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecurrenceCell", for: indexPath) as! EventFormRecurrenceCell
             cell.recurrencePickerView.delegate = self
+            
+            // Set picker value if user is editing existing event
+            if let recurrenceType = event?.recurrenceType {
+                let recurrenceTypeAsInt = EventRecurrenceTypes.allCases.firstIndex(of: EventRecurrenceTypes(rawValue: recurrenceType) ?? EventRecurrenceTypes.NON)
+                cell.recurrencePickerView.selectRow(recurrenceTypeAsInt ??  0, inComponent: 0, animated: true)
+                recurrencePickerSelectedRow = recurrenceTypeAsInt
+            }
             return cell
         }
         
@@ -104,6 +141,13 @@ class EventFormTableViewController: UITableViewController {
         if indexPath.section == 00 && indexPath.row == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! EventFormCategoryCell
             cell.categoryPickerView.delegate = self
+            
+            // Set picker value if user is editing existing event
+            if let categoryType = event?.category {
+                let categoryTypeAsInt = EventCategories.allCases.firstIndex(of: EventCategories(rawValue: categoryType) ?? EventCategories.NON)
+                cell.categoryPickerView.selectRow(categoryTypeAsInt ?? 0, inComponent: 0, animated: true)
+                categoryPickerSelectedRow = categoryTypeAsInt
+            }
             return cell
         } else {
             
@@ -123,6 +167,17 @@ class EventFormTableViewController: UITableViewController {
             if let displayName = tribeMembers?[indexPath.row].displayName {
                 cell.tribeMemberNameLabel.text = displayName
             }
+            
+            // If user is editing an existing event, find out if this tribe member is invited to the event,
+            // and give the cell selected status with a checkmark if so
+            if let toArray = event?.to, let tribeMemberPk = tribeMembers?[indexPath.row].pk {
+                let isInvited = toArray.reduce(false) { acc, tribeMember in tribeMemberPk == tribeMember.pk || acc }
+                if isInvited {
+                    cell.accessoryType = .checkmark
+                    selectedTribeMemberPks.append(tribeMemberPk)
+                }
+            }
+            
             // Align separator with right of profile images
             cell.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
             return cell
@@ -147,8 +202,24 @@ class EventFormTableViewController: UITableViewController {
             // Filter out the current user from the tribeMembers so they can't invite themselves to the event
             let tribeMembers = tribeModelController?.tribe?.tribeMembers.filter() { member in member.pk != userModelController?.user?.pk}
             if let cell = tableView.cellForRow(at: indexPath), let tribeMembers = tribeMembers {
-                cell.accessoryType = .checkmark
-                selectedTribeMemberPks.append(tribeMembers[indexPath.row].pk)
+                
+                // Manually check if cell already has a checkmark, and if so deselect, remove the checkmark
+                // and remove the tribeMember.pk from the selectedTribeMemberPks. We do this to prevent the user having
+                // to tap the cell twice to deselect if an existing event is being edited and the tribeMember is already
+                // invited. Might be a better way to deal with this?
+                if cell.accessoryType == .checkmark {
+                    tableView.deselectRow(at: indexPath, animated: false)
+                    cell.accessoryType = .none
+                    if let tribeMemberIndex = selectedTribeMemberPks.firstIndex(of: tribeMembers[indexPath.row].pk) {
+                        selectedTribeMemberPks.remove(at: tribeMemberIndex)
+                    }
+                } else {
+                    // Otherwise, it's a normal selection, so add the checkmark
+                    // and add to selectedTribeMemberPks
+                    cell.accessoryType = .checkmark
+                    selectedTribeMemberPks.append(tribeMembers[indexPath.row].pk)
+                }
+                
             }
         }
     }
@@ -164,6 +235,7 @@ class EventFormTableViewController: UITableViewController {
             }
         }
     }
+    
     
     /*
      // Override to support conditional editing of the table view.
@@ -215,46 +287,126 @@ class EventFormTableViewController: UITableViewController {
 // MARK: Private extension
 extension EventFormTableViewController {
     func initialize() {
-        // Customise navigation item title depending on whether an existing event
-        // is being edited
+        // Customise navigation item title and set properties
+        // depending on whether an existing event is being edited
         if let event = event {
             navigationItem.title = "Edit event"
-            
-            // Eventually we will need to populate the tableView with event details here
+            subjectString = event.subject
+            startDatePickerSelectedDate = event.start
+            durationPickerSelectedDuration = event.duration
         } else {
             navigationItem.title = "Add event"
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .done, target: self, action: #selector(confirmSubmit))
+        
+    }
+    
+    /// Captures value of the subjectTextField when its value changes
+    /// and sets the relevant property
+    @objc func subjectTextFieldDidChange() {
+        if let subjectCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EventFormSubjectCell {
+            subjectString = subjectCell.subjectTextField.text
+        }
+    }
+    
+    /// Captures values of startDatePicker when its value changes
+    /// and sets the relevant property
+    @objc func startDatePickerDidChange() {
+        if let startDateCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EventFormDateTimeCell {
+            print("Picker date did change to: ", startDateCell.startDatePicker.date)
+            startDatePickerSelectedDate = startDateCell.startDatePicker.date
+        }
+    }
+    
+    @objc func durationPickerDidChange() {
+        if let durationCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? EventFormDurationCell {
+            durationPickerSelectedDuration = durationCell.durationDatePicker.countDownDuration
+        }
     }
     
     /// Handles user confirming submission of a new event
     @objc func confirmSubmit() {
+        print("COnfirmed submit")
         
-        // Get refs to UI elements we need to extract data from
-        guard let subjectCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EventFormSubjectCell,
-              let startCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EventFormDateTimeCell,
-              let durationCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? EventFormDurationCell,
-              let recurrenceCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? EventFormRecurrenceCell,
-              let categoryCell = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? EventFormCategoryCell
-        else { return }
+        // Get data from properties
+        guard let subjectText = subjectString,
+              let startDate = startDatePickerSelectedDate,
+              let duration = durationPickerSelectedDuration,
+              let recurrenceSelectedRow = recurrencePickerSelectedRow,
+              let categorySelectedRow = categoryPickerSelectedRow
+        else { print("Had trouble getting all the data for an event"); return }
         
-        guard let subjectText = subjectCell.subjectTextField.text else { return }
+        // Get correct enum values for picker values
+        let recurrence = EventRecurrenceTypes.allCases[recurrenceSelectedRow]
+        let category = EventCategories.allCases[categorySelectedRow]
         
-        // Extract key event data from UI elements
-        let start = startCell.startDatePicker.date
-        let duration = durationCell.durationDatePicker.countDownDuration
-        let recurrence = EventRecurrenceTypes.allCases[recurrenceCell.recurrencePickerView.selectedRow(inComponent: 0)]
-        let category = EventCategories.allCases[categoryCell.categoryPickerView.selectedRow(inComponent: 0)]
+        
+        // Create array of invited tribe members for the newEvent we create below
+        let toTribeMembers: [TribeMember]? = selectedTribeMemberPks.map() { pk in tribeModelController?.getTribeMemberForPk(pk) ?? TribeMember() }
+        
+        // Filter out any tribe members who aren't invited from the accepted array
+        let accepted = event?.accepted?.filter() { tribeMember in event?.to?.contains
+            { toMember in toMember.pk == tribeMember.pk} ?? false
+        }
         
         if let event = event {
-            print("Handling changes to event: ", event)
+            
+            // Create a new event instance with the changed details.
+            // This is necessary as we need to pass it back to the delegate to make sure the new details
+            // are reflected in the eventsDetailTableView.
+            let newEvent = Event(
+                id: event.id,
+                owner: event.owner,
+                to: toTribeMembers,
+                start: startDate,
+                durationString: intervalToHoursMinsSecondsStr(duration),
+                recurrenceType: recurrence.rawValue,
+                subject: subjectText,
+                category: category.rawValue,
+                accepted: accepted
+            )
+            
+            Task.init {
+                do {
+                    if let eventId = event.id {
+                        try await eventsModelController?.changeEvent(
+                            eventPk: eventId,
+                            toPk: selectedTribeMemberPks,
+                            start: startDate,
+                            duration: duration,
+                            recurrenceType: recurrence,
+                            subject: subjectText,
+                            category: category)
+                    }
+                } catch HTTPError.badRequest(let apiResponse) {
+                    self.dismiss(animated: true, completion: nil)
+                    let errorMessage = apiResponse
+                    let errorAlert = makeErrorAlert(title: "Error editing event", message: "The server reported an error: \n\n\(errorMessage)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch HTTPError.otherError(let statusCode) {
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error editing event", message: "Something went wrong making the changes to your event. \n\nThe status code reported by the server was \(statusCode)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch {
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error editing event", message: "Something went wrong making the changes to your event. Please check you are online.")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                }
+                
+                do {
+                    print("Passing event to delegate: ", newEvent)
+                    try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: newEvent)
+                } catch {
+                    print("EventFormTableViewController delegate threw an error fetching events and updating calendar")
+                }
+            }
         } else {
             // Ask eventsModelController to create a new event
             Task.init {
                 do {
-                   try await eventsModelController?.createEvent(
+                    try await eventsModelController?.createEvent(
                         toPk: selectedTribeMemberPks,
-                        start: start,
+                        start: startDate,
                         duration: duration,
                         recurrenceType: recurrence,
                         subject: subjectText,
@@ -275,7 +427,7 @@ extension EventFormTableViewController {
                 }
                 
                 do {
-                    try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true)
+                    try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: nil)
                 } catch {
                     print("EventFormTableViewController delegate threw an error fetching events and updating calendar")
                 }
@@ -318,4 +470,16 @@ extension EventFormTableViewController: UIPickerViewDataSource, UIPickerViewDele
         
         return nil
     }
+    
+    /// Store the value of the recurrencePickerView or categoryPickerView when user selects a row
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.superview?.superview is EventFormRecurrenceCell {
+            recurrencePickerSelectedRow = row
+        }
+        
+        if pickerView.superview?.superview is EventFormCategoryCell {
+            categoryPickerSelectedRow = row
+        }
+    }
+    
 }

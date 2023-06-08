@@ -156,7 +156,7 @@
             <objects>
                 <tableViewController id="oRs-vp-a0v" customClass="EventFormTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="UL3-HI-GII">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="353"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SubjectCell" id="xSo-Bk-NRF" customClass="EventFormSubjectCell" customModule="tribehub_ios" customModuleProvider="target">
@@ -296,14 +296,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mm3-1i-LEu">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mm3-1i-LEu">
                                             <rect key="frame" x="3" y="4" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="4tA-jt-E62"/>
                                                 <constraint firstAttribute="width" constant="60" id="fgF-qn-IIk"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TribeMember" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="056-0a-9On">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="TribeMember" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="056-0a-9On">
                                             <rect key="frame" x="69" y="23.666666666666671" width="102" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -332,7 +332,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Al-rZ-eYK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3157.6744186046512" y="-1013.304721030043"/>
+            <point key="canvasLocation" x="3590" y="-1023"/>
         </scene>
         <!--Cal Event Details View Controller-->
         <scene sceneID="lkJ-tq-EpG">
@@ -358,10 +358,13 @@
                             <constraint firstItem="ebu-TM-Om6" firstAttribute="leading" secondItem="m5N-Gn-glw" secondAttribute="leading" id="oZb-6f-H0X"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="oRs-vp-a0v" kind="show" identifier="EventEditSegue" id="64u-Pt-j5G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="umn-Xn-4fV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3477" y="-521"/>
+            <point key="canvasLocation" x="3653" y="-390"/>
         </scene>
         <!--Event Details-->
         <scene sceneID="C1m-u3-XsW">
@@ -562,7 +565,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gQ-RK-chZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4369" y="-521"/>
+            <point key="canvasLocation" x="4599" y="-487"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="fCA-bI-jFt">
@@ -580,6 +583,9 @@
             <point key="canvasLocation" x="2449" y="-1328"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="64u-Pt-j5G"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="repeat.circle" catalog="system" width="128" height="123"/>

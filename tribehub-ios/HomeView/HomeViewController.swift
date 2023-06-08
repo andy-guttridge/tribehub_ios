@@ -68,7 +68,7 @@ extension HomeViewController: CalEventDetailsTableViewControllerDelegate, EventF
     
     /// Fetches fresh events data from the API, reloads data for the calendarTableView and refreshes calendar decorations
     /// - shouldDismissSubview: Bool - tells the function whether the view of the view controller that called this delegate method should be dismissed
-    func calEventDetailsDidChange(shouldDismissSubview: Bool) async throws {
+    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?) async throws {
         guard let eventsModelController = eventsModelController, let calendarViewController = calendarViewController else { return }
         
         try await eventsModelController.getEvents()
@@ -77,7 +77,6 @@ extension HomeViewController: CalEventDetailsTableViewControllerDelegate, EventF
         
         // Dismiss the subview if requested
         if shouldDismissSubview {
-            print("Attempting to dismiss subview")
             navigationController?.popViewController(animated: true)
         }
     }    
