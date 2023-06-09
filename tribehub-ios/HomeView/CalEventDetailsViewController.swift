@@ -94,12 +94,10 @@ private extension CalEventDetailsViewController {
                     let errorAlert = makeErrorAlert(title: "Error fetching original event", message: "You chose to edit an event recurrence.\n\nWe attempted to fetch the details of the original event, but the server reported an error: \n\n\(errorMessage)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch HTTPError.otherError(let statusCode) {
-                    print("Error")
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error fetching original event", message: "You chose to edit an event recurrence.\n\nWe attempted to fetch the details of the original event, but something went wrong.\n\nThe status code reported by the server was \(statusCode).")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch {
-                    print("Error")
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error editing event", message: "You chose to edit an event recurrence.\n\nWe attempted to fetch the details of the original event, but something went wrong.\n\nPlease check you are online.")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
@@ -117,7 +115,6 @@ extension CalEventDetailsViewController: EventFormTableViewControllerDelegate {
         guard let eventsModelController = eventsModelController, let event = event else { return }
         
         if let calEventTableViewController = self.children[0] as? CalEventDetailsTableViewController {
-            print("Found calEventTableViewController")
             calEventTableViewController.event = event
             calEventTableViewController.eventDidChange()
         } else {

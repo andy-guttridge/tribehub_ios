@@ -313,7 +313,6 @@ extension EventFormTableViewController {
     /// and sets the relevant property
     @objc func startDatePickerDidChange() {
         if let startDateCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EventFormDateTimeCell {
-            print("Picker date did change to: ", startDateCell.startDatePicker.date)
             startDatePickerSelectedDate = startDateCell.startDatePicker.date
         }
     }
@@ -326,15 +325,13 @@ extension EventFormTableViewController {
     
     /// Handles user confirming submission of a new event
     @objc func confirmSubmit() {
-        print("COnfirmed submit")
-        
         // Get data from properties
         guard let subjectText = subjectString,
               let startDate = startDatePickerSelectedDate,
               let duration = durationPickerSelectedDuration,
               let recurrenceSelectedRow = recurrencePickerSelectedRow,
               let categorySelectedRow = categoryPickerSelectedRow
-        else { print("Had trouble getting all the data for an event"); return }
+        else { return }
         
         // Get correct enum values for picker values
         let recurrence = EventRecurrenceTypes.allCases[recurrenceSelectedRow]
@@ -394,7 +391,6 @@ extension EventFormTableViewController {
                 }
                 
                 do {
-                    print("Passing event to delegate: ", newEvent)
                     try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: newEvent)
                 } catch {
                     print("EventFormTableViewController delegate threw an error fetching events and updating calendar")

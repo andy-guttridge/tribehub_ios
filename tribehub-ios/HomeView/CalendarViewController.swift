@@ -31,8 +31,19 @@ class CalendarViewController: UIViewController {
                 // Fetch events from the backend and refresh calendar decorations
                 try await self.eventsModelController?.getEvents()
                 refreshCalDecorationsForCurrentMonth()
+            } catch HTTPError.badRequest(let apiResponse) {
+                self.dismiss(animated: true, completion: nil)
+                let errorMessage = apiResponse
+                let errorAlert = makeErrorAlert(title: "Error fetching calendar events", message: "There was an issue fetching calendar events.\n\nThe server reported an error: \n\n\(errorMessage)")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+            } catch HTTPError.otherError(let statusCode) {
+                self.dismiss(animated: true, completion: nil)
+                let errorAlert = makeErrorAlert(title: "Error fetching calendar events", message: "There was an issue fetching calendar events.\n\nThe status code reported by the server was \(statusCode).")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
             } catch {
-                print("Error fetching events")
+                self.dismiss(animated: true, completion: nil)
+                let errorAlert = makeErrorAlert(title: "Error fetching calendar events", message: "There was an issue fetching calendar events.\n\nPlease check you are online.")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
             }
         }
     }
