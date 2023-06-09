@@ -28,9 +28,13 @@ class APIRequest<Resource: APIResource> {
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
     }
     
-    func fetchData () async throws -> Resource.ModelType? {
-        let response = await session.request(resource.url, method: .get).validate().serializingDecodable(Resource.ModelType.self, decoder: decoder).response
-        try checkBadRequestForResponse(response)
+    func fetchData (forPk pk: Int? = nil) async throws -> Resource.ModelType? {
+        var url = resource.url
+        if let pk = pk {
+            url += "\(pk)/"
+        }
+        let response = await session.request(url, method: .get).validate().serializingDecodable(Resource.ModelType.self, decoder: decoder).response
+        try checkHttpResponseCodeForResponse(response)
         let value = response.value
         return value
     }

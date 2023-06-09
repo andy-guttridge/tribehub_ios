@@ -61,6 +61,7 @@
 		A182EDA52A0E727B005C4DEC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182EDA42A0E727B005C4DEC /* CalendarViewController.swift */; };
 		A182EDA72A0E8F25005C4DEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182EDA62A0E8F25005C4DEC /* HomeViewController.swift */; };
 		A18EB9FF2A21304B00B075C6 /* EventFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18EB9FE2A21304B00B075C6 /* EventFormTableViewController.swift */; };
+		A1946A142A3379510017CF04 /* EventResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1946A132A3379500017CF04 /* EventResource.swift */; };
 		A1A249C629F582770083295E /* makeRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A249C529F582770083295E /* makeRounded.swift */; };
 		A1BD28162A041F3300321219 /* resizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD28152A041F3300321219 /* resizeImage.swift */; };
 		A1C227E02A167E840022588B /* EventCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C227DE2A167E840022588B /* EventCategories.swift */; };
@@ -158,6 +159,7 @@
 		A182EDA42A0E727B005C4DEC /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A182EDA62A0E8F25005C4DEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A18EB9FE2A21304B00B075C6 /* EventFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormTableViewController.swift; sourceTree = "<group>"; };
+		A1946A132A3379500017CF04 /* EventResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventResource.swift; sourceTree = "<group>"; };
 		A1A249C529F582770083295E /* makeRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeRounded.swift; sourceTree = "<group>"; };
 		A1BD28152A041F3300321219 /* resizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resizeImage.swift; sourceTree = "<group>"; };
 		A1C227DE2A167E840022588B /* EventCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategories.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				A13EB40029FAFB1400750023 /* DeleteUserResource.swift */,
 				A17E99EC2A1FC16E00734C2B /* EventResponseResource.swift */,
 				A162B83A2A0D34CF00CC18CC /* EventsResource.swift */,
+				A1946A132A3379500017CF04 /* EventResource.swift */,
 				A181476D29E806AC00AC3BE2 /* LoginResource.swift */,
 				A181476F29E8074200AC3BE2 /* LogoutResource.swift */,
 				A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */,
@@ -728,6 +731,7 @@
 				A1551B9329D59F2B00D30446 /* APIResource.swift in Sources */,
 				A17BA3D829FC2F2A00390E79 /* AddTribeMemberContainerViewController.swift in Sources */,
 				A1A249C629F582770083295E /* makeRounded.swift in Sources */,
+				A1946A142A3379510017CF04 /* EventResource.swift in Sources */,
 				A17DE63E2A2A349400F2AEAD /* EventRecurrenceTypes.swift in Sources */,
 				A17E99EB2A1F9F9600734C2B /* imageFromString.swift in Sources */,
 				A17184912A2CDE8F0039DFCD /* intervalToHoursMinsSecondsStr.swift in Sources */,

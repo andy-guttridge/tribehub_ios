@@ -15,7 +15,12 @@ class CalEventDetailsViewController: UIViewController {
     
     weak var calEventDetailsTableViewControllerDelegate: HomeViewController?
     
+    // event holds the event the user selected to view details of
     var event: Event?
+    
+    // originalEvent holds the orginal event if a user selected to edit
+    // a recurrence
+    private var originalEvent: Event?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +47,12 @@ class CalEventDetailsViewController: UIViewController {
             eventFormTableViewController.tribeModelController = tribeModelController
             eventFormTableViewController.eventsModelController = eventsModelController
             eventFormTableViewController.delegate = self
-            eventFormTableViewController.event = event
+            
+            if let originalEvent = originalEvent {
+                eventFormTableViewController.event = originalEvent
+            } else {
+                eventFormTableViewController.event = event
+            }
         }
     }
 }
@@ -63,7 +73,41 @@ private extension CalEventDetailsViewController {
     
     /// Handles user selecting to edit the event by performing a segue way to EventFormTableViewController
     @objc func editEvent() {
-        performSegue(withIdentifier: "EventEditSegue", sender: self)
+        
+        // If the event instance the user has chosen to edit is a recurrence, we don't want them trying to
+        // make an edit to it directly, as this is not supported by the API. Instead, we attempt to fetch the original
+        // event from which the recurrence was generated from the API and alert the user that any edits will
+        // be made to the original. They can then either cancel, or proceed to edit the original event.
+        if event?.recurrenceType == "REC" {
+            Task.init {
+                do {
+                    originalEvent = try await eventsModelController?.getEventForPk(event?.id)
+                    let alert = UIAlertController(title: "Editing original event", message: "You chose to edit an event recurrence. Any edits will be made to the original event.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel action"), style: .cancel, handler: {alertAction in alert.dismiss(animated: true)}))
+                    
+                    // The OK action includes a handler to perform the segue to the EventFormTableViewController
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Confirm action"), style: .default, handler: {alertAction in self.performSegue(withIdentifier: "EventEditSegue", sender: self)}))
+                    self.view.window?.rootViewController?.present(alert, animated: true) {return}
+                } catch HTTPError.badRequest(let apiResponse) {
+                    self.dismiss(animated: true, completion: nil)
+                    let errorMessage = apiResponse
+                    let errorAlert = makeErrorAlert(title: "Error fetching original event", message: "You chose to edit an event recurrence.\n\nWe attempted to fetch the details of the original event, but the server reported an error: \n\n\(errorMessage)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch HTTPError.otherError(let statusCode) {
+                    print("Error")
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error fetching original event", message: "You chose to edit an event recurrence.\n\nWe attempted to fetch the details of the original event, but something went wrong.\n\nThe status code reported by the server was \(statusCode).")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch {
+                    print("Error")
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error editing event", message: "You chose to edit an event recurrence.\n\nWe attempted to fetch the details of the original event, but something went wrong.\n\nPlease check you are online.")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                }
+            }
+        } else {
+            performSegue(withIdentifier: "EventEditSegue", sender: self)
+        }
     }
 }
 

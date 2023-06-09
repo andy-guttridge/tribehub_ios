@@ -31,6 +31,20 @@ class EventsModelController {
         }
     }
     
+    /// Attempts to fetch a specific event
+    func getEventForPk(_ pk: Int?) async throws -> Event? {
+        guard let session = self.session else {
+            throw SessionError.noSession
+        }
+        
+        // Try to fetch the event from the API
+        let eventRequest = APIRequest(resource: EventResource(), session: session)
+        do {
+            let response = try await eventRequest.fetchData(forPk: pk)
+            return response
+        }
+    }
+    
     /// Handles user's response to an event invitation
     func didRespondToEventForPk(_ pk: Int, isGoing: Bool) async throws {
         guard let session = self.session else {

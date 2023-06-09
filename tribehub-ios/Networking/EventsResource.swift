@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Resource supplies decodable model and API endpoint for user's tribe details
+/// Resource supplies decodable model and API endpoint for user's events
 class EventsResource: APIResource {
     typealias ModelType = EventResults
     var methodPath: String {
