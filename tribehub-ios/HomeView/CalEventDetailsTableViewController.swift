@@ -305,7 +305,15 @@ class CalEventDetailsTableViewController: UITableViewController {
     }
     
     func eventDidChange() {
-        print("Event details: ", event)
+        Task.init {
+            do {
+                // Let the HomeViewController know that calendar event details changed so that
+                // the user's edit is reflected in the UI
+                try await delegate?.calEventDetailsDidChange(shouldDismissSubview: false, event: event)
+            } catch {
+                print("Error dealing with change to event in CalEventDetailsTableViewController")
+            }
+        }
         tableView.reloadData()
     }
     

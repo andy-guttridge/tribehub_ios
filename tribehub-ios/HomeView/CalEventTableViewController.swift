@@ -38,7 +38,7 @@ class CalEventTableViewController: UITableViewController {
     /// Responds to a change in currently selected events by reloading the tableView data
     func eventsDidChange(events: [Event]?) {
         self.events = events
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
