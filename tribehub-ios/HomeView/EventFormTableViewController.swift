@@ -313,7 +313,6 @@ extension EventFormTableViewController {
     /// and sets the relevant property
     @objc func startDatePickerDidChange() {
         if let startDateCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EventFormDateTimeCell {
-            print(startDateCell.startDatePicker.date)
             startDatePickerSelectedDate = startDateCell.startDatePicker.date
         }
     }
@@ -392,7 +391,6 @@ extension EventFormTableViewController {
                 }
                 
                 do {
-                    print("Passing back new event to delegate with start date: ", newEvent.start)
                     try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: newEvent)
                 } catch {
                     print("EventFormTableViewController delegate threw an error fetching events and updating calendar")

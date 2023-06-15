@@ -113,7 +113,6 @@ class CalEventDetailsTableViewController: UITableViewController {
                 dateFormatter.timeStyle = .short
                 dateFormatter.dateStyle = .medium
                 dateFormatter.locale = Locale(identifier: "en_GB")
-                print("Start date in details table view: ", startDate)
                 let startString = dateFormatter.string(from: startDate)
                 let endDate = Date(timeInterval: duration, since: startDate)
                 let endString = dateFormatter.string(from: endDate)
