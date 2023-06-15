@@ -35,7 +35,7 @@ class EventFormTribeMemberCell: UITableViewCell {
 
 // MARK: EventFormTableViewControllerDelegate protocol definition
 protocol EventFormTableViewControllerDelegate {
-    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?) async throws
+    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?, eventDeletedDate: Date?) async throws
 }
 
 // MARK: EventFormTableViewController class definition
@@ -410,7 +410,7 @@ extension EventFormTableViewController {
                 }
                 
                 do {
-                    try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: newEvent)
+                    try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: newEvent, eventDeletedDate: nil)
                 } catch {
                     print("EventFormTableViewController delegate threw an error fetching events and updating calendar")
                 }
@@ -442,11 +442,11 @@ extension EventFormTableViewController {
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 }
                 
-                do {
-                    try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: nil)
-                } catch {
-                    print("EventFormTableViewController delegate threw an error fetching events and updating calendar")
-                }
+                    do {
+                        try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: nil, eventDeletedDate: nil)
+                    } catch {
+                        print("EventFormTableViewController delegate threw an error fetching events and updating calendar")
+                    }
             }
         }
     }

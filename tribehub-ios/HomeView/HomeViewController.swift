@@ -68,7 +68,9 @@ extension HomeViewController: CalEventDetailsTableViewControllerDelegate, EventF
     
     /// Fetches fresh events data from the API, reloads data for the calendarTableView and refreshes calendar decorations
     /// - shouldDismissSubview: Bool - tells the function whether the view of the view controller that called this delegate method should be dismissed
-    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?) async throws {
+    /// - event: Event? - optionally provides this method with details of an existing event whose details have been edited
+    /// - eventDeletedDate? - optionally provides this method with details of an event which has been deleted
+    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?, eventDeletedDate: Date?) async throws {
         guard let eventsModelController = eventsModelController, let calendarViewController = calendarViewController, let calEventTableViewController = self.children[1] as? CalEventTableViewController else { return }
         
         try await eventsModelController.getEvents()
@@ -80,6 +82,12 @@ extension HomeViewController: CalEventDetailsTableViewControllerDelegate, EventF
         // to ensure the changes to the event are reflected in the UI
         if let start = event?.start, let calendar = calendarViewController.calendarView?.calendar {
             let dateComponents = calendar.dateComponents([.day, .month, .year], from: start)
+            calEventTableViewController.eventsDidChange(events: eventsModelController.getEventsForDateComponents(dateComponents))
+        }
+        
+        if let eventDeletedDate = eventDeletedDate, let calendar = calendarViewController.calendarView?.calendar {
+            print("Found event deleted date: ", eventDeletedDate)
+            let dateComponents = calendar.dateComponents([.day, .month, .year], from: eventDeletedDate)
             calEventTableViewController.eventsDidChange(events: eventsModelController.getEventsForDateComponents(dateComponents))
         }
         
