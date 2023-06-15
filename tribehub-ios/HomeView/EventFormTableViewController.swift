@@ -103,9 +103,12 @@ class EventFormTableViewController: UITableViewController {
             cell.startDatePicker.timeZone = TimeZone.gmt
             cell.startDatePicker.addTarget(self, action: #selector(startDatePickerDidChange), for: .valueChanged)
             
-            // Set datePicker value if user is editing existing event
+            // Set datePicker value if user is editing existing event, otherwise set the  corresponding
+            // property to the datePicker's starting value
             if let start = event?.start {
                 cell.startDatePicker.date = start
+            } else {
+                startDatePickerSelectedDate = cell.startDatePicker.date
             }
             return cell
         }
@@ -115,9 +118,12 @@ class EventFormTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DurationCell", for: indexPath) as! EventFormDurationCell
             cell.durationDatePicker.addTarget(self, action: #selector(durationPickerDidChange), for: .valueChanged)
             
-            // Set picker value if user is editing existing event
+            // Set picker value if user is editing existing event, otherwise set the  corresponding
+            // property to the picker's starting value
             if let duration = event?.duration {
                 cell.durationDatePicker.countDownDuration = duration
+            } else {
+                durationPickerSelectedDuration = cell.durationDatePicker.countDownDuration
             }
             return cell
             
@@ -128,11 +134,14 @@ class EventFormTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecurrenceCell", for: indexPath) as! EventFormRecurrenceCell
             cell.recurrencePickerView.delegate = self
             
-            // Set picker value if user is editing existing event
+            // Set picker value if user is editing existing event, otherwise set the  corresponding
+            // property to the picker's starting value
             if let recurrenceType = event?.recurrenceType {
                 let recurrenceTypeAsInt = EventRecurrenceTypes.allCases.firstIndex(of: EventRecurrenceTypes(rawValue: recurrenceType) ?? EventRecurrenceTypes.NON)
                 cell.recurrencePickerView.selectRow(recurrenceTypeAsInt ??  0, inComponent: 0, animated: true)
                 recurrencePickerSelectedRow = recurrenceTypeAsInt
+            } else {
+                recurrencePickerSelectedRow = cell.recurrencePickerView.selectedRow(inComponent: 0)
             }
             return cell
         }
@@ -142,11 +151,14 @@ class EventFormTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! EventFormCategoryCell
             cell.categoryPickerView.delegate = self
             
-            // Set picker value if user is editing existing event
+            // Set picker value if user is editing existing event, otherwise set the  corresponding
+            // property to the picker's starting value
             if let categoryType = event?.category {
                 let categoryTypeAsInt = EventCategories.allCases.firstIndex(of: EventCategories(rawValue: categoryType) ?? EventCategories.NON)
                 cell.categoryPickerView.selectRow(categoryTypeAsInt ?? 0, inComponent: 0, animated: true)
                 categoryPickerSelectedRow = categoryTypeAsInt
+            } else {
+                categoryPickerSelectedRow = cell.categoryPickerView.selectedRow(inComponent: 0)
             }
             return cell
         } else {
@@ -325,6 +337,13 @@ extension EventFormTableViewController {
     
     /// Handles user confirming submission of a new event or of edits to an existing event
     @objc func confirmSubmit() {
+        
+        // Show alert if user has failed to enter a subject string before attempting to create an event
+        if subjectString == nil {
+            let errorAlert = makeErrorAlert(title: "No subject", message: "You cannot create a new event without entering a subject")
+            self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+        }
+        
         // Get data from properties
         guard let subjectText = subjectString,
               let startDate = startDatePickerSelectedDate,
@@ -398,6 +417,7 @@ extension EventFormTableViewController {
             }
         } else {
             // Ask eventsModelController to create a new event
+    
             Task.init {
                 do {
                     try await eventsModelController?.createEvent(
