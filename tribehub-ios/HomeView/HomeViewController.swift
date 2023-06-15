@@ -15,6 +15,9 @@ class HomeViewController: UIViewController {
     var calendarViewController: CalendarViewController?
     var calendarTableViewController: CalEventTableViewController?
     
+    // Holds the currently selected calendar date
+    private var currentlySelectedDate: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -27,6 +30,11 @@ class HomeViewController: UIViewController {
             eventFormTableViewController.tribeModelController = tribeModelController
             eventFormTableViewController.eventsModelController = eventsModelController
             eventFormTableViewController.delegate = self
+            
+            // Passing the currentlySelectedDate enables the eventsFormTableViewController to
+            // set the initial value for the datePicker for a new event
+            
+            eventFormTableViewController.shouldStartEditingWithDate = currentlySelectedDate
         }
     }
 }
@@ -60,6 +68,14 @@ extension HomeViewController: CalendarViewControllerDelegate {
     func didSelectCalendarDate(_ dateComponents: DateComponents) {
         guard let eventsModelController = eventsModelController else { return }
         calendarTableViewController?.eventsDidChange(events: eventsModelController.getEventsForDateComponents(dateComponents))
+        
+        // Create copy of dateComponents with a time component and timezone, and store.
+        // This date is used by EventFormTableViewController to set a default date for a new event
+        // based on the selected calendar date.
+        var dateComponentsWithTime = dateComponents
+        dateComponentsWithTime.hour = 12
+        dateComponentsWithTime.timeZone = .gmt
+        currentlySelectedDate = calendarViewController?.calendarView?.calendar.date(from: dateComponentsWithTime)
     }
 }
 

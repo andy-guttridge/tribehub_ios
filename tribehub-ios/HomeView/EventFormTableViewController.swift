@@ -50,6 +50,10 @@ class EventFormTableViewController: UITableViewController {
     // Holds the event being edited if applicable
     var event: Event?
     
+    // Enables the parent view controller to specify an initial date for
+    // the startDatePicker
+    var shouldStartEditingWithDate: Date?
+    
     // Tribemembers currently selected in the tableView
     private var selectedTribeMemberPks: [Int?] = []
     
@@ -103,11 +107,17 @@ class EventFormTableViewController: UITableViewController {
             cell.startDatePicker.timeZone = TimeZone.gmt
             cell.startDatePicker.addTarget(self, action: #selector(startDatePickerDidChange), for: .valueChanged)
             
-            // Set datePicker value if user is editing existing event, otherwise set the  corresponding
-            // property to the datePicker's starting value
+            // Set datePicker value if user is editing existing event, or with startEditingWithDate
+            // if this was passed in, otherwise set the  corresponding property to the datePicker's starting value
             if let start = event?.start {
                 cell.startDatePicker.date = start
-            } else {
+            } else if let start = shouldStartEditingWithDate {
+                cell.startDatePicker.date = start
+                
+                // Set to nil because we only want this value the first time the cell
+                // is rendered
+                shouldStartEditingWithDate = nil
+            }  else {
                 startDatePickerSelectedDate = cell.startDatePicker.date
             }
             return cell
