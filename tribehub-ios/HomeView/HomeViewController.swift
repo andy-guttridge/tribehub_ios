@@ -70,24 +70,18 @@ extension HomeViewController: CalEventDetailsTableViewControllerDelegate, EventF
     /// - shouldDismissSubview: Bool - tells the function whether the view of the view controller that called this delegate method should be dismissed
     /// - event: Event? - optionally provides this method with details of an existing event whose details have been edited
     /// - eventDeletedDate? - optionally provides this method with details of an event which has been deleted
-    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?, eventDeletedDate: Date?) async throws {
+    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?) async throws {
         guard let eventsModelController = eventsModelController, let calendarViewController = calendarViewController, let calEventTableViewController = self.children[1] as? CalEventTableViewController else { return }
         
         try await eventsModelController.getEvents()
         calendarTableViewController?.tableView.reloadData()
         calendarViewController.refreshCalDecorationsForCurrentMonth()
         
-        // If an existing event has been passed in, that means the user has edited an event,
+        // If an existing event has been passed in, that means the user has edited an event or it has been deleted,
         // so we ask the calEventTableViewController to refresh its events for the relevant date
         // to ensure the changes to the event are reflected in the UI
         if let start = event?.start, let calendar = calendarViewController.calendarView?.calendar {
             let dateComponents = calendar.dateComponents([.day, .month, .year], from: start)
-            calEventTableViewController.eventsDidChange(events: eventsModelController.getEventsForDateComponents(dateComponents))
-        }
-        
-        if let eventDeletedDate = eventDeletedDate, let calendar = calendarViewController.calendarView?.calendar {
-            print("Found event deleted date: ", eventDeletedDate)
-            let dateComponents = calendar.dateComponents([.day, .month, .year], from: eventDeletedDate)
             calEventTableViewController.eventsDidChange(events: eventsModelController.getEventsForDateComponents(dateComponents))
         }
         

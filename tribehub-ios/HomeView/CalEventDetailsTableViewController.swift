@@ -31,7 +31,7 @@ class EventResponseCell: UITableViewCell {
 
 // MARK: CalEventDetailsTableViewControllerDelegate protocol definition
 protocol CalEventDetailsTableViewControllerDelegate {
-    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?, eventDeletedDate: Date?) async throws
+    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?) async throws
 }
 
 // MARK: CalEventDetailsTableViewController defintion
@@ -273,7 +273,7 @@ class CalEventDetailsTableViewController: UITableViewController {
                 do {
                     // Tell the delegate there was a change to a calendar event. Events will be reloaded
                     // and the calendar view refreshed.
-                    try await delegate?.calEventDetailsDidChange(shouldDismissSubview: false, event: nil, eventDeletedDate: nil)
+                    try await delegate?.calEventDetailsDidChange(shouldDismissSubview: false, event: nil)
                 } catch {
                     print("Error reloading and refreshing events data in CalEventDetailsTableViewController: ", error)
                 }
@@ -310,7 +310,7 @@ class CalEventDetailsTableViewController: UITableViewController {
             do {
                 // Let the HomeViewController know that calendar event details changed so that
                 // the user's edit is reflected in the UI
-                try await delegate?.calEventDetailsDidChange(shouldDismissSubview: false, event: event, eventDeletedDate: nil)
+                try await delegate?.calEventDetailsDidChange(shouldDismissSubview: false, event: event)
             } catch {
                 print("Error dealing with change to event in CalEventDetailsTableViewController")
             }

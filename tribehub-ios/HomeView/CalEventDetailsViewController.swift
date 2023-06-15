@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: CalEventDetailsViewControllerDelegate protocol declaration
 protocol CalEventDetailsViewControllerDelegate {
-    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?, eventDeletedDate: Date?) async throws
+    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?) async throws
 }
 
 // MARK: CalEventDetailsViewController class declaration
@@ -129,7 +129,7 @@ private extension CalEventDetailsViewController {
 
 // MARK: EventForTableViewControllerDelegate extension
 extension CalEventDetailsViewController: EventFormTableViewControllerDelegate {
-    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?, eventDeletedDate: Date?) async throws {
+    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?) async throws {
         guard let eventsModelController = eventsModelController, let event = event else { return }
         
         if let calEventTableViewController = self.children[0] as? CalEventDetailsTableViewController {
@@ -144,15 +144,15 @@ extension CalEventDetailsViewController: EventFormTableViewControllerDelegate {
     
     /// Handles user selecting to delete an event
     func deleteEvent() {
-        guard let eventPk = event?.id, let eventDeletedDate = event?.start else { return }
+        guard let eventPk = event?.id, let event = event else { return }
         
         // Create an appropriate message for the confirmation action sheet depending on whether this is
         // a recurring event, a recurrence or a non-repeating event, and display in an action sheet with
         // cancel and confirm options.
         var message = ""
-        if event?.recurrenceType == "REC" {
+        if event.recurrenceType == "REC" {
             message = "You have chosen to delete an event recurrence\n\nThis will permanently delete the original event and all its recurrences."
-        } else if event?.recurrenceType == "NON" {
+        } else if event.recurrenceType == "NON" {
             message = "This event will be permanently deleted"
         } else {
             message = "You have chosen to delete a recurring event\n\nThis will permanently delete the original event and all its recurrences"
@@ -181,7 +181,7 @@ extension CalEventDetailsViewController: EventFormTableViewControllerDelegate {
                 
                 // Tell the delegate to dismiss this view controller.
                 do {
-                    try await self.delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: nil, eventDeletedDate: eventDeletedDate)
+                    try await self.delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: event)
                 } catch {
                     print("CalEventDetailsViewController delegate threw an error fetching events and updating calendar")
                 }
