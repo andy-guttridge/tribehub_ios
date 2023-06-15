@@ -137,7 +137,7 @@
                                     <outlet property="categoryImage" destination="g25-wK-eTf" id="cWs-iE-QMh"/>
                                     <outlet property="subjectLabel" destination="AWr-R3-dHJ" id="WYE-XE-Y3C"/>
                                     <outlet property="timeLabel" destination="dFv-NC-oaw" id="4Xk-nD-IHm"/>
-                                    <segue destination="DbB-NY-p2R" kind="show" id="KxN-kC-u6C"/>
+                                    <segue destination="DbB-NY-p2R" kind="show" identifier="CalEventDetailsSegue" id="KxN-kC-u6C"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

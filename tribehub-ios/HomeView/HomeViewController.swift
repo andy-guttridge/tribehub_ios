@@ -63,8 +63,8 @@ extension HomeViewController: CalendarViewControllerDelegate {
     }
 }
 
-// MARK: CalEventDetailsTableViewControllerDelegate extension
-extension HomeViewController: CalEventDetailsTableViewControllerDelegate, EventFormTableViewControllerDelegate {
+// MARK: CalEventDetailsTableViewControllerDelegate, EventFormTableViewControllerDelegate, CalEventDetailsViewController extension
+extension HomeViewController: CalEventDetailsTableViewControllerDelegate, EventFormTableViewControllerDelegate, CalEventDetailsViewControllerDelegate {
     
     /// Fetches fresh events data from the API, reloads data for the calendarTableView and refreshes calendar decorations
     /// - shouldDismissSubview: Bool - tells the function whether the view of the view controller that called this delegate method should be dismissed
@@ -89,4 +89,3 @@ extension HomeViewController: CalEventDetailsTableViewControllerDelegate, EventF
         }
     }    
 }
-

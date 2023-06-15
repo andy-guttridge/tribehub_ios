@@ -72,6 +72,7 @@
 		A1C3EA2B29FECDE80010625B /* PasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2A29FECDE80010625B /* PasswordTableViewController.swift */; };
 		A1C3EA2D29FECE050010625B /* PasswordContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2C29FECE050010625B /* PasswordContainerViewController.swift */; };
 		A1C3EA2F29FED7550010625B /* UpdatePasswordResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C3EA2E29FED7550010625B /* UpdatePasswordResource.swift */; };
+		A1E2689C2A3B578F005CA690 /* DeleteEventResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E2689B2A3B578F005CA690 /* DeleteEventResource.swift */; };
 		A1E878E42A1777D80091E38F /* CalEventDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E878E32A1777D70091E38F /* CalEventDetailsTableViewController.swift */; };
 		A1E878E82A17813F0091E38F /* CalEventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E878E72A17813F0091E38F /* CalEventDetailsViewController.swift */; };
 		A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */; };
@@ -170,6 +171,7 @@
 		A1C3EA2A29FECDE80010625B /* PasswordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewController.swift; sourceTree = "<group>"; };
 		A1C3EA2C29FECE050010625B /* PasswordContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordContainerViewController.swift; sourceTree = "<group>"; };
 		A1C3EA2E29FED7550010625B /* UpdatePasswordResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordResource.swift; sourceTree = "<group>"; };
+		A1E2689B2A3B578F005CA690 /* DeleteEventResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEventResource.swift; sourceTree = "<group>"; };
 		A1E878E32A1777D70091E38F /* CalEventDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalEventDetailsTableViewController.swift; sourceTree = "<group>"; };
 		A1E878E72A17813F0091E38F /* CalEventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalEventDetailsViewController.swift; sourceTree = "<group>"; };
 		A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequestAdapter.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				A1551B9929D5A81000D30446 /* APIRequest.swift */,
 				A1551B9229D59F2B00D30446 /* APIResource.swift */,
 				A13EB40029FAFB1400750023 /* DeleteUserResource.swift */,
+				A1E2689B2A3B578F005CA690 /* DeleteEventResource.swift */,
 				A17E99EC2A1FC16E00734C2B /* EventResponseResource.swift */,
 				A162B83A2A0D34CF00CC18CC /* EventsResource.swift */,
 				A1946A132A3379500017CF04 /* EventResource.swift */,
@@ -711,6 +714,7 @@
 				A182EDA32A0E7129005C4DEC /* HomeNavigationController.swift in Sources */,
 				A162B83B2A0D34CF00CC18CC /* EventsResource.swift in Sources */,
 				A181477029E8074200AC3BE2 /* LogoutResource.swift in Sources */,
+				A1E2689C2A3B578F005CA690 /* DeleteEventResource.swift in Sources */,
 				A117B97B29F2FF1700F7E40A /* HTTPError.swift in Sources */,
 				A17267C929F1ACC900F612E7 /* SessionError.swift in Sources */,
 				A162B8372A0D331700CC18CC /* EventsModel.swift in Sources */,

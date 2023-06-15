@@ -120,6 +120,9 @@ class CalEventTableViewController: UITableViewController {
             calEventDetailsViewController.userModelController = userModelController
             calEventDetailsViewController.tribeModelController = tribeModelController
             calEventDetailsViewController.eventsModelController = eventsModelController
+            if let homeViewController = parent as? HomeViewController {
+                calEventDetailsViewController.delegate = homeViewController
+            }
             calEventDetailsViewController.calEventDetailsTableViewControllerDelegate = calEventDetailsTableViewControllerDelegate
             if let selectedCell = sender as? CalEventCell{
                 let cellRow = tableView.indexPath(for: selectedCell)?.row ?? 0

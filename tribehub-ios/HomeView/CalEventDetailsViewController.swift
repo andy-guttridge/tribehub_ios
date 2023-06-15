@@ -7,6 +7,12 @@
 
 import UIKit
 
+// MARK: CalEventDetailsViewControllerDelegate protocol declaration
+protocol CalEventDetailsViewControllerDelegate {
+    func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?) async throws
+}
+
+// MARK: CalEventDetailsViewController class declaration
 class CalEventDetailsViewController: UIViewController {
     
     weak var userModelController: UserModelController?
@@ -14,6 +20,8 @@ class CalEventDetailsViewController: UIViewController {
     weak var eventsModelController: EventsModelController?
     
     weak var calEventDetailsTableViewControllerDelegate: HomeViewController?
+    
+    var delegate: CalEventDetailsViewControllerDelegate?
     
     // event holds the event the user selected to view details of
     var event: Event?
@@ -66,13 +74,23 @@ private extension CalEventDetailsViewController {
         // if they are the owner of the event
         if let user = userModelController?.user, let ownerPk = event?.owner?.pk {
             if user.isAdmin ?? false || ownerPk == user.pk {
-                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editEvent))
+                let changeEventAction = UIAction(title: "Change", image: UIImage(systemName: "pencil")) { _ in
+                    self.editEvent()
+                }
+                
+                let deleteEventAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+                    self.deleteEvent()
+                }
+                
+                let menu = UIMenu(children: [changeEventAction, deleteEventAction])
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", menu: menu)
+                // navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editEvent))
             }
         }
     }
     
     /// Handles user selecting to edit the event by performing a segue way to EventFormTableViewController
-    @objc func editEvent() {
+    func editEvent() {
         
         // If the event instance the user has chosen to edit is a recurrence, we don't want them trying to
         // make an edit to it directly, as this is not supported by the API. Instead, we attempt to fetch the original
@@ -122,5 +140,54 @@ extension CalEventDetailsViewController: EventFormTableViewControllerDelegate {
         }
         try await eventsModelController.getEvents()        
         navigationController?.popViewController(animated: true)
+    }
+    
+    /// Handles user selecting to delete an event
+    func deleteEvent() {
+        guard let eventPk = event?.id else { return }
+        
+        // Create an appropriate message for the confirmation action sheet depending on whether this is
+        // a recurring event, a recurrence or a non-repeating event, and display in an action sheet with
+        // cancel and confirm options.
+        var message = ""
+        if event?.recurrenceType == "REC" {
+            message = "You have chosen to delete an event recurrence\n\nThis will permanently delete the original event and all its recurrences."
+        } else if event?.recurrenceType == "NON" {
+            message = "This event will be permanently deleted"
+        } else {
+            message = "You have chosen to delete a recurring event\n\nThis will permanently delete the original event and all its recurrences"
+        }
+        let actionSheet = UIAlertController(title: "Delete event", message: message, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Confirm", style: .destructive) { _ in
+            
+            // Attempt to delete the event
+            Task.init {
+                do {
+                    try await self.eventsModelController?.deleteEventForPk(eventPk)
+                } catch HTTPError.badRequest(let apiResponse) {
+                    self.dismiss(animated: true, completion: nil)
+                    let errorMessage = apiResponse
+                    let errorAlert = makeErrorAlert(title: "Error deleting event", message: "The server reported an error: \n\n\(errorMessage)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch HTTPError.otherError(let statusCode) {
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error deleting event", message: "Something went wrong deleting your event. \n\nThe status code reported by the server was \(statusCode)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch {
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error deleting event", message: "Something went wrong deleting your event. Please check you are online.")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                }
+                
+                // Tell the delegate to dismiss this view controller.
+                do {
+                    try await self.delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: nil)
+                } catch {
+                    print("CalEventDetailsViewController delegate threw an error fetching events and updating calendar")
+                }
+            }            
+        })
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in return })
+        present(actionSheet, animated: true)
     }
 }

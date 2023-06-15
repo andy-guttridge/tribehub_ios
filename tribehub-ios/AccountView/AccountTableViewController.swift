@@ -44,8 +44,8 @@ class AccountTableViewController: UITableViewController {
                     }
                 }
             })
-            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel) {_ in return})
-            self.present(actionSheet, animated: true)
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel) {_ in return })
+            present(actionSheet, animated: true)
         }
         if indexPath.row == 4 {
             // Table row 4 means user selected logout

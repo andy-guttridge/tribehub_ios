@@ -126,6 +126,15 @@ class EventsModelController {
         _ = try await eventRequest.putData(itemForPrimaryKey: eventPk, payload: payload)
     }
     
+    /// Deletes an existing event
+    func deleteEventForPk(_ pk: Int) async throws {
+        guard let session = self.session else {
+            throw SessionError.noSession
+        }
+        let eventDeleteRequest = APIRequest(resource: DeleteEventResource(), session: session)
+        _ = try await eventDeleteRequest.delete(itemForPrimaryKey: pk)
+    }
+    
     /// Checks whether there are any events for a given date
     func checkEventsForDateComponents(_ dateComponents: DateComponents) -> Bool? {
         guard let events = events?.results else { return nil }
