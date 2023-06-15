@@ -109,9 +109,11 @@ class CalEventDetailsTableViewController: UITableViewController {
                 // Use date formatter to extract time and date strings from event start and end date.
                 // We have to calculate the end date from the start date and duration
                 let dateFormatter = DateFormatter()
+                dateFormatter.timeZone = .gmt
                 dateFormatter.timeStyle = .short
                 dateFormatter.dateStyle = .medium
                 dateFormatter.locale = Locale(identifier: "en_GB")
+                print("Start date in details table view: ", startDate)
                 let startString = dateFormatter.string(from: startDate)
                 let endDate = Date(timeInterval: duration, since: startDate)
                 let endString = dateFormatter.string(from: endDate)

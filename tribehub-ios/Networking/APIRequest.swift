@@ -24,6 +24,7 @@ class APIRequest<Resource: APIResource> {
         // https://stackoverflow.com/questions/50847139/error-decoding-date-with-swift
         self.decoder = JSONDecoder()
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = .gmt
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
     }

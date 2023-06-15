@@ -60,8 +60,10 @@ class CalEventTableViewController: UITableViewController {
         // extract only a time string for the start and end dates, and set the text
         // on the timeLabel.
         if let startDate = event.start, let duration = event.duration {
+            print("Start date on the calendar view: ", startDate)
             let endDate = Date(timeInterval: duration, since: startDate)
             let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = .gmt
             dateFormatter.locale = Locale(identifier: "en_GB")
             dateFormatter.dateStyle = .none
             dateFormatter.timeStyle = .short

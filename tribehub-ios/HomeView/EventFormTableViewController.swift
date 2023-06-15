@@ -313,6 +313,7 @@ extension EventFormTableViewController {
     /// and sets the relevant property
     @objc func startDatePickerDidChange() {
         if let startDateCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EventFormDateTimeCell {
+            print(startDateCell.startDatePicker.date)
             startDatePickerSelectedDate = startDateCell.startDatePicker.date
         }
     }
@@ -323,7 +324,7 @@ extension EventFormTableViewController {
         }
     }
     
-    /// Handles user confirming submission of a new event
+    /// Handles user confirming submission of a new event or of edits to an existing event
     @objc func confirmSubmit() {
         // Get data from properties
         guard let subjectText = subjectString,
@@ -391,6 +392,7 @@ extension EventFormTableViewController {
                 }
                 
                 do {
+                    print("Passing back new event to delegate with start date: ", newEvent.start)
                     try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: newEvent)
                 } catch {
                     print("EventFormTableViewController delegate threw an error fetching events and updating calendar")
