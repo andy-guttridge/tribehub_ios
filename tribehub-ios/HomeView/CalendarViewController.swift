@@ -66,14 +66,14 @@ private extension CalendarViewController {
     }
     
     /// Uses the stored selectedDate to calculate and return a fromDate one month before selected date
-    /// and a toDate four months after the selected date
+    /// and a toDate three months after the selected date
     func calcToAndFromDates() -> (toDate: Date, fromDate: Date) {
-        // Calculate start and end dates 1 month before and 4 months after today
+        // Calculate start and end dates 1 month before and 3 months after today
         let calendar = Calendar(identifier: .gregorian)
         var dateComponents = DateComponents()
         dateComponents.month = -1
         let fromDate = calendar.date(byAdding: dateComponents, to: selectedDate ?? Date())
-        dateComponents.month = 4
+        dateComponents.month = 3
         let toDate = calendar.date(byAdding: dateComponents, to: selectedDate ?? Date())
         return (toDate: toDate ?? Date(), fromDate: fromDate ?? Date())
     }
