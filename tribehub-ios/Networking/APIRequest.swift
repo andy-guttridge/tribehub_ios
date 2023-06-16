@@ -29,12 +29,12 @@ class APIRequest<Resource: APIResource> {
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
     }
     
-    func fetchData (forPk pk: Int? = nil) async throws -> Resource.ModelType? {
+    func fetchData (forPk pk: Int? = nil, urlParameters: [String: String]? = nil) async throws -> Resource.ModelType? {
         var url = resource.url
         if let pk = pk {
             url += "\(pk)/"
         }
-        let response = await session.request(url, method: .get).validate().serializingDecodable(Resource.ModelType.self, decoder: decoder).response
+        let response = await session.request(url, method: .get, parameters: urlParameters).validate().serializingDecodable(Resource.ModelType.self, decoder: decoder).response
         try checkHttpResponseCodeForResponse(response)
         let value = response.value
         return value

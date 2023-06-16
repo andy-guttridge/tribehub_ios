@@ -33,7 +33,6 @@ class HomeViewController: UIViewController {
             
             // Passing the currentlySelectedDate enables the eventsFormTableViewController to
             // set the initial value for the datePicker for a new event
-            
             eventFormTableViewController.shouldStartEditingWithDate = currentlySelectedDate
         }
     }
@@ -75,7 +74,10 @@ extension HomeViewController: CalendarViewControllerDelegate {
         var dateComponentsWithTime = dateComponents
         dateComponentsWithTime.hour = 12
         dateComponentsWithTime.timeZone = .gmt
+        
+        // Set the currentlySelectedDate in this view controller and also in the calendarViewController
         currentlySelectedDate = calendarViewController?.calendarView?.calendar.date(from: dateComponentsWithTime)
+        calendarViewController?.selectedDate = (calendarViewController?.calendarView?.calendar.date(from: dateComponentsWithTime))
     }
 }
 

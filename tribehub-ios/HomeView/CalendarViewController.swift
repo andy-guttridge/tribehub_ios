@@ -19,6 +19,9 @@ class CalendarViewController: UIViewController {
     var eventsModelController: EventsModelController?
     var delegate: CalendarViewControllerDelegate?
     
+    // Property to store date range for fetching calendar data
+    var selectedDate: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -26,26 +29,7 @@ class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Task.init {
-            do {
-                // Fetch events from the backend and refresh calendar decorations
-                try await self.eventsModelController?.getEvents()
-                refreshCalDecorationsForCurrentMonth()
-            } catch HTTPError.badRequest(let apiResponse) {
-                self.dismiss(animated: true, completion: nil)
-                let errorMessage = apiResponse
-                let errorAlert = makeErrorAlert(title: "Error fetching calendar events", message: "There was an issue fetching calendar events.\n\nThe server reported an error: \n\n\(errorMessage)")
-                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
-            } catch HTTPError.otherError(let statusCode) {
-                self.dismiss(animated: true, completion: nil)
-                let errorAlert = makeErrorAlert(title: "Error fetching calendar events", message: "There was an issue fetching calendar events.\n\nThe status code reported by the server was \(statusCode).")
-                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
-            } catch {
-                self.dismiss(animated: true, completion: nil)
-                let errorAlert = makeErrorAlert(title: "Error fetching calendar events", message: "There was an issue fetching calendar events.\n\nPlease check you are online.")
-                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
-            }
-        }
+        refreshDataAndCalendar()
     }
 }
 
@@ -79,6 +63,47 @@ private extension CalendarViewController {
         // Configure calendar for single date selection and set self as delegate
         calendarView?.selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
         calendarView?.delegate = self
+    }
+    
+    /// Uses the stored selectedDate to calculate and return a fromDate one month before selected date
+    /// and a toDate four months after the selected date
+    func calcToAndFromDates() -> (toDate: Date, fromDate: Date) {
+        // Calculate start and end dates 1 month before and 4 months after today
+        let calendar = Calendar(identifier: .gregorian)
+        var dateComponents = DateComponents()
+        dateComponents.month = -1
+        let fromDate = calendar.date(byAdding: dateComponents, to: selectedDate ?? Date())
+        dateComponents.month = 4
+        let toDate = calendar.date(byAdding: dateComponents, to: selectedDate ?? Date())
+        return (toDate: toDate ?? Date(), fromDate: fromDate ?? Date())
+    }
+    
+    /// Requests fresh events data from the API and  refreshes the calendar decorations
+    func refreshDataAndCalendar() {
+        Task.init {
+            do {
+                
+                // Calculate start and end dates 1 month before and 4 months after today
+                let toFromDates = calcToAndFromDates()
+                
+                // Fetch events from the backend and refresh calendar decorations
+                try await self.eventsModelController?.getEvents(fromDate: toFromDates.fromDate, toDate: toFromDates.toDate)
+                refreshCalDecorationsForCurrentMonth()
+            } catch HTTPError.badRequest(let apiResponse) {
+                self.dismiss(animated: true, completion: nil)
+                let errorMessage = apiResponse
+                let errorAlert = makeErrorAlert(title: "Error fetching calendar events", message: "There was an issue fetching calendar events.\n\nThe server reported an error: \n\n\(errorMessage)")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+            } catch HTTPError.otherError(let statusCode) {
+                self.dismiss(animated: true, completion: nil)
+                let errorAlert = makeErrorAlert(title: "Error fetching calendar events", message: "There was an issue fetching calendar events.\n\nThe status code reported by the server was \(statusCode).")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+            } catch {
+                self.dismiss(animated: true, completion: nil)
+                let errorAlert = makeErrorAlert(title: "Error fetching calendar events", message: "There was an issue fetching calendar events.\n\nPlease check you are online.")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+            }
+        }
     }
 }
 
@@ -128,5 +153,12 @@ extension CalendarViewController: UICalendarViewDelegate {
             }
         }
         return nil
+    }
+    
+    /// Sets the selectedDate and refreshes the events data from the API and the calendar decorations
+    /// in response to the user changing the visible dates
+    func calendarView(_ calendarView:UICalendarView, didChangeVisibleDateComponentsFrom previousDateComponents: DateComponents) {
+        selectedDate = calendarView.calendar.date(from: calendarView.visibleDateComponents)
+        refreshDataAndCalendar()
     }
 }

@@ -18,15 +18,24 @@ class EventsModelController {
     }
     
     /// Attempts to fetch events for authenticated user
-    func getEvents() async throws {
+    func getEvents(fromDate: Date? = nil, toDate: Date? = nil) async throws {
         guard let session = self.session else {
             throw SessionError.noSession
+        }
+        
+        var urlParameters: [String: String]?
+        
+        if let fromDate = fromDate, let toDate = toDate {
+            urlParameters = [
+                "from_date": String(fromDate.ISO8601Format(.iso8601).dropLast()),
+                "to_date": String(toDate.ISO8601Format(.iso8601).dropLast())
+            ]
         }
         
         // Try to fetch user's event data from the API
         let eventsRequest = APIRequest(resource: EventsResource(), session: session)
         do {
-            let response = try await eventsRequest.fetchData()
+            let response = try await eventsRequest.fetchData(urlParameters: urlParameters)
             events = response
         }
     }
