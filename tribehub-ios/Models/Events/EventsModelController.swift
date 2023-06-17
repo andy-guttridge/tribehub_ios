@@ -163,7 +163,6 @@ class EventsModelController {
             
             // Check whether the event date and the date from the calendar match, and OR with the accumulator
             // to ensure we return true if we've previously found a match, even if we didn't this time
-            
             return acc || eventDateWithNoTime == calendarDate
         }
         return dayHasEvents

@@ -19,7 +19,6 @@ class LoginViewController: UIViewController {
     
     weak var userModelController: UserModelController?
     weak var tribeModelController: TribeModelController?
-    weak var eventsModelController: EventsModelController?
     
     var delegate: LoginViewControllerDelegate?
     
@@ -42,10 +41,6 @@ class LoginViewController: UIViewController {
         }
         
         guard let tribeModelController: TribeModelController = tribeModelController else {
-            return
-        }
-        
-        guard let eventsModelController: EventsModelController = eventsModelController else {
             return
         }
         

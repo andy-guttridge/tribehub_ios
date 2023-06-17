@@ -19,7 +19,7 @@ class APIRequest<Resource: APIResource> {
         self.session = session
         
         // Custom JSONDecoder needed for date format supplied by the API.
-        // Technique for using a dateDecodingStrategy/encodingStrategy
+        // Technique for using a dateDecodingStrategy
         // with a DateFormatter matching the API's date format is from
         // https://stackoverflow.com/questions/50847139/error-decoding-date-with-swift
         self.decoder = JSONDecoder()

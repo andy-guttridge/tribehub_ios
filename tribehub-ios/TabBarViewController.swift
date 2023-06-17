@@ -47,7 +47,6 @@ class TabBarViewController: UITabBarController {
             loginViewController.delegate = self
             loginViewController.userModelController = userModelController
             loginViewController.tribeModelController = tribeModelController
-            loginViewController.eventsModelController = eventsModelController
         }
     }
     
