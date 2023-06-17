@@ -406,6 +406,15 @@ extension EventFormTableViewController {
                             category: category)
                     }
                     removeSpinnerView(spinnerView)
+                    
+                    do {
+                        try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: newEvent)
+                    } catch {
+                        self.dismiss(animated: true, completion: nil)
+                        let errorAlert = makeErrorAlert(title: "Error updating calendar", message: "Your event has been edited, but there was a problem updating the calendar with the new details.")
+                        self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                    }
+                    
                 } catch HTTPError.badRequest(let apiResponse) {
                     removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
@@ -423,13 +432,8 @@ extension EventFormTableViewController {
                     let errorAlert = makeErrorAlert(title: "Error editing event", message: "Something went wrong making the changes to your event. Please check you are online.")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 }
-                
-                do {
-                    try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: newEvent)
-                } catch {
-                    print("EventFormTableViewController delegate threw an error fetching events and updating calendar")
-                }
             }
+            
         } else {
             // Ask eventsModelController to create a new event
             Task.init {
@@ -444,6 +448,14 @@ extension EventFormTableViewController {
                         subject: subjectText,
                         category: category)
                     removeSpinnerView(spinnerView)
+                    
+                    do {
+                        try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: createdEvent)
+                    } catch {
+                        self.dismiss(animated: true, completion: nil)
+                        let errorAlert = makeErrorAlert(title: "Error updating calendar", message: "Your event has been created, but there was a problem updating the calendar with the new details.")
+                        self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                    }
                 } catch HTTPError.badRequest(let apiResponse) {
                     removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
@@ -461,12 +473,6 @@ extension EventFormTableViewController {
                     let errorAlert = makeErrorAlert(title: "Error adding event", message: "Something went wrong adding your event. Please check you are online.")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 }
-                
-                    do {
-                        try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: createdEvent)
-                    } catch {
-                        print("EventFormTableViewController delegate threw an error fetching events and updating calendar")
-                    }
             }
         }
     }

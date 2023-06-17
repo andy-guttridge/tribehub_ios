@@ -136,7 +136,7 @@ private extension CalEventDetailsViewController {
 extension CalEventDetailsViewController: EventFormTableViewControllerDelegate {
     func calEventDetailsDidChange(shouldDismissSubview: Bool, event: Event?) async throws {
         guard let eventsModelController = eventsModelController, let event = event else { return }
-        
+
         if let calEventTableViewController = self.children[0] as? CalEventDetailsTableViewController {
             calEventTableViewController.event = event
             calEventTableViewController.eventDidChange()
