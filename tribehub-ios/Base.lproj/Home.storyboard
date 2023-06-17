@@ -91,15 +91,15 @@
             <objects>
                 <tableViewController id="thp-UA-X4c" customClass="CalEventTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="kNO-Xq-hbh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="THBackground"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalEventCell" rowHeight="44" id="IvM-nZ-Ifh" customClass="CalEventCell" customModule="tribehub_ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="55.5" width="374" height="44"/>
+                                <rect key="frame" x="16" y="55.5" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IvM-nZ-Ifh" id="dR0-lx-4bl">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g25-wK-eTf">
@@ -111,7 +111,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWr-R3-dHJ">
-                                            <rect key="frame" x="39" y="12" width="209" height="20"/>
+                                            <rect key="frame" x="39" y="12" width="178" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="LBo-M7-upu"/>
                                             </constraints>
@@ -120,7 +120,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFv-NC-oaw">
-                                            <rect key="frame" x="251" y="12" width="120" height="20"/>
+                                            <rect key="frame" x="220" y="12" width="120" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="DS0-YU-GKr"/>
                                                 <constraint firstAttribute="width" constant="120" id="tah-wW-PGl"/>
@@ -380,11 +380,11 @@
             <objects>
                 <viewController id="DbB-NY-p2R" customClass="CalEventDetailsViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cpr-LV-GHN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebu-TM-Om6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
                                 <color key="backgroundColor" name="THBackground"/>
                                 <connections>
                                     <segue destination="Iuh-s1-cgn" kind="embed" id="PMV-rf-DLk"/>
@@ -413,15 +413,15 @@
             <objects>
                 <tableViewController title="Event Details" id="Iuh-s1-cgn" customClass="CalEventDetailsTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="68" estimatedRowHeight="68" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="RZC-ZE-gXq">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="353"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="THBackground"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventTitleCell" rowHeight="68" id="zZc-ID-LdF" customClass="EventTitleCell" customModule="tribehub_ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="55.5" width="390" height="68"/>
+                                <rect key="frame" x="16" y="55.5" width="343" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zZc-ID-LdF" id="krj-5b-jH1">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="68"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nRu-EC-7l1">
@@ -432,7 +432,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnT-g3-t5G">
-                                            <rect key="frame" x="66" y="3" width="321" height="62"/>
+                                            <rect key="frame" x="66" y="3" width="274" height="62"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="62" id="hSa-Uj-v2Z"/>
                                             </constraints>
@@ -456,10 +456,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventDateCell" id="CXS-E1-cx0" customClass="EventDateCell" customModule="tribehub_ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="123.5" width="390" height="68"/>
+                                <rect key="frame" x="16" y="123.5" width="343" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CXS-E1-cx0" id="HBR-6c-pSI">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="68"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aX-H9-okm">
@@ -527,10 +527,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventAttendeeCell" id="Ult-52-C3V" customClass="EventAttendeeCell" customModule="tribehub_ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="191.5" width="390" height="68"/>
+                                <rect key="frame" x="16" y="191.5" width="343" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ult-52-C3V" id="0ea-Vs-Yf6">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="68"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ioJ-Zz-jyl">
@@ -550,7 +550,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xu-JN-qhP">
-                                            <rect key="frame" x="338" y="23.5" width="49" height="21"/>
+                                            <rect key="frame" x="291" y="23.5" width="49" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="uVJ-k8-s6g"/>
                                             </constraints>
@@ -576,14 +576,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventResponseCell" id="nw1-Jw-FUC" customClass="EventResponseCell" customModule="tribehub_ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="259.5" width="390" height="68"/>
+                                <rect key="frame" x="16" y="259.5" width="343" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nw1-Jw-FUC" id="Yok-kd-Mtp">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="68"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="J1f-4l-mkc">
-                                            <rect key="frame" x="111.5" y="18.5" width="167" height="32"/>
+                                            <rect key="frame" x="111.5" y="18.5" width="120" height="32"/>
                                             <segments>
                                                 <segment title="Not going"/>
                                                 <segment title="Going"/>
@@ -622,7 +622,7 @@
             <objects>
                 <viewController id="pxU-t3-sS7" customClass="CalendarViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yIo-tT-ZzJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="442"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="442"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="rad-gp-N9d"/>
                         <color key="backgroundColor" name="THBackground"/>
