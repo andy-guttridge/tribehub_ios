@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="THBackground"/>
-                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="THBackground"/>
                         <color key="barTintColor" name="THBackground"/>
                         <color key="selectedImageTintColor" name="THIcons"/>
                         <tabBarAppearance key="standardAppearance"/>

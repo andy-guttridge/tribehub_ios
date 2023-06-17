@@ -113,7 +113,7 @@ class EventFormTableViewController: UITableViewController {
                 cell.startDatePicker.date = start
             } else if let start = shouldStartEditingWithDate {
                 cell.startDatePicker.date = start
-                
+                startDatePickerSelectedDate = start
                 // Set to nil because we only want this value the first time the cell
                 // is rendered
                 shouldStartEditingWithDate = nil
@@ -360,7 +360,7 @@ extension EventFormTableViewController {
               let duration = durationPickerSelectedDuration,
               let recurrenceSelectedRow = recurrencePickerSelectedRow,
               let categorySelectedRow = categoryPickerSelectedRow
-        else { return }
+        else { print("Did not get all properties"); return }
         
         // Get correct enum values for picker values
         let recurrence = EventRecurrenceTypes.allCases[recurrenceSelectedRow]
@@ -432,7 +432,6 @@ extension EventFormTableViewController {
             }
         } else {
             // Ask eventsModelController to create a new event
-    
             Task.init {
                 let spinnerView = addSpinnerViewTo(self)
                 do {
