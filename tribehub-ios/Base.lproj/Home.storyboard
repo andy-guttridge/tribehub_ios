@@ -110,7 +110,7 @@
                                                 <constraint firstAttribute="width" constant="30" id="VIt-c6-Y29"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWr-R3-dHJ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWr-R3-dHJ">
                                             <rect key="frame" x="39" y="12" width="178" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="LBo-M7-upu"/>
@@ -123,7 +123,7 @@
                                             <rect key="frame" x="220" y="12" width="120" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="DS0-YU-GKr"/>
-                                                <constraint firstAttribute="width" constant="120" id="tah-wW-PGl"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="tah-wW-PGl"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
