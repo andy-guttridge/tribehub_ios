@@ -98,8 +98,10 @@ private extension CalEventDetailsViewController {
         // be made to the original. They can then either cancel, or proceed to edit the original event.
         if event?.recurrenceType == "REC" {
             Task.init {
+                let spinnerView = addSpinnerViewTo(self)
                 do {
                     originalEvent = try await eventsModelController?.getEventForPk(event?.id)
+                    removeSpinnerView(spinnerView)
                     let alert = UIAlertController(title: "Editing original event", message: "You chose to edit an event recurrence. Any edits will be made to the original event.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel action"), style: .cancel, handler: {alertAction in alert.dismiss(animated: true)}))
                     
@@ -107,15 +109,18 @@ private extension CalEventDetailsViewController {
                     alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Confirm action"), style: .default, handler: {alertAction in self.performSegue(withIdentifier: "EventEditSegue", sender: self)}))
                     self.view.window?.rootViewController?.present(alert, animated: true) {return}
                 } catch HTTPError.badRequest(let apiResponse) {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorMessage = apiResponse
                     let errorAlert = makeErrorAlert(title: "Error fetching original event", message: "You chose to edit an event recurrence.\n\nWe attempted to fetch the details of the original event, but the server reported an error: \n\n\(errorMessage)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch HTTPError.otherError(let statusCode) {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error fetching original event", message: "You chose to edit an event recurrence.\n\nWe attempted to fetch the details of the original event, but something went wrong.\n\nThe status code reported by the server was \(statusCode).")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error editing event", message: "You chose to edit an event recurrence.\n\nWe attempted to fetch the details of the original event, but something went wrong.\n\nPlease check you are online.")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
@@ -138,7 +143,9 @@ extension CalEventDetailsViewController: EventFormTableViewControllerDelegate {
         } else {
             print("Did not find calEventTableViewController")
         }
-        try await eventsModelController.getEvents()        
+        let spinnerView = addSpinnerViewTo(self)
+        try await eventsModelController.getEvents()
+        removeSpinnerView(spinnerView)
         navigationController?.popViewController(animated: true)
     }
     
@@ -162,18 +169,23 @@ extension CalEventDetailsViewController: EventFormTableViewControllerDelegate {
             
             // Attempt to delete the event
             Task.init {
+                let spinnerView = addSpinnerViewTo(self)
                 do {
                     try await self.eventsModelController?.deleteEventForPk(eventPk)
+                    removeSpinnerView(spinnerView)
                 } catch HTTPError.badRequest(let apiResponse) {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorMessage = apiResponse
                     let errorAlert = makeErrorAlert(title: "Error deleting event", message: "The server reported an error: \n\n\(errorMessage)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch HTTPError.otherError(let statusCode) {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error deleting event", message: "Something went wrong deleting your event. \n\nThe status code reported by the server was \(statusCode)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error deleting event", message: "Something went wrong deleting your event. Please check you are online.")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}

@@ -82,7 +82,6 @@ private extension CalendarViewController {
     func refreshDataAndCalendar() {
         Task.init {
             do {
-                
                 // Calculate start and end dates 1 month before and 4 months after today
                 let toFromDates = calcToAndFromDates()
                 

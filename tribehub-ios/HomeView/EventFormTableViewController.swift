@@ -393,6 +393,7 @@ extension EventFormTableViewController {
             )
             
             Task.init {
+                let spinnerView = addSpinnerViewTo(self)
                 do {
                     if let eventId = event.id {
                         try await eventsModelController?.changeEvent(
@@ -404,16 +405,20 @@ extension EventFormTableViewController {
                             subject: subjectText,
                             category: category)
                     }
+                    removeSpinnerView(spinnerView)
                 } catch HTTPError.badRequest(let apiResponse) {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorMessage = apiResponse
                     let errorAlert = makeErrorAlert(title: "Error editing event", message: "The server reported an error: \n\n\(errorMessage)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch HTTPError.otherError(let statusCode) {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error editing event", message: "Something went wrong making the changes to your event. \n\nThe status code reported by the server was \(statusCode)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error editing event", message: "Something went wrong making the changes to your event. Please check you are online.")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
@@ -429,6 +434,7 @@ extension EventFormTableViewController {
             // Ask eventsModelController to create a new event
     
             Task.init {
+                let spinnerView = addSpinnerViewTo(self)
                 do {
                     try await eventsModelController?.createEvent(
                         toPk: selectedTribeMemberPks,
@@ -437,16 +443,20 @@ extension EventFormTableViewController {
                         recurrenceType: recurrence,
                         subject: subjectText,
                         category: category)
+                    removeSpinnerView(spinnerView)
                 } catch HTTPError.badRequest(let apiResponse) {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorMessage = apiResponse
                     let errorAlert = makeErrorAlert(title: "Error adding event", message: "The server reported an error: \n\n\(errorMessage)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch HTTPError.otherError(let statusCode) {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error adding event", message: "Something went wrong adding your event. \n\nThe status code reported by the server was \(statusCode)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error adding event", message: "Something went wrong adding your event. Please check you are online.")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}

@@ -36,9 +36,12 @@ class AccountTableViewController: UITableViewController {
             actionSheet.addAction(UIAlertAction(title: "Confirm", style: .destructive) {_ in
                 if let pk = self.userModelController?.user?.pk {
                     Task.init {
+                        let spinnerView = addSpinnerViewTo(self)
                         do {
                             _ = try await self.userModelController?.doDeleteUser(forPrimaryKey: pk, isDeletingOwnAccount: true)
+                            removeSpinnerView(spinnerView)
                         } catch {
+                            removeSpinnerView(spinnerView)
                             print("Error deleting account")
                         }
                     }
@@ -54,10 +57,13 @@ class AccountTableViewController: UITableViewController {
             }
             
             Task.init {
+                let spinnerView = addSpinnerViewTo(self)
                 do {
                     _ = try await userModelController.doLogout()
+                    removeSpinnerView(spinnerView)
                     self.checkTribeAdminStatus()
                 } catch {
+                    removeSpinnerView(spinnerView)
                     let alert = UIAlertController(title: "Logout Error", message:"There was an issue logging out.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: {alertAction in alert.dismiss(animated: true)}))
                     self.present(alert, animated: true)

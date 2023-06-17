@@ -62,6 +62,8 @@
 		A182EDA72A0E8F25005C4DEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182EDA62A0E8F25005C4DEC /* HomeViewController.swift */; };
 		A18EB9FF2A21304B00B075C6 /* EventFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18EB9FE2A21304B00B075C6 /* EventFormTableViewController.swift */; };
 		A1946A142A3379510017CF04 /* EventResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1946A132A3379500017CF04 /* EventResource.swift */; };
+		A19DE3642A3DEB45005F903B /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DE3632A3DEB45005F903B /* SpinnerViewController.swift */; };
+		A19DE3662A3DF97B005F903B /* addRemoveSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DE3652A3DF97B005F903B /* addRemoveSpinnerView.swift */; };
 		A1A249C629F582770083295E /* makeRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A249C529F582770083295E /* makeRounded.swift */; };
 		A1BD28162A041F3300321219 /* resizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD28152A041F3300321219 /* resizeImage.swift */; };
 		A1C227E02A167E840022588B /* EventCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C227DE2A167E840022588B /* EventCategories.swift */; };
@@ -162,6 +164,8 @@
 		A182EDA62A0E8F25005C4DEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A18EB9FE2A21304B00B075C6 /* EventFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormTableViewController.swift; sourceTree = "<group>"; };
 		A1946A132A3379500017CF04 /* EventResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventResource.swift; sourceTree = "<group>"; };
+		A19DE3632A3DEB45005F903B /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		A19DE3652A3DF97B005F903B /* addRemoveSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addRemoveSpinnerView.swift; sourceTree = "<group>"; };
 		A1A249C529F582770083295E /* makeRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeRounded.swift; sourceTree = "<group>"; };
 		A1BD28152A041F3300321219 /* resizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resizeImage.swift; sourceTree = "<group>"; };
 		A1C227DE2A167E840022588B /* EventCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCategories.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */,
+				A19DE3652A3DF97B005F903B /* addRemoveSpinnerView.swift */,
 				A17184902A2CDE8F0039DFCD /* intervalToHoursMinsSecondsStr.swift */,
 				A17E99EA2A1F9F9600734C2B /* imageFromString.swift */,
 				A1A249C529F582770083295E /* makeRounded.swift */,
@@ -351,6 +356,7 @@
 		A17EAC1829CDC96600D7CE00 /* tribehub-ios */ = {
 			isa = PBXGroup;
 			children = (
+				A19DE3622A3DEB1A005F903B /* SpinnerViewController */,
 				A182EDA12A0E7106005C4DEC /* HomeView */,
 				A13EB3F629FAC43800750023 /* AccountView */,
 				A1357CB229F29C9E00C90347 /* Utils */,
@@ -426,6 +432,14 @@
 				A18EB9FE2A21304B00B075C6 /* EventFormTableViewController.swift */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		A19DE3622A3DEB1A005F903B /* SpinnerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A19DE3632A3DEB45005F903B /* SpinnerViewController.swift */,
+			);
+			path = SpinnerViewController;
 			sourceTree = "<group>";
 		};
 		A1C3EA1F29FEA4B50010625B /* ManageTribe */ = {
@@ -726,6 +740,7 @@
 				A181477329E83FEB00AC3BE2 /* RefreshRequestRetrier.swift in Sources */,
 				A13EB3FF29FAFA3E00750023 /* GenericAPIResponse.swift in Sources */,
 				A17BA3D629FC260000390E79 /* AddTribeMemberTableViewController.swift in Sources */,
+				A19DE3642A3DEB45005F903B /* SpinnerViewController.swift in Sources */,
 				A13EB40129FAFB1400750023 /* DeleteUserResource.swift in Sources */,
 				A18EB9FF2A21304B00B075C6 /* EventFormTableViewController.swift in Sources */,
 				A1C227E12A167E840022588B /* CalEventTableViewController.swift in Sources */,
@@ -750,6 +765,7 @@
 				A17267C029F1895F00F612E7 /* UserModelController.swift in Sources */,
 				A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */,
 				A17EAC4E29CE0C6B00D7CE00 /* UserModel.swift in Sources */,
+				A19DE3662A3DF97B005F903B /* addRemoveSpinnerView.swift in Sources */,
 				A1C3EA2F29FED7550010625B /* UpdatePasswordResource.swift in Sources */,
 				A182EDA52A0E727B005C4DEC /* CalendarViewController.swift in Sources */,
 				A1C3EA2229FEA5110010625B /* DisplayNameContainerViewController.swift in Sources */,

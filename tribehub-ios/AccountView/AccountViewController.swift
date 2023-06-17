@@ -85,21 +85,26 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
         // If successful, set image of profileImageView and dismiss the image picker.
         if let newImage = info[.originalImage] as? UIImage {
             Task.init {
+                let spinnerView = addSpinnerViewTo(self)
                 do {
                     guard let pk = self.userModelController?.user?.pk else { return }
                     _ = try await self.userModelController?.doUpdateProfileImage(forPrimaryKey: pk, image: newImage)
                     self.profileImageView.image = newImage
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                 } catch HTTPError.badRequest(let apiResponse) {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorMessage = apiResponse
                     let errorAlert = makeErrorAlert(title: "Error uploading profile image", message: "The server reported an error: \n\n\(errorMessage)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch HTTPError.otherError(let statusCode) {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error uploading profile image", message: "Something went wrong uploading your profile image. \n\nThe status code reported by the server was \(statusCode)")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
                 } catch {
+                    removeSpinnerView(spinnerView)
                     self.dismiss(animated: true, completion: nil)
                     let errorAlert = makeErrorAlert(title: "Error uploading profile image", message: "Something went wrong uploading your profile image. Please check you are online.")
                     self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}

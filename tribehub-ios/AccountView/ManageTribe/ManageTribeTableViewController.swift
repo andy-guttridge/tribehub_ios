@@ -87,12 +87,15 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             Task.init {
+                let spinnerView = addSpinnerViewTo(self)
                 do {
                     if let userPk = tribeModelController?.tribe?.tribeMembers[indexPath.row].pk {
                         _ = try await self.tribeModelController?.doDeleteTribeMember(forPrimaryKey: userPk)
+                        removeSpinnerView(spinnerView)
                     }
                     tableView.deleteRows(at: [indexPath], with: .fade)
                 } catch {
+                    removeSpinnerView(spinnerView)
                     let errorAlert = makeErrorAlert(title: "Error deleting tribe member", message: "Something went wrong deleting this tribe member. Please check you are online and logged in.")
                     print ("Error! ", error)
                     self.present(errorAlert, animated: true) {return}
@@ -109,14 +112,18 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
     }
     
     func addNewTribeMember(userName: String, password: String) async {
+        let spinnerView = addSpinnerViewTo(self)
         do {
             _ = try await self.tribeModelController?.doAddTribeMember(withUserName: userName, passWord: password)
+            removeSpinnerView(spinnerView)
             self.tableView?.reloadData()
         } catch HTTPError.badRequest(let apiResponse) {
+            removeSpinnerView(spinnerView)
             let errorMessage = apiResponse
             let errorAlert = makeErrorAlert(title: "Error adding tribe member", message: "The server reported an error: \n\n\(errorMessage)")
             self.present(errorAlert, animated: true) {return}
         } catch {
+            removeSpinnerView(spinnerView)
             let errorAlert = makeErrorAlert(title: "Error adding tribe member", message: "Something went wrong adding this tribe member. Please check you are online and logged in.")
             print ("Error! ", error)
             self.present(errorAlert, animated: true) {return}

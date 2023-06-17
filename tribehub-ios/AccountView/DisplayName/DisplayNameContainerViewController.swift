@@ -43,16 +43,18 @@ extension DisplayNameContainerViewController: DisplayNameTableViewControllerDele
         guard let pk = self.userModelController?.user?.pk else {
             return
         }
+        let spinnerView = addSpinnerViewTo(self)
         do {
             _ = try await self.userModelController?.doUpdateDisplayName(displayName, forPrimaryKey: pk)
-            
+            removeSpinnerView(spinnerView)
         } catch HTTPError.badRequest(let apiResponse) {
+            removeSpinnerView(spinnerView)
             let errorMessage = apiResponse
             let errorAlert = makeErrorAlert(title: "Error changing display name", message: "The server reported an error: \n\n\(errorMessage)")
             self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
         } catch {
+            removeSpinnerView(spinnerView)
             let errorAlert = makeErrorAlert(title: "Error changing display name", message: "Something went wrong changing your display name. Please check you are online and logged in.")
-            print ("Error! ", error)
             self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
         }
     }

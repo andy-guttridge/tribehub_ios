@@ -67,11 +67,14 @@ class LoginViewController: UIViewController {
         if userDidEnterValidDetails {
             Task.init {
                 if let userName = userName, let password = password {
+                    let spinnerView = addSpinnerViewTo(self)
                     do {
                         _ = try await userModelController.doLogin(userName: userName, passWord: password)
                         try await tribeModelController.getTribe()
+                        removeSpinnerView(spinnerView)
                         self.delegate?.dismissLoginModal()
                     } catch {
+                        removeSpinnerView(spinnerView)
                         print("Login error: ", error)
                         let errorAlert = makeErrorAlert(title: "Login Error", message: "There was an error logging in. Please check your username and password, check you are online and try again.")
                         self.present(errorAlert, animated: true, completion: nil)

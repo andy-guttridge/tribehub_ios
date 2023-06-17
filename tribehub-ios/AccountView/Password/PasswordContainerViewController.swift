@@ -42,13 +42,17 @@ extension PasswordContainerViewController: PasswordTableViewControllerDelegate {
         guard let pk = self.userModelController?.user?.pk else {
             return
         }
+        let spinnerView = addSpinnerViewTo(self)
         do {
             _ = try await self.userModelController?.doUpdatePassword(forPrimaryKey: pk, newPassword: newPassword, oldPassword: oldPassword)
+            removeSpinnerView(spinnerView)
         } catch HTTPError.badRequest(let apiResponse) {
+            removeSpinnerView(spinnerView)
             let errorMessage = apiResponse
             let errorAlert = makeErrorAlert(title: "Error changing password", message: "The server reported an error: \n\n\(errorMessage)")
             self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
         } catch {
+            removeSpinnerView(spinnerView)
             let errorAlert = makeErrorAlert(title: "Error changing password", message: "Something went wrong changing your password. Please check you are online and logged in.")
             print ("Error! ", error)
             self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
