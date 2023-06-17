@@ -45,7 +45,7 @@ class APIRequest<Resource: APIResource> {
         if let pk = pk {
             url.append("\(String(pk))/")
         }
-        let response = await session.request(url, method: .post, parameters: payload).validate().serializingDecodable(Resource.ModelType.self, emptyResponseCodes: [200, 204, 205]).response
+        let response = await session.request(url, method: .post, parameters: payload).validate().serializingDecodable(Resource.ModelType.self, decoder: decoder ,emptyResponseCodes: [200, 204, 205]).response
         try checkHttpResponseCodeForResponse(response)
         let value = response.value
         return value

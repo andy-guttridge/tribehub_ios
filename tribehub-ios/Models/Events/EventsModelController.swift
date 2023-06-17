@@ -74,7 +74,7 @@ class EventsModelController {
         recurrenceType: EventRecurrenceTypes,
         subject: String,
         category: EventCategories
-    ) async throws {
+    ) async throws -> Event? {
         
         guard let session = self.session else {
             throw SessionError.noSession
@@ -96,8 +96,9 @@ class EventsModelController {
             "category": categoryString
         ] as [String : Any]
         
-        let eventRequest = APIRequest(resource: EventsResource(), session: session)
-        _ = try await eventRequest.postData(payload: payload)
+        let eventRequest = APIRequest(resource: EventResource(), session: session)
+        let event = try await eventRequest.postData(payload: payload)
+        return event
     }
     
     /// Makes changes to existing event

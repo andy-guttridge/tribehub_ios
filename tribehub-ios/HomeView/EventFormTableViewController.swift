@@ -360,7 +360,7 @@ extension EventFormTableViewController {
               let duration = durationPickerSelectedDuration,
               let recurrenceSelectedRow = recurrencePickerSelectedRow,
               let categorySelectedRow = categoryPickerSelectedRow
-        else { print("Did not get all properties"); return }
+        else { return }
         
         // Get correct enum values for picker values
         let recurrence = EventRecurrenceTypes.allCases[recurrenceSelectedRow]
@@ -434,8 +434,9 @@ extension EventFormTableViewController {
             // Ask eventsModelController to create a new event
             Task.init {
                 let spinnerView = addSpinnerViewTo(self)
+                var createdEvent: Event? = nil
                 do {
-                    try await eventsModelController?.createEvent(
+                    createdEvent = try await eventsModelController?.createEvent(
                         toPk: selectedTribeMemberPks,
                         start: startDate,
                         duration: duration,
@@ -462,7 +463,7 @@ extension EventFormTableViewController {
                 }
                 
                     do {
-                        try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: nil)
+                        try await delegate?.calEventDetailsDidChange(shouldDismissSubview: true, event: createdEvent)
                     } catch {
                         print("EventFormTableViewController delegate threw an error fetching events and updating calendar")
                     }
