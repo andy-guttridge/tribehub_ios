@@ -85,7 +85,7 @@ class CalEventDetailsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventTitleCell", for: indexPath) as! EventTitleCell
             if let category = event.category {
                 cell.titleCategoryImage.image = EventCategories(rawValue: category)?.image.withRenderingMode(.alwaysTemplate)
-                cell.titleCategoryImage.tintColor = .systemIndigo
+                cell.titleCategoryImage.tintColor = UIColor(named: "THIcons")
             }
             cell.titleLabel.text = event.subject
             
@@ -170,8 +170,7 @@ class CalEventDetailsTableViewController: UITableViewController {
                 cell.displayNameLabel.text = displayName
             }
             cell.statusLabel.text = "Event owner"
-            cell.statusLabel.textColor = .systemIndigo
-            cell.statusLabel.textColor = .systemIndigo
+            cell.statusLabel.textColor = UIColor(named: "THIcons")
             
             // Align separator with right of profile image
             cell.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
@@ -195,12 +194,12 @@ class CalEventDetailsTableViewController: UITableViewController {
                     if isGoing {
                         cell.profileImageView.image = image
                         cell.statusLabel.text = "Going"
-                        cell.statusLabel.textColor = .systemMint
+                        cell.statusLabel.textColor = UIColor(named: "THPositive")
                     } else {
                         let greyImage = image.greyImage
                         cell.profileImageView.image = greyImage
                         cell.statusLabel.text = "Not going"
-                        cell.statusLabel.textColor = .systemGray
+                        cell.statusLabel.textColor = UIColor(named: "THGreyed")
                     }
                 }
                 cell.profileImageView.makeRounded()

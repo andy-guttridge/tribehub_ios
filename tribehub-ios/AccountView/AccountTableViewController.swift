@@ -89,12 +89,12 @@ private extension AccountTableViewController {
             let manageTribeCell = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
             manageTribeCell.isUserInteractionEnabled = true
             manageTribeCell.textLabel?.isEnabled = true
-            manageTribeCell.imageView?.tintColor = .systemBlue
+            manageTribeCell.imageView?.tintColor = UIColor(named: "THIcons")
         } else {
             let manageTribeCell = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
             manageTribeCell.isUserInteractionEnabled = false
             manageTribeCell.textLabel?.isEnabled = false
-            manageTribeCell.imageView?.tintColor = .gray
+            manageTribeCell.imageView?.tintColor = UIColor(named: "THGreyed")
         }
     }
 }

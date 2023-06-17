@@ -32,6 +32,8 @@ extension HomeNavigationController {
             homeViewController.userModelController = userModelController
             homeViewController.tribeModelController = tribeModelController
             
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.backgroundColor = UIColor(named: "THBackground")
             navigationBar.tintColor = .systemIndigo
         }
     }

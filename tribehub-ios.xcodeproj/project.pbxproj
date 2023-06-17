@@ -75,6 +75,7 @@
 		A1E2689C2A3B578F005CA690 /* DeleteEventResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E2689B2A3B578F005CA690 /* DeleteEventResource.swift */; };
 		A1E878E42A1777D80091E38F /* CalEventDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E878E32A1777D70091E38F /* CalEventDetailsTableViewController.swift */; };
 		A1E878E82A17813F0091E38F /* CalEventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E878E72A17813F0091E38F /* CalEventDetailsViewController.swift */; };
+		A1EE41762A3CC22B00FC30D5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1EE41752A3CC22B00FC30D5 /* Colors.xcassets */; };
 		A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */; };
 		ABED7267871E483C36C0B557 /* Pods_tribehub_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C884B005C668714920E99F /* Pods_tribehub_ios.framework */; };
 /* End PBXBuildFile section */
@@ -174,6 +175,7 @@
 		A1E2689B2A3B578F005CA690 /* DeleteEventResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEventResource.swift; sourceTree = "<group>"; };
 		A1E878E32A1777D70091E38F /* CalEventDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalEventDetailsTableViewController.swift; sourceTree = "<group>"; };
 		A1E878E72A17813F0091E38F /* CalEventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalEventDetailsViewController.swift; sourceTree = "<group>"; };
+		A1EE41752A3CC22B00FC30D5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequestAdapter.swift; sourceTree = "<group>"; };
 		CA589D1A0259C47E4697951E /* Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-tribehub-ios-tribehub-iosUITests/Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F7FCA9520419D7D5194AD928 /* Pods_tribehub_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tribehub_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -364,6 +366,7 @@
 				A16031D42A0D6EE0003D96C2 /* Home.storyboard */,
 				A17EAC1F29CDC96600D7CE00 /* Main.storyboard */,
 				A17EAC2229CDC96900D7CE00 /* Assets.xcassets */,
+				A1EE41752A3CC22B00FC30D5 /* Colors.xcassets */,
 				A17EAC2429CDC96900D7CE00 /* LaunchScreen.storyboard */,
 				A17EAC2729CDC96900D7CE00 /* Info.plist */,
 				A17EAC4B29CDFD1B00D7CE00 /* test_credentials.plist */,
@@ -562,6 +565,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1EE41762A3CC22B00FC30D5 /* Colors.xcassets in Resources */,
 				A16031D62A0D6EE0003D96C2 /* Home.storyboard in Resources */,
 				A16031D92A0D703D003D96C2 /* Contacts.storyboard in Resources */,
 				A17EAC2629CDC96900D7CE00 /* LaunchScreen.storyboard in Resources */,
@@ -957,11 +961,12 @@
 				DEVELOPMENT_TEAM = KYFNJLKEB7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "tribehub-ios/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "TribeHub access your photo library and camera to allow you to update your profile image.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -989,11 +994,12 @@
 				DEVELOPMENT_TEAM = KYFNJLKEB7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "tribehub-ios/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "TribeHub access your photo library and camera to allow you to update your profile image.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -48,7 +48,7 @@ class CalEventTableViewController: UITableViewController {
         // Get the appropriate icon for the event category
         if let category = EventCategories(rawValue: event.category ?? "NON") {
             cell.categoryImage.image = category.image.withRenderingMode(.alwaysTemplate)
-            cell.categoryImage.tintColor = .systemIndigo
+            cell.categoryImage.tintColor = UIColor(named: "THIcons")
         }
         
         // Set the event subject text

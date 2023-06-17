@@ -47,7 +47,7 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddTribeMemberCell", for: indexPath) as! AddTribeMemberTableViewCell
             if tableView.isEditing {
-                cell.addImage.tintColor = .gray
+                cell.addImage.tintColor = UIColor(named: "THGreyed")
                 cell.addLabel.isEnabled = false
             }
             
@@ -103,6 +103,7 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let containerViewController = segue.destination as? AddTribeMemberContainerViewController {
+            print("Found containerViewControllerSegue")
             containerViewController.delegateOfChild = self
         }
     }

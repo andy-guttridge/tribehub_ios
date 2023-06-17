@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +18,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="SS1-tL-raO">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="THBackground"/>
                         <sections>
                             <tableViewSection headerTitle="Manage Account" id="e6v-sa-Dll">
                                 <cells>
@@ -41,7 +42,7 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" name="THGreyed"/>
                                         <connections>
                                             <segue destination="7HZ-OX-tWi" kind="show" id="dYo-Ev-QlE"/>
                                         </connections>
@@ -66,6 +67,7 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" name="THIcons"/>
                                         <connections>
                                             <segue destination="Kmf-90-fcy" kind="show" id="izq-XT-gGh"/>
                                         </connections>
@@ -90,6 +92,7 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" name="THIcons"/>
                                         <connections>
                                             <segue destination="PBg-eQ-Mbf" kind="show" id="9V5-bb-cCh"/>
                                         </connections>
@@ -114,7 +117,7 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <color key="tintColor" name="THHighlight"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="gTb-Up-nga" imageView="Ukg-Mk-21X" style="IBUITableViewCellStyleDefault" id="OzZ-xb-npE">
                                         <rect key="frame" x="20" y="230.00000381469727" width="390" height="43.666667938232422"/>
@@ -136,7 +139,7 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                        <color key="tintColor" name="THCaution"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -161,6 +164,7 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEF-oD-LaW">
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="715"/>
+                                <color key="backgroundColor" name="THBackground"/>
                                 <connections>
                                     <segue destination="wfY-dh-G5z" kind="embed" id="1Xr-R9-5x7"/>
                                 </connections>
@@ -170,7 +174,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sEF-oD-LaW" firstAttribute="leading" secondItem="6IB-wQ-dc0" secondAttribute="leading" id="720-Af-fSQ"/>
-                            <constraint firstItem="sEF-oD-LaW" firstAttribute="top" secondItem="6IB-wQ-dc0" secondAttribute="top" id="aJ2-vM-gTN"/>
+                            <constraint firstItem="sEF-oD-LaW" firstAttribute="top" secondItem="iZ3-AH-MOi" secondAttribute="top" id="aJ2-vM-gTN"/>
                             <constraint firstItem="sEF-oD-LaW" firstAttribute="bottom" secondItem="6IB-wQ-dc0" secondAttribute="bottom" id="bOw-RM-fZR"/>
                             <constraint firstItem="sEF-oD-LaW" firstAttribute="trailing" secondItem="6IB-wQ-dc0" secondAttribute="trailing" id="kyU-Fl-d5p"/>
                         </constraints>
@@ -188,7 +192,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="mfq-Df-tdE">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="715"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="THBackground"/>
                         <sections>
                             <tableViewSection id="k78-OG-HYB">
                                 <cells>
@@ -298,16 +302,16 @@
         <scene sceneID="zcw-ps-P0q">
             <objects>
                 <tableViewController id="7HZ-OX-tWi" customClass="ManageTribeTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="u5x-hG-Plk">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="u5x-hG-Plk">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="715"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="THBackground"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TribeMemberCell" rowHeight="120" id="SRw-m5-SYs" customClass="TribeMemberTableViewCell" customModule="tribehub_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="430" height="120"/>
+                                <rect key="frame" x="20" y="55.333332061767578" width="390" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SRw-m5-SYs" id="aZ3-2v-9F1">
-                                    <rect key="frame" x="0.0" y="0.0" width="430" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qqe-a7-umy">
@@ -337,10 +341,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddTribeMemberCell" rowHeight="120" id="4m5-wW-Nj2" customClass="AddTribeMemberTableViewCell" customModule="tribehub_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="170" width="430" height="120"/>
+                                <rect key="frame" x="20" y="175.33333206176758" width="390" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4m5-wW-Nj2" id="N9e-ig-NXj">
-                                    <rect key="frame" x="0.0" y="0.0" width="430" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add tribe member" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nth-LU-7Tg">
@@ -351,7 +355,7 @@
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dvd-tA-1QO">
                                             <rect key="frame" x="8" y="41" width="40" height="38.666666666666671"/>
-                                            <color key="tintColor" systemColor="systemGreenColor"/>
+                                            <color key="tintColor" name="THPositive"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="5BH-FJ-rSM"/>
                                                 <constraint firstAttribute="width" constant="40" id="7gX-Fc-eY1"/>
@@ -368,7 +372,7 @@
                                 <connections>
                                     <outlet property="addImage" destination="dvd-tA-1QO" id="d2U-xt-LuV"/>
                                     <outlet property="addLabel" destination="nth-LU-7Tg" id="1eh-yR-CIO"/>
-                                    <segue destination="nL3-pQ-0wM" kind="show" id="nIs-YS-44b"/>
+                                    <segue destination="nL3-pQ-0wM" kind="show" id="xu0-Sb-MPk"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -394,7 +398,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5Q-si-mPt">
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="715"/>
                                 <connections>
-                                    <segue destination="Zg4-Ii-zRN" kind="embed" identifier="EditTribeMemberTable" id="tzJ-EH-lfw"/>
+                                    <segue destination="Zg4-Ii-zRN" kind="embed" id="ReG-n4-pRD"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -402,7 +406,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="z5Q-si-mPt" firstAttribute="leading" secondItem="2fh-ss-OcC" secondAttribute="leading" id="0L1-b7-jny"/>
-                            <constraint firstItem="z5Q-si-mPt" firstAttribute="top" secondItem="2fh-ss-OcC" secondAttribute="top" id="6ba-fw-m2U"/>
+                            <constraint firstItem="z5Q-si-mPt" firstAttribute="top" secondItem="QfD-Ms-nUC" secondAttribute="top" id="6ba-fw-m2U"/>
                             <constraint firstItem="z5Q-si-mPt" firstAttribute="trailing" secondItem="2fh-ss-OcC" secondAttribute="trailing" id="ESk-Lg-xl1"/>
                             <constraint firstItem="z5Q-si-mPt" firstAttribute="bottom" secondItem="2fh-ss-OcC" secondAttribute="bottom" id="nUA-LR-0yJ"/>
                         </constraints>
@@ -423,6 +427,7 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QO-gr-Hwl">
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="715"/>
+                                <color key="backgroundColor" name="THBackground"/>
                                 <connections>
                                     <segue destination="lam-j7-N6u" kind="embed" id="BLd-vb-rZh"/>
                                 </connections>
@@ -434,7 +439,7 @@
                             <constraint firstItem="9QO-gr-Hwl" firstAttribute="trailing" secondItem="fLB-D1-Bof" secondAttribute="trailing" id="0Lj-vG-czU"/>
                             <constraint firstItem="9QO-gr-Hwl" firstAttribute="bottom" secondItem="fLB-D1-Bof" secondAttribute="bottom" id="fdU-wl-mTK"/>
                             <constraint firstItem="9QO-gr-Hwl" firstAttribute="leading" secondItem="fLB-D1-Bof" secondAttribute="leading" id="j3u-mk-pEf"/>
-                            <constraint firstItem="9QO-gr-Hwl" firstAttribute="top" secondItem="fLB-D1-Bof" secondAttribute="top" id="mtz-9Z-bqS"/>
+                            <constraint firstItem="9QO-gr-Hwl" firstAttribute="top" secondItem="gN4-Yw-rXS" secondAttribute="top" id="mtz-9Z-bqS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Display Name" id="OBZ-2M-i5K"/>
@@ -450,11 +455,11 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="ch4-bh-Aaf">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="715"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="THBackground"/>
                         <sections>
                             <tableViewSection id="XAB-hA-CC8">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="aUJ-Rb-K8E">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="aUJ-Rb-K8E">
                                         <rect key="frame" x="20" y="18" width="390" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aUJ-Rb-K8E" id="eqM-29-tiu">
@@ -502,18 +507,18 @@
         <scene sceneID="LR0-5M-Hbt">
             <objects>
                 <tableViewController id="Zg4-Ii-zRN" customClass="AddTribeMemberTableViewController" customModule="tribehub_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="w39-WN-W52">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="w39-WN-W52">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="715"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="THBackground"/>
                         <sections>
                             <tableViewSection id="bGE-JE-F2i">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="eu7-JT-kZN">
-                                        <rect key="frame" x="0.0" y="50" width="430" height="68"/>
+                                        <rect key="frame" x="20" y="18" width="390" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eu7-JT-kZN" id="X52-gL-KSX">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOz-CP-G4v">
@@ -523,7 +528,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lXo-aR-GZq">
-                                                    <rect key="frame" x="86.333333333333343" y="24.666666666666664" width="339.66666666666663" height="18.666666666666664"/>
+                                                    <rect key="frame" x="86.333333333333343" y="24.666666666666664" width="299.66666666666663" height="18.666666666666664"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -538,10 +543,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="cUa-Lx-FNP">
-                                        <rect key="frame" x="0.0" y="118" width="430" height="68"/>
+                                        <rect key="frame" x="20" y="86" width="390" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cUa-Lx-FNP" id="0DI-vI-Y0N">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ptd-T9-njs">
@@ -551,7 +556,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LXx-M5-6Ow">
-                                                    <rect key="frame" x="81.333333333333343" y="25.666666666666671" width="344.66666666666663" height="17"/>
+                                                    <rect key="frame" x="81.333333333333343" y="25.666666666666671" width="304.66666666666663" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
@@ -568,10 +573,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="B86-vH-w3P">
-                                        <rect key="frame" x="0.0" y="186" width="430" height="68"/>
+                                        <rect key="frame" x="20" y="154" width="390" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B86-vH-w3P" id="dlc-QG-28J">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Re-enter password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gv8-xp-cVg">
@@ -581,7 +586,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yda-vd-Zwa">
-                                                    <rect key="frame" x="152.66666666666666" y="25.666666666666671" width="273.33333333333337" height="17"/>
+                                                    <rect key="frame" x="152.66666666666663" y="25.666666666666671" width="233.33333333333337" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
@@ -661,13 +666,14 @@
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NT1-Cs-deB">
                                 <rect key="frame" x="0.0" y="207" width="430" height="725"/>
+                                <color key="backgroundColor" name="THBackground"/>
                                 <connections>
                                     <segue destination="WhR-6K-WWS" kind="embed" id="XF8-Oy-Mmh"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y9b-Ik-03B"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="THBackground"/>
                         <constraints>
                             <constraint firstItem="NT1-Cs-deB" firstAttribute="trailing" secondItem="y9b-Ik-03B" secondAttribute="trailing" id="EJn-7s-PrA"/>
                             <constraint firstAttribute="bottom" secondItem="NT1-Cs-deB" secondAttribute="bottom" id="Fk1-ci-Ap0"/>
@@ -695,7 +701,7 @@
                     <tabBarItem key="tabBarItem" title="Account" id="V6E-O3-OeP">
                         <imageReference key="image" image="gearshape.fill" catalog="system" renderingMode="hierarchical-single">
                             <hierarchicalColors>
-                                <color systemColor="systemIndigoColor"/>
+                                <color name="THIcons"/>
                                 <color systemColor="secondaryLabelColor"/>
                                 <color systemColor="tertiaryLabelColor"/>
                             </hierarchicalColors>
@@ -705,6 +711,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Chd-ed-eo0">
                         <rect key="frame" x="0.0" y="59" width="430" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="THBackground"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mac-cM-rAH">
@@ -727,26 +734,29 @@
         <image name="lock" catalog="system" width="125" height="128"/>
         <image name="person.crop.circle.badge.xmark" catalog="system" width="128" height="114"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="THBackground">
+            <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="THCaution">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="THGreyed">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="THHighlight">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="THIcons">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="THPositive">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
