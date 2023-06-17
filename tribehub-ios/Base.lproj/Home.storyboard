@@ -174,20 +174,25 @@
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxP-qQ-7V8">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxP-qQ-7V8">
                                             <rect key="frame" x="15" y="11.333333333333336" width="58" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zf0-lR-9tv">
-                                            <rect key="frame" x="79" y="12.666666666666666" width="308" height="18.666666666666671"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zf0-lR-9tv">
+                                            <rect key="frame" x="79" y="12.666666666666666" width="288" height="18.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="qxP-qQ-7V8" firstAttribute="centerY" secondItem="arC-lG-6xt" secondAttribute="centerY" id="Q7M-NJ-GsO"/>
+                                        <constraint firstItem="zf0-lR-9tv" firstAttribute="leading" secondItem="qxP-qQ-7V8" secondAttribute="trailing" constant="6" id="Rpr-f3-Gok"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zf0-lR-9tv" secondAttribute="trailing" constant="3" id="aZN-19-d55"/>
+                                        <constraint firstItem="qxP-qQ-7V8" firstAttribute="leading" secondItem="arC-lG-6xt" secondAttribute="leading" constant="15" id="tPX-aw-cV6"/>
+                                        <constraint firstItem="zf0-lR-9tv" firstAttribute="centerY" secondItem="arC-lG-6xt" secondAttribute="centerY" id="xcc-iT-6Bu"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="subjectTextField" destination="zf0-lR-9tv" id="vU0-cU-3qC"/>
