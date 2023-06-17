@@ -20,7 +20,7 @@ enum EventCategories: String, CaseIterable {
         case .EDU: return UIImage(named: "education") ?? UIImage()
         case .MED: return UIImage(named: "medical") ?? UIImage()
         case .MUS: return UIImage(named: "music") ?? UIImage()
-        case .OUT: return UIImage(named: "outing") ?? UIImage()
+        case .OUT: return UIImage(named: "car") ?? UIImage()
         case .OTH: return UIImage(named: "other") ?? UIImage()
         case .PET: return UIImage(named: "pets") ?? UIImage()
         case .SHO: return UIImage(named: "shopping") ?? UIImage()
