@@ -16,7 +16,7 @@ class ContactCell: UITableViewCell {
     @IBOutlet weak var contactCellFirstNameLabel: UILabel!
     @IBOutlet weak var contactCellLastNameLabel: UILabel!
     @IBOutlet weak var contactCellTelLabel: UILabel!
-    @IBOutlet weak var contactCellTellNumberLabel: UILabel!
+    @IBOutlet weak var contactCellTelNumberLabel: UILabel!
     @IBOutlet weak var contactCellEmailLabel: UILabel!
     @IBOutlet weak var contactCellEmailAddressLabel: UILabel!
 }
@@ -61,14 +61,10 @@ class ContactDetailsTableViewController: UITableViewController {
         
         if let company = contactsModelController?.contacts?.results[indexPath.row].company {
             cell.contactCellCompanyLabel.text = company
-        } else {
-            cell.contactCellCompanyLabel.isHidden = true
         }
         
         if let title = contactsModelController?.contacts?.results[indexPath.row].title {
             cell.contactCellTitleLabel.text = title
-        } else {
-            cell.contactCellTitleLabel.isHidden = true
         }
         
         if let firstName = contactsModelController?.contacts?.results[indexPath.row].firstName {
@@ -86,24 +82,20 @@ class ContactDetailsTableViewController: UITableViewController {
         }
         
         if let telNumber = contactsModelController?.contacts?.results[indexPath.row].phone {
-            cell.contactCellTellNumberLabel.text = telNumber
+            cell.contactCellTelNumberLabel.text = telNumber
             if telNumber == "" {
-                cell.contactCellTelLabel.isHidden = true
-                cell.contactCellTellNumberLabel.isHidden = true
+                cell.contactCellTelNumberLabel.isHidden = true
             }
         } else {
-            cell.contactCellTelLabel.isHidden = true
-            cell.contactCellTellNumberLabel.isHidden = true
+            cell.contactCellTelNumberLabel.isHidden = true
         }
         
         if let email = contactsModelController?.contacts?.results[indexPath.row].email {
             cell.contactCellEmailAddressLabel.text = email
             if email == "" {
-                cell.contactCellEmailLabel.isHidden = true
                 cell.contactCellEmailAddressLabel.isHidden = true
             }
         } else {
-            cell.contactCellEmailLabel.isHidden = true
             cell.contactCellEmailAddressLabel.isHidden = true
         }
 

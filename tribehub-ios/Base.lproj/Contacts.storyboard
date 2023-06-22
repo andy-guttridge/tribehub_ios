@@ -134,7 +134,7 @@
                                     <outlet property="contactCellFirstNameLabel" destination="tOs-q2-hzj" id="qjy-xg-l41"/>
                                     <outlet property="contactCellLastNameLabel" destination="qTc-7w-Pgs" id="2au-GQ-npB"/>
                                     <outlet property="contactCellTelLabel" destination="4ir-Yh-3sH" id="bqx-qI-I73"/>
-                                    <outlet property="contactCellTellNumberLabel" destination="Xzm-Pt-fWx" id="iYx-M8-ODd"/>
+                                    <outlet property="contactCellTelNumberLabel" destination="Xzm-Pt-fWx" id="iYx-M8-ODd"/>
                                     <outlet property="contactCellTitleLabel" destination="gL8-18-IXU" id="sFy-MY-05s"/>
                                 </connections>
                             </tableViewCell>
