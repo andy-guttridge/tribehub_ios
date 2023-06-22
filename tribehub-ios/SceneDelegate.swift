@@ -15,6 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var userModelController: UserModelController?
     var tribeModelController: TribeModelController?
     var eventsModelController: EventsModelController?
+    var contactsModelController: ContactsModelController?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -31,18 +32,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.session = Session(configuration: configuration, interceptor: interceptor)
         
         // Create model controllers
-        self.userModelController = tribehub_ios.UserModelController(withSession: self.session!)
-        self.tribeModelController = tribehub_ios.TribeModelController(withSession: self.session!)
-        self.eventsModelController = tribehub_ios.EventsModelController(withSession: self.session!)
+        userModelController = tribehub_ios.UserModelController(withSession: self.session!)
+        tribeModelController = tribehub_ios.TribeModelController(withSession: self.session!)
+        eventsModelController = tribehub_ios.EventsModelController(withSession: self.session!)
+        contactsModelController = tribehub_ios.ContactsModelController(withSession: self.session!)
     
         // userModelController needs a reference to tribeModelController, as it performs actions that can affect the tribe
-        self.userModelController?.tribeModelController = self.tribeModelController
+        userModelController?.tribeModelController = self.tribeModelController
         
         // Pass model controllers to rootViewController
         if let tabBarViewController = self.window?.rootViewController as? TabBarViewController {
             tabBarViewController.userModelController = userModelController
             tabBarViewController.tribeModelController = tribeModelController
             tabBarViewController.eventsModelController = eventsModelController
+            tabBarViewController.contactsModelController = contactsModelController
         } else {
             print("No tabBarViewController!")
         }

@@ -14,6 +14,7 @@ class TabBarViewController: UITabBarController {
     weak var userModelController: UserModelController?
     weak var tribeModelController: TribeModelController?
     weak var eventsModelController: EventsModelController?
+    weak var contactsModelController: ContactsModelController?
     
     private var cancellable: AnyCancellable?
 
@@ -24,14 +25,21 @@ class TabBarViewController: UITabBarController {
                     accountNavigationController.userModelController = userModelController
                     accountNavigationController.tribeModelController = tribeModelController
                 } else {
-                    print("No accountNavigationViewController!")
+                    print("No accountNavigationController!")
                 }
+        
         if let homeNavigationController = self.viewControllers?.first as? HomeNavigationController {
             homeNavigationController.eventsModelController = eventsModelController
             homeNavigationController.userModelController = userModelController
             homeNavigationController.tribeModelController = tribeModelController
         } else {
-            print("No homeNavigationViewController!")
+            print("No homeNavigationController!")
+        }
+        
+        if let contactsNavigationController = viewControllers?[1] as? ContactsNavigationController {
+            contactsNavigationController.contactsModelController = contactsModelController
+        } else {
+            print("No contactsNavigationController!")
         }
     }
     

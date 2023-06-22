@@ -312,7 +312,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="207" id="HFG-sf-gyU" customClass="EventFormCategoryCell" customModule="tribehub_ios" customModuleProvider="target">
-                                <rect key="frame" x="16" y="519" width="343" height="207"/>
+                                <rect key="frame" x="16" y="356" width="343" height="207"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HFG-sf-gyU" id="fpq-Do-cbx">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="207"/>
@@ -328,7 +328,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S1T-sQ-QMi">
-                                            <rect key="frame" x="31" y="33" width="281" height="162"/>
+                                            <rect key="frame" x="31" y="33" width="281" height="157"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="160" id="1KP-md-rAT"/>
                                             </constraints>
@@ -348,36 +348,36 @@
                                     <outlet property="categoryPickerView" destination="S1T-sQ-QMi" id="Blp-4N-vxj"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TribeMemberCell" rowHeight="79" id="VuK-pX-1pH" customClass="EventFormTribeMemberCell" customModule="tribehub_ios" customModuleProvider="target">
-                                <rect key="frame" x="16" y="726" width="343" height="79"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TribeMemberCell" rowHeight="75" id="VuK-pX-1pH" customClass="EventFormTribeMemberCell" customModule="tribehub_ios" customModuleProvider="target">
+                                <rect key="frame" x="16" y="726" width="343" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VuK-pX-1pH" id="eD1-Mr-KmD">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mm3-1i-LEu">
-                                            <rect key="frame" x="3" y="4" width="60" height="60"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="gkc-LH-rRP"/>
-                                                <constraint firstAttribute="width" constant="60" id="qmT-xK-xn4"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="TribeMember" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="056-0a-9On">
-                                            <rect key="frame" x="69" y="23.5" width="102" height="21"/>
+                                            <rect key="frame" x="69" y="27" width="261" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="OPl-Gc-U3w"/>
+                                                <constraint firstAttribute="height" constant="21" id="6Yo-bC-Jno"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mm3-1i-LEu">
+                                            <rect key="frame" x="3" y="7.5" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="bl2-Bk-LIr"/>
+                                                <constraint firstAttribute="height" constant="60" id="lL5-uI-XHu"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="056-0a-9On" firstAttribute="centerY" secondItem="eD1-Mr-KmD" secondAttribute="centerY" id="C0V-ce-D87"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="056-0a-9On" secondAttribute="trailing" constant="3" id="PNi-Cu-P9t"/>
-                                        <constraint firstItem="Mm3-1i-LEu" firstAttribute="leading" secondItem="eD1-Mr-KmD" secondAttribute="leading" constant="3" id="iiS-UB-CVK"/>
-                                        <constraint firstItem="Mm3-1i-LEu" firstAttribute="centerY" secondItem="eD1-Mr-KmD" secondAttribute="centerY" id="mhN-GT-kEj"/>
-                                        <constraint firstItem="056-0a-9On" firstAttribute="leading" secondItem="Mm3-1i-LEu" secondAttribute="trailing" constant="6" id="tFZ-an-OG3"/>
+                                        <constraint firstItem="056-0a-9On" firstAttribute="trailing" secondItem="eD1-Mr-KmD" secondAttribute="trailingMargin" constant="3" id="08y-jz-zLi"/>
+                                        <constraint firstItem="056-0a-9On" firstAttribute="leading" secondItem="Mm3-1i-LEu" secondAttribute="trailing" constant="6" id="Fm8-iu-q3y"/>
+                                        <constraint firstItem="056-0a-9On" firstAttribute="centerY" secondItem="eD1-Mr-KmD" secondAttribute="centerY" id="QtF-2O-OLN"/>
+                                        <constraint firstItem="Mm3-1i-LEu" firstAttribute="leading" secondItem="eD1-Mr-KmD" secondAttribute="leading" constant="3" id="gqU-Zf-lrf"/>
+                                        <constraint firstItem="Mm3-1i-LEu" firstAttribute="centerY" secondItem="eD1-Mr-KmD" secondAttribute="centerY" id="lu2-EZ-fVg"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -606,9 +606,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="J1f-4l-mkc">
-                                            <rect key="frame" x="92" y="18.5" width="159" height="32"/>
+                                            <rect key="frame" x="96.5" y="18.5" width="150" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="tP6-Rz-QXM"/>
+                                                <constraint firstAttribute="width" constant="150" id="tP6-Rz-QXM"/>
                                                 <constraint firstAttribute="height" constant="31" id="wGd-Em-yLh"/>
                                             </constraints>
                                             <segments>
