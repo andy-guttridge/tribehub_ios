@@ -84,6 +84,7 @@
 		A1E878E82A17813F0091E38F /* CalEventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E878E72A17813F0091E38F /* CalEventDetailsViewController.swift */; };
 		A1E9DBD42A45BAC000E204C0 /* AddContactContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E9DBD32A45BAC000E204C0 /* AddContactContainerViewController.swift */; };
 		A1E9DBD62A45BD9100E204C0 /* ContactFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E9DBD52A45BD9100E204C0 /* ContactFormTableViewController.swift */; };
+		A1E9DBD82A45F60D00E204C0 /* DeleteContactResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E9DBD72A45F60D00E204C0 /* DeleteContactResource.swift */; };
 		A1EE41762A3CC22B00FC30D5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1EE41752A3CC22B00FC30D5 /* Colors.xcassets */; };
 		A1FC149529E9A7980018ACDA /* RefreshRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */; };
 		ABED7267871E483C36C0B557 /* Pods_tribehub_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C884B005C668714920E99F /* Pods_tribehub_ios.framework */; };
@@ -193,6 +194,7 @@
 		A1E878E72A17813F0091E38F /* CalEventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalEventDetailsViewController.swift; sourceTree = "<group>"; };
 		A1E9DBD32A45BAC000E204C0 /* AddContactContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactContainerViewController.swift; sourceTree = "<group>"; };
 		A1E9DBD52A45BD9100E204C0 /* ContactFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormTableViewController.swift; sourceTree = "<group>"; };
+		A1E9DBD72A45F60D00E204C0 /* DeleteContactResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteContactResource.swift; sourceTree = "<group>"; };
 		A1EE41752A3CC22B00FC30D5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		A1FC149429E9A7980018ACDA /* RefreshRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequestAdapter.swift; sourceTree = "<group>"; };
 		CA589D1A0259C47E4697951E /* Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-tribehub-ios-tribehub-iosUITests/Pods-tribehub-ios-tribehub-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				A1551B9929D5A81000D30446 /* APIRequest.swift */,
 				A1551B9229D59F2B00D30446 /* APIResource.swift */,
 				A13EB40029FAFB1400750023 /* DeleteUserResource.swift */,
+				A1E9DBD72A45F60D00E204C0 /* DeleteContactResource.swift */,
 				A1E2689B2A3B578F005CA690 /* DeleteEventResource.swift */,
 				A17E99EC2A1FC16E00734C2B /* EventResponseResource.swift */,
 				A162B83A2A0D34CF00CC18CC /* EventsResource.swift */,
@@ -805,6 +808,7 @@
 				A1551B9529D5A13500D30446 /* UserResource.swift in Sources */,
 				A13EB3F329FAB9D300750023 /* AccountNavigationController.swift in Sources */,
 				A17267C029F1895F00F612E7 /* UserModelController.swift in Sources */,
+				A1E9DBD82A45F60D00E204C0 /* DeleteContactResource.swift in Sources */,
 				A1551B9A29D5A81000D30446 /* APIRequest.swift in Sources */,
 				A17EAC4E29CE0C6B00D7CE00 /* UserModel.swift in Sources */,
 				A19DE3662A3DF97B005F903B /* addRemoveSpinnerView.swift in Sources */,

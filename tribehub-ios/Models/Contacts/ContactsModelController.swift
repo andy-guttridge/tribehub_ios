@@ -54,4 +54,19 @@ class ContactsModelController {
             ]
             _ = try await newContactRequest.postData(payload: payload as Dictionary<String, Any>)
         }
+    
+    func deleteContactForPk(_ pk: Int) async throws {
+        guard let session = session else {
+            throw SessionError.noSession
+        }
+        
+        let deleteContactRequest = APIRequest(resource: DeleteContactResource(), session: session)
+        _ = try await deleteContactRequest.delete(itemForPrimaryKey: pk)
+        // If no error thrown, filter out the deleted contact from the array of contacts we hold in this instance
+        let newContacts = self.contacts?.results.filter {$0.id != pk}
+        if let editedContacts = newContacts {
+            self.contacts?.results = editedContacts
+            self.contacts?.count? -= 1
+        }
+    }
 }

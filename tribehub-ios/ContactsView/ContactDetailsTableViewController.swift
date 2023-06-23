@@ -22,6 +22,14 @@ class ContactCell: UITableViewCell {
     @IBOutlet weak var contactCellEmailAddressLabel: UILabel!
 }
 
+// MARK: AddContact custom UITableViewCell class definition
+class AddContactCell: UITableViewCell {
+    
+    // MARK: IBOutlets
+    @IBOutlet weak var addImage: UIImageView!
+    @IBOutlet weak var addLabel: UILabel!
+}
+
 
 // MARK: ContactDetailsTableViewController class definition
 class ContactDetailsTableViewController: UITableViewController {
@@ -31,12 +39,6 @@ class ContactDetailsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -61,8 +63,7 @@ class ContactDetailsTableViewController: UITableViewController {
         if isAdmin && section == 0 {
             return 1
         }
-        
-        return contactsModelController?.contacts?.count ?? 0
+        return contactsModelController?.contacts?.results.count ?? 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +81,11 @@ class ContactDetailsTableViewController: UITableViewController {
         // If user is tribeAdmin and section is 0, configure and return an AddContactCell, otherwise
         // configure a cell for the contact corresponding with the row number
         if isAdmin && indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddContactCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddContactCell", for: indexPath) as! AddContactCell
+            if tableView.isEditing {
+                cell.addImage.tintColor = UIColor(named: "THGreyed")
+                cell.addLabel.isEnabled = false
+            }
             return cell
         } else {
             // Populate category
@@ -163,41 +168,55 @@ class ContactDetailsTableViewController: UITableViewController {
         }
     }
 
-    /*
-    // Override to support conditional editing of the table view.
+    // MARK: tableView editing methods
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        guard let isAdmin = userModelController?.user?.isAdmin else { return false }
+        
+        // If user isAdmin and section is 0, then this must be the add contact cell, so no editable
+        if isAdmin && indexPath.section == 0 {
+            return false
+        }
+        
+        // Otherwise, it must be a contact cell. Editable if admin, otherwise not editable
+        if isAdmin {
+            return true
+        }
+        
+        return false
     }
-    */
 
-    /*
+
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            Task.init {
+                let spinnerView = addSpinnerViewTo(self)
+                do {
+                    if let contactPk = contactsModelController?.contacts?.results[indexPath.row].id {
+                        try await contactsModelController?.deleteContactForPk(contactPk)
+                        removeSpinnerView(spinnerView)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                } catch HTTPError.badRequest(let apiResponse) {
+                    removeSpinnerView(spinnerView)
+                    self.dismiss(animated: true, completion: nil)
+                    let errorMessage = apiResponse
+                    let errorAlert = makeErrorAlert(title: "Error deleting contact", message: "The server reported an error: \n\n\(errorMessage)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch HTTPError.otherError(let statusCode) {
+                    removeSpinnerView(spinnerView)
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error deleting contact", message: "Something went wrong deleting your contact. \n\nThe status code reported by the server was \(statusCode)")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                } catch {
+                    removeSpinnerView(spinnerView)
+                    self.dismiss(animated: true, completion: nil)
+                    let errorAlert = makeErrorAlert(title: "Error deleting contact", message: "Something went wrong deleting your contact. Please check you are online.")
+                    self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+                }
+            }
+        } 
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -211,6 +230,16 @@ class ContactDetailsTableViewController: UITableViewController {
 // MARK: private extension
 private extension ContactDetailsTableViewController {
     func initialize() {
+        // Show edit button if user is tribeAdmin.
+        // This is called from viewWillAppear and has an else statement to clear the
+        // edit button to ensure it is reset if a different user logs in.
+        if let isAdmin = userModelController?.user?.isAdmin {
+            if isAdmin {
+                navigationItem.rightBarButtonItem = self.editButtonItem
+            } else {
+                navigationItem.rightBarButtonItem = nil
+            }
+        }
         
         Task.init {
             // Fetch contacts from the API

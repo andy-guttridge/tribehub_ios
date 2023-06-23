@@ -97,7 +97,6 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
                 } catch {
                     removeSpinnerView(spinnerView)
                     let errorAlert = makeErrorAlert(title: "Error deleting tribe member", message: "Something went wrong deleting this tribe member. Please check you are online and logged in.")
-                    print ("Error! ", error)
                     self.present(errorAlert, animated: true) {return}
                 }
             }
