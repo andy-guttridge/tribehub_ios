@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
 }
 
 // MARK: private extensions
-extension HomeViewController {
+private extension HomeViewController {
     func initialize() {
         if let calendarViewController = self.children[0] as? CalendarViewController {
             calendarViewController.eventsModelController = eventsModelController

@@ -38,6 +38,7 @@ class TabBarViewController: UITabBarController {
         
         if let contactsNavigationController = viewControllers?[1] as? ContactsNavigationController {
             contactsNavigationController.contactsModelController = contactsModelController
+            contactsNavigationController.userModelController = userModelController
         } else {
             print("No contactsNavigationController!")
         }

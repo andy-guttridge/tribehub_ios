@@ -25,7 +25,7 @@ class HomeNavigationController: UINavigationController {
 }
 
 // MARK: Private extensions
-extension HomeNavigationController {
+private extension HomeNavigationController {
     func initialize() {
         if let homeViewController = self.viewControllers[0] as? HomeViewController {
             homeViewController.eventsModelController = eventsModelController
@@ -34,7 +34,7 @@ extension HomeNavigationController {
             
             let navigationBarAppearance = UINavigationBarAppearance()
             navigationBarAppearance.backgroundColor = UIColor(named: "THBackground")
-            navigationBar.tintColor = .systemIndigo
+            navigationBar.tintColor = UIColor(named: "THIcons")
         }
     }
  }

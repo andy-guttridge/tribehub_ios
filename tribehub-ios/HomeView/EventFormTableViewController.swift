@@ -260,7 +260,7 @@ class EventFormTableViewController: UITableViewController {
 }
 
 // MARK: Private extension
-extension EventFormTableViewController {
+private extension EventFormTableViewController {
     func initialize() {
         // Customise navigation item title and set properties
         // depending on whether an existing event is being edited

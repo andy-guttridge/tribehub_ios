@@ -10,6 +10,7 @@ import UIKit
 class ContactsNavigationController: UINavigationController {
     
     weak var contactsModelController: ContactsModelController?
+    weak var userModelController: UserModelController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +33,15 @@ class ContactsNavigationController: UINavigationController {
 }
 
 // MARK: private extension
-extension ContactsNavigationController {
+private extension ContactsNavigationController {
     func initialize() {
         if let contactDetailsTableViewController = viewControllers.first as? ContactDetailsTableViewController {
             contactDetailsTableViewController.contactsModelController = contactsModelController
+            contactDetailsTableViewController.userModelController = userModelController
         }
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = UIColor(named: "THBackground")
+        navigationBar.tintColor = UIColor(named: "THIcons")
     }
 }
