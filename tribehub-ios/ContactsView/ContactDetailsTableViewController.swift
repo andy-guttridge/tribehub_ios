@@ -88,6 +88,10 @@ class ContactDetailsTableViewController: UITableViewController {
                 cell.addImage.tintColor = UIColor(named: "THGreyed")
                 cell.addLabel.isEnabled = false
                 cell.isUserInteractionEnabled = false
+            } else {
+                cell.addImage.tintColor = UIColor(named: "THPositive")
+                cell.addLabel.isEnabled = true
+                cell.isUserInteractionEnabled = true
             }
             return cell
         } else {
