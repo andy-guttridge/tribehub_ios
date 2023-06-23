@@ -99,11 +99,15 @@ class ContactDetailsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as! ContactCell
             if let category = contactsModelController?.contacts?.results[indexPath.row].category {
                 cell.contactCellCategoryLabel.text = category
+                cell.contactCellCategoryLabel.numberOfLines = 0
+                cell.contactCellCategoryLabel.sizeToFit()
             }
             
             // Populate company
             if let company = contactsModelController?.contacts?.results[indexPath.row].company {
                 cell.contactCellCompanyLabel.text = company
+                cell.contactCellCompanyLabel.numberOfLines = 0
+                cell.contactCellCompanyLabel.sizeToFit()
             }
             
             // Populate title
@@ -130,6 +134,8 @@ class ContactDetailsTableViewController: UITableViewController {
             // Populate telNumer and hide if no value
             if let telNumber = contactsModelController?.contacts?.results[indexPath.row].phone {
                 cell.contactCellTelNumberLabel.text = telNumber
+                cell.contactCellTelNumberLabel.numberOfLines = 0
+                cell.contactCellTelNumberLabel.sizeToFit()
                 if telNumber == "" {
                     cell.contactCellTelNumberLabel.isHidden = true
                 }
@@ -140,6 +146,8 @@ class ContactDetailsTableViewController: UITableViewController {
             // Populate email and hide if no value
             if let email = contactsModelController?.contacts?.results[indexPath.row].email {
                 cell.contactCellEmailAddressLabel.text = email
+                cell.contactCellEmailAddressLabel.numberOfLines = 0
+                cell.contactCellEmailAddressLabel.sizeToFit()
                 if email == "" {
                     cell.contactCellEmailAddressLabel.isHidden = true
                 }
@@ -160,18 +168,21 @@ class ContactDetailsTableViewController: UITableViewController {
             return 68
         }
         else {
-            return 200
+            return UITableView.automaticDimension
+            // return 200
         }
     }
     
     // Approach to overriding this method to cause a specific cell to autoresize is from
     // https://www.hackingwithswift.com/example-code/uikit/how-to-make-uitableviewcells-auto-resize-to-their-content
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return UITableView.automaticDimension
+        guard let isAdmin = userModelController?.user?.isAdmin else { return 68 }
+        if indexPath.section == 0 && isAdmin {
+            return 68
         }
         else {
-            return 68
+            return UITableView.automaticDimension
+            // return 200
         }
     }
 
