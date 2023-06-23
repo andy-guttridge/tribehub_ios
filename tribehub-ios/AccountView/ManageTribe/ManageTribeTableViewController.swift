@@ -77,9 +77,9 @@ class ManageTribeTableViewController: UITableViewController, AddTribeMemberTable
         return true
     }
     
+    // // Ensures add tribeMember cell is redrawn when editing status changes
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        _ = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as! AddTribeMemberTableViewCell
         self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: UITableView.RowAnimation.none)
     }
     

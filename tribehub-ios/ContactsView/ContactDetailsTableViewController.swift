@@ -36,6 +36,8 @@ class ContactDetailsTableViewController: UITableViewController {
     
     weak var contactsModelController: ContactsModelController?
     weak var userModelController: UserModelController?
+    
+    private var selectedRow: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +87,7 @@ class ContactDetailsTableViewController: UITableViewController {
             if tableView.isEditing {
                 cell.addImage.tintColor = UIColor(named: "THGreyed")
                 cell.addLabel.isEnabled = false
+                cell.isUserInteractionEnabled = false
             }
             return cell
         } else {
@@ -184,6 +187,13 @@ class ContactDetailsTableViewController: UITableViewController {
         
         return false
     }
+    
+    // Ensures add contact cell is redrawn when editing status changes
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: UITableView.RowAnimation.none)
+    }
+    
 
 
     // Override to support editing the table view.
@@ -223,6 +233,22 @@ class ContactDetailsTableViewController: UITableViewController {
         if let addContactContainerViewController = segue.destination as? AddContactContainerViewController {
             addContactContainerViewController.contactsModelController = contactsModelController
             addContactContainerViewController.contactFormTableViewControllerDelegate = self
+        }
+        
+        if let contactFormTableViewController = segue.destination as? ContactFormTableViewController, let selectedRow = selectedRow {
+            contactFormTableViewController.contactsModelController = contactsModelController
+            contactFormTableViewController.delegate = self
+            // Pass the contact the user wishes to edit to the form
+            contactFormTableViewController.contact = contactsModelController?.contacts?.results[selectedRow]
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // If there is a section 1, then the user must be tribeAdmin, as we only have section 0
+        // if the user isn't admin
+        if indexPath.section == 1 && tableView.isEditing {
+            selectedRow = indexPath.row
+            performSegue(withIdentifier: "EditContactSegue", sender: indexPath)
         }
     }
 }

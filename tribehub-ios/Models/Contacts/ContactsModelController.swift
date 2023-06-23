@@ -55,6 +55,33 @@ class ContactsModelController {
             _ = try await newContactRequest.postData(payload: payload as Dictionary<String, Any>)
         }
     
+    /// Attempts to edit a contact in the API using the provided payload dictionary
+    func editContactForPk(
+        _ pk: Int,
+        category: String?,
+        company: String?,
+        title: String?,
+        firstName: String?,
+        lastName: String?,
+        telNumber: String?,
+        email: String?) async throws {
+            guard let session = self.session else {
+                throw SessionError.noSession
+            }
+            
+            let newContactRequest = APIRequest(resource: ContactsResource(), session: session)
+            let payload = [
+                "category": category ?? "",
+                "company": company ?? "",
+                "title": title ?? "",
+                "first_name": firstName ?? "",
+                "last_name": lastName ?? "",
+                "phone": telNumber ?? "",
+                "email": email ?? ""
+            ]
+            _ = try await newContactRequest.putData(itemForPrimaryKey: pk, payload: payload)
+        }
+    
     func deleteContactForPk(_ pk: Int) async throws {
         guard let session = session else {
             throw SessionError.noSession
