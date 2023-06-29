@@ -11,6 +11,10 @@
 		9C45C9F1193826A9068E494D /* Pods_tribehub_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7FCA9520419D7D5194AD928 /* Pods_tribehub_iosTests.framework */; };
 		A117B97B29F2FF1700F7E40A /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A117B97A29F2FF1700F7E40A /* HTTPError.swift */; };
 		A11973A02A05410D00816B0D /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A119739E2A05410D00816B0D /* Account.storyboard */; };
+		A11E0C3B2A4DC4780090169C /* TH-Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A11E0C3A2A4DC4780090169C /* TH-Fredoka-Bold.ttf */; };
+		A11E0C3D2A4DC4A90090169C /* TH-Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A11E0C3C2A4DC4A90090169C /* TH-Nunito-SemiBold.ttf */; };
+		A11E0C3F2A4DC4C20090169C /* TH-Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A11E0C3E2A4DC4C20090169C /* TH-Lato-Regular.ttf */; };
+		A11E0C412A4DD6B70090169C /* TH-Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A11E0C402A4DD6B60090169C /* TH-Lato-Bold.ttf */; };
 		A1357CB429F29D0E00C90347 /* makeErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */; };
 		A1357CB629F2A4D700C90347 /* TribeModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB529F2A4D700C90347 /* TribeModelController.swift */; };
 		A1357CB829F2CA4700C90347 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1357CB729F2CA4700C90347 /* TabBarViewController.swift */; };
@@ -117,6 +121,10 @@
 		89C884B005C668714920E99F /* Pods_tribehub_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tribehub_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A117B97A29F2FF1700F7E40A /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		A119739F2A05410D00816B0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
+		A11E0C3A2A4DC4780090169C /* TH-Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TH-Fredoka-Bold.ttf"; sourceTree = "<group>"; };
+		A11E0C3C2A4DC4A90090169C /* TH-Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TH-Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		A11E0C3E2A4DC4C20090169C /* TH-Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TH-Lato-Regular.ttf"; sourceTree = "<group>"; };
+		A11E0C402A4DD6B60090169C /* TH-Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TH-Lato-Bold.ttf"; sourceTree = "<group>"; };
 		A1357CB329F29D0E00C90347 /* makeErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeErrorAlert.swift; sourceTree = "<group>"; };
 		A1357CB529F2A4D700C90347 /* TribeModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeModelController.swift; sourceTree = "<group>"; };
 		A1357CB729F2CA4700C90347 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +258,17 @@
 				41DC82A742F9975049FCDD6B /* Pods-tribehub-iosTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A11E0C392A4DC44B0090169C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A11E0C3A2A4DC4780090169C /* TH-Fredoka-Bold.ttf */,
+				A11E0C3E2A4DC4C20090169C /* TH-Lato-Regular.ttf */,
+				A11E0C402A4DD6B60090169C /* TH-Lato-Bold.ttf */,
+				A11E0C3C2A4DC4A90090169C /* TH-Nunito-SemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A1357CB229F29C9E00C90347 /* Utils */ = {
@@ -393,6 +412,7 @@
 		A17EAC1829CDC96600D7CE00 /* tribehub-ios */ = {
 			isa = PBXGroup;
 			children = (
+				A11E0C392A4DC44B0090169C /* Fonts */,
 				A146DA7F2A448CD90088BE98 /* ContactsView */,
 				A19DE3622A3DEB1A005F903B /* SpinnerViewController */,
 				A182EDA12A0E7106005C4DEC /* HomeView */,
@@ -619,9 +639,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A11E0C3B2A4DC4780090169C /* TH-Fredoka-Bold.ttf in Resources */,
 				A1EE41762A3CC22B00FC30D5 /* Colors.xcassets in Resources */,
 				A16031D62A0D6EE0003D96C2 /* Home.storyboard in Resources */,
+				A11E0C3F2A4DC4C20090169C /* TH-Lato-Regular.ttf in Resources */,
 				A16031D92A0D703D003D96C2 /* Contacts.storyboard in Resources */,
+				A11E0C412A4DD6B70090169C /* TH-Lato-Bold.ttf in Resources */,
+				A11E0C3D2A4DC4A90090169C /* TH-Nunito-SemiBold.ttf in Resources */,
 				A17EAC2629CDC96900D7CE00 /* LaunchScreen.storyboard in Resources */,
 				A17EAC4C29CDFD1B00D7CE00 /* test_credentials.plist in Resources */,
 				A17267B729F1572B00F612E7 /* README.md in Resources */,

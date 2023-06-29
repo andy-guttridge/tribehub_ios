@@ -48,7 +48,7 @@ private extension CalendarViewController {
         calendarView!.locale = Locale(identifier: "en")
         calendarView!.fontDesign = .rounded
         calendarView!.visibleDateComponents = gregorianCalendar.dateComponents([.year, .month, .day], from: Date())
-        calendarView!.tintColor = .systemPink
+        calendarView!.tintColor = UIColor(named: "THHighlight")
         
         // Set calendar autolayout constraints so it's the same size as the container view and add as a subview
         calendarView!.translatesAutoresizingMaskIntoConstraints = false
@@ -148,7 +148,7 @@ extension CalendarViewController: UICalendarViewDelegate {
         // Check if there are any events for the date the calendar is asking about, and return a decoration if there are
         if let dateHasEvents = eventsModelController.checkEventsForDateComponents(dateComponents) {
             if dateHasEvents {
-                return UICalendarView.Decoration.default(color: .systemIndigo, size: .large)
+                return UICalendarView.Decoration.default(color: UIColor(named: "THAccent"), size: .large)
             }
         }
         return nil

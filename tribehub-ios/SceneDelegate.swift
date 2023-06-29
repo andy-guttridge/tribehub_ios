@@ -49,6 +49,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             print("No tabBarViewController!")
         }
+        
+        // Set base font for app
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -9,6 +9,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="TH-Fredoka-Bold.ttf">
+            <string>Fredoka-Bold</string>
+        </array>
+        <array key="TH-Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Tab Bar View Controller-->
         <scene sceneID="AAU-A1-yRN">
@@ -43,33 +51,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIv-r9-5cY">
-                                <rect key="frame" x="18" y="24" width="193" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="32" y="66.666666666666671" width="81" height="20.666666666666671"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ve4-jB-8GG">
-                                <rect key="frame" x="16" y="117" width="188" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="32.000000000000007" y="133.33333333333334" width="76.666666666666686" height="20.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d9q-8a-e1e">
-                                <rect key="frame" x="16" y="158" width="396" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="32" y="160" width="366" height="34"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Arg-he-307">
-                                <rect key="frame" x="16" y="63" width="398" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="32" y="93.333333333333329" width="366" height="34"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sT-RA-nga">
+                                <rect key="frame" x="123.33333333333333" y="5.9999999999999964" width="183.33333333333337" height="54.666666666666657"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tribe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNZ-cg-5NZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="103.33333333333333" height="54.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="Fredoka-Bold" family="Fredoka" pointSize="45"/>
+                                        <color key="textColor" name="THHighlight"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ata-pD-YN6">
+                                        <rect key="frame" x="103.33333333333331" y="0.0" width="80" height="54.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="Fredoka-Bold" family="Fredoka" pointSize="45"/>
+                                        <color key="textColor" name="THIcons"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIr-jP-dTh">
-                                <rect key="frame" x="182.33333333333334" y="208" width="65.666666666666657" height="35"/>
+                                <rect key="frame" x="181.66666666666666" y="218" width="67" height="35.666666666666657"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Login" cornerStyle="large">
+                                    <fontDescription key="titleFontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                     <color key="baseBackgroundColor" name="THIcons"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -80,20 +106,20 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ve4-jB-8GG" firstAttribute="top" secondItem="Arg-he-307" secondAttribute="bottom" constant="20" id="0OQ-F9-DgE"/>
-                            <constraint firstItem="ve4-jB-8GG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="36y-iU-AbK"/>
-                            <constraint firstItem="NIr-jP-dTh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A71-c4-SgR"/>
-                            <constraint firstItem="d9q-8a-e1e" firstAttribute="top" secondItem="ve4-jB-8GG" secondAttribute="bottom" constant="20" id="APy-TB-2bU"/>
-                            <constraint firstItem="d9q-8a-e1e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DWQ-y9-W8A"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HIv-r9-5cY" secondAttribute="trailing" constant="219" id="Eut-eZ-PTB"/>
-                            <constraint firstItem="Arg-he-307" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Hoj-Lg-PBT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Arg-he-307" secondAttribute="trailing" constant="16" id="Uzw-Ah-rl4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d9q-8a-e1e" secondAttribute="trailing" constant="18" id="XeP-FB-nTy"/>
-                            <constraint firstItem="HIv-r9-5cY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="Zbt-Op-wyZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ve4-jB-8GG" secondAttribute="trailing" constant="226" id="gLh-it-aNT"/>
-                            <constraint firstItem="Arg-he-307" firstAttribute="top" secondItem="HIv-r9-5cY" secondAttribute="bottom" constant="18" id="nh2-lT-yVs"/>
-                            <constraint firstItem="NIr-jP-dTh" firstAttribute="top" secondItem="d9q-8a-e1e" secondAttribute="bottom" constant="16" id="uD5-KR-Kzx"/>
-                            <constraint firstItem="HIv-r9-5cY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="vWE-4H-mXr"/>
+                            <constraint firstItem="d9q-8a-e1e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="5ip-2m-12D"/>
+                            <constraint firstItem="NIr-jP-dTh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6xI-WQ-Nmj"/>
+                            <constraint firstItem="Arg-he-307" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="916-Oz-XM4"/>
+                            <constraint firstItem="HIv-r9-5cY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="AL2-ci-5XE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Arg-he-307" secondAttribute="trailing" constant="32" id="DVU-Ia-WG6"/>
+                            <constraint firstItem="ve4-jB-8GG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="Fl1-UP-dZC"/>
+                            <constraint firstItem="d9q-8a-e1e" firstAttribute="top" secondItem="ve4-jB-8GG" secondAttribute="bottom" constant="6" id="Hqg-hj-Haj"/>
+                            <constraint firstItem="Arg-he-307" firstAttribute="top" secondItem="HIv-r9-5cY" secondAttribute="bottom" constant="6" id="Qkg-6T-TLv"/>
+                            <constraint firstItem="2sT-RA-nga" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rko-n5-66a"/>
+                            <constraint firstItem="2sT-RA-nga" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="YmY-hO-XZP"/>
+                            <constraint firstItem="ve4-jB-8GG" firstAttribute="top" secondItem="Arg-he-307" secondAttribute="bottom" constant="6" id="eAs-Qn-fM9"/>
+                            <constraint firstItem="HIv-r9-5cY" firstAttribute="top" secondItem="2sT-RA-nga" secondAttribute="bottom" constant="6" id="nME-Rt-980"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d9q-8a-e1e" secondAttribute="trailing" constant="32" id="sry-fl-a1Y"/>
+                            <constraint firstItem="NIr-jP-dTh" firstAttribute="top" secondItem="d9q-8a-e1e" secondAttribute="bottom" constant="24" id="wHM-uG-jDJ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -103,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-942" y="-902"/>
+            <point key="canvasLocation" x="-943.25581395348831" y="-902.57510729613739"/>
         </scene>
         <!--Account-->
         <scene sceneID="udE-n6-j6p">
@@ -140,8 +166,11 @@
         <namedColor name="THBackground">
             <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="THHighlight">
+            <color red="0.89803921568627454" green="0.0" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="THIcons">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.61176470588235299" green="0.074509803921568626" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

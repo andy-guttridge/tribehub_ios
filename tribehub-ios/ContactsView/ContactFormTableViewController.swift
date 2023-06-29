@@ -163,7 +163,6 @@ extension ContactFormTableViewController {
 // MARK: private extension
 private extension ContactFormTableViewController {
     func initialize() {
-        let contactDetailsSection = tableView.numberOfSections - 1
         
         // If a contact has been passed in the user must be editing a contact
         // and the tableView is configured appropriately

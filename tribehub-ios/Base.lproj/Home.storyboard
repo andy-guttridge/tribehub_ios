@@ -10,6 +10,17 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="TH-Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="TH-Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+        <array key="TH-Nunito-SemiBold.ttf">
+            <string>Nunito-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Home-->
         <scene sceneID="qEi-MV-ECo">
@@ -30,6 +41,13 @@
                         <color key="backgroundColor" name="THBackground"/>
                         <color key="tintColor" name="THBackground"/>
                         <color key="barTintColor" name="THBackground"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Fredoka-Bold" family="Fredoka" pointSize="19"/>
+                            <color key="textColor" name="THAccent"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="Iun-uK-hLM" kind="relationship" relationship="rootViewController" id="5Mj-f5-NPH"/>
@@ -115,7 +133,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="LBo-M7-upu"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -125,7 +143,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="DS0-YU-GKr"/>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="tah-wW-PGl"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -175,14 +193,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxP-qQ-7V8">
-                                            <rect key="frame" x="20" y="114.5" width="58" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="20" y="115" width="55.5" height="20"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zf0-lR-9tv">
-                                            <rect key="frame" x="81" y="116" width="243" height="18.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="78.5" y="116" width="245.5" height="18"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -205,12 +223,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="VU5-Ay-Nr7">
-                                            <rect key="frame" x="61" y="13.5" width="263" height="36"/>
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="VU5-Ay-Nr7">
+                                            <rect key="frame" x="60" y="13.5" width="264" height="36"/>
+                                            <color key="tintColor" name="THHighlight"/>
                                         </datePicker>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRp-yc-F0m">
-                                            <rect key="frame" x="20" y="21" width="38" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="20" y="21.5" width="37" height="20"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -235,11 +254,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="15" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdK-WE-uVB">
-                                            <rect key="frame" x="3" y="27" width="337" height="181"/>
+                                            <rect key="frame" x="3" y="26" width="337" height="182"/>
+                                            <color key="tintColor" name="THHighlight"/>
                                         </datePicker>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQf-yB-fCc">
-                                            <rect key="frame" x="20" y="3" width="320" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="20" y="3" width="320" height="20"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -265,12 +285,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="207"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="v2g-cC-CAI">
-                                            <rect key="frame" x="3" y="27" width="337" height="177"/>
+                                        <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="10" translatesAutoresizingMaskIntoConstraints="NO" id="v2g-cC-CAI">
+                                            <rect key="frame" x="3" y="26" width="337" height="178"/>
+                                            <color key="tintColor" name="THHighlight"/>
                                         </pickerView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6N-4x-dA9">
-                                            <rect key="frame" x="20" y="3" width="320" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="20" y="3" width="320" height="20"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -296,14 +317,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="207"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plc-sm-Ccm">
-                                            <rect key="frame" x="20" y="3" width="326" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plc-sm-Ccm">
+                                            <rect key="frame" x="20" y="3" width="326" height="20"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="S1T-sQ-QMi">
-                                            <rect key="frame" x="3" y="27" width="337" height="177"/>
+                                        <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="10" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S1T-sQ-QMi">
+                                            <rect key="frame" x="3" y="26" width="337" height="178"/>
+                                            <color key="tintColor" name="THHighlight"/>
                                         </pickerView>
                                     </subviews>
                                     <constraints>
@@ -327,13 +349,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TribeMember" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="056-0a-9On">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="TribeMember" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="056-0a-9On">
                                             <rect key="frame" x="66" y="27" width="258" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mm3-1i-LEu">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mm3-1i-LEu">
                                             <rect key="frame" x="3" y="7.5" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="LcT-tb-yfU"/>
@@ -427,7 +449,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="62" id="hSa-Uj-v2Z"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                            <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="24"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -454,43 +476,44 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aX-H9-okm">
-                                            <rect key="frame" x="3" y="3" width="46.5" height="28"/>
+                                            <rect key="frame" x="3" y="3" width="43" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="aOs-Qd-XjZ"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orq-nq-j9U">
-                                            <rect key="frame" x="53" y="37" width="68" height="28"/>
+                                            <rect key="frame" x="50" y="37" width="65.5" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="bpM-37-99j"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEh-cf-mh5">
-                                            <rect key="frame" x="13" y="37" width="37" height="28"/>
+                                            <rect key="frame" x="13" y="37" width="34" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="Yet-j0-QN8"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwV-Fn-Wka">
-                                            <rect key="frame" x="52.5" y="3" width="76" height="28"/>
+                                            <rect key="frame" x="49" y="3" width="74" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="IUi-77-2lv"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="repeat.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EfL-1P-TYD">
-                                            <rect key="frame" x="134.5" y="3.5" width="20" height="27"/>
+                                            <rect key="frame" x="129" y="3.5" width="20" height="27"/>
+                                            <color key="tintColor" name="THAccent"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="7Wk-eF-Pa6"/>
                                             </constraints>
@@ -527,31 +550,31 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ioJ-Zz-jyl">
                                             <rect key="frame" x="3" y="4" width="60" height="60"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="RhZ-ME-EcV"/>
-                                                <constraint firstAttribute="width" constant="60" id="faA-kr-0Ih"/>
+                                                <constraint firstAttribute="height" constant="60" id="VaR-DH-zLI"/>
+                                                <constraint firstAttribute="width" constant="60" id="byh-w1-Al6"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DisplayName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs7-JG-4nz">
-                                            <rect key="frame" x="66" y="23.5" width="95.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="66" y="24" width="100" height="20"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xu-JN-qhP">
-                                            <rect key="frame" x="169.5" y="23.5" width="49" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xu-JN-qhP">
+                                            <rect key="frame" x="276.5" y="24" width="47.5" height="20"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="ioJ-Zz-jyl" firstAttribute="centerY" secondItem="0ea-Vs-Yf6" secondAttribute="centerY" id="HIv-uQ-sYl"/>
-                                        <constraint firstItem="7xu-JN-qhP" firstAttribute="centerY" secondItem="0ea-Vs-Yf6" secondAttribute="centerY" id="Kc0-el-LIC"/>
-                                        <constraint firstItem="fs7-JG-4nz" firstAttribute="centerY" secondItem="0ea-Vs-Yf6" secondAttribute="centerY" id="OWg-dg-DoF"/>
-                                        <constraint firstAttribute="trailing" secondItem="7xu-JN-qhP" secondAttribute="trailing" constant="124.5" id="Vb2-Kg-rrb"/>
-                                        <constraint firstItem="ioJ-Zz-jyl" firstAttribute="leading" secondItem="0ea-Vs-Yf6" secondAttribute="leading" constant="3" id="l2B-aR-VOd"/>
-                                        <constraint firstItem="7xu-JN-qhP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fs7-JG-4nz" secondAttribute="trailing" constant="8" symbolic="YES" id="psC-Qp-uyj"/>
-                                        <constraint firstItem="fs7-JG-4nz" firstAttribute="leading" secondItem="ioJ-Zz-jyl" secondAttribute="trailing" constant="3" id="rzd-ze-EiG"/>
+                                        <constraint firstItem="fs7-JG-4nz" firstAttribute="leading" secondItem="ioJ-Zz-jyl" secondAttribute="trailing" constant="3" id="1r7-ZI-ReQ"/>
+                                        <constraint firstItem="ioJ-Zz-jyl" firstAttribute="leading" secondItem="0ea-Vs-Yf6" secondAttribute="leading" constant="3" id="DZe-0m-qnI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="7xu-JN-qhP" secondAttribute="trailing" constant="3" id="Dr4-Pv-w8a"/>
+                                        <constraint firstItem="ioJ-Zz-jyl" firstAttribute="centerY" secondItem="0ea-Vs-Yf6" secondAttribute="centerY" id="Shs-FO-Hof"/>
+                                        <constraint firstItem="7xu-JN-qhP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fs7-JG-4nz" secondAttribute="trailing" constant="3" id="ZtM-Rr-9ov"/>
+                                        <constraint firstItem="fs7-JG-4nz" firstAttribute="centerY" secondItem="0ea-Vs-Yf6" secondAttribute="centerY" id="kbl-jM-s54"/>
+                                        <constraint firstItem="7xu-JN-qhP" firstAttribute="centerY" secondItem="0ea-Vs-Yf6" secondAttribute="centerY" id="oQw-Bp-Ezx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -626,11 +649,17 @@
     <resources>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="repeat.circle" catalog="system" width="128" height="123"/>
+        <namedColor name="THAccent">
+            <color red="0.12941176470588237" green="0.35686274509803922" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="THBackground">
             <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="THHighlight">
+            <color red="0.89803921568627454" green="0.0" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="THIcons">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.61176470588235299" green="0.074509803921568626" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
