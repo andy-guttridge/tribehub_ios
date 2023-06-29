@@ -119,7 +119,7 @@
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g25-wK-eTf">
                                             <rect key="frame" x="3" y="7" width="30" height="30"/>
-                                            <color key="tintColor" name="THIcons"/>
+                                            <color key="tintColor" name="THAccent"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="KI2-4b-5Lj"/>
                                                 <constraint firstAttribute="width" constant="30" id="VIt-c6-Y29"/>
@@ -558,9 +558,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="10" text="Not going" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7xu-JN-qhP">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="10" text="Not going" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xu-JN-qhP">
                                             <rect key="frame" x="251" y="24" width="73" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <color key="textColor" name="THGreyed"/>
                                             <nil key="highlightedColor"/>

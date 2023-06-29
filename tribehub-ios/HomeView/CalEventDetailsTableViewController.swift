@@ -85,7 +85,7 @@ class CalEventDetailsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventTitleCell", for: indexPath) as! EventTitleCell
             if let category = event.category {
                 cell.titleCategoryImage.image = EventCategories(rawValue: category)?.image.withRenderingMode(.alwaysTemplate)
-                cell.titleCategoryImage.tintColor = UIColor(named: "THIcons")
+                cell.titleCategoryImage.tintColor = UIColor(named: "THAccent")
             }
             cell.titleLabel.text = event.subject
             
