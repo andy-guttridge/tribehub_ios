@@ -604,9 +604,7 @@
                                         </segmentedControl>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="J1f-4l-mkc" firstAttribute="centerX" secondItem="Yok-kd-Mtp" secondAttribute="centerX" id="5Ar-iY-AiE"/>
                                         <constraint firstItem="J1f-4l-mkc" firstAttribute="centerX" secondItem="Yok-kd-Mtp" secondAttribute="centerX" id="8Nt-b8-4H1"/>
-                                        <constraint firstItem="J1f-4l-mkc" firstAttribute="centerY" secondItem="Yok-kd-Mtp" secondAttribute="centerY" id="Q2b-C8-0Bm"/>
                                         <constraint firstItem="J1f-4l-mkc" firstAttribute="centerY" secondItem="Yok-kd-Mtp" secondAttribute="centerY" id="t0b-29-aDq"/>
                                     </constraints>
                                 </tableViewCellContentView>
