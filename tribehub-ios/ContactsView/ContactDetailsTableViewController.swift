@@ -293,7 +293,7 @@ private extension ContactDetailsTableViewController {
             // Fetch contacts from the API
             let spinnerView = addSpinnerViewTo(self)
             do {
-                try await contactsModelController?.getContacts()
+                try await contactsModelController?.getContacts(searchTerm: searchTerm)
                 removeSpinnerView(spinnerView)
                 tableView.reloadData()
             } catch HTTPError.badRequest(let apiResponse) {
