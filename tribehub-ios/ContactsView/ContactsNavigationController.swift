@@ -35,11 +35,18 @@ class ContactsNavigationController: UINavigationController {
 // MARK: private extension
 private extension ContactsNavigationController {
     func initialize() {
+        
+        // Configure searchController
+        navigationBar.topItem?.searchController = UISearchController()
+        navigationBar.topItem?.preferredSearchBarPlacement = .inline
+        
         if let contactDetailsTableViewController = viewControllers.first as? ContactDetailsTableViewController {
             contactDetailsTableViewController.contactsModelController = contactsModelController
             contactDetailsTableViewController.userModelController = userModelController
+            navigationBar.topItem?.searchController?.searchBar.delegate = contactDetailsTableViewController
         }
         
+        // Configure navigation bar
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.backgroundColor = UIColor(named: "THBackground")
         navigationBar.tintColor = UIColor(named: "THIcons")

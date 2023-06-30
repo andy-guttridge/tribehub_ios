@@ -37,7 +37,14 @@ class ContactDetailsTableViewController: UITableViewController {
     weak var contactsModelController: ContactsModelController?
     weak var userModelController: UserModelController?
     
+    // Stores index of selected table row
     private var selectedRow: Int?
+    
+    // Holds a timer used to delay fetching search results while user types into search bar
+    private var timer: Timer?
+    
+    // Holds user's search term
+    private var searchTerm: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -318,3 +325,63 @@ extension ContactDetailsTableViewController: ContactFormTableViewControllerDeleg
     }    
 }
 
+// MARK: UISearchBarDelegate extension
+extension ContactDetailsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // Cancel any timers already running
+        if let timer = timer {
+            timer.invalidate()
+        }
+        
+        // Set a one second timer to delay fetching search results until user has finished typing, and store search text
+        timer = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(doContactsSearch), userInfo: nil, repeats: false)
+        searchTerm = searchText
+    }
+    
+    /// Requests search results from the API and refreshes the tableView
+    @objc func doContactsSearch()  {
+        Task.init {
+            do {
+                try await contactsModelController?.getContacts(searchTerm: searchTerm)
+                tableView.reloadData()
+            } catch HTTPError.badRequest(let apiResponse) {
+                self.dismiss(animated: true, completion: nil)
+                let errorMessage = apiResponse
+                let errorAlert = makeErrorAlert(title: "Error fetching search results", message: "The server reported an error: \n\n\(errorMessage)")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+            } catch HTTPError.otherError(let statusCode) {
+                self.dismiss(animated: true, completion: nil)
+                let errorAlert = makeErrorAlert(title: "Error fetching search results", message: "Something went fetching your search results. \n\nThe status code reported by the server was \(statusCode)")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+            } catch {
+                self.dismiss(animated: true, completion: nil)
+                let errorAlert = makeErrorAlert(title: "Error fetching search results", message: "Something went fetching your search results. Please check you are online.")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+            }
+        }
+    }
+    
+    /// Requests all contacts from the API and refreshes the tableView
+    func searchBarCancelButtonClicked(_: UISearchBar) {
+        Task.init {
+            do {
+                searchTerm = nil
+                try await contactsModelController?.getContacts()
+                tableView.reloadData()
+            } catch HTTPError.badRequest(let apiResponse) {
+                self.dismiss(animated: true, completion: nil)
+                let errorMessage = apiResponse
+                let errorAlert = makeErrorAlert(title: "Error fetching contacts", message: "The server reported an error: \n\n\(errorMessage)")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+            } catch HTTPError.otherError(let statusCode) {
+                self.dismiss(animated: true, completion: nil)
+                let errorAlert = makeErrorAlert(title: "Error fetching contacts", message: "Something went wrong fetching your contacts. \n\nThe status code reported by the server was \(statusCode)")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+            } catch {
+                self.dismiss(animated: true, completion: nil)
+                let errorAlert = makeErrorAlert(title: "Error fetching contacts", message: "Something went wrong fetching your contacts. Please check you are online.")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+            }
+        }
+    }
+}

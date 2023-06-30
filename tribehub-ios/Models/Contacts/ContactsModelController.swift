@@ -18,14 +18,20 @@ class ContactsModelController {
         self.session = session
     }
     
-    /// Fetches user's contacts from the API
-    func getContacts() async throws {
+    /// Fetches user's contacts from the API. Accepts optional search ter
+    func getContacts(searchTerm: String? = nil) async throws {
         guard let session = self.session else {
             throw SessionError.noSession
         }
         
+        var urlParameter: [String: String]?
+        
+        if let searchTerm = searchTerm {
+            urlParameter = ["search": searchTerm]
+        }
+        
         let contactsRequest = APIRequest(resource: ContactsResource(), session: session)
-        let response = try await contactsRequest.fetchData()
+        let response = try await contactsRequest.fetchData(urlParameters: urlParameter)
         contacts = response
     }
     
