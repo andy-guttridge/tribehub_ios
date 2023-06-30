@@ -52,25 +52,29 @@ class CalEventDetailsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // We definitely need at least 3 rows for event category and title, start and end times, and owner
-        var numRows = 3
         
-        // Add another row if user has been invited to this event as will need to display the not going/going segmentedControl
-        if let toUsers = event?.to {
-            if toUsers.contains(where: { user in
-                return userModelController?.user?.pk == user.pk
-            }) {
-                numRows += 1
-                isInvited = true
+        if section == 0 {
+            // We definitely need at least 2 rows for section 0 for event category and title, start and end times
+            var numRows = 2
+            
+            // Add another row if user has been invited to this event as will need to display the not going/going segmentedControl
+            if let toUsers = event?.to {
+                if toUsers.contains(where: { user in
+                    return userModelController?.user?.pk == user.pk
+                }) {
+                    numRows += 1
+                    isInvited = true
+                }
             }
+            return numRows
         }
-        
-        // Add a row for each user invited
+       
+        // Otherwise it must be section 1. Start with one row for the event owner
+        var numRows = 1
         if let numInvited = event?.to?.count {
             numRows += numInvited
         }
@@ -80,8 +84,8 @@ class CalEventDetailsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let event = event else { return tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)}
         
-        // Row 0 is category icon and subject
-        if indexPath.row == 0 {
+        // Section 0, row 0 is category icon and subject
+        if indexPath.section == 0 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventTitleCell", for: indexPath) as! EventTitleCell
             if let category = event.category {
                 cell.titleCategoryImage.image = EventCategories(rawValue: category)?.image.withRenderingMode(.alwaysTemplate)
@@ -101,8 +105,8 @@ class CalEventDetailsTableViewController: UITableViewController {
             return cell
         }
         
-        // Row 1 is start and end dates/times
-        if indexPath.row == 1 {
+        // Section 0, row 1 is start and end dates/times
+        if indexPath.section == 0 && indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventDateCell", for: indexPath) as! EventDateCell
             if let startDate = event.start, let duration = event.duration {
                 
@@ -143,7 +147,7 @@ class CalEventDetailsTableViewController: UITableViewController {
         }
         
         // If the user is invited, row 2 is the cell with the going/not going segmented control
-        if indexPath.row == 2 && isInvited {
+        if indexPath.section == 0 && indexPath.row == 2 && isInvited {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventResponseCell", for: indexPath) as! EventResponseCell
             
             // Find out if the user is in the list of users who have accepted the invitation
@@ -159,8 +163,8 @@ class CalEventDetailsTableViewController: UITableViewController {
             return cell
         }
         
-        // Row 2 is for the event owner if user is not invited, otherwise this is row 3
-        if (indexPath.row == 2 && !isInvited) || (indexPath.row == 3 && isInvited) {
+        // Section 1, row 0 is for the event owner
+        if (indexPath.section == 1 && indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventAttendeeCell", for: indexPath) as! EventAttendeeCell
             if let image = tribeModelController?.getProfileImageForTribePk(event.owner?.pk) {
                 cell.profileImageView.image = image
@@ -175,12 +179,10 @@ class CalEventDetailsTableViewController: UITableViewController {
             // Align separator with right of profile image
             cell.separatorInset = UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 0)
             return cell
-        }
-        
-        // Subsequent rows must be for members invited
-        else {
+        } else {
+            // Subsequent rows must be for members invited
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventAttendeeCell", for: indexPath) as! EventAttendeeCell
-            if let tribeMember = event.to?[indexPath.row - (isInvited ? 4 : 3)] {
+            if let tribeMember = event.to?[indexPath.row - 1] {
                 
                 // Find out if the user is attending
                 var isGoing = false
@@ -285,7 +287,7 @@ class CalEventDetailsTableViewController: UITableViewController {
     // Approach to overriding this method to cause a specific cell to autoresize is from
     // https://www.hackingwithswift.com/example-code/uikit/how-to-make-uitableviewcells-auto-resize-to-their-content
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
+        if indexPath.section == 0 && indexPath.row == 0 {
             return UITableView.automaticDimension
         }
         else {

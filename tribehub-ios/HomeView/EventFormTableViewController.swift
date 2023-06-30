@@ -76,21 +76,27 @@ class EventFormTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Rows for section 0 are fixed, section 1 depends on the number of tribe members minus the current user
         if section == 0 {
-            return 5
+            return 1
+        }
+        if section == 1 {
+            return 3
+        }
+        if section == 2 {
+            return 1
         } else {
             return (tribeModelController?.tribe?.tribeMembers.count ?? 1) - 1
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Section 0, row 0 is the subject cell
-        if indexPath.section == 00 && indexPath.row == 0 {
+        // Section 0 is the subject cell
+        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubjectCell", for: indexPath) as! EventFormSubjectCell
             cell.subjectTextField.addTarget(self, action: #selector(subjectTextFieldDidChange), for: .editingChanged)
             
@@ -101,8 +107,8 @@ class EventFormTableViewController: UITableViewController {
             return cell
         }
         
-        // Section 0, row 1 is the cell with the event start date and time
-        if indexPath.section == 00 && indexPath.row == 1 {
+        // Section 1, row  is the cell with the event start date and time
+        if indexPath.section == 1 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DateTimeCell", for: indexPath) as! EventFormDateTimeCell
             cell.startDatePicker.timeZone = TimeZone.gmt
             cell.startDatePicker.addTarget(self, action: #selector(startDatePickerDidChange), for: .valueChanged)
@@ -123,8 +129,8 @@ class EventFormTableViewController: UITableViewController {
             return cell
         }
         
-        // Section 0, row 2 is the cell with the event duration
-        if indexPath.section == 00 && indexPath.row == 2 {
+        // Section 1, row 1 is the cell with the event duration
+        if indexPath.section == 1 && indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DurationCell", for: indexPath) as! EventFormDurationCell
             cell.durationDatePicker.addTarget(self, action: #selector(durationPickerDidChange), for: .valueChanged)
             
@@ -139,8 +145,8 @@ class EventFormTableViewController: UITableViewController {
             
         }
         
-        // Section 0, row 3 is the cell with the event recurrence type
-        if indexPath.section == 00 && indexPath.row == 3 {
+        // Section 1, row 2 is the cell with the event recurrence type
+        if indexPath.section == 1 && indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecurrenceCell", for: indexPath) as! EventFormRecurrenceCell
             cell.recurrencePickerView.delegate = self
             
@@ -156,8 +162,8 @@ class EventFormTableViewController: UITableViewController {
             return cell
         }
         
-        // Section 0, row 4 is the cell with the event category
-        if indexPath.section == 00 && indexPath.row == 4 {
+        // Section 2 is the cell with the event category
+        if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! EventFormCategoryCell
             cell.categoryPickerView.delegate = self
             
@@ -207,11 +213,11 @@ class EventFormTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 && indexPath.row > 1 {
+        if (indexPath.section == 1 && indexPath.row > 0) || indexPath.section == 2 {
             return 175
         }
         
-        if indexPath.section == 1 {
+        if indexPath.section == 3 {
             return 68
         } else {
             return 50
