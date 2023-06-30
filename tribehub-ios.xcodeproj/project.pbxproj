@@ -39,6 +39,7 @@
 		A162B83B2A0D34CF00CC18CC /* EventsResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A162B83A2A0D34CF00CC18CC /* EventsResource.swift */; };
 		A167CF7B29D5E80F00240827 /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */; };
 		A167CF7D29D5FC5D00240827 /* TribeResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167CF7C29D5FC5D00240827 /* TribeResource.swift */; };
+		A16FBF232A4F3C5700B8B6F1 /* EventSearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16FBF222A4F3C5700B8B6F1 /* EventSearchResultsTableViewController.swift */; };
 		A17184912A2CDE8F0039DFCD /* intervalToHoursMinsSecondsStr.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17184902A2CDE8F0039DFCD /* intervalToHoursMinsSecondsStr.swift */; };
 		A17267B729F1572B00F612E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A17267B629F1572B00F612E7 /* README.md */; };
 		A17267C029F1895F00F612E7 /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17267BF29F1895F00F612E7 /* UserModelController.swift */; };
@@ -149,6 +150,7 @@
 		A162B83A2A0D34CF00CC18CC /* EventsResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsResource.swift; sourceTree = "<group>"; };
 		A167CF7A29D5E80F00240827 /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
 		A167CF7C29D5FC5D00240827 /* TribeResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeResource.swift; sourceTree = "<group>"; };
+		A16FBF222A4F3C5700B8B6F1 /* EventSearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		A17184902A2CDE8F0039DFCD /* intervalToHoursMinsSecondsStr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = intervalToHoursMinsSecondsStr.swift; sourceTree = "<group>"; };
 		A17267B629F1572B00F612E7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A17267BF29F1895F00F612E7 /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 				A182EDA22A0E7129005C4DEC /* HomeNavigationController.swift */,
 				A182EDA62A0E8F25005C4DEC /* HomeViewController.swift */,
 				A18EB9FE2A21304B00B075C6 /* EventFormTableViewController.swift */,
+				A16FBF222A4F3C5700B8B6F1 /* EventSearchResultsTableViewController.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				A146DA812A448D150088BE98 /* ContactsNavigationController.swift in Sources */,
 				A17E99EB2A1F9F9600734C2B /* imageFromString.swift in Sources */,
 				A17184912A2CDE8F0039DFCD /* intervalToHoursMinsSecondsStr.swift in Sources */,
+				A16FBF232A4F3C5700B8B6F1 /* EventSearchResultsTableViewController.swift in Sources */,
 				A1C3EA2B29FECDE80010625B /* PasswordTableViewController.swift in Sources */,
 				A181476E29E806AC00AC3BE2 /* LoginResource.swift in Sources */,
 				A1551B9529D5A13500D30446 /* UserResource.swift in Sources */,
