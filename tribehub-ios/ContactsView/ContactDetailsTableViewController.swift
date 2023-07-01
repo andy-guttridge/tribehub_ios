@@ -278,6 +278,13 @@ class ContactDetailsTableViewController: UITableViewController {
 // MARK: private extension
 private extension ContactDetailsTableViewController {
     func initialize() {
+        // Configure searchController
+        navigationItem.searchController = UISearchController.init(searchResultsController: nil)
+        navigationItem.preferredSearchBarPlacement = .stacked
+        navigationItem.searchController?.searchBar.delegate = self
+        navigationItem.hidesSearchBarWhenScrolling = false
+        tableView.setContentOffset(CGPoint(x: 0, y: -1), animated: false)
+        
         // Show edit button if user is tribeAdmin.
         // This is called from viewWillAppear and has an else statement to clear the
         // edit button to ensure it is reset if a different user logs in.
@@ -288,6 +295,7 @@ private extension ContactDetailsTableViewController {
                 navigationItem.rightBarButtonItem = nil
             }
         }
+       
         
         Task.init {
             // Fetch contacts from the API
@@ -361,8 +369,8 @@ extension ContactDetailsTableViewController: UISearchBarDelegate {
         }
     }
     
-    /// Requests all contacts from the API and refreshes the tableView
-    func searchBarCancelButtonClicked(_: UISearchBar) {
+    /// Resets searchbar, requests all contacts from the API and refreshes the tableView when search cancel button clicked
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         Task.init {
             do {
                 searchTerm = nil

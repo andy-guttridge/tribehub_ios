@@ -36,14 +36,9 @@ class ContactsNavigationController: UINavigationController {
 private extension ContactsNavigationController {
     func initialize() {
         
-        // Configure searchController
-        navigationBar.topItem?.searchController = UISearchController()
-        navigationBar.topItem?.preferredSearchBarPlacement = .inline
-        
         if let contactDetailsTableViewController = viewControllers.first as? ContactDetailsTableViewController {
             contactDetailsTableViewController.contactsModelController = contactsModelController
             contactDetailsTableViewController.userModelController = userModelController
-            navigationBar.topItem?.searchController?.searchBar.delegate = contactDetailsTableViewController
         }
         
         // Configure navigation bar

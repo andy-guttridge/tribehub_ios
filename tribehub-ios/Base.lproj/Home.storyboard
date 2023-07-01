@@ -375,7 +375,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="10" verticalHuggingPriority="750" horizontalCompressionResistancePriority="10" text="TribeMember" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="056-0a-9On">
-                                            <rect key="frame" x="66" y="27" width="258" height="21"/>
+                                            <rect key="frame" x="66" y="27" width="102.5" height="21"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -393,7 +393,7 @@
                                         <constraint firstItem="Mm3-1i-LEu" firstAttribute="leading" secondItem="eD1-Mr-KmD" secondAttribute="leading" constant="3" id="3NG-cj-dP0"/>
                                         <constraint firstItem="Mm3-1i-LEu" firstAttribute="centerY" secondItem="eD1-Mr-KmD" secondAttribute="centerY" id="Cvj-gE-06w"/>
                                         <constraint firstItem="056-0a-9On" firstAttribute="leading" secondItem="Mm3-1i-LEu" secondAttribute="trailing" constant="3" id="K7M-Jj-70F"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="056-0a-9On" secondAttribute="trailing" constant="3" id="iZv-lO-0a1"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="056-0a-9On" secondAttribute="trailing" constant="20" symbolic="YES" id="MAy-EU-0pw"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -618,7 +618,7 @@
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="J1f-4l-mkc">
                                             <rect key="frame" x="92" y="18.5" width="159" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="tP6-Rz-QXM"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="100" constant="150" id="tP6-Rz-QXM"/>
                                                 <constraint firstAttribute="height" constant="31" id="wGd-Em-yLh"/>
                                             </constraints>
                                             <segments>
@@ -633,6 +633,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="J1f-4l-mkc" firstAttribute="centerX" secondItem="Yok-kd-Mtp" secondAttribute="centerX" id="8Nt-b8-4H1"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="J1f-4l-mkc" secondAttribute="trailing" priority="10" constant="3" id="Ny5-pK-Nx7"/>
                                         <constraint firstItem="J1f-4l-mkc" firstAttribute="centerY" secondItem="Yok-kd-Mtp" secondAttribute="centerY" id="t0b-29-aDq"/>
                                     </constraints>
                                 </tableViewCellContentView>

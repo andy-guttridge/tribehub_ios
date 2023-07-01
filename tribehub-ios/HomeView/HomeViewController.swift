@@ -54,6 +54,19 @@ private extension HomeViewController {
             calEventTableViewController.calEventDetailsTableViewControllerDelegate = self
         }
         
+        // Configure searchController
+        // Get a reference to the tableView for presenting search results and use it to instantiate a searchController
+        if let eventSearchResultsTableView = storyboard?.instantiateViewController(withIdentifier: "EventSearchTableViewController") as? EventSearchResultsTableViewController {
+            navigationItem.searchController = UISearchController.init(searchResultsController: eventSearchResultsTableView)
+            navigationItem.searchController?.searchBar.delegate = eventSearchResultsTableView
+            eventSearchResultsTableView.tribeModelController = tribeModelController
+            eventSearchResultsTableView.eventsModelController = eventsModelController
+        }
+        navigationItem.searchController?.delegate = self
+        navigationItem.preferredSearchBarPlacement = .stacked
+        navigationItem.searchController?.scopeBarActivation = .onSearchActivation
+        navigationItem.searchController?.searchBar.scopeButtonTitles = ["Subject", "Tribe", "Category", "From", "To"]
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addEvent))
     }
     
@@ -108,4 +121,11 @@ extension HomeViewController: CalEventDetailsTableViewControllerDelegate, EventF
             navigationController?.popViewController(animated: true)
         }
     }    
+}
+
+// MARK: UISearchControllerDelegate
+extension HomeViewController: UISearchControllerDelegate {
+    func didDismissSearchController(_ searchController: UISearchController) {
+        print("SearchController was dismissed")
+    }
 }
