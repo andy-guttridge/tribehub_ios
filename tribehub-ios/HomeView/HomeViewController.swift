@@ -360,8 +360,19 @@ extension HomeViewController: EventSearchResultsTableViewControllerDelegate {
                 if let searchDisplayController = navigationItem.searchController?.searchResultsController as? EventSearchResultsTableViewController as? EventSearchResultsTableViewController {
                     searchDisplayController.searchResultsDidUpdate()
                 }
+            } catch HTTPError.badRequest(let apiResponse) {
+                self.dismiss(animated: true, completion: nil)
+                let errorMessage = apiResponse
+                let errorAlert = makeErrorAlert(title: "Error fetching search results", message: "The server reported an error: \n\n\(errorMessage)")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
+            } catch HTTPError.otherError(let statusCode) {
+                self.dismiss(animated: true, completion: nil)
+                let errorAlert = makeErrorAlert(title: "Error fetching search results", message: "The status code reported by the server was \(statusCode)")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
             } catch {
-                print(error)
+                self.dismiss(animated: true, completion: nil)
+                let errorAlert = makeErrorAlert(title: "Error fetching search results", message: "Something went wrong. Please check you are online.")
+                self.view.window?.rootViewController?.present(errorAlert, animated: true) {return}
             }
         }
     }
