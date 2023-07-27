@@ -71,6 +71,7 @@ private extension HomeViewController {
             eventSearchResultsTableViewController.eventsModelController = eventsModelController
             eventSearchResultsTableViewController.delegate = self
         }
+        
         navigationItem.searchController?.delegate = self
         navigationItem.preferredSearchBarPlacement = .stacked
         navigationItem.searchController?.scopeBarActivation = .onSearchActivation
@@ -312,8 +313,12 @@ extension HomeViewController: EventSearchResultsTableViewControllerDelegate {
             }
         }
         
-        if let searchTextField = navigationItem.searchController?.searchBar.searchTextField {
+        if let searchTextField = navigationItem.searchController?.searchBar.searchTextField, let searchBar = navigationItem.searchController?.searchBar {
             searchTextField.insertToken(token, at: searchTextField.tokens.count)
+            searchBar.selectedScopeButtonIndex = 0
+            if let searchDisplayController = navigationItem.searchController?.searchResultsController as? EventSearchResultsTableViewController {
+                searchDisplayController.scopeButtonSelectionDidChangeToIndex(0, withSearchTokens: nil)
+            }
             setSearchTimer()
         }
     }
