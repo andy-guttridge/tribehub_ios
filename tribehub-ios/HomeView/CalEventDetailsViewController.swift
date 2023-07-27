@@ -19,7 +19,7 @@ class CalEventDetailsViewController: UIViewController {
     weak var tribeModelController: TribeModelController?
     weak var eventsModelController: EventsModelController?
     
-    weak var calEventDetailsTableViewControllerDelegate: HomeViewController?
+    var calEventDetailsTableViewControllerDelegate: CalEventDetailsTableViewControllerDelegate?
     
     var delegate: CalEventDetailsViewControllerDelegate?
     

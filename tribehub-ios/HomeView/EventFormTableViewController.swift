@@ -226,7 +226,7 @@ class EventFormTableViewController: UITableViewController {
     
     /// Add checkmark to cell and add selected tribeMember.pk  to  selectedTribeMwemberPks if selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        if indexPath.section == 3 {
             // Filter out the current user from the tribeMembers so they can't invite themselves to the event
             let tribeMembers = tribeModelController?.tribe?.tribeMembers.filter() { member in member.pk != userModelController?.user?.pk}
             if let cell = tableView.cellForRow(at: indexPath), let tribeMembers = tribeMembers {

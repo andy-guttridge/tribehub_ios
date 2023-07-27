@@ -13,6 +13,7 @@ class APIRequest<Resource: APIResource> {
     let resource: Resource
     let session: Session
     let decoder: JSONDecoder
+    let encoder: URLEncodedFormParameterEncoder
     
     init(resource: Resource, session: Session) {
         self.resource = resource
@@ -27,17 +28,24 @@ class APIRequest<Resource: APIResource> {
         dateFormatter.timeZone = .gmt
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        self.encoder = URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(arrayEncoding: .noBrackets, dateEncoding: .formatted(dateFormatter)))
     }
     
-    func fetchData (forPk pk: Int? = nil, urlParameters: [String: String]? = nil) async throws -> Resource.ModelType? {
+    func fetchData<T: Encodable> (forPk pk: Int? = nil, urlParameters: T?) async throws -> Resource.ModelType? {
         var url = resource.url
         if let pk = pk {
             url += "\(pk)/"
         }
-        let response = await session.request(url, method: .get, parameters: urlParameters).validate().serializingDecodable(Resource.ModelType.self, decoder: decoder).response
+        let response = await session.request(url, method: .get, parameters: urlParameters, encoder: encoder).validate().serializingDecodable(Resource.ModelType.self, decoder: decoder).response
         try checkHttpResponseCodeForResponse(response)
         let value = response.value
         return value
+    }
+    
+    func fetchData (forPk pk: Int? = nil) async throws -> Resource.ModelType? {
+        let emptyURLParams: Int? = nil
+        let response =  try await fetchData(forPk: pk, urlParameters: emptyURLParams)
+        return response
     }
     
     func postData (itemForPrimaryKey pk: Int? = nil, payload: Dictionary<String, Any>?) async throws -> Resource.ModelType? {

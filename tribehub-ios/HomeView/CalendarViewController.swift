@@ -63,6 +63,7 @@ private extension CalendarViewController {
         // Configure calendar for single date selection and set self as delegate
         calendarView?.selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
         calendarView?.delegate = self
+        print(calendarView?.frame)
     }
     
     /// Uses the stored selectedDate to calculate and return a fromDate one month before selected date

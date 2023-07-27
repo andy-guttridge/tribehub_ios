@@ -8,6 +8,23 @@
 import Foundation
 import Alamofire
 
+// MARK: EventURLParams Struct definition
+struct EventURLParams: Encodable {
+    let fromDate: Date?
+    let toDate: Date?
+    let searchText: String?
+    let category: String?
+    let tribeMembers: [Int]?
+    
+    enum CodingKeys: String, CodingKey {
+        case fromDate = "from_date"
+        case toDate = "to_date"
+        case searchText = "search"
+        case category = "category"
+        case tribeMembers = "to"
+    }
+}
+
 /// Controller for Events model
 class EventsModelController {
     private weak var session: Session?
@@ -18,19 +35,24 @@ class EventsModelController {
     }
     
     /// Attempts to fetch events for authenticated user
-    func getEvents(fromDate: Date? = nil, toDate: Date? = nil) async throws {
+    func getEvents(
+        fromDate: Date? = nil,
+        toDate: Date? = nil,
+        searchText: String? = nil,
+        category: String? = nil,
+        tribeMembers: [Int]? = nil
+    ) async throws {
         guard let session = self.session else {
             throw SessionError.noSession
         }
         
-        var urlParameters: [String: String]?
-        
-        if let fromDate = fromDate, let toDate = toDate {
-            urlParameters = [
-                "from_date": String(fromDate.ISO8601Format(.iso8601).dropLast()),
-                "to_date": String(toDate.ISO8601Format(.iso8601).dropLast())
-            ]
-        }
+        let urlParameters = EventURLParams(
+            fromDate: fromDate,
+            toDate: toDate,
+            searchText:searchText,
+            category: category,
+            tribeMembers: tribeMembers
+        )
         
         // Try to fetch user's event data from the API
         let eventsRequest = APIRequest(resource: EventsResource(), session: session)
