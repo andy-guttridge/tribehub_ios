@@ -9,6 +9,8 @@ import Foundation
 import Alamofire
 
 // MARK: EventURLParams Struct definition
+// This struct is used to encode the appropriate url
+// parameters to request events search data from the API
 struct EventURLParams: Encodable {
     let fromDate: Date?
     let toDate: Date?
@@ -46,6 +48,7 @@ class EventsModelController {
             throw SessionError.noSession
         }
         
+        // Create urlParameters for any event search queries
         let urlParameters = EventURLParams(
             fromDate: fromDate,
             toDate: toDate,
