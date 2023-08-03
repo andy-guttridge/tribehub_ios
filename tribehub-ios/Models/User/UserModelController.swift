@@ -66,7 +66,9 @@ class UserModelController: ObservableObject {
         let deleteUserAPIRequest = APIRequest(resource: DeleteUserResource(), session: session)
         let response = try await deleteUserAPIRequest.delete(itemForPrimaryKey: pk)
         if isDeletingOwnAccount {
+            print("setting user to nil")
             self.user = nil
+            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
         }
         return response
     }
