@@ -107,7 +107,7 @@ class EventFormTableViewController: UITableViewController {
             return cell
         }
         
-        // Section 1, row  is the cell with the event start date and time
+        // Section 1, row 0 is the cell with the event start date and time
         if indexPath.section == 1 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DateTimeCell", for: indexPath) as! EventFormDateTimeCell
             cell.startDatePicker.timeZone = TimeZone.gmt
@@ -292,13 +292,13 @@ private extension EventFormTableViewController {
     /// Captures values of startDatePicker when its value changes
     /// and sets the relevant property
     @objc func startDatePickerDidChange() {
-        if let startDateCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EventFormDateTimeCell {
+        if let startDateCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? EventFormDateTimeCell {
             startDatePickerSelectedDate = startDateCell.startDatePicker.date
         }
     }
     
     @objc func durationPickerDidChange() {
-        if let durationCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? EventFormDurationCell {
+        if let durationCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as? EventFormDurationCell {
             durationPickerSelectedDuration = durationCell.durationDatePicker.countDownDuration
         }
     }

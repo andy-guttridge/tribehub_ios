@@ -141,6 +141,8 @@ class EventsModelController {
             throw SessionError.noSession
         }
         
+        print("Received event deets with start: ", start)
+        
         // Convert event start date, duration, recurrence and category to strings
         let startString = start.ISO8601Format(.iso8601)
         let durationString = intervalToHoursMinsSecondsStr(duration)
