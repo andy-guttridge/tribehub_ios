@@ -17,7 +17,10 @@ class TabBarViewController: UITabBarController {
     weak var contactsModelController: ContactsModelController?
     
     private var cancellable: AnyCancellable?
-
+    
+    // Use this to tell if the app has just been launched
+    private var justLaunched = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cancellable = userModelController?.$user.sink { [weak self] user in self?.userStatusDidChange(user)}
@@ -46,8 +49,12 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        if self.userModelController?.user == nil {
+        
+        // Show login screen if user is not already logged in and
+        // app has just been launched
+        if self.userModelController?.user == nil && justLaunched == true {
             performSegue(withIdentifier: "loginSegue", sender: self)
+            justLaunched = false
         }
     }
 
@@ -62,7 +69,12 @@ class TabBarViewController: UITabBarController {
     private func userStatusDidChange(_ user: User?) {
         if user == nil {
             DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "loginSegue", sender: self)
+                // Don't show loginViewController if app has just launched, otherwise
+                // we end up showing the login view before the app is ready, generating
+                // console warnings
+                if self.justLaunched == false {
+                    self.performSegue(withIdentifier: "loginSegue", sender: self)
+                }
             }
         }
     }
