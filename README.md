@@ -3,11 +3,97 @@
 A native iOS app for the TribeHub family organiser, built using Swift and UIKit.
 TribeHub iOS uses the [tribehub_drf](https://github.com/andy-guttridge/tribehub_drf) REST API for its backend.
 
-# Future features
-## High priority
+## Project goals
+
+## Table of contents
+
+## User stories
+
+## Themes
+
+## Epics
+
+## User stories
+
+## Planning
+
+## Data models
+
+## Design
+
+### Colours
+
+### Fonts
+
+### Features
+
+### Log-in view
+
+### Navigation bar
+
+### Home view with family calendar
+
+### Add event button
+
+### Events search bar
+
+### Event detail view
+
+### Event edit button with change and delete options
+
+### Add event view
+
+### Edit event view
+
+### Family contacts view
+
+### Add contact button
+
+### Contacts search bar
+
+### Add contact view
+
+### Contact edit and delete buttons
+
+### Edit contact view
+
+### Account view
+
+#### Manage tribe view
+
+#### Display name view
+
+#### Password view
+
+#### Delete account and sign-out
+
+### Alerts to confirm or cancel destructive actions and display errors
+**Note different approach for deletion of contacts and tribe members**
+
+### Dark mode
+
+### CRUD functionality
+
+## Future improvements and features
+### High priority
 
 - It was not possible to fully implement username and password autofill on the login view, due to requiring a paid Apple developer account to be able to use ['Associated Domains'](https://developer.apple.com/documentation/xcode/supporting-associated-domains). This would be a priority feature for a commerical version of the app.
 - It is not currently possible to edit or delete a calendar event from the search results view, because Apple's searchController API presents a searchResultsController modally, which means the Edit button navigationItem is not shown. Implementing this feature would require some additional customisation of the search functionality, which was not possible due to time restrictions, but would be prioritised for a commercial version of the app.
+- Account registration
+- Notifications
+
+### Longer term future features
+
+## Frameworks, libraries and dependencies
+- UIKit
+- SFSymbols
+- Alamofire
+
+## Testing
+
+## Unresolved bugs and issues
+
+## Building the app
 
 ## Credits
 - Ideas for managing network requests using protocols from https://matteomanferdini.com/network-requests-rest-apis-ios-swift/
