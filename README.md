@@ -77,7 +77,9 @@ Themes were then refined into the following epics:
 ### User stories
 User stories required to implement each epic were created. These were categorised according to whether they were 'must have' features required to implement a Minimum Viable Product (MVP). Account registration was deemed a 'must have' for the web app, but was not included in the iOS app due to time constraints. A user can register a new account and create a new tribe as the 'tribe admin' using the web site (this action only needs to be performed once), and can then login and access all functionality from the app.
 
-Please see the [Google sheet](https://docs.google.com/spreadsheets/d/11wcDHeqr85VaHXdJjATod_WECRY03IRUlGgT_L_ikIw/edit#gid=885440852) for detail.
+User stories involving notifications were not implemented for the iOS app, because to implement them in the same way as they were for the web app would not provide the type of user experience an iOS user would expect from a native app. It would instead be desirable to use Apple's [User Notifications API](https://developer.apple.com/documentation/usernotifications), however this would require significant changes to the Django Rest Framework API, which were out of scope for the initial iteration of this project. This would be a high priority for future improvements.
+
+Please see the [Google sheet](https://docs.google.com/spreadsheets/d/11wcDHeqr85VaHXdJjATod_WECRY03IRUlGgT_L_ikIw/edit#gid=885440852) for detail of the user stories implemented and tested for the iOS app.
 
 ## Planning
 The wireframes originally created for development of the TribeHub web app and the web app itself were used as a 'template' for all required functionality for the iOS implementation and as a model for the basic 'flow' through the app.
@@ -113,12 +115,33 @@ Instead of creating new wireframe mockups for iOS, the UI was built directly usi
 </p>
 
 ## Data models
+Data models were planned alongside the wireframes used to develop the original web app. These are documented in the read-me for the [TribeHub Django Rest Framework API](https://github.com/andy-guttridge/tribehub_drf).
 
 ## Design
 
 ### Colours
+The colours used in the iOS app are largely the same as those used in the web app, although they are used slightly differently for iOS. A full explanation of the colour choices is provided in the [read-me](https://github.com/andy-guttridge/tribehub_react) for the web app. Three Apple system colours were additionally used to provide visual feedback for some elements, and colours were tweaked to provide sufficient contrast in dark mode.
+
+The colour palettes used for light and dark modes are:
+
+| Colour                                                                                | Light mode value  | Dark mode value |
+|---------------------------------------------------------------------------------------|-------------------|-----------------|
+| THAccent - NavBar titles, calendar decorations, event category and repeat event icons | #215BA6           | #a3c4ff         |
+| THBackground - neutral background color for all views                                 | #f4f4f4           | #000000         |
+| THCaution - sign-out icon                                                             | systemOrangeColor | systemOrangeColor|
+| THGreyed - unselected icons, user 'not going' legends                                 | systemGrayColor   | #b3b3b9         |
+| THHighlight - delete account icon, some calendar UI, logo                             | #e5006a           | #ee5880         |
+| THIcons - interactive UI elements (e.g. icons, buttons), event owner legends          | #9c13bf           | #b05fbf         |
+| THPositive - add item icons, user 'going' legends                                     | systemMintColor   | SystemMintColor |
+
 
 ### Fonts
+The same Google Fonts were used for the iOS app as for the web app - Nunito, Lato and Fredoka. More detail on why these were chosen is available in the [read-me](https://github.com/andy-guttridge/tribehub_react) for the web app.
+
+Fredoka was used for the TribeHub logo on the login view and the Navigation Bar titles at the top of each view.
+Nunito was used for the UIBarButtonItems (buttons appearing in the Navigation Bar such as back, confirm and edit buttons etc).
+Lato was used for standard text in the app.
+
 
 ### Features
 
