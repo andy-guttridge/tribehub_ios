@@ -24,11 +24,11 @@ The repository for the React web app is located [here](https://github.com/andy-g
 ## Table of contents
 
 ## User stories
-TribeHub-iOS was developed from the same user stories as for the original web app. 
+TribeHub-iOS was developed by implementing the same themes, epics and user stories which were developed for the original web app. 
 These are documented in a separate 'user_stories_ios' tab of this [Google Sheets document](https://docs.google.com/spreadsheets/d/11wcDHeqr85VaHXdJjATod_WECRY03IRUlGgT_L_ikIw/edit#gid=885440852).
 
 ### Themes
-Themes were developed at the beginning of development of the web app using the project goals as a starting point. These included:
+The themes developed at the beginning of the web app project - and also utilised for the iOS app - used the project goals as a starting point. These included:
 
 - Account management - necessary to support the use of the app on an individual basis and to group users together into a 'tribe' to support goal 1.
 - Calendar/event scheduling - essential to enable the key functionality required by goal 1.
@@ -75,7 +75,7 @@ Themes were then refined into the following epics:
   - Searching meal plans
 
 ### User stories
-User stories required to implement each epic were created. These were categorised according to whether they were 'must have' features required to implement a Minimum Viable Product (MVP). Account registration was deemed a 'must have' for the web app, but was not included in the iOS app due to time constraints. A user can register a new account as the 'tribe admin' using the web site, and can then login and access all functionality from the app.
+User stories required to implement each epic were created. These were categorised according to whether they were 'must have' features required to implement a Minimum Viable Product (MVP). Account registration was deemed a 'must have' for the web app, but was not included in the iOS app due to time constraints. A user can register a new account and create a new tribe as the 'tribe admin' using the web site (this action only needs to be performed once), and can then login and access all functionality from the app.
 
 Please see the [Google sheet](https://docs.google.com/spreadsheets/d/11wcDHeqr85VaHXdJjATod_WECRY03IRUlGgT_L_ikIw/edit#gid=885440852) for detail.
 
