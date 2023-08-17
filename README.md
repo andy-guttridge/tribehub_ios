@@ -134,7 +134,6 @@ The colour palettes used for light and dark modes are:
 | THIcons - interactive UI elements (e.g. icons, buttons), event owner legends          | #9c13bf           | #b05fbf         |
 | THPositive - add item icons, user 'going' legends                                     | systemMintColor   | SystemMintColor |
 
-
 ### Fonts
 The same Google Fonts were used for the iOS app as for the web app - Nunito, Lato and Fredoka. More detail on why these were chosen is available in the [read-me](https://github.com/andy-guttridge/tribehub_react) for the web app.
 
@@ -142,14 +141,44 @@ Fredoka was used for the TribeHub logo on the login view and the Navigation Bar 
 Nunito was used for the UIBarButtonItems (buttons appearing in the Navigation Bar such as back, confirm and edit buttons etc).
 Lato was used for standard text in the app.
 
-
-### Features
+## Features
 
 ### Log-in view
+Provides the user with a simple form to login, and a TribeHub logo that will be familiar to anyone who has already used the web app.
 
-### Navigation bar
+<p align="center">
+    <img src="readme_assets/login.png" width=200>
+</p>
 
-### Home view with family calendar
+### Tab Bar
+Provides a means to navigate between the three main views of the app. The tab bar appears at the bottom of the screen and is a standard UI element familiar to iOS users.
+
+<p align="center">
+    <img src="readme_assets/tabbar.png" width=400>
+</p>
+
+### Navigation Bar
+Provides a means of navigating between sub-views within each main view, and presents the user with buttons to enter edit mode and confirm edit actions when appropriate. When in edit mode, the user can discard an edit by simply pressing the back button to return to the previous view. This is a different approach than that used in the web app, which typically uses modal dialogs with 'cancel' and 'confirm' buttons, but provides a user experience familiar to iOS users.
+
+The example screen shots show the navigation bar with a button to edit an existing event, and to confirm edits to an event.
+
+<p align="center">
+    <img src="readme_assets/navbar1.png" width=400>
+    <span style="display: inline-block;">    </span>
+    <img src="readme_assets/navbar2.png" width=400>
+</p>
+
+### Home view with family calendar
+The Home view features the family calendar - this is the virtual equivalent of a kitchen wall planner. Days with meetings/appointmens ('calendar events') are marked with a calendar decoration underneath the date. The user can select a given day to see a TableView with a list of events for that day underneath the calendar.
+The user can select the month or year of their choice using the drop down arrow to the right of the month and year name, and move forward or back one month at a time using the buttons at the top right of the calendar.
+
+Users can tap each event underneath the calendar to reveal more details about the event, and to edit the event if they are the event owner and/or tribe admin.
+
+<p align="center">
+    <img src="readme_assets/homeview.png" width=200>
+    <span style="display: inline-block;">    </span>
+    <img src="readme_assets/homeview2.png" width=200>
+</p>
 
 ### Add event button
 
