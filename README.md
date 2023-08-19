@@ -89,17 +89,17 @@ The DaisyUI and custom UI components of the web app were replaced with native cl
 For example, where the web app typically reveals a form with cancel and submit buttons within the main body of the web page, the iOS app segues to a different view with a form comprised of a `UITableView` with appropriate input components embedded within `UITableViewCell`s, and 'back' and 'Confirm' buttons in the `UINavigationBar` at the top of the app. Using this type of UI is instinctive for any regular iOS user.
 
 <p align="center">
-    <img src="readme_assets/webapp-cal.png" width=200>
-    <img src="readme_assets/webapp-cal-form.png" width=200>
-    <img src="readme_assets/webapp-cal-form2.png" width=200>
+    <img src="readme_assets/webapp-cal.png" width=250>
+    <img src="readme_assets/webapp-cal-form.png" width=250>
+    <img src="readme_assets/webapp-cal-form2.png" width=250>
 </p>
 <p align="center">
   <i>Example of before and after opening an 'inline' form with 'cancel' and 'submit' buttons in web app</i>
 </p>
 
 <p align="center">
-    <img src="readme_assets/iosapp-cal.png" width=200>
-    <img src="readme_assets/iosapp-cal-form.png" width=200>
+    <img src="readme_assets/iosapp-cal.png" width=250>
+    <img src="readme_assets/iosapp-cal-form.png" width=250>
 </p>
 <p align="center">
   <i>Example of same form presented as a separate view with 'back' and 'confirm' buttons in iOS app</i>
@@ -147,7 +147,7 @@ Lato was used for standard text in the app.
 Provides the user with a simple form to login, and a TribeHub logo that will be familiar to anyone who has already used the web app.
 
 <p align="center">
-    <img src="readme_assets/login.png" width=200>
+    <img src="readme_assets/login.png" width=250>
 </p>
 
 ### Tab Bar
@@ -174,9 +174,9 @@ The user can select the month or year of their choice using the drop down arrow 
 
 
 <p align="center">
-    <img src="readme_assets/homeview.png" width=200>
+    <img src="readme_assets/homeview.png" width=250>
     <span style="display: inline-block; margin-right: 10px;"></span>
-    <img src="readme_assets/homeview2.png" width=200>
+    <img src="readme_assets/homeview2.png" width=250>
 </p>
 
 ### Add event button
@@ -205,29 +205,29 @@ The behaviour of each button is as follows:
 
 - Subject - the user can enter free text into the search bar, which is used to query event subjects:
 <p align="center">
-    <img src="readme_assets/events_searchbar3.png" width=200>
+    <img src="readme_assets/events_searchbar3.png" width=250>
 </p>
 
 - Tribe - the user is presented with a list of members of their tribe. Selecting a tribe member creates a search token in the search bar, and that the search query is narrowed down to only include events involving that tribe member. Multiple tribe members can be selected and added to the search query.
 <p align="center">
-    <img src="readme_assets/events_searchbar4.png" width=200>
+    <img src="readme_assets/events_searchbar4.png" width=250>
 </p>
 
 - Category - the user is presented with a list of possible event categories. Selecting a category creates a search token in the search bar and narrows the search query down to only include events with that category. Only one category search token is allowed at one time, because the Django Rest Framework backend does not support searching on multiple categories. Any exsiting category search tokens are replaced when a new category is selected.
 <p align="center">
-    <img src="readme_assets/events_searchbar5.png" width=200>
+    <img src="readme_assets/events_searchbar5.png" width=250>
 </p>
 
 
 - From - the user is presented with a UIDatePicker. Selecting a date creates a new 'from' search token and limits the search query to only include events after that date. If a 'to' search token is already present and the user selects a 'from' date after the 'to' date, a search token is not created.
 <p align="center">
-    <img src="readme_assets/events_searchbar6.png" width=200>
+    <img src="readme_assets/events_searchbar6.png" width=250>
 </p>
 
 - To - works in the same way as the 'from' scope button, and limits the search query to only include events up until the selected date. If a 'from' search token is already present and the user selects a 'to' date before the 'from' date, a search token is not created.
 
 <p align="center">
-    <img src="readme_assets/events_searchbar7.png" width=200>
+    <img src="readme_assets/events_searchbar7.png" width=250>
 </p>
 
 The user can delete search tokens from the search bar in the same way as deleting free text using the on screen keyboard, which in turn results in that item being removed from the search query.
@@ -237,26 +237,117 @@ This customised use of scope buttons and search tokens provides a much more comp
 Search results are displayed below the search bar when the user is not choosing from the 'tribe' or 'category' lists. The list of event search results automatically reappears after the user has made a tribe member or category selection.
 
 ### Event detail view
+Users can view the details of an event by selecting the relevant cell underneath the calendar or from the search results.
+<p align="center">
+    <img src="readme_assets/event_detail.png" width=250>
+</p>
 
 ### Event edit button with change and delete options
+If the user is the owner of the event or the tribe admin, an edit button is available in the event detail view.
+Pressing the button reveals a drop-down menu, offering options to edit or delete the event.
+
+If the user is not the owner of the event or the tribe admin, no edit button appears.
+
+<p align="center">
+    <img src="readme_assets/event_edit_delete.png" width=250>
+</p>
 
 ### Add event view
+The add event view is accessed by pressing the + button in the tribe home view. It enables a user to enter the details for a new event. It includes appropriate 'picker' UI elements for the start date, duration, repeat and category fields.
+Other tribe members can optionally be invited to the event by selecting them from the table at the bottom of this view. 
+
+The user can save the event to the database using the 'confirm' button, or cancel the creation of the new event by pressing the 'Tribe Home' back button (this is the same approach used in many of Apple's views in the iOS settings app).
+
+<p align="center">
+    <img src="readme_assets/add_event.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/add_event2.png" width=250>
+</p>
 
 ### Edit event view
+The edit event view is accessed by pressing the 'change' option from the 'edit' button dropdown menu in the event details view.
+This view is identical to add event, except that it is pre-populated with the details of the event being edited.
+
+Note that if the user selects to edit an event recurrence, an alert is displayed to inform them that any edits will be made to the original event and give the option to cancel the action. This is similar behaviour to the web app.
+
+<p align="center">
+    <img src="readme_assets/edit_event.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/edit_event2.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/edit_original_alert.png" width=250>
+</p>
 
 ### Family contacts view
+The family contacts view displays a list of contacts for the family. These can be viewed by all members of the tribe, and only the tribe admin can add, edit or delete contacts.
+
+<p align="center">
+    <img src="readme_assets/contacts.png" width=250>
+</p>
 
 ### Add contact button
+The add contact 'button' is actually a UITableViewCell, and can be seen in the screenshot above. This is only available to the tribe admin, and simply does not appear if the user does not have admin status.
 
-### Contacts search bar
+### Contacts search bar and search results
+The contacts search bar is much simpler than the events search bar. It allows the user to perform a simple textual search on all contact fields.
+Search results are displayed directly below the search bar.
+
+<p align="center">
+    <img src="readme_assets/contacts_search.png" width=250>
+</p>
 
 ### Add contact view
+The add contact view enables the tribe admin to complete a simple form to add a new family contact.
+The 'confirm' button saves the new contact to the database, while the 'contacts' back button simply returns the user to the main contacts view without saving.
+
+<p align="center">
+    <img src="readme_assets/add_contact.png" width=250>
+</p>
 
 ### Contact edit and delete buttons
+Pressing the 'edit' button in the contacts view puts the contacts table into edit mode.
+This exposes a red delete button to the left of each contact table view cell, and a 'disclosure indicator' accessory to the right of the cell (indicating to the user that selecting the cell leads to a view with further detail). 
+
+If the user selects the delete button on the left, the cell slides to the left and reveals a second delete button. Pressing the second button confirms the delete action, and the contact is deleted from the database and removed from the contacts table.
+
+If the user selects a contact cell while in edit mode (other than pressing the delete button), the app presents the edit contact view.
+
+Pressing the 'done' button in the nav bar exits edit mode and returns the table to normal (no delete buttons and disclosure indicators).
+
+Edit and delete actions are only available to the tribe admin.
+
+<p align="center">
+    <img src="readme_assets/contact_edit.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/contact_delete.png" width=250>
+</p>
 
 ### Edit contact view
+The edit contact view is the same as add contact, except that the form is prepopulated with the contact details.
+The user can confirm the edit action or return to the previous view without saving any changes in the usual way.
+
+<p align="center">
+    <img src="readme_assets/edit_contact.png" width=250>
+</p>
 
 ### Account view
+The account view enables the user to manage their user profile and account.
+
+<p align="center">
+    <img src="readme_assets/account.png" width=250>
+</p>
+
+#### Profile image
+Pressing the edit button on the profile image in the Account view enables the user to choose a picture from their photo library or to take a new picture with the device camera.
+The ability to use a picture directly from the camera is a significant enhancement over the web app. If the user chooses the camera option, the picture is uploaded to the user profile and is not saved to the photo library on the device - this behaviour could be changed if users demanded it.
+
+<p align="center">
+    <img src="readme_assets/profile_pic_1.jpg" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/profile_pic_2.jpg" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/profile_pic_3.jpg" width=250>
+</p>
 
 #### Manage tribe view
 
@@ -309,5 +400,5 @@ Search results are displayed below the search bar when the user is not choosing 
 ** Do we still need imageFromString()? **
 - The technique to extend UIImageView to make a rounded image is from https://stackoverflow.com/questions/28074679/how-to-set-image-in-circle-in-swift
 - Code to make a grey scale copy of an image is from https://stackoverflow.com/questions/35959378/how-can-i-temporarily-grey-out-my-uiimage-in-swift
-- Code to resize an image is from https://stackoverflow.com/questions/31966885/resize-uiimage-to-200x200pt-px
+- Code to resize an image is from https://stackoverflow.com/questions/31966885/resize-uiimage-to-250x250pt-px
 - The technique for using a custom dateDecodingStrategy with a DateFormatter matching the API's date format is from https://stackoverflow.com/questions/50847139/error-decoding-date-with-swift
