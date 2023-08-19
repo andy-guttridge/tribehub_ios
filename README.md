@@ -164,7 +164,7 @@ The example screen shots show the navigation bar with a button to edit an existi
 
 <p align="center">
     <img src="readme_assets/navbar1.png" width=400>
-    <span style="display: inline-block;">    </span>
+    <span style="display: inline-block; margin-right: 10px;"></span>
     <img src="readme_assets/navbar2.png" width=400>
 </p>
 
@@ -172,17 +172,69 @@ The example screen shots show the navigation bar with a button to edit an existi
 The Home view features the family calendar - this is the virtual equivalent of a kitchen wall planner. Days with meetings/appointmens ('calendar events') are marked with a calendar decoration underneath the date. The user can select a given day to see a TableView with a list of events for that day underneath the calendar.
 The user can select the month or year of their choice using the drop down arrow to the right of the month and year name, and move forward or back one month at a time using the buttons at the top right of the calendar.
 
-Users can tap each event underneath the calendar to reveal more details about the event, and to edit the event if they are the event owner and/or tribe admin.
 
 <p align="center">
     <img src="readme_assets/homeview.png" width=200>
-    <span style="display: inline-block;">    </span>
+    <span style="display: inline-block; margin-right: 10px;"></span>
     <img src="readme_assets/homeview2.png" width=200>
 </p>
 
 ### Add event button
+The add event button appears on the right hand side of the navbar in the home view. The button uses the standard + symbol familar to iOS users.
+The button navigates to the 'add event' view, and enables the authenticated user to add a new event for their tribe.
 
-### Events search bar
+<p align="center">
+    <img src="readme_assets/tribehome_navbar.png" width=400>
+</p>
+
+### Events search bar with scope buttons and search tokens
+
+<p align="center">
+    <img src="readme_assets/events_searchbar.png" width=400>
+</p>
+
+Custom behaviour was implemented for Apple's scope buttons and search tokens to provide an intuitive UI for searching on multiple event fields.
+When the user initially selects the search bar, 'subject', 'tribe', 'category', 'from' and 'to' scope buttons appear:
+
+<p align="center">
+    <img src="readme_assets/events_searchbar2.png" width=400>
+</p>
+
+
+The behaviour of each button is as follows:
+
+- Subject - the user can enter free text into the search bar, which is used to query event subjects:
+<p align="center">
+    <img src="readme_assets/events_searchbar3.png" width=200>
+</p>
+
+- Tribe - the user is presented with a list of members of their tribe. Selecting a tribe member creates a search token in the search bar, and that the search query is narrowed down to only include events involving that tribe member. Multiple tribe members can be selected and added to the search query.
+<p align="center">
+    <img src="readme_assets/events_searchbar4.png" width=200>
+</p>
+
+- Category - the user is presented with a list of possible event categories. Selecting a category creates a search token in the search bar and narrows the search query down to only include events with that category. Only one category search token is allowed at one time, because the Django Rest Framework backend does not support searching on multiple categories. Any exsiting category search tokens are replaced when a new category is selected.
+<p align="center">
+    <img src="readme_assets/events_searchbar5.png" width=200>
+</p>
+
+
+- From - the user is presented with a UIDatePicker. Selecting a date creates a new 'from' search token and limits the search query to only include events after that date. If a 'to' search token is already present and the user selects a 'from' date after the 'to' date, a search token is not created.
+<p align="center">
+    <img src="readme_assets/events_searchbar6.png" width=200>
+</p>
+
+- To - works in the same way as the 'from' scope button, and limits the search query to only include events up until the selected date. If a 'from' search token is already present and the user selects a 'to' date before the 'from' date, a search token is not created.
+
+<p align="center">
+    <img src="readme_assets/events_searchbar7.png" width=200>
+</p>
+
+The user can delete search tokens from the search bar in the same way as deleting free text using the on screen keyboard, which in turn results in that item being removed from the search query.
+
+This customised use of scope buttons and search tokens provides a much more compact and intuitive approach to searching on multiple fields than the web app, which uses a large form to capture search terms for each field.
+
+Search results are displayed below the search bar when the user is not choosing from the 'tribe' or 'category' lists. The list of event search results automatically reappears after the user has made a tribe member or category selection.
 
 ### Event detail view
 
@@ -241,6 +293,9 @@ Users can tap each event underneath the calendar to reveal more details about th
 ## Testing
 
 ## Unresolved bugs and issues
+- When details some details of an event are edited and saved (e.g. changing the event subject), any members of the tribe who had been invited to the event are removed and need to be readded.
+- It is currently not possible to edit an event when details are viewed from search results, because the default search results view controller behaviour presents the search results as a modal without a navbar and therefore no edit button. This was not fixed due to time constraints but would be a high priority for future development.
+- Event owner's are not currently included in search results using the 'tribe' search tokens. The most efficient fix would be a change to the behaviour of the Djano Rest Framework backend. Development of the DRF backend was out of scope for this project, but could easily be fixed in the future.
 
 ## Building the app
 
