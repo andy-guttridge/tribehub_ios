@@ -250,6 +250,8 @@ If the user is not the owner of the event or the tribe admin, no edit button app
 
 <p align="center">
     <img src="readme_assets/event_edit_delete.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/delete_event.png" width=250>
 </p>
 
 ### Add event view
@@ -350,43 +352,138 @@ The ability to use a picture directly from the camera is a significant enhanceme
 </p>
 
 #### Manage tribe view
+The manage tribe view is only available to the tribe admin (the option is greyed out and unselectable for non-admins). It allows the tribe admin to add new members of the tribe, and delete existing ones.
+
+Pressing the Add tribe member tableViewCell opens the add tribe member view (see below).
+
+Pressing the Edit button in the nav bar shows a red delete button against each tribe member. Selecting the delete button reveals a second delete button to the right of the tableViewCell, and then pressing that causes the tribe member to be permanently deleted from the tribe and their account closed. The user can abort the delete action by pressing the screen somewhere away from the second delete button, or pressing the Done button.
+
+<p align="center">
+    <img src="readme_assets/manage_tribe.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/manage_tribe2.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/manage_tribe3.png" width=250>
+</p>
+
+#### Add tribe member view
+This view enables the tribe admin to add a new tribe member by entering a user name and password (the new tribe member can change their own password later).
+
+<p align="center">
+    <img src="readme_assets/add_tribe_member.png" width=250>
+</p>
 
 #### Display name view
+Enables the user to change their display name.
+
+<p align="center">
+    <img src="readme_assets/display_name.png" width=250>
+</p>
 
 #### Password view
+Enables the user to change their password.
+
+<p align="center">
+    <img src="readme_assets/change_password.png" width=250>
+</p>
 
 #### Delete account and sign-out
+The delete account option displays an action sheet to confirm whether the user really does wish to delete their account. If the user confirms, their account is made inactive in the database, their profile deleted, and any events they have created are also deleted. 
 
-### Alerts to confirm or cancel destructive actions and display errors
-**Note different approach for deletion of contacts and tribe members**
+If the user deleting the account is the tribe admin, all user accounts associated with the tribe are made inactive, all their profiles deleted and all other data associated with the tribe is deleted. This action effectively 'shuts down' the whole tribe. Tribe admin users are presented with a specific warning of this in the confirm/cancel action sheet.
+
+The sign-out option simply signs the user out of their account.
+
+<p align="center">
+    <img src="readme_assets/delete_account.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/delete_account2.png" width=250>
+</p>
+
+### Error alerts
+The TribeHub iOS app includes error alerts which are presented in the event a create, update or delete action fails (including data validation errors received from the REST API) and if there are any issues fetching data. A sample of error messages is shown below (these do not include every single permutation).
+
+<p align="center">
+    <img src="readme_assets/alert_password_match.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/alert_old_password.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/alert_display_name.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/alert_login.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/alert_adding_event.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/alert_fetching_events.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/alert_add_tribe.png" width=250>
+</p>
 
 ### Dark mode
+TribeHub iOS features a dark mode which is activated according to the user's system settings.
+
+<p align="center">
+    <img src="readme_assets/dark_mode.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/dark_mode2.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/dark_mode3.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/dark_mode4.png" width=250>
+    <span style="display: inline-block; margin-right: 10px;"></span>
+    <img src="readme_assets/dark_mode5.png" width=250>
+</p>
 
 ### CRUD functionality
+TribeHub iOS features full Create, Read, Update and Delete functionality, via the UI implemented using Apple's UIKit framework, Alamofire networking library and the Django Rest Framework API.
+
+- Create - users can register a new user account as a tribe administrator, and then create further user accounts for their tribe members. Tribe administrators can create contacts, and all authenticated users can create calendar events for their tribe.
+- Read - authenticated users can view their tribe's contacts and calendar events, and their profile image and display name. Tribe administrators can also view a list of all their tribe members.
+- Update - authenticated users can update their profile image, display name and password, and edit and save calendar events they have created. Additionally, tribe administrators can edit contacts and all calendar events for the tribe.
+- Delete - authenticated users can delete calendar events they have created, and their user profiles. Tribe administrators can delete all calendar events, contacts, and user profiles. 
 
 ## Future improvements and features
 ### High priority
 
 - It was not possible to fully implement username and password autofill on the login view, due to requiring a paid Apple developer account to be able to use ['Associated Domains'](https://developer.apple.com/documentation/xcode/supporting-associated-domains). This would be a priority feature for a commerical version of the app.
 - It is not currently possible to edit or delete a calendar event from the search results view, because Apple's searchController API presents a searchResultsController modally, which means the Edit button navigationItem is not shown. Implementing this feature would require some additional customisation of the search functionality, which was not possible due to time restrictions, but would be prioritised for a commercial version of the app.
-- Account registration
-- Notifications
+- Account registration - this was not implemented due to time constraints. Users can use the web app to register a new account as a tribe admin, and then login into the iOS app. It is likely the registration features would need to be implemented differently for commerical distribution via the app store in any case (e.g. allowing users to register from the app using their Apple ID). 
+- Notifications - notifications were not implemented in the iOS app due to time constraints. The approach used in the React web app would not provide an experience that would meet the expectations of iOS users. Apple's user notifications API would be used instead, however this would require additional work in the DRF backend, which was out of scope for this project. However, this would be a priority feature for future development.
+- Password strength checking for all accounts - the custom Django Rest Framework code that enables tribe administrators to create additional user accounts for tribe members does not currently 'hook in' to Django's built-in checks for password strength.
+- Reassign ownership of events created by deleted users - currently events are deleted if the user who created them deletes their account. This avoids any issues with 'orphaned' instances in the database, but a better solution would be to automatically or optionally transfer ownership of such events to the tribe administrator.
+- Transfer of tribe admin status to another user - in the event a tribe administrator closes their account, all user accounts associated with the tribe are closed and data deleted. This is to prevent 'orphaned' tribes and tribe members with no administrator. A better solution would be to enable the transfer of tribe admin status to another user.
+- All day calendar events.
+- A 'no reply' default event response status - currently each user can only have an 'accepted' or 'not accepted' status for each calendar event, with the default being 'not accepted'. This means that while users can actively accept an invitation, they cannot actively decline. This is acceptable for a first iteration of a minimum viable product, but a better user experience would be for the default status to be neutral, so that a user can either actively accept or decline.
 
 ### Longer term future features
-- iPad compatibility
-- Mac compatibility
+- iPad compatibility, including a UI tailored to the larger iPad screen.
+- Mac compatibility, including a UI tailored to the Mac (probably using the Catalyst API).
+- Refactoring the events data format to adopt the iCal standard, as a first step towards implementing integration with external calendars such as Gmail etc.
+- End dates/date ranges for repeat events (e.g. 'repeat weekly until 1 December 2023').
+- Exceptions to repeat event rules (e.g. a user could set up an event to recur weekly every Wednesday, but could create an exception so that one recurrence is on a Thursday).
+- Exceptions to 'accept/decline' responses for recurrences (e.g. the user could accept all recurrences and then decline them on an individual basis).
+- Notifications to remind users of events ahead of time and push notifications.
+- Day/week/year views for the calendar.
+- Shopping lists and items, integrated with the calendar system.
+- Meal plans, intregrated into shopping lists.
+- UI improvements, e.g. an avatar based UI for inviting tribe members to events, enabling proper display of long contact names.
 
 ## Frameworks, libraries and dependencies
-- UIKit
-- SFSymbols
-- Alamofire
+- Apple's [UIKit framework](https://developer.apple.com/documentation/uikit/) was used for the UI.
+- Apple's [SFSymbols](https://developer.apple.com/sf-symbols/) were used for the app icons.
+- The [Alamofire](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#using-alamofire) library was used to implement the networking layer, including features such as request retriers.
 
 ## Testing
+Manual tests were devised for each user story to be implemented for the project. 
+These were performed on builds of the app deployed both to the Xcode iOS simulator on the Mac and to real iPhone XR and iPhone SE devices. The tests and their outcomes are documented on the user_stories_ios tab of the [TribeHub user stories spreadsheet](https://docs.google.com/spreadsheets/d/11wcDHeqr85VaHXdJjATod_WECRY03IRUlGgT_L_ikIw/edit#gid=885440852).
+
+In addition, builds of the app were deployed to both the iOS simulator and real devices and subject to continual user testing throughout the development process. 
 
 ## Unresolved bugs and issues
 - When details some details of an event are edited and saved (e.g. changing the event subject), any members of the tribe who had been invited to the event are removed and need to be readded.
 - It is currently not possible to edit an event when details are viewed from search results, because the default search results view controller behaviour presents the search results as a modal without a navbar and therefore no edit button. This was not fixed due to time constraints but would be a high priority for future development.
 - Event owner's are not currently included in search results using the 'tribe' search tokens. The most efficient fix would be a change to the behaviour of the Djano Rest Framework backend. Development of the DRF backend was out of scope for this project, but could easily be fixed in the future.
+- The app does not currently handle very long strings in some of the textFields in the contacts table very well, for example in the screenshot below, the label for the category field at the top as expanded vertically to show the whole of the long string, however the first name field also contains a very long string which has been truncated. This is due to the use of horizontal stack views to position labels of variable horizontal sizes on the same 'row' with the correct spacing. Solutions considered including enabling touch interaction for those labels, to expose a popover or modal view containing the whole text, but this was not implemented due to time issues. In practice, the available space should be sufficient for most real-world contact details.
 
 ## Building the app
 
@@ -397,7 +494,6 @@ The ability to use a picture directly from the camera is a significant enhanceme
 - Code for adding a loading spinner view adapted from https://www.hackingwithswift.com/example-code/uikit/how-to-use-uiactivityindicatorview-to-show-a-spinner-when-work-is-happening
 - The technique for obtaining every day of a month from a Calender object is from https://www.hackingwithswift.com/example-code/uikit/how-to-use-uiactivityindicatorview-to-show-a-spinner-when-work-is-happening
 - Code to create an image from a string is from https://stackoverflow.com/questions/51100121/how-to-generate-an-uiimage-from-custom-text-in-swift
-** Do we still need imageFromString()? **
 - The technique to extend UIImageView to make a rounded image is from https://stackoverflow.com/questions/28074679/how-to-set-image-in-circle-in-swift
 - Code to make a grey scale copy of an image is from https://stackoverflow.com/questions/35959378/how-can-i-temporarily-grey-out-my-uiimage-in-swift
 - Code to resize an image is from https://stackoverflow.com/questions/31966885/resize-uiimage-to-250x250pt-px
