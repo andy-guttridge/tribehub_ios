@@ -496,9 +496,54 @@ These instructions will allow you to build and run the app using the XCode iOS s
 - Enter the directory containing your repo in the terminal using `cd [path-to-repo]`, for example `cd tribe-hub-ios-clone`.
 - Install the dependencies using cocoapods by typing `pod install` in the terminal.
     - If the installation was successful, you will see green `Installing Alamofire (5.6.4)` and `Pod installation complete! There is 1 dependency from the Podfile and 1 total pod installed` messages in the terminal. You may also see some warnings - these can be safely ignored. 
-- You can now build and run the project in XCode
-    - 
+- You can now build and run the project in XCode:
+    - Navigate to the directory where you have cloned the repository in the Finder.
+    - Open the `tribehub-ios.xcworkspace` file. XCode will launch and the workspace will open. NOTE: you MUST open the workspace file, as opposed to the `tribehub-ios.xcodeproj` file, otherwise dependencies will not be included and the app will fail to build.
+    - To build and run in the iOS simulator on your Mac:
+        - Choose the desired device using the dropdown in the toolbar at the top of the XCode window (note this must be an iPhone device - iPad is not currently supported):
+        <p align="center">
+            <img src="readme_assets/ios-sim-selection.png" width=500>
+        </p>
 
+        - Then select 'Run' from the Product menu:
+        <p align="center">
+            <img src="readme_assets/product-menu-run.png" width=250>
+        </p>
+
+        - The iOS simulator will then start and eventually the app will launch. The simulator might take a while to launch if this is the first time you have built the app since opening the workspace in XCode.
+    - To build and run the app to your iPhone:
+        - Connect your iPhone to your Mac using a suitable USB cable
+        - You should then be able to choose your phone from the list of available build target in the toolbar. In this screenshot, the device is shown as 'Andy's iPhone':
+        <p align="center">
+            <img src="readme_assets/andy-iphone-target.png" width=500>
+        </p>
+
+        - Select 'Run' from the Product menu as in the previous screenshot.
+        - The app will now be built onto your device. You will be prompted to unlock it if it is currently locked.
+        - You must now take some further actions in order to run the app on your device:
+            - Activate developer mode on your device by going into the settings app, choosing 'Privacy and Security', and then the 'Developer Mode' option. You can then use the switch to turn on developer mode. You will then be prompted to restart your device and enter your passcode.
+            - You must then tell your iPhone to trust your developer profile and the app before you can launch the app on your device. Open the settings app, go into 'General', then 'VPN and Device Management' and select the app to trust it. You should then be able to run TribeHub-iOS on your device.
+        - You may also be able to build the app to your device using a wifi connection. This hasn't been tested, but instructions are available from [Apple's website](https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device).
+        - A common problem you might run into if you haven't built an app to a device using XCode before is that you might not have set up a development team in XCode. See [this tutorial](https://www.twilio.com/blog/how-to-test-your-ios-application-on-a-real-device-html) for a resolution.
+        - Note that if you don't have a paid for Apple developer account, the app will 'expire' on your device within a few days, and will need to be built to your device again.
+    - TribeHub-iOS should build without any warnings, however if you do see any it is safe to ignore them. You might see the following build warning for the Alamofire library:
+     <p align="center">
+            <img src="readme_assets/alamofire-warning.png" width=500>
+    </p>
+
+    This will not stop the app from building, but can be fixed as follows:
+    
+    - Show the Project Navigator in XCode by selecting the folder icon on the left, and then select the 'Pods' XCode project (note that the 'tribehub-ios' project is collapased in the screenshot - if you have been browsing the project, you might have a long list of files underneath this and above 'Pods'):
+        <p align="center">
+        <img src="readme_assets/alamo-fix.png" width=250>
+    </p>
+
+    - Choose 'Build Settings' at the top, and then locate the 'iOS Deployment Target' under 'Deployment'. Change the deployment target to iOS 16 and save the project.
+    <p align="center">
+        <img src="readme_assets/alamo-fix2.png" width=900>
+    </p>
+
+    - The warning will now disappear next time you build the app.
 
 ## Credits
 - Ideas for managing network requests using protocols from https://matteomanferdini.com/network-requests-rest-apis-ios-swift/
