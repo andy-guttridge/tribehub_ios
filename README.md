@@ -545,6 +545,20 @@ These instructions will allow you to build and run the app using the XCode iOS s
 
     - The warning will now disappear next time you build the app.
 
+By default, the app will use the Django Rest Framework backend and database deployed for this project. If you wish to use your own deployed clone of the DRF backend, you will need to change the URL within the app as follows:
+
+- In the XCode project navigator, locate the `APIResource` Swift file inside `tribehub-ios/Networking`:
+
+    <p align="center">
+        <img src="readme_assets/api-resource.png" width=250>
+    </p>
+
+- Within this file, amend the URL string as indicated in the screenshot below to match your deployed Django Rest Framework URL:
+
+    <p align="center">
+        <img src="readme_assets/url-string.png" width=700>
+    </p>
+
 ## Credits
 - Ideas for managing network requests using protocols from https://matteomanferdini.com/network-requests-rest-apis-ios-swift/
 - Ideas for using model controllers to manage persistent data from https://code.tutsplus.com/tutorials/the-right-way-to-share-state-between-swift-view-controllers--cms-28474

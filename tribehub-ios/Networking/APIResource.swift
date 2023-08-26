@@ -17,6 +17,5 @@ protocol APIResource {
 extension APIResource {
     var url: String {
         return "https://tribehub-drf.herokuapp.com/" + methodPath
-        // return "http://127.0.0.1:8000/" + methodPath
     }
 }
