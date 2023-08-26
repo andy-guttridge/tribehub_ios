@@ -1,5 +1,5 @@
 # TribeHub iOS
-A native iOS app for the TribeHub family organiser, built using Swift and UIKit.
+A native iOS app for the TribeHub family organiser, built using the Swift language and UIKit framework.
 TribeHub iOS uses the [tribehub_drf](https://github.com/andy-guttridge/tribehub_drf) REST API for its backend.
 
 ## Project goals
@@ -22,6 +22,56 @@ The repository for the React web app is located [here](https://github.com/andy-g
 
 
 ## Table of contents
+- [TribeHub iOS](#tribehub-ios)
+  * [Project goals](#project-goals)
+  * [Table of contents](#table-of-contents)
+  * [User stories](#user-stories)
+    + [Themes](#themes)
+    + [Epics](#epics)
+    + [User stories](#user-stories-1)
+  * [Planning](#planning)
+  * [Data models](#data-models)
+  * [Design](#design)
+    + [Colours](#colours)
+    + [Fonts](#fonts)
+  * [Features](#features)
+    + [Log-in view](#log-in-view)
+    + [Tab Bar](#tab-bar)
+    + [Navigation Bar](#navigation-bar)
+    + [Home view with family calendar](#home-view-with-family-calendar)
+    + [Add event button](#add-event-button)
+    + [Events search bar with scope buttons and search tokens](#events-search-bar-with-scope-buttons-and-search-tokens)
+    + [Event detail view](#event-detail-view)
+    + [Event edit button with change and delete options](#event-edit-button-with-change-and-delete-options)
+    + [Add event view](#add-event-view)
+    + [Edit event view](#edit-event-view)
+    + [Family contacts view](#family-contacts-view)
+    + [Add contact button](#add-contact-button)
+    + [Contacts search bar and search results](#contacts-search-bar-and-search-results)
+    + [Add contact view](#add-contact-view)
+    + [Contact edit and delete buttons](#contact-edit-and-delete-buttons)
+    + [Edit contact view](#edit-contact-view)
+    + [Account view](#account-view)
+      - [Profile image](#profile-image)
+      - [Manage tribe view](#manage-tribe-view)
+      - [Add tribe member view](#add-tribe-member-view)
+      - [Display name view](#display-name-view)
+      - [Password view](#password-view)
+      - [Delete account and sign-out](#delete-account-and-sign-out)
+    + [Error alerts](#error-alerts)
+    + [Dark mode](#dark-mode)
+    + [CRUD functionality](#crud-functionality)
+  * [Future improvements and features](#future-improvements-and-features)
+    + [High priority](#high-priority)
+    + [Longer term future features](#longer-term-future-features)
+  * [Frameworks, libraries and dependencies](#frameworks--libraries-and-dependencies)
+  * [Testing](#testing)
+  * [Unresolved bugs and issues](#unresolved-bugs-and-issues)
+  * [Building the app](#building-the-app)
+  * [Credits](#credits)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## User stories
 TribeHub-iOS was developed by implementing the same themes, epics and user stories which were developed for the original web app. 
