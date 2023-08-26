@@ -60,7 +60,6 @@
 		A17EAC3129CDC96A00D7CE00 /* tribehub_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC3029CDC96A00D7CE00 /* tribehub_iosTests.swift */; };
 		A17EAC3B29CDC96A00D7CE00 /* tribehub_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC3A29CDC96A00D7CE00 /* tribehub_iosUITests.swift */; };
 		A17EAC3D29CDC96A00D7CE00 /* tribehub_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC3C29CDC96A00D7CE00 /* tribehub_iosUITestsLaunchTests.swift */; };
-		A17EAC4C29CDFD1B00D7CE00 /* test_credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = A17EAC4B29CDFD1B00D7CE00 /* test_credentials.plist */; };
 		A17EAC4E29CE0C6B00D7CE00 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC4D29CE0C6B00D7CE00 /* UserModel.swift */; };
 		A17EAC5029CE166A00D7CE00 /* TribeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC4F29CE166A00D7CE00 /* TribeModel.swift */; };
 		A181476E29E806AC00AC3BE2 /* LoginResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181476D29E806AC00AC3BE2 /* LoginResource.swift */; };
@@ -650,7 +649,6 @@
 				A11E0C412A4DD6B70090169C /* TH-Lato-Bold.ttf in Resources */,
 				A11E0C3D2A4DC4A90090169C /* TH-Nunito-SemiBold.ttf in Resources */,
 				A17EAC2629CDC96900D7CE00 /* LaunchScreen.storyboard in Resources */,
-				A17EAC4C29CDFD1B00D7CE00 /* test_credentials.plist in Resources */,
 				A17267B729F1572B00F612E7 /* README.md in Resources */,
 				A17EAC2329CDC96900D7CE00 /* Assets.xcassets in Resources */,
 				A11973A02A05410D00816B0D /* Account.storyboard in Resources */,

@@ -486,6 +486,19 @@ In addition, builds of the app were deployed to both the iOS simulator and real 
 - The app does not currently handle very long strings in some of the textFields in the contacts table very well, for example in the screenshot below, the label for the category field at the top as expanded vertically to show the whole of the long string, however the first name field also contains a very long string which has been truncated. This is due to the use of horizontal stack views to position labels of variable horizontal sizes on the same 'row' with the correct spacing. Solutions considered including enabling touch interaction for those labels, to expose a popover or modal view containing the whole text, but this was not implemented due to time issues. In practice, the available space should be sufficient for most real-world contact details.
 
 ## Building the app
+These instructions will allow you to build and run the app using the XCode iOS simulator, or to build and run on a real iOS device. You must have an Apple Mac capabale of running XCode 14 to follow these instructions.
+
+- If you don't already have the XCode IDE installed, download and install from [Apple's website](https://developer.apple.com/xcode/) or the Mac app store. You must install XCode version 14 or above to build TribeHub-iOS.
+- You must also install the [Cocoapods dependency manager](https://cocoapods.org). You should be able to install this by opening the terminal app on your Mac, and typing `sudo gem install cocoapods`. If you encounter any issues, refer to the [Cocoapods trouble shooting guide](https://guides.cocoapods.org/using/troubleshooting#installing-cocoapods).
+- Clone this Git repository to your local machine:
+    - Open the terminal app, and navigate to the directory where you wish to clone the repoository using `cd [path-to-directory]`.
+    - Clone this repo by typing `git clone https://github.com/andy-guttridge/tribehub_ios [name-of-folder-you-wish-to-clone-to]`. For example, `git clone https://github.com/andy-guttridge/tribehub_ios tribe-hub-ios-clone` would clone the repository into a directory called `tribe-hub-ios-clone`.
+- Enter the directory containing your repo in the terminal using `cd [path-to-repo]`, for example `cd tribe-hub-ios-clone`.
+- Install the dependencies using cocoapods by typing `pod install` in the terminal.
+    - If the installation was successful, you will see green `Installing Alamofire (5.6.4)` and `Pod installation complete! There is 1 dependency from the Podfile and 1 total pod installed` messages in the terminal. You may also see some warnings - these can be safely ignored. 
+- You can now build and run the project in XCode
+    - 
+
 
 ## Credits
 - Ideas for managing network requests using protocols from https://matteomanferdini.com/network-requests-rest-apis-ios-swift/
