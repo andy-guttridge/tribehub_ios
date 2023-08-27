@@ -107,8 +107,7 @@ class EventSearchResultsTableViewController: UITableViewController {
             // Calculate end date from start date and duration, use date formatter to
             // extract only a time string for the start and end dates, and set the text
             // on the timeLabel.
-            if let startDate = event.start, let duration = event.duration {
-                let endDate = Date(timeInterval: duration, since: startDate)
+            if let startDate = event.start {
                 let dateFormatter = DateFormatter()
                 dateFormatter.timeZone = .gmt
                 dateFormatter.locale = Locale(identifier: "en_GB")

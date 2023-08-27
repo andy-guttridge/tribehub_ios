@@ -379,7 +379,7 @@ extension HomeViewController: EventSearchResultsTableViewControllerDelegate {
                     searchText: searchText,
                     category: searchCategory,
                     tribeMembers: tribe)
-                if let searchDisplayController = navigationItem.searchController?.searchResultsController as? EventSearchResultsTableViewController as? EventSearchResultsTableViewController {
+                if let searchDisplayController = navigationItem.searchController?.searchResultsController as? EventSearchResultsTableViewController {
                     searchDisplayController.searchResultsDidUpdate()
                 }
             } catch HTTPError.badRequest(let apiResponse) {

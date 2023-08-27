@@ -338,12 +338,6 @@ private extension EventFormTableViewController {
         // Create array of invited tribe members for the newEvent we create below
         let toTribeMembers: [TribeMember]? = selectedTribeMemberPks.map() { pk in tribeModelController?.getTribeMemberForPk(pk) ?? TribeMember() }
         
-        // Filter out any tribe members who aren't invited from the accepted array
-        let accepted = event?.accepted?.filter() { tribeMember in selectedTribeMemberPks.contains
-            { toMember in toMember == tribeMember.pk }
-        }
-        
-        
         if let event = event {
             
             // Create a new event instance with the changed details.
