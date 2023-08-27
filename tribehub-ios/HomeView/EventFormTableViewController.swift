@@ -351,7 +351,8 @@ private extension EventFormTableViewController {
                 durationString: intervalToHoursMinsSecondsStr(duration),
                 recurrenceType: recurrence.rawValue,
                 subject: subjectText,
-                category: category.rawValue
+                category: category.rawValue,
+                accepted: event.accepted
             )
             
             Task.init {
