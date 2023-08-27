@@ -55,7 +55,7 @@ class EventFormTableViewController: UITableViewController {
     var shouldStartEditingWithDate: Date?
     
     // Tribemembers currently selected in the tableView
-    private var selectedTribeMemberPks: [Int?] = []
+    private var selectedTribeMemberPks: Set<Int?> = []
     
     // Properties to hold values of user input captured in tableViewCells
     private var subjectString: String?
@@ -202,7 +202,7 @@ class EventFormTableViewController: UITableViewController {
                 let isInvited = toArray.reduce(false) { acc, tribeMember in tribeMemberPk == tribeMember.pk || acc }
                 if isInvited {
                     cell.accessoryType = .checkmark
-                    selectedTribeMemberPks.append(tribeMemberPk)
+                    selectedTribeMemberPks.insert(tribeMemberPk)
                 }
             }
             
@@ -245,7 +245,7 @@ class EventFormTableViewController: UITableViewController {
                     // Otherwise, it's a normal selection, so add the checkmark
                     // and add to selectedTribeMemberPks
                     cell.accessoryType = .checkmark
-                    selectedTribeMemberPks.append(tribeMembers[indexPath.row].pk)
+                    selectedTribeMemberPks.insert(tribeMembers[indexPath.row].pk)
                 }
                 
             }
@@ -256,7 +256,7 @@ class EventFormTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             // Filter out the current user from the tribeMembers so they can't invite themselves to the event
-            let tribeMembers = tribeModelController?.tribe?.tribeMembers.filter() { member in member.pk != userModelController?.user?.pk}
+            let tribeMembers = tribeModelController?.tribe?.tribeMembers.filter() { member in member.pk != userModelController?.user?.pk }
             if let cell = tableView.cellForRow(at: indexPath), let tribeMembers = tribeMembers, let tribeMemberIndex = selectedTribeMemberPks.firstIndex(of: tribeMembers[indexPath.row].pk) {
                 cell.accessoryType = .none
                 selectedTribeMemberPks.remove(at: tribeMemberIndex)
@@ -275,10 +275,20 @@ private extension EventFormTableViewController {
             subjectString = event.subject
             startDatePickerSelectedDate = event.start
             durationPickerSelectedDuration = event.duration
+            
+            // Set selectedTribeMemberPks according to which tribe members have been invited to the event
+            if let invitedTribeMembers = event.to {
+                for tribeMember in invitedTribeMembers {
+                    selectedTribeMemberPks.insert(tribeMember.pk)
+                }
+            }
+            
         } else {
             navigationItem.title = "Add event"
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .done, target: self, action: #selector(confirmSubmit))
+        
+        
     }
     
     /// Captures value of the subjectTextField when its value changes
@@ -329,9 +339,10 @@ private extension EventFormTableViewController {
         let toTribeMembers: [TribeMember]? = selectedTribeMemberPks.map() { pk in tribeModelController?.getTribeMemberForPk(pk) ?? TribeMember() }
         
         // Filter out any tribe members who aren't invited from the accepted array
-        let accepted = event?.accepted?.filter() { tribeMember in event?.to?.contains
-            { toMember in toMember.pk == tribeMember.pk} ?? false
+        let accepted = event?.accepted?.filter() { tribeMember in selectedTribeMemberPks.contains
+            { toMember in toMember == tribeMember.pk }
         }
+        
         
         if let event = event {
             
@@ -346,8 +357,7 @@ private extension EventFormTableViewController {
                 durationString: intervalToHoursMinsSecondsStr(duration),
                 recurrenceType: recurrence.rawValue,
                 subject: subjectText,
-                category: category.rawValue,
-                accepted: accepted
+                category: category.rawValue
             )
             
             Task.init {
@@ -356,7 +366,7 @@ private extension EventFormTableViewController {
                     if let eventId = event.id {
                         try await eventsModelController?.changeEvent(
                             eventPk: eventId,
-                            toPk: selectedTribeMemberPks,
+                            toPk: Array(selectedTribeMemberPks),
                             start: startDate,
                             duration: duration,
                             recurrenceType: recurrence,
@@ -399,7 +409,7 @@ private extension EventFormTableViewController {
                 var createdEvent: Event? = nil
                 do {
                     createdEvent = try await eventsModelController?.createEvent(
-                        toPk: selectedTribeMemberPks,
+                        toPk: Array(selectedTribeMemberPks),
                         start: startDate,
                         duration: duration,
                         recurrenceType: recurrence,
