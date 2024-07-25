@@ -16,6 +16,6 @@ protocol APIResource {
 
 extension APIResource {
     var url: String {
-        return "https://tribehub-drf.herokuapp.com/" + methodPath
+        return "https://api-tribehub.andyguttridge.co.uk/" + methodPath
     }
 }
