@@ -17,7 +17,7 @@ class RefreshRequestRetrier: RequestRetrier {
         // If retrying, firstly call the refresh API endpoint, then completion handler to retry. Otherwise, the request has failed.
         Task.init {
             if request.response?.statusCode == 401 && request.retryCount < 2 {
-                let result = await session.request("https://tribehub-drf.herokuapp.com/dj-rest-auth/token/refresh/", method: .post).serializingDecodable(AccessToken.self).result
+                let result = await session.request("https://api-tribehub.andyguttridge.co.uk/dj-rest-auth/token/refresh/", method: .post).serializingDecodable(AccessToken.self).result
                 switch result {
                 case .success(_):
                     completion(.retry)
